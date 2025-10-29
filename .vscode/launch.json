@@ -1,0 +1,16 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "RunSimulation(5)",
+            "request": "launch",
+            "mainClass": "org.eqasim.switzerland.ch_cmdp.RunSimulation",
+            "projectName": "switzerland",
+            "args": "--config-path /Users/benjaminschlaich/Coding/MatSim/eqasim-java/Zurich_10pct/zurich_10pct_config.xml"
+        }
+    ]
+}
