@@ -1,0 +1,6 @@
+/var/spool/slurm/slurmd/state/job47187490/slurm_script: 9: source: not found
+/var/spool/slurm/slurmd/state/job47187490/slurm_script: 12: module: not found
+/var/spool/slurm/slurmd/state/job47187490/slurm_script: 13: module: not found
+/var/spool/slurm/slurmd/state/job47187490/slurm_script: 14: module: not found
+/var/spool/slurm/slurmd/state/job47187490/slurm_script: 15: module: not found
+/var/spool/slurm/slurmd/state/job47187490/slurm_script: 21: mvn: not found
