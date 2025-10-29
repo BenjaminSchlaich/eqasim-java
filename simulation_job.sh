@@ -15,6 +15,6 @@ module load openjdk/21.0.3_9
 module load maven
 
 cd /cluster/scratch/bschlaich/eqasim-java
-mvn --offline -DskipTests clean package
+# mvn --offline -DskipTests clean package
 mvn --offline exec:java -Dexec.mainClass="org.eqasim.switzerland.ch_cmdp.RunSimulation" -Dexec.args="--config-path /cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_config.xml"
 #  
