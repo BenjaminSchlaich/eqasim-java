@@ -20,3 +20,6 @@ sbatch < simulation_job.sh
 
 // check job status:
 squeue -u <username>
+
+// find the resulting output log of stdout in the root directory:
+// slurm-<...>.out

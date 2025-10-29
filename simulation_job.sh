@@ -6,13 +6,13 @@
 #SBATCH --time=1:00:00                  #Requesting 24 hours run time
 
 #Source the GDC stack
-source /cluster/project/gdc/shared/stack/GDCstack.sh
+# source /cluster/project/gdc/shared/stack/GDCstack.sh
 
 #Load the needed modules
-module load stack/2024-06
-module load gcc/12.2.0
-module load openjdk/21.0.3_9
-module load maven
+# module load stack/2024-06
+# module load gcc/12.2.0
+# module load openjdk/21.0.3_9
+# module load maven
 
 cd /cluster/scratch/bschlaich/eqasim-java/switzerland
 # mvn --offline -DskipTests clean package
