@@ -1,8 +1,3 @@
-/var/spool/slurm/slurmd/state/job47188590/slurm_script: 9: source: not found
-/var/spool/slurm/slurmd/state/job47188590/slurm_script: 12: module: not found
-/var/spool/slurm/slurmd/state/job47188590/slurm_script: 13: module: not found
-/var/spool/slurm/slurmd/state/job47188590/slurm_script: 14: module: not found
-/var/spool/slurm/slurmd/state/job47188590/slurm_script: 15: module: not found
 [INFO] Scanning for projects...
 [WARNING] 
 [WARNING] Some problems were encountered while building the effective model for org.eqasim:switzerland:jar:2.0.0
