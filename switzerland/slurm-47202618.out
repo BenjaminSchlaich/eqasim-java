@@ -1,0 +1,781 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.eqasim:switzerland:jar:2.0.0
+[WARNING] The expression ${parent.groupId} is deprecated. Please use ${project.parent.groupId} instead.
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] -----------------------< org.eqasim:switzerland >-----------------------
+[INFO] Building switzerland 2.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec-maven-plugin:3.6.2:java (default-cli) @ switzerland ---
+2025-10-29T18:33:14,102  INFO CommandLine:511 Received 0 positional command line arguments:
+2025-10-29T18:33:14,103  INFO CommandLine:512    
+2025-10-29T18:33:14,104  INFO CommandLine:534 Received 1 command line options with 0 prefixes:
+2025-10-29T18:33:14,104  INFO CommandLine:539    config-path = /cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_config.xml
+2025-10-29T18:33:14,209  INFO IOUtils:212 Resolved /cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_config.xml to /cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_config.xml
+2025-10-29T18:33:14,212  INFO Config:461 setting context to [file:/cluster/scratch/bschlaich/eqasim-java/switzerland/]
+2025-10-29T18:33:14,251  INFO Version:18 HV000001: Hibernate Validator 9.0.1.Final
+2025-10-29T18:33:14,351  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_config.xml ...
+2025-10-29T18:33:14,384  INFO ConfigReader:105 using config_v2-reader
+2025-10-29T18:33:14,384  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/config_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-10-29T18:33:14,399  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-10-29T18:33:14,400  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/config_v2.dtd
+2025-10-29T18:33:14,432  INFO GlobalConfigGroup:99 setting number of threads to: 24
+2025-10-29T18:33:14,444  WARN RoutingConfigGroup:434 The first mode routing (= teleported mode) params that are explicitly defined clear the default mode routing (= teleported mode) params.  If you want to avoid this 
+2025-10-29T18:33:14,444  WARN RoutingConfigGroup:435     warning, use clearTeleportedModeParams(true) in code, and "clearDefaultTeleportedModeParams"=true in xml config.
+2025-10-29T18:33:14,446  WARN ScoringConfigGroup$ReflectiveDelegate:1685 Setting pathSizeLogitBeta different from zero is experimental.  KN, Sep'08
+2025-10-29T18:33:14,455  INFO ScoringConfigGroup:555 scoring parameters for subpopulation null were just replaced.
+2025-10-29T18:33:14,464  INFO Config:461 setting context to [file:/cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_config.xml]
+2025-10-29T18:33:14,481  INFO GlobalConfigGroup:99 setting number of threads to: 8
+Found the following transfer penalties: [[name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=rail][transferPenalty=0.101], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=subway][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=ferry][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=tram][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=funicular][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=cable-car][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=gondola][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=other][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=rail][transferPenalty=0.101], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=subway][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=ferry][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=tram][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=funicular][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=cable-car][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=gondola][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=other][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=other][transferPenalty=0.177]]
+2025-10-29T18:33:14,509  INFO ScenarioLoaderImpl:135 loading network from file:/cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_network.xml.gz
+2025-10-29T18:33:14,510  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_network.xml.gz ...
+2025-10-29T18:33:14,578  INFO MatsimNetworkReader:122 using network_v2-reader.
+2025-10-29T18:33:14,578  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/network_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-10-29T18:33:14,581  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-10-29T18:33:14,581  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/network_v2.dtd
+2025-10-29T18:33:14,587  INFO NetworkImpl:165  node # 1
+2025-10-29T18:33:14,587  INFO NetworkImpl:165  node # 4
+2025-10-29T18:33:14,588  INFO NetworkImpl:165  node # 16
+2025-10-29T18:33:14,591  INFO NetworkImpl:165  node # 64
+2025-10-29T18:33:14,598  INFO NetworkImpl:165  node # 256
+2025-10-29T18:33:14,627  INFO NetworkImpl:165  node # 1024
+2025-10-29T18:33:14,648  INFO NetworkImpl:165  node # 4096
+2025-10-29T18:33:14,710  INFO NetworkImpl:165  node # 16384
+2025-10-29T18:33:14,823  INFO NetworkImpl:161  link # 1
+2025-10-29T18:33:14,824  INFO NetworkImpl:161  link # 4
+2025-10-29T18:33:14,841  WARN DisallowedNextLinks:67 Considering DisallowedNextLinks in routing is only implemented by SpeedyDijkstra and SpeedyALT!
+2025-10-29T18:33:14,843  INFO NetworkImpl:161  link # 16
+2025-10-29T18:33:14,847  INFO NetworkImpl:161  link # 64
+2025-10-29T18:33:14,855  WARN LinkImpl:121 permlanes=0.0 of link id 1002007_spec may cause problems
+2025-10-29T18:33:14,855  WARN LinkImpl:123  Future occurences of this logging statement are suppressed.
+2025-10-29T18:33:14,858  INFO NetworkImpl:161  link # 256
+2025-10-29T18:33:14,884  INFO NetworkImpl:161  link # 1024
+2025-10-29T18:33:14,960  INFO NetworkImpl:161  link # 4096
+2025-10-29T18:33:15,217  INFO NetworkImpl:161  link # 16384
+2025-10-29T18:33:15,824  INFO NetworkImpl:161  link # 65536
+2025-10-29T18:33:16,446  WARN LinkImpl:130 length=0.0 of link id pt_8502186:0:1/2 may cause problems
+2025-10-29T18:33:16,446  WARN LinkImpl:132  Future occurences of this logging statement are suppressed.
+2025-10-29T18:33:16,468  INFO ScenarioLoaderImpl:160 loading facilities from file:/cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_facilities.xml.gz
+2025-10-29T18:33:16,469  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_facilities.xml.gz ...
+2025-10-29T18:33:16,473  INFO MatsimFacilitiesReader:143 using facilities_v2-reader.
+2025-10-29T18:33:16,473  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/facilities_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-10-29T18:33:16,478  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-10-29T18:33:16,478  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/facilities_v2.dtd
+2025-10-29T18:33:17,093  INFO ScenarioLoaderImpl:169 loaded 197644 facilities from file:/cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_facilities.xml.gz
+2025-10-29T18:33:17,093  INFO ScenarioLoaderImpl:188 no facility-attributes file set in config, not loading any facility attributes
+2025-10-29T18:33:17,093  INFO ScenarioLoaderImpl:196 loading population from file:/cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_population.xml.gz
+2025-10-29T18:33:17,097  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_population.xml.gz ...
+2025-10-29T18:33:17,124  INFO PopulationReader:135 using population_v6-reader.
+2025-10-29T18:33:17,124  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/population_v6.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-10-29T18:33:17,129  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-10-29T18:33:17,129  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/population_v6.dtd
+2025-10-29T18:33:17,132  WARN PopulationReaderMatsimV6:227 coordinate transformation defined both in config and in input file: setting from input file will be used
+2025-10-29T18:33:17,133  INFO ParallelPopulationReaderMatsimV6:168 Start parallel population reading...
+2025-10-29T18:33:17,214  INFO PopulationImpl:111  person # 1
+2025-10-29T18:33:17,218  INFO PopulationImpl:111  person # 4
+2025-10-29T18:33:17,367  INFO PopulationImpl:111  person # 16
+2025-10-29T18:33:17,384  INFO PopulationImpl:111  person # 64
+2025-10-29T18:33:17,458  INFO PopulationImpl:111  person # 256
+2025-10-29T18:33:17,586  INFO PopulationImpl:111  person # 1024
+2025-10-29T18:33:18,009  INFO PopulationImpl:111  person # 4096
+2025-10-29T18:33:19,650  INFO PopulationImpl:111  person # 16384
+2025-10-29T18:33:26,304  INFO PopulationImpl:111  person # 65536
+2025-10-29T18:33:43,974  INFO ParallelPopulationReaderMatsimV6:238 Finished parallel population reading...
+2025-10-29T18:33:43,975  INFO PopulationUtils:1145  person # 199709
+2025-10-29T18:33:43,976  INFO ScenarioLoaderImpl:244 no person-attributes file set in config, not loading any person attributes
+2025-10-29T18:33:43,976  INFO ScenarioLoaderImpl:251 loading households from file:/cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_households.xml.gz
+2025-10-29T18:33:43,977  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_households.xml.gz ...
+2025-10-29T18:33:44,004  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/households_v1.0.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-10-29T18:33:44,009  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-10-29T18:33:44,009  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/households_v1.0.xsd
+2025-10-29T18:33:44,020  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/matsimCommon.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-10-29T18:33:44,023  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-10-29T18:33:44,023  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/matsimCommon.xsd
+2025-10-29T18:33:44,043  INFO Counter:70   households # 1
+2025-10-29T18:33:44,044  INFO Counter:70   households # 2
+2025-10-29T18:33:44,046  INFO Counter:70   households # 4
+2025-10-29T18:33:44,049  INFO Counter:70   households # 8
+2025-10-29T18:33:44,055  INFO Counter:70   households # 16
+2025-10-29T18:33:44,065  INFO Counter:70   households # 32
+2025-10-29T18:33:44,079  INFO Counter:70   households # 64
+2025-10-29T18:33:44,093  INFO Counter:70   households # 128
+2025-10-29T18:33:44,117  INFO Counter:70   households # 256
+2025-10-29T18:33:44,144  INFO Counter:70   households # 512
+2025-10-29T18:33:44,185  INFO Counter:70   households # 1024
+2025-10-29T18:33:44,247  INFO Counter:70   households # 2048
+2025-10-29T18:33:44,341  INFO Counter:70   households # 4096
+2025-10-29T18:33:44,541  INFO Counter:70   households # 8192
+2025-10-29T18:33:44,749  INFO Counter:70   households # 16384
+2025-10-29T18:33:45,108  INFO Counter:70   households # 32768
+2025-10-29T18:33:45,814  INFO Counter:70   households # 65536
+2025-10-29T18:33:46,553  INFO Counter:75   households # 102489
+2025-10-29T18:33:46,554  INFO ScenarioLoaderImpl:255 households loaded.
+2025-10-29T18:33:46,555  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_transit_schedule.xml.gz ...
+2025-10-29T18:33:46,571  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/transitSchedule_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-10-29T18:33:46,576  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-10-29T18:33:46,577  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/transitSchedule_v2.dtd
+2025-10-29T18:33:47,440  INFO ScenarioLoaderImpl:329 loading transit vehicles from zurich_10pct_transit_vehicles.xml.gz
+2025-10-29T18:33:47,441  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_transit_vehicles.xml.gz ...
+2025-10-29T18:33:47,446  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/vehicleDefinitions_v2.0.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-10-29T18:33:47,449  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-10-29T18:33:47,449  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/vehicleDefinitions_v2.0.xsd
+2025-10-29T18:33:47,453  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/matsimCommon.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-10-29T18:33:47,456  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-10-29T18:33:47,456  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/matsimCommon.xsd
+2025-10-29T18:33:47,460  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/vehicleDefinitionsEnumTypes.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-10-29T18:33:47,462  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-10-29T18:33:47,463  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/vehicleDefinitionsEnumTypes.xsd
+2025-10-29T18:33:47,470  INFO MatsimVehicleReader$VehicleReader:77 Found following schemaLocation in vehicle definition file: http://www.matsim.org/files/dtd http://www.matsim.org/files/dtd/vehicleDefinitions_v2.0.xsd
+2025-10-29T18:33:47,470  INFO VehicleReaderV2:24 Using org.matsim.vehicles.VehicleReaderV2
+2025-10-29T18:33:47,480  INFO Counter:70 [VehiclesImpl] added vehicle # 1
+2025-10-29T18:33:47,480  INFO Counter:70 [VehiclesImpl] added vehicle # 2
+2025-10-29T18:33:47,480  INFO Counter:70 [VehiclesImpl] added vehicle # 4
+2025-10-29T18:33:47,480  INFO Counter:70 [VehiclesImpl] added vehicle # 8
+2025-10-29T18:33:47,481  INFO Counter:70 [VehiclesImpl] added vehicle # 16
+2025-10-29T18:33:47,481  INFO Counter:70 [VehiclesImpl] added vehicle # 32
+2025-10-29T18:33:47,482  INFO Counter:70 [VehiclesImpl] added vehicle # 64
+2025-10-29T18:33:47,483  INFO Counter:70 [VehiclesImpl] added vehicle # 128
+2025-10-29T18:33:47,485  INFO Counter:70 [VehiclesImpl] added vehicle # 256
+2025-10-29T18:33:47,487  INFO Counter:70 [VehiclesImpl] added vehicle # 512
+2025-10-29T18:33:47,491  INFO Counter:70 [VehiclesImpl] added vehicle # 1024
+2025-10-29T18:33:47,502  INFO Counter:70 [VehiclesImpl] added vehicle # 2048
+2025-10-29T18:33:47,511  INFO Counter:70 [VehiclesImpl] added vehicle # 4096
+2025-10-29T18:33:47,529  INFO Counter:70 [VehiclesImpl] added vehicle # 8192
+2025-10-29T18:33:47,560  INFO Counter:70 [VehiclesImpl] added vehicle # 16384
+2025-10-29T18:33:47,618  INFO Counter:70 [VehiclesImpl] added vehicle # 32768
+2025-10-29T18:33:47,619  INFO ScenarioLoaderImpl:339 loading vehicles from zurich_10pct_vehicles.xml.gz
+2025-10-29T18:33:47,619  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_vehicles.xml.gz ...
+2025-10-29T18:33:47,623  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/vehicleDefinitions_v2.0.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-10-29T18:33:47,626  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-10-29T18:33:47,626  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/vehicleDefinitions_v2.0.xsd
+2025-10-29T18:33:47,628  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/matsimCommon.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-10-29T18:33:47,631  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-10-29T18:33:47,631  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/matsimCommon.xsd
+2025-10-29T18:33:47,633  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/vehicleDefinitionsEnumTypes.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-10-29T18:33:47,638  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-10-29T18:33:47,638  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/vehicleDefinitionsEnumTypes.xsd
+2025-10-29T18:33:47,643  INFO MatsimVehicleReader$VehicleReader:77 Found following schemaLocation in vehicle definition file: http://www.matsim.org/files/dtd http://www.matsim.org/files/dtd/vehicleDefinitions_v2.0.xsd
+2025-10-29T18:33:47,643  INFO VehicleReaderV2:24 Using org.matsim.vehicles.VehicleReaderV2
+2025-10-29T18:33:47,646  INFO Counter:70 [VehiclesImpl] added vehicle # 1
+2025-10-29T18:33:47,646  INFO Counter:70 [VehiclesImpl] added vehicle # 2
+2025-10-29T18:33:47,646  INFO Counter:70 [VehiclesImpl] added vehicle # 4
+2025-10-29T18:33:47,646  INFO Counter:70 [VehiclesImpl] added vehicle # 8
+2025-10-29T18:33:47,647  INFO Counter:70 [VehiclesImpl] added vehicle # 16
+2025-10-29T18:33:47,647  INFO Counter:70 [VehiclesImpl] added vehicle # 32
+2025-10-29T18:33:47,648  INFO Counter:70 [VehiclesImpl] added vehicle # 64
+2025-10-29T18:33:47,650  INFO Counter:70 [VehiclesImpl] added vehicle # 128
+2025-10-29T18:33:47,651  INFO Counter:70 [VehiclesImpl] added vehicle # 256
+2025-10-29T18:33:47,654  INFO Counter:70 [VehiclesImpl] added vehicle # 512
+2025-10-29T18:33:47,660  INFO Counter:70 [VehiclesImpl] added vehicle # 1024
+2025-10-29T18:33:47,675  INFO Counter:70 [VehiclesImpl] added vehicle # 2048
+2025-10-29T18:33:47,702  INFO Counter:70 [VehiclesImpl] added vehicle # 4096
+2025-10-29T18:33:47,735  INFO Counter:70 [VehiclesImpl] added vehicle # 8192
+2025-10-29T18:33:47,787  INFO Counter:70 [VehiclesImpl] added vehicle # 16384
+2025-10-29T18:33:47,875  INFO Counter:70 [VehiclesImpl] added vehicle # 32768
+2025-10-29T18:33:48,045  INFO Counter:70 [VehiclesImpl] added vehicle # 65536
+2025-10-29T18:33:48,384  INFO Counter:70 [VehiclesImpl] added vehicle # 131072
+2025-10-29T18:33:49,059  INFO Counter:70 [VehiclesImpl] added vehicle # 262144
+2025-10-29T18:33:50,388  INFO ScoringConfigGroup$ScoringParameterSet:1608 NO OPENING OR CLOSING TIMES DEFINED!
+
+There is no activity type that has an opening *and* closing time (or opening time and late penalty) defined.
+This usually means that the activity chains can be shifted by an arbitrary
+number of hours without having an effect on the score of the plans, and thus
+resulting in wrong results / traffic patterns.
+If you are using MATSim without time adaptation, you can ignore this warning.
+
+
+2025-10-29T18:33:50,389  INFO VspConfigConsistencyCheckerImpl:62 NOT running vsp config consistency check because vsp defaults checking level is set to IGNORE
+2025-10-29T18:33:51,937  INFO EqasimTrafficModule:23 Attribute crossing penalty is enabled.
+2025-10-29T18:33:51,975  INFO DelaysModule:36 Traffic light is disabled, skipping installation.
+2025-10-29T18:33:52,002  INFO CalibrationModule:32 Calibration module is not activated.
+2025-10-29T18:33:52,665  INFO EqasimTrafficModule:23 Attribute crossing penalty is enabled.
+2025-10-29T18:33:52,703  INFO DelaysModule:36 Traffic light is disabled, skipping installation.
+2025-10-29T18:33:52,723  INFO CalibrationModule:32 Calibration module is not activated.
+2025-10-29T18:33:52,862  INFO EqasimTrafficModule:23 Attribute crossing penalty is enabled.
+2025-10-29T18:33:52,884  INFO DelaysModule:36 Traffic light is disabled, skipping installation.
+2025-10-29T18:33:52,899  INFO CalibrationModule:32 Calibration module is not activated.
+2025-10-29T18:33:53,023  INFO EqasimTrafficModule:23 Attribute crossing penalty is enabled.
+2025-10-29T18:33:53,044  INFO DelaysModule:36 Traffic light is disabled, skipping installation.
+2025-10-29T18:33:53,060  INFO CalibrationModule:32 Calibration module is not activated.
+2025-10-29T18:33:53,250  INFO OutputDirectoryHierarchy:285 ###########################################################
+2025-10-29T18:33:53,251  INFO OutputDirectoryHierarchy:286 ### THE CONTROLER WILL DELETE THE EXISTING OUTPUT DIRECTORY:
+2025-10-29T18:33:53,251  INFO OutputDirectoryHierarchy:287 ### simulation_output
+2025-10-29T18:33:53,251  INFO OutputDirectoryHierarchy:288 ### full path: /cluster/scratch/bschlaich/eqasim-java/switzerland/simulation_output
+2025-10-29T18:33:53,251  INFO OutputDirectoryHierarchy:289 ###########################################################
+2025-10-29T18:33:53,381  INFO ParameterDefinition:81 Set lambdaCostIncome = -0.11724074844135468
+2025-10-29T18:33:53,381  INFO ParameterDefinition:81 Set car.travelTimeExponent = 0.7015863662531053
+2025-10-29T18:33:53,381  INFO ParameterDefinition:81 Set walk.betaUrbanDestination_u = -0.06031475408201358
+2025-10-29T18:33:53,381  INFO ParameterDefinition:81 Set walk.betaShortDistance_u = 0.29390148940013466
+2025-10-29T18:33:53,381  INFO ParameterDefinition:81 Set cp.betaDistance_km = 0.0
+2025-10-29T18:33:53,382  INFO ParameterDefinition:81 Set lambdaCostEuclideanDistance = -0.2602137096630935
+2025-10-29T18:33:53,382  INFO ParameterDefinition:81 Set car.betaTravelTime_u_min = -0.3071185784340749
+2025-10-29T18:33:53,382  INFO ParameterDefinition:81 Set pt.inVehicleTimeExponent = 1.956883047403238
+2025-10-29T18:33:53,382  INFO ParameterDefinition:81 Set walk.alpha_u = 3.1516
+2025-10-29T18:33:53,382  INFO ParameterDefinition:81 Set pt.betaAge_u = -0.008953695369293347
+2025-10-29T18:33:53,382  INFO ParameterDefinition:81 Set pt.betaWaitingTime_u_min = -0.0018261888082569712
+2025-10-29T18:33:53,382  INFO ParameterDefinition:81 Set bike.betaSex_u = -0.2205314944100013
+2025-10-29T18:33:53,383  INFO ParameterDefinition:81 Set pt.betaDistance_u_km = -0.2751615929888168
+2025-10-29T18:33:53,383  INFO ParameterDefinition:81 Set pt.betaRegion2_u = 0.0
+2025-10-29T18:33:53,383  INFO ParameterDefinition:81 Set pt.waitingTimeExponent = 1.0
+2025-10-29T18:33:53,383  INFO ParameterDefinition:81 Set bike.travelTimeExponent = 0.6527887243208809
+2025-10-29T18:33:53,383  INFO ParameterDefinition:81 Set car.betaRegion2_u = -0.0
+2025-10-29T18:33:53,383  INFO ParameterDefinition:81 Set pt.alpha_u = 0.0
+2025-10-29T18:33:53,383  INFO ParameterDefinition:81 Set pt.accessEgressTimeExponent = 0.12694679536569203
+2025-10-29T18:33:53,383  INFO ParameterDefinition:81 Set cp.distanceExponent = 1.0
+2025-10-29T18:33:53,383  INFO ParameterDefinition:81 Set car.betaSex_u = -0.3032688924886081
+2025-10-29T18:33:53,384  INFO ParameterDefinition:81 Set cp.betaSex_u = 0.3102647548423854
+2025-10-29T18:33:53,384  INFO ParameterDefinition:81 Set car.betaUrbanDestination_u = -0.11011914742248337
+2025-10-29T18:33:53,384  INFO ParameterDefinition:81 Set bike.alpha_u = -0.3963
+2025-10-29T18:33:53,384  INFO ParameterDefinition:81 Set bike.betaUrbanDestination_u = -0.24848449195124958
+2025-10-29T18:33:53,384  INFO ParameterDefinition:81 Set cp.travelTimeExponent = 0.7332296760439541
+2025-10-29T18:33:53,384  INFO ParameterDefinition:81 Set car.betaAge_u = 0.0036841891451104415
+2025-10-29T18:33:53,384  INFO ParameterDefinition:81 Set car.betaDestinationWork_u = 0.45466938040488875
+2025-10-29T18:33:53,385  INFO ParameterDefinition:81 Set pt.lineSwitchExponent = 1.0671158677194374
+2025-10-29T18:33:53,385  INFO ParameterDefinition:81 Set bike.betaAge_u = 0.003030076714393973
+2025-10-29T18:33:53,385  INFO ParameterDefinition:81 Set referenceIncome = 3700.0
+2025-10-29T18:33:53,385  INFO ParameterDefinition:81 Set bike.betaTravelTime_u_min = -0.5488396301872032
+2025-10-29T18:33:53,385  INFO ParameterDefinition:81 Set walk.betaRegion1_u = 0.0
+2025-10-29T18:33:53,385  INFO ParameterDefinition:81 Set parking.suburbanParkingSearchDuration_min = 1.0
+2025-10-29T18:33:53,385  INFO ParameterDefinition:81 Set bike.betaRegion2_u = -0.0
+2025-10-29T18:33:53,385  INFO ParameterDefinition:81 Set car.alpha_u = -1.0967
+2025-10-29T18:33:53,386  INFO ParameterDefinition:81 Set car.betaOriginHome_u = -0.06346943219441203
+2025-10-29T18:33:53,386  INFO ParameterDefinition:81 Set car.betaShortDistance_u = -0.025429472259839665
+2025-10-29T18:33:53,386  INFO ParameterDefinition:81 Set cp.betaRegion2_u = -0.0
+2025-10-29T18:33:53,386  INFO ParameterDefinition:81 Set cp.betaTravelTime_u_min = -0.2976752465681369
+2025-10-29T18:33:53,386  INFO ParameterDefinition:81 Set cp.betaDrivingLicense_u = -1.873256692343035
+2025-10-29T18:33:53,386  INFO ParameterDefinition:81 Set parking.urbanParkingSearchDuration_min = 2.0
+2025-10-29T18:33:53,386  INFO ParameterDefinition:81 Set walk.travelTimeExponent = 0.4289837393032499
+2025-10-29T18:33:53,386  INFO ParameterDefinition:81 Set pt.betaDestinationWork_u = 0.0944780416959123
+2025-10-29T18:33:53,387  INFO ParameterDefinition:81 Set pt.distanceExponent = 1.088850988330516
+2025-10-29T18:33:53,387  INFO ParameterDefinition:81 Set pt.betaAccessEgressTime_u_min = -2.7938145040191
+2025-10-29T18:33:53,387  INFO ParameterDefinition:81 Set walk.betaDestinationWork_u = -0.018393024986099425
+2025-10-29T18:33:53,387  INFO ParameterDefinition:81 Set bike.betaShortDistance_u = 0.19896798737297347
+2025-10-29T18:33:53,387  INFO ParameterDefinition:81 Set pt.betaShortDistance_u = -0.35986473235212335
+2025-10-29T18:33:53,387  INFO ParameterDefinition:81 Set walk.betaTravelTime_u_min = -1.8876324880399542
+2025-10-29T18:33:53,387  INFO ParameterDefinition:81 Set pt.betaInVehicleTime_u_min = -0.00038402283082442784
+2025-10-29T18:33:53,387  INFO ParameterDefinition:81 Set pt.betaSex_u = 0.19982659444399753
+2025-10-29T18:33:53,388  INFO ParameterDefinition:81 Set walk.betaOriginHome_u = 0.10808704664523897
+2025-10-29T18:33:53,388  INFO ParameterDefinition:81 Set car.betaRegion1_u = 0.0
+2025-10-29T18:33:53,388  INFO ParameterDefinition:81 Set bike.betaDestinationWork_u = 0.29726050489212846
+2025-10-29T18:33:53,388  INFO ParameterDefinition:81 Set pt.betaRegion1_u = 0.0
+2025-10-29T18:33:53,388  INFO ParameterDefinition:81 Set bike.betaOriginHome_u = 0.0438383562556667
+2025-10-29T18:33:53,388  INFO ParameterDefinition:81 Set betaCost_u_MU = -0.16797308416478535
+2025-10-29T18:33:53,388  INFO ParameterDefinition:81 Set cp.betaOriginHome_u = -0.08225399296199933
+2025-10-29T18:33:53,389  INFO ParameterDefinition:81 Set walk.betaAge_u = -0.0038163753707746604
+2025-10-29T18:33:53,389  INFO ParameterDefinition:81 Set cp.betaShortDistance_u = -0.10757527216114736
+2025-10-29T18:33:53,389  INFO ParameterDefinition:81 Set pt.betaUrbanDestination_u = 0.5224617730273693
+2025-10-29T18:33:53,389  INFO ParameterDefinition:81 Set cp.alpha_u = -2.0109
+2025-10-29T18:33:53,389  INFO ParameterDefinition:81 Set walk.betaRegion2_u = -0.0
+2025-10-29T18:33:53,389  INFO ParameterDefinition:81 Set pt.betaOriginHome_u = -0.006201977744494427
+2025-10-29T18:33:53,389  INFO ParameterDefinition:81 Set pt.betaLineSwitch_u = -0.5669795136881604
+2025-10-29T18:33:53,389  INFO ParameterDefinition:81 Set bike.betaRegion1_u = -0.0
+2025-10-29T18:33:53,389  INFO ParameterDefinition:81 Set cp.betaUrbanDestination_u = -0.1035433795716292
+2025-10-29T18:33:53,390  INFO ParameterDefinition:81 Set cp.betaRegion1_u = 0.0
+2025-10-29T18:33:53,390  INFO ParameterDefinition:81 Set cp.betaDestinationWork_u = -0.8280149020068308
+2025-10-29T18:33:53,390  INFO ParameterDefinition:81 Set walk.betaSex_u = 0.013709037612225769
+2025-10-29T18:33:53,390  INFO ParameterDefinition:81 Set cp.betaAge_u = 0.006055804880645965
+2025-10-29T18:33:53,390  INFO ParameterDefinition:81 Set referenceEuclideanDistance_km = 8.0
+2025-10-29T18:33:54,575  INFO SimStepParallelEventsManagerImpl:83 number of threads=1
+2025-10-29T18:33:54,581  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-10-29T18:33:54,581  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-10-29T18:33:54,581  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkEnterEvent
+2025-10-29T18:33:54,582  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkLeaveEvent
+2025-10-29T18:33:54,582  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleEntersTrafficEvent
+2025-10-29T18:33:54,582  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleLeavesTrafficEvent
+2025-10-29T18:33:54,582  INFO EventsManagerImpl:210     > org.matsim.core.api.experimental.events.VehicleArrivesAtFacilityEvent
+2025-10-29T18:33:54,583  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleAbortsEvent
+2025-10-29T18:33:54,583  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-10-29T18:33:54,583  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-10-29T18:33:54,583  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkEnterEvent
+2025-10-29T18:33:54,583  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkLeaveEvent
+2025-10-29T18:33:54,583  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleEntersTrafficEvent
+2025-10-29T18:33:54,583  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleLeavesTrafficEvent
+2025-10-29T18:33:54,583  INFO EventsManagerImpl:210     > org.matsim.core.api.experimental.events.VehicleArrivesAtFacilityEvent
+2025-10-29T18:33:54,584  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleAbortsEvent
+2025-10-29T18:33:54,594  INFO StrategyManager:77 global innovation switch off after iteration: 2147483647
+2025-10-29T18:33:54,596  INFO GenericStrategyManagerImpl:332 added change request:  iteration=-2147483648 newWeight=0.0 strategy=RandomPlanSelector_DiscreteModeChoiceReplanningModule_CheckConsistentRoutingReplanningModule
+2025-10-29T18:33:54,597  INFO GenericStrategyManagerImpl:332 added change request:  iteration=-2147483648 newWeight=0.0 strategy=RandomPlanSelector_ReRoute
+2025-10-29T18:33:54,597  INFO GenericStrategyManagerImpl:332 added change request:  iteration=-2147483648 newWeight=0.0 strategy=RandomPlanSelector_ReRoute
+2025-10-29T18:33:54,597  INFO GenericStrategyManagerImpl:364 setting PlanSelectorForRemoval to class org.matsim.contribs.discrete_mode_choice.replanning.NonSelectedPlanSelector
+2025-10-29T18:33:54,600  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-10-29T18:33:54,600  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-10-29T18:33:54,601  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.Event
+2025-10-29T18:33:54,601  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-10-29T18:33:54,601  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-10-29T18:33:54,601  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.Event
+2025-10-29T18:33:54,655  INFO CalcLinkStats:151  resetting `count' to zero.  This info is here since we want to check when this is happening during normal simulation runs.  kai, jan'11
+2025-10-29T18:33:54,756  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-10-29T18:33:54,756  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-10-29T18:33:54,756  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkLeaveEvent
+2025-10-29T18:33:54,756  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleEntersTrafficEvent
+2025-10-29T18:33:54,757  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-10-29T18:33:54,757  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-10-29T18:33:54,757  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkLeaveEvent
+2025-10-29T18:33:54,757  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleEntersTrafficEvent
+2025-10-29T18:33:54,757  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-10-29T18:33:54,757  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-10-29T18:33:54,758  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonDepartureEvent
+2025-10-29T18:33:54,758  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-10-29T18:33:54,758  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-10-29T18:33:54,758  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonDepartureEvent
+[WARNING] 
+com.google.inject.CreationException: Unable to create injector, see the following errors:
+
+1) [Guice/ErrorInCustomProvider]: IllegalArgumentException: Cantons mode share file does not exist: cantons_mode_shares.csv
+  at SwissModeChoiceModule.provideAlphaCantonCalibrator(SwissModeChoiceModule.java:151)
+      \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> SwissModeChoiceModule
+  while locating AlphaCantonCalibrator
+  at SwissModeChoiceModule.installEqasimExtension(SwissModeChoiceModule.java:100)
+      \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> SwissModeChoiceModule
+  while locating FastCalibration
+
+Learn more:
+  https://github.com/google/guice/wiki/ERROR_IN_CUSTOM_PROVIDER
+Caused by: IllegalArgumentException: Cantons mode share file does not exist: cantons_mode_shares.csv
+	at AlphaCantonCalibrator.assertIfFileExists(AlphaCantonCalibrator.java:95)
+	at AlphaCantonCalibrator.<init>(AlphaCantonCalibrator.java:78)
+	at SwissModeChoiceModule.provideAlphaCantonCalibrator(SwissModeChoiceModule.java:166)
+	at SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8.GUICE$TRAMPOLINE(<generated>)
+	at SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8.apply(<generated>)
+	at ProviderMethod$FastClassProviderMethod.doProvision(ProviderMethod.java:260)
+	at ProviderMethod.doProvision(ProviderMethod.java:171)
+	at InternalProviderInstanceBindingImpl$CyclicFactory.provision(InternalProviderInstanceBindingImpl.java:185)
+	at InternalProviderInstanceBindingImpl$CyclicFactory.get(InternalProviderInstanceBindingImpl.java:162)
+	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at SingletonScope$1.get(SingletonScope.java:169)
+	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+	at FactoryProxy.get(FactoryProxy.java:60)
+	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at SingletonScope$1.get(SingletonScope.java:169)
+	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+	at InternalInjectorCreator.loadEagerSingletons(InternalInjectorCreator.java:213)
+	at InternalInjectorCreator.injectDynamically(InternalInjectorCreator.java:186)
+	at InternalInjectorCreator.build(InternalInjectorCreator.java:113)
+	at InjectorImpl.createChildInjector(InjectorImpl.java:240)
+	at InjectorImpl.createChildInjector(InjectorImpl.java:245)
+	at Injector.createInjector(Injector.java:74)
+	at Controler.createInjector(Controler.java:243)
+	at Controler.run(Controler.java:260)
+	at RunSimulation.main(RunSimulation.java:64)
+	at java.base/DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/Method.invoke(Method.java:580)
+	at AbstractExecJavaBase.executeMainMethod(AbstractExecJavaBase.java:402)
+	at ExecJavaMojo.executeMainMethod(ExecJavaMojo.java:142)
+	at AbstractExecJavaBase.doExecClassLoader(AbstractExecJavaBase.java:377)
+	at AbstractExecJavaBase.lambda$execute$0(AbstractExecJavaBase.java:287)
+	at java.base/Thread.run(Thread.java:1583)
+
+2) [Guice/ErrorInCustomProvider]: IllegalArgumentException: Cantons mode share file does not exist: cantons_mode_shares.csv
+  at SwissModeChoiceModule.provideAlphaCantonCalibrator(SwissModeChoiceModule.java:151)
+      \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> SwissModeChoiceModule
+  while locating AlphaCantonCalibrator
+  at SwissModeChoiceModule.installEqasimExtension(SwissModeChoiceModule.java:100)
+      \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> SwissModeChoiceModule
+  while locating FastCalibration
+  at FastCalibrationModule.installEqasimExtension(FastCalibrationModule.java:23)
+      \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> FastCalibrationModule
+  while locating ControllerListener annotated with @Element(setName=,uniqueId=658, type=MULTIBINDER, keyType=)
+
+Learn more:
+  https://github.com/google/guice/wiki/ERROR_IN_CUSTOM_PROVIDER
+Caused by: IllegalArgumentException: Cantons mode share file does not exist: cantons_mode_shares.csv
+	at AlphaCantonCalibrator.assertIfFileExists(AlphaCantonCalibrator.java:95)
+	at AlphaCantonCalibrator.<init>(AlphaCantonCalibrator.java:78)
+	at SwissModeChoiceModule.provideAlphaCantonCalibrator(SwissModeChoiceModule.java:166)
+	at SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8.GUICE$TRAMPOLINE(<generated>)
+	at SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8.apply(<generated>)
+	at ProviderMethod$FastClassProviderMethod.doProvision(ProviderMethod.java:260)
+	at ProviderMethod.doProvision(ProviderMethod.java:171)
+	at InternalProviderInstanceBindingImpl$CyclicFactory.provision(InternalProviderInstanceBindingImpl.java:185)
+	at InternalProviderInstanceBindingImpl$CyclicFactory.get(InternalProviderInstanceBindingImpl.java:162)
+	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at SingletonScope$1.get(SingletonScope.java:169)
+	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+	at FactoryProxy.get(FactoryProxy.java:60)
+	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at SingletonScope$1.get(SingletonScope.java:169)
+	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+	at FactoryProxy.get(FactoryProxy.java:60)
+	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at SingletonScope$1.get(SingletonScope.java:169)
+	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+	at InternalInjectorCreator.loadEagerSingletons(InternalInjectorCreator.java:213)
+	at InternalInjectorCreator.injectDynamically(InternalInjectorCreator.java:186)
+	at InternalInjectorCreator.build(InternalInjectorCreator.java:113)
+	at InjectorImpl.createChildInjector(InjectorImpl.java:240)
+	at InjectorImpl.createChildInjector(InjectorImpl.java:245)
+	at Injector.createInjector(Injector.java:74)
+	at Controler.createInjector(Controler.java:243)
+	at Controler.run(Controler.java:260)
+	at RunSimulation.main(RunSimulation.java:64)
+	at java.base/DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/Method.invoke(Method.java:580)
+	at AbstractExecJavaBase.executeMainMethod(AbstractExecJavaBase.java:402)
+	at ExecJavaMojo.executeMainMethod(ExecJavaMojo.java:142)
+	at AbstractExecJavaBase.doExecClassLoader(AbstractExecJavaBase.java:377)
+	at AbstractExecJavaBase.lambda$execute$0(AbstractExecJavaBase.java:287)
+	at java.base/Thread.run(Thread.java:1583)
+
+3) [Guice/ErrorInCustomProvider]: IllegalArgumentException: Cantons mode share file does not exist: cantons_mode_shares.csv
+  at SwissModeChoiceModule.provideAlphaCantonCalibrator(SwissModeChoiceModule.java:151)
+      \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> SwissModeChoiceModule
+  while locating AlphaCantonCalibrator
+  at SwissModeChoiceModule.installEqasimExtension(SwissModeChoiceModule.java:100)
+      \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> SwissModeChoiceModule
+  while locating FastCalibration
+  at FastCalibrationModule.installEqasimExtension(FastCalibrationModule.java:23)
+      \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> FastCalibrationModule
+  while locating ControllerListener annotated with @Element(setName=,uniqueId=658, type=MULTIBINDER, keyType=)
+  at NewControler.<init>(NewControler.java:63)
+      \_ for 13th parameter
+  while locating NewControler
+  at NewControlerModule.install(NewControlerModule.java:30)
+      \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> Controler$2 -> NewControlerModule
+  while locating ControlerI
+
+Learn more:
+  https://github.com/google/guice/wiki/ERROR_IN_CUSTOM_PROVIDER
+Caused by: IllegalArgumentException: Cantons mode share file does not exist: cantons_mode_shares.csv
+	at AlphaCantonCalibrator.assertIfFileExists(AlphaCantonCalibrator.java:95)
+	at AlphaCantonCalibrator.<init>(AlphaCantonCalibrator.java:78)
+	at SwissModeChoiceModule.provideAlphaCantonCalibrator(SwissModeChoiceModule.java:166)
+	at SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8.GUICE$TRAMPOLINE(<generated>)
+	at SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8.apply(<generated>)
+	at ProviderMethod$FastClassProviderMethod.doProvision(ProviderMethod.java:260)
+	at ProviderMethod.doProvision(ProviderMethod.java:171)
+	at InternalProviderInstanceBindingImpl$CyclicFactory.provision(InternalProviderInstanceBindingImpl.java:185)
+	at InternalProviderInstanceBindingImpl$CyclicFactory.get(InternalProviderInstanceBindingImpl.java:162)
+	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at SingletonScope$1.get(SingletonScope.java:169)
+	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+	at FactoryProxy.get(FactoryProxy.java:60)
+	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at SingletonScope$1.get(SingletonScope.java:169)
+	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+	at FactoryProxy.get(FactoryProxy.java:60)
+	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at SingletonScope$1.get(SingletonScope.java:169)
+	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+	at SingleParameterInjector.inject(SingleParameterInjector.java:40)
+	at RealMultibinder$RealMultibinderProvider.doProvision(RealMultibinder.java:247)
+	at RealMultibinder$RealMultibinderProvider.doProvision(RealMultibinder.java:213)
+	at InternalProviderInstanceBindingImpl$Factory.get(InternalProviderInstanceBindingImpl.java:113)
+	at SingleParameterInjector.inject(SingleParameterInjector.java:40)
+	at SingleParameterInjector.getAll(SingleParameterInjector.java:60)
+	at ConstructorInjector.provision(ConstructorInjector.java:113)
+	at ConstructorInjector.construct(ConstructorInjector.java:91)
+	at ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:300)
+	at FactoryProxy.get(FactoryProxy.java:60)
+	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at SingletonScope$1.get(SingletonScope.java:169)
+	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+	at InternalInjectorCreator.loadEagerSingletons(InternalInjectorCreator.java:213)
+	at InternalInjectorCreator.injectDynamically(InternalInjectorCreator.java:186)
+	at InternalInjectorCreator.build(InternalInjectorCreator.java:113)
+	at InjectorImpl.createChildInjector(InjectorImpl.java:240)
+	at InjectorImpl.createChildInjector(InjectorImpl.java:245)
+	at Injector.createInjector(Injector.java:74)
+	at Controler.createInjector(Controler.java:243)
+	at Controler.run(Controler.java:260)
+	at RunSimulation.main(RunSimulation.java:64)
+	at java.base/DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/Method.invoke(Method.java:580)
+	at AbstractExecJavaBase.executeMainMethod(AbstractExecJavaBase.java:402)
+	at ExecJavaMojo.executeMainMethod(ExecJavaMojo.java:142)
+	at AbstractExecJavaBase.doExecClassLoader(AbstractExecJavaBase.java:377)
+	at AbstractExecJavaBase.lambda$execute$0(AbstractExecJavaBase.java:287)
+	at java.base/Thread.run(Thread.java:1583)
+
+3 errors
+
+======================
+Full classname legend:
+======================
+AbstractExecJavaBase:                              "org.codehaus.mojo.exec.AbstractExecJavaBase"
+AbstractModule$6:                                  "org.matsim.core.controler.AbstractModule$6"
+AlphaCantonCalibrator:                             "org.eqasim.switzerland.ch.calibration.AlphaCantonCalibrator"
+ConstructorBindingImpl$Factory:                    "com.google.inject.internal.ConstructorBindingImpl$Factory"
+ConstructorInjector:                               "com.google.inject.internal.ConstructorInjector"
+Controler:                                         "org.matsim.core.controler.Controler"
+Controler$2:                                       "org.matsim.core.controler.Controler$2"
+ControlerI:                                        "org.matsim.core.controler.ControlerI"
+ControllerListener:                                "org.matsim.core.controler.listener.ControllerListener"
+DirectMethodHandleAccessor:                        "jdk.internal.reflect.DirectMethodHandleAccessor"
+Element:                                           "com.google.inject.internal.Element"
+ExecJavaMojo:                                      "org.codehaus.mojo.exec.ExecJavaMojo"
+FactoryProxy:                                      "com.google.inject.internal.FactoryProxy"
+FastCalibration:                                   "org.eqasim.core.components.fast_calibration.FastCalibration"
+FastCalibrationModule:                             "org.eqasim.core.components.fast_calibration.FastCalibrationModule"
+Injector:                                          "org.matsim.core.controler.Injector"
+InjectorImpl:                                      "com.google.inject.internal.InjectorImpl"
+InternalFactoryToProviderAdapter:                  "com.google.inject.internal.InternalFactoryToProviderAdapter"
+InternalInjectorCreator:                           "com.google.inject.internal.InternalInjectorCreator"
+InternalProviderInstanceBindingImpl$CyclicFactory: "com.google.inject.internal.InternalProviderInstanceBindingImpl$CyclicFactory"
+InternalProviderInstanceBindingImpl$Factory:       "com.google.inject.internal.InternalProviderInstanceBindingImpl$Factory"
+Method:                                            "java.lang.reflect.Method"
+Modules$CombinedModule:                            "com.google.inject.util.Modules$CombinedModule"
+Modules$OverrideModule:                            "com.google.inject.util.Modules$OverrideModule"
+NewControler:                                      "org.matsim.core.controler.NewControler"
+NewControlerModule:                                "org.matsim.core.controler.NewControlerModule"
+ProviderMethod:                                    "com.google.inject.internal.ProviderMethod"
+ProviderMethod$FastClassProviderMethod:            "com.google.inject.internal.ProviderMethod$FastClassProviderMethod"
+ProviderToInternalFactoryAdapter:                  "com.google.inject.internal.ProviderToInternalFactoryAdapter"
+RealMultibinder$RealMultibinderProvider:           "com.google.inject.internal.RealMultibinder$RealMultibinderProvider"
+RunSimulation:                                     "org.eqasim.switzerland.ch_cmdp.RunSimulation"
+SingleParameterInjector:                           "com.google.inject.internal.SingleParameterInjector"
+SingletonScope$1:                                  "com.google.inject.internal.SingletonScope$1"
+SwissModeChoiceModule:                             "org.eqasim.switzerland.ch_cmdp.mode_choice.SwissModeChoiceModule"
+SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8:  "org.eqasim.switzerland.ch_cmdp.mode_choice.SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8"
+========================
+End of classname legend:
+========================
+
+    at com.google.inject.internal.Errors.throwCreationExceptionIfErrorsExist (Errors.java:589)
+    at com.google.inject.internal.InternalInjectorCreator.injectDynamically (InternalInjectorCreator.java:190)
+    at com.google.inject.internal.InternalInjectorCreator.build (InternalInjectorCreator.java:113)
+    at com.google.inject.internal.InjectorImpl.createChildInjector (InjectorImpl.java:240)
+    at com.google.inject.internal.InjectorImpl.createChildInjector (InjectorImpl.java:245)
+    at org.matsim.core.controler.Injector.createInjector (Injector.java:74)
+    at org.matsim.core.controler.Controler.createInjector (Controler.java:243)
+    at org.matsim.core.controler.Controler.run (Controler.java:260)
+    at org.eqasim.switzerland.ch_cmdp.RunSimulation.main (RunSimulation.java:64)
+    at jdk.internal.reflect.DirectMethodHandleAccessor.invoke (DirectMethodHandleAccessor.java:103)
+    at java.lang.reflect.Method.invoke (Method.java:580)
+    at org.codehaus.mojo.exec.AbstractExecJavaBase.executeMainMethod (AbstractExecJavaBase.java:402)
+    at org.codehaus.mojo.exec.ExecJavaMojo.executeMainMethod (ExecJavaMojo.java:142)
+    at org.codehaus.mojo.exec.AbstractExecJavaBase.doExecClassLoader (AbstractExecJavaBase.java:377)
+    at org.codehaus.mojo.exec.AbstractExecJavaBase.lambda$execute$0 (AbstractExecJavaBase.java:287)
+    at java.lang.Thread.run (Thread.java:1583)
+[WARNING] thread Thread[#34,Log4j2-TF-1-Scheduled-1,5,org.eqasim.switzerland.ch_cmdp.RunSimulation] was interrupted but is still alive after waiting at least 15000msecs
+[WARNING] thread Thread[#34,Log4j2-TF-1-Scheduled-1,5,org.eqasim.switzerland.ch_cmdp.RunSimulation] will linger despite being asked to die via interruption
+[WARNING] NOTE: 1 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  58.279 s
+[INFO] Finished at: 2025-10-29T18:34:09+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:3.6.2:java (default-cli) on project switzerland: An exception occurred while executing the Java class. Unable to create injector, see the following errors:
+[ERROR] 
+[ERROR] 1) [Guice/ErrorInCustomProvider]: IllegalArgumentException: Cantons mode share file does not exist: cantons_mode_shares.csv
+[ERROR]   at SwissModeChoiceModule.provideAlphaCantonCalibrator(SwissModeChoiceModule.java:151)
+[ERROR]       \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> SwissModeChoiceModule
+[ERROR]   while locating AlphaCantonCalibrator
+[ERROR]   at SwissModeChoiceModule.installEqasimExtension(SwissModeChoiceModule.java:100)
+[ERROR]       \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> SwissModeChoiceModule
+[ERROR]   while locating FastCalibration
+[ERROR] 
+[ERROR] Learn more:
+[ERROR]   https://github.com/google/guice/wiki/ERROR_IN_CUSTOM_PROVIDER
+[ERROR] Caused by: IllegalArgumentException: Cantons mode share file does not exist: cantons_mode_shares.csv
+[ERROR] 	at AlphaCantonCalibrator.assertIfFileExists(AlphaCantonCalibrator.java:95)
+[ERROR] 	at AlphaCantonCalibrator.<init>(AlphaCantonCalibrator.java:78)
+[ERROR] 	at SwissModeChoiceModule.provideAlphaCantonCalibrator(SwissModeChoiceModule.java:166)
+[ERROR] 	at SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8.GUICE$TRAMPOLINE(<generated>)
+[ERROR] 	at SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8.apply(<generated>)
+[ERROR] 	at ProviderMethod$FastClassProviderMethod.doProvision(ProviderMethod.java:260)
+[ERROR] 	at ProviderMethod.doProvision(ProviderMethod.java:171)
+[ERROR] 	at InternalProviderInstanceBindingImpl$CyclicFactory.provision(InternalProviderInstanceBindingImpl.java:185)
+[ERROR] 	at InternalProviderInstanceBindingImpl$CyclicFactory.get(InternalProviderInstanceBindingImpl.java:162)
+[ERROR] 	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+[ERROR] 	at SingletonScope$1.get(SingletonScope.java:169)
+[ERROR] 	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+[ERROR] 	at FactoryProxy.get(FactoryProxy.java:60)
+[ERROR] 	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+[ERROR] 	at SingletonScope$1.get(SingletonScope.java:169)
+[ERROR] 	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+[ERROR] 	at InternalInjectorCreator.loadEagerSingletons(InternalInjectorCreator.java:213)
+[ERROR] 	at InternalInjectorCreator.injectDynamically(InternalInjectorCreator.java:186)
+[ERROR] 	at InternalInjectorCreator.build(InternalInjectorCreator.java:113)
+[ERROR] 	at InjectorImpl.createChildInjector(InjectorImpl.java:240)
+[ERROR] 	at InjectorImpl.createChildInjector(InjectorImpl.java:245)
+[ERROR] 	at Injector.createInjector(Injector.java:74)
+[ERROR] 	at Controler.createInjector(Controler.java:243)
+[ERROR] 	at Controler.run(Controler.java:260)
+[ERROR] 	at RunSimulation.main(RunSimulation.java:64)
+[ERROR] 	at java.base/DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+[ERROR] 	at java.base/Method.invoke(Method.java:580)
+[ERROR] 	at AbstractExecJavaBase.executeMainMethod(AbstractExecJavaBase.java:402)
+[ERROR] 	at ExecJavaMojo.executeMainMethod(ExecJavaMojo.java:142)
+[ERROR] 	at AbstractExecJavaBase.doExecClassLoader(AbstractExecJavaBase.java:377)
+[ERROR] 	at AbstractExecJavaBase.lambda$execute$0(AbstractExecJavaBase.java:287)
+[ERROR] 	at java.base/Thread.run(Thread.java:1583)
+[ERROR] 
+[ERROR] 2) [Guice/ErrorInCustomProvider]: IllegalArgumentException: Cantons mode share file does not exist: cantons_mode_shares.csv
+[ERROR]   at SwissModeChoiceModule.provideAlphaCantonCalibrator(SwissModeChoiceModule.java:151)
+[ERROR]       \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> SwissModeChoiceModule
+[ERROR]   while locating AlphaCantonCalibrator
+[ERROR]   at SwissModeChoiceModule.installEqasimExtension(SwissModeChoiceModule.java:100)
+[ERROR]       \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> SwissModeChoiceModule
+[ERROR]   while locating FastCalibration
+[ERROR]   at FastCalibrationModule.installEqasimExtension(FastCalibrationModule.java:23)
+[ERROR]       \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> FastCalibrationModule
+[ERROR]   while locating ControllerListener annotated with @Element(setName=,uniqueId=658, type=MULTIBINDER, keyType=)
+[ERROR] 
+[ERROR] Learn more:
+[ERROR]   https://github.com/google/guice/wiki/ERROR_IN_CUSTOM_PROVIDER
+[ERROR] Caused by: IllegalArgumentException: Cantons mode share file does not exist: cantons_mode_shares.csv
+[ERROR] 	at AlphaCantonCalibrator.assertIfFileExists(AlphaCantonCalibrator.java:95)
+[ERROR] 	at AlphaCantonCalibrator.<init>(AlphaCantonCalibrator.java:78)
+[ERROR] 	at SwissModeChoiceModule.provideAlphaCantonCalibrator(SwissModeChoiceModule.java:166)
+[ERROR] 	at SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8.GUICE$TRAMPOLINE(<generated>)
+[ERROR] 	at SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8.apply(<generated>)
+[ERROR] 	at ProviderMethod$FastClassProviderMethod.doProvision(ProviderMethod.java:260)
+[ERROR] 	at ProviderMethod.doProvision(ProviderMethod.java:171)
+[ERROR] 	at InternalProviderInstanceBindingImpl$CyclicFactory.provision(InternalProviderInstanceBindingImpl.java:185)
+[ERROR] 	at InternalProviderInstanceBindingImpl$CyclicFactory.get(InternalProviderInstanceBindingImpl.java:162)
+[ERROR] 	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+[ERROR] 	at SingletonScope$1.get(SingletonScope.java:169)
+[ERROR] 	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+[ERROR] 	at FactoryProxy.get(FactoryProxy.java:60)
+[ERROR] 	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+[ERROR] 	at SingletonScope$1.get(SingletonScope.java:169)
+[ERROR] 	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+[ERROR] 	at FactoryProxy.get(FactoryProxy.java:60)
+[ERROR] 	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+[ERROR] 	at SingletonScope$1.get(SingletonScope.java:169)
+[ERROR] 	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+[ERROR] 	at InternalInjectorCreator.loadEagerSingletons(InternalInjectorCreator.java:213)
+[ERROR] 	at InternalInjectorCreator.injectDynamically(InternalInjectorCreator.java:186)
+[ERROR] 	at InternalInjectorCreator.build(InternalInjectorCreator.java:113)
+[ERROR] 	at InjectorImpl.createChildInjector(InjectorImpl.java:240)
+[ERROR] 	at InjectorImpl.createChildInjector(InjectorImpl.java:245)
+[ERROR] 	at Injector.createInjector(Injector.java:74)
+[ERROR] 	at Controler.createInjector(Controler.java:243)
+[ERROR] 	at Controler.run(Controler.java:260)
+[ERROR] 	at RunSimulation.main(RunSimulation.java:64)
+[ERROR] 	at java.base/DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+[ERROR] 	at java.base/Method.invoke(Method.java:580)
+[ERROR] 	at AbstractExecJavaBase.executeMainMethod(AbstractExecJavaBase.java:402)
+[ERROR] 	at ExecJavaMojo.executeMainMethod(ExecJavaMojo.java:142)
+[ERROR] 	at AbstractExecJavaBase.doExecClassLoader(AbstractExecJavaBase.java:377)
+[ERROR] 	at AbstractExecJavaBase.lambda$execute$0(AbstractExecJavaBase.java:287)
+[ERROR] 	at java.base/Thread.run(Thread.java:1583)
+[ERROR] 
+[ERROR] 3) [Guice/ErrorInCustomProvider]: IllegalArgumentException: Cantons mode share file does not exist: cantons_mode_shares.csv
+[ERROR]   at SwissModeChoiceModule.provideAlphaCantonCalibrator(SwissModeChoiceModule.java:151)
+[ERROR]       \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> SwissModeChoiceModule
+[ERROR]   while locating AlphaCantonCalibrator
+[ERROR]   at SwissModeChoiceModule.installEqasimExtension(SwissModeChoiceModule.java:100)
+[ERROR]       \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> SwissModeChoiceModule
+[ERROR]   while locating FastCalibration
+[ERROR]   at FastCalibrationModule.installEqasimExtension(FastCalibrationModule.java:23)
+[ERROR]       \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> AbstractModule$6 -> Modules$OverrideModule -> FastCalibrationModule
+[ERROR]   while locating ControllerListener annotated with @Element(setName=,uniqueId=658, type=MULTIBINDER, keyType=)
+[ERROR]   at NewControler.<init>(NewControler.java:63)
+[ERROR]       \_ for 13th parameter
+[ERROR]   while locating NewControler
+[ERROR]   at NewControlerModule.install(NewControlerModule.java:30)
+[ERROR]       \_ installed by: Modules$CombinedModule -> Modules$CombinedModule -> AbstractModule$6 -> Modules$OverrideModule -> Controler$2 -> NewControlerModule
+[ERROR]   while locating ControlerI
+[ERROR] 
+[ERROR] Learn more:
+[ERROR]   https://github.com/google/guice/wiki/ERROR_IN_CUSTOM_PROVIDER
+[ERROR] Caused by: IllegalArgumentException: Cantons mode share file does not exist: cantons_mode_shares.csv
+[ERROR] 	at AlphaCantonCalibrator.assertIfFileExists(AlphaCantonCalibrator.java:95)
+[ERROR] 	at AlphaCantonCalibrator.<init>(AlphaCantonCalibrator.java:78)
+[ERROR] 	at SwissModeChoiceModule.provideAlphaCantonCalibrator(SwissModeChoiceModule.java:166)
+[ERROR] 	at SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8.GUICE$TRAMPOLINE(<generated>)
+[ERROR] 	at SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8.apply(<generated>)
+[ERROR] 	at ProviderMethod$FastClassProviderMethod.doProvision(ProviderMethod.java:260)
+[ERROR] 	at ProviderMethod.doProvision(ProviderMethod.java:171)
+[ERROR] 	at InternalProviderInstanceBindingImpl$CyclicFactory.provision(InternalProviderInstanceBindingImpl.java:185)
+[ERROR] 	at InternalProviderInstanceBindingImpl$CyclicFactory.get(InternalProviderInstanceBindingImpl.java:162)
+[ERROR] 	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+[ERROR] 	at SingletonScope$1.get(SingletonScope.java:169)
+[ERROR] 	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+[ERROR] 	at FactoryProxy.get(FactoryProxy.java:60)
+[ERROR] 	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+[ERROR] 	at SingletonScope$1.get(SingletonScope.java:169)
+[ERROR] 	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+[ERROR] 	at FactoryProxy.get(FactoryProxy.java:60)
+[ERROR] 	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+[ERROR] 	at SingletonScope$1.get(SingletonScope.java:169)
+[ERROR] 	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+[ERROR] 	at SingleParameterInjector.inject(SingleParameterInjector.java:40)
+[ERROR] 	at RealMultibinder$RealMultibinderProvider.doProvision(RealMultibinder.java:247)
+[ERROR] 	at RealMultibinder$RealMultibinderProvider.doProvision(RealMultibinder.java:213)
+[ERROR] 	at InternalProviderInstanceBindingImpl$Factory.get(InternalProviderInstanceBindingImpl.java:113)
+[ERROR] 	at SingleParameterInjector.inject(SingleParameterInjector.java:40)
+[ERROR] 	at SingleParameterInjector.getAll(SingleParameterInjector.java:60)
+[ERROR] 	at ConstructorInjector.provision(ConstructorInjector.java:113)
+[ERROR] 	at ConstructorInjector.construct(ConstructorInjector.java:91)
+[ERROR] 	at ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:300)
+[ERROR] 	at FactoryProxy.get(FactoryProxy.java:60)
+[ERROR] 	at ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+[ERROR] 	at SingletonScope$1.get(SingletonScope.java:169)
+[ERROR] 	at InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:45)
+[ERROR] 	at InternalInjectorCreator.loadEagerSingletons(InternalInjectorCreator.java:213)
+[ERROR] 	at InternalInjectorCreator.injectDynamically(InternalInjectorCreator.java:186)
+[ERROR] 	at InternalInjectorCreator.build(InternalInjectorCreator.java:113)
+[ERROR] 	at InjectorImpl.createChildInjector(InjectorImpl.java:240)
+[ERROR] 	at InjectorImpl.createChildInjector(InjectorImpl.java:245)
+[ERROR] 	at Injector.createInjector(Injector.java:74)
+[ERROR] 	at Controler.createInjector(Controler.java:243)
+[ERROR] 	at Controler.run(Controler.java:260)
+[ERROR] 	at RunSimulation.main(RunSimulation.java:64)
+[ERROR] 	at java.base/DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+[ERROR] 	at java.base/Method.invoke(Method.java:580)
+[ERROR] 	at AbstractExecJavaBase.executeMainMethod(AbstractExecJavaBase.java:402)
+[ERROR] 	at ExecJavaMojo.executeMainMethod(ExecJavaMojo.java:142)
+[ERROR] 	at AbstractExecJavaBase.doExecClassLoader(AbstractExecJavaBase.java:377)
+[ERROR] 	at AbstractExecJavaBase.lambda$execute$0(AbstractExecJavaBase.java:287)
+[ERROR] 	at java.base/Thread.run(Thread.java:1583)
+[ERROR] 
+[ERROR] 3 errors
+[ERROR] 
+[ERROR] ======================
+[ERROR] Full classname legend:
+[ERROR] ======================
+[ERROR] AbstractExecJavaBase:                              "org.codehaus.mojo.exec.AbstractExecJavaBase"
+[ERROR] AbstractModule$6:                                  "org.matsim.core.controler.AbstractModule$6"
+[ERROR] AlphaCantonCalibrator:                             "org.eqasim.switzerland.ch.calibration.AlphaCantonCalibrator"
+[ERROR] ConstructorBindingImpl$Factory:                    "com.google.inject.internal.ConstructorBindingImpl$Factory"
+[ERROR] ConstructorInjector:                               "com.google.inject.internal.ConstructorInjector"
+[ERROR] Controler:                                         "org.matsim.core.controler.Controler"
+[ERROR] Controler$2:                                       "org.matsim.core.controler.Controler$2"
+[ERROR] ControlerI:                                        "org.matsim.core.controler.ControlerI"
+[ERROR] ControllerListener:                                "org.matsim.core.controler.listener.ControllerListener"
+[ERROR] DirectMethodHandleAccessor:                        "jdk.internal.reflect.DirectMethodHandleAccessor"
+[ERROR] Element:                                           "com.google.inject.internal.Element"
+[ERROR] ExecJavaMojo:                                      "org.codehaus.mojo.exec.ExecJavaMojo"
+[ERROR] FactoryProxy:                                      "com.google.inject.internal.FactoryProxy"
+[ERROR] FastCalibration:                                   "org.eqasim.core.components.fast_calibration.FastCalibration"
+[ERROR] FastCalibrationModule:                             "org.eqasim.core.components.fast_calibration.FastCalibrationModule"
+[ERROR] Injector:                                          "org.matsim.core.controler.Injector"
+[ERROR] InjectorImpl:                                      "com.google.inject.internal.InjectorImpl"
+[ERROR] InternalFactoryToProviderAdapter:                  "com.google.inject.internal.InternalFactoryToProviderAdapter"
+[ERROR] InternalInjectorCreator:                           "com.google.inject.internal.InternalInjectorCreator"
+[ERROR] InternalProviderInstanceBindingImpl$CyclicFactory: "com.google.inject.internal.InternalProviderInstanceBindingImpl$CyclicFactory"
+[ERROR] InternalProviderInstanceBindingImpl$Factory:       "com.google.inject.internal.InternalProviderInstanceBindingImpl$Factory"
+[ERROR] Method:                                            "java.lang.reflect.Method"
+[ERROR] Modules$CombinedModule:                            "com.google.inject.util.Modules$CombinedModule"
+[ERROR] Modules$OverrideModule:                            "com.google.inject.util.Modules$OverrideModule"
+[ERROR] NewControler:                                      "org.matsim.core.controler.NewControler"
+[ERROR] NewControlerModule:                                "org.matsim.core.controler.NewControlerModule"
+[ERROR] ProviderMethod:                                    "com.google.inject.internal.ProviderMethod"
+[ERROR] ProviderMethod$FastClassProviderMethod:            "com.google.inject.internal.ProviderMethod$FastClassProviderMethod"
+[ERROR] ProviderToInternalFactoryAdapter:                  "com.google.inject.internal.ProviderToInternalFactoryAdapter"
+[ERROR] RealMultibinder$RealMultibinderProvider:           "com.google.inject.internal.RealMultibinder$RealMultibinderProvider"
+[ERROR] RunSimulation:                                     "org.eqasim.switzerland.ch_cmdp.RunSimulation"
+[ERROR] SingleParameterInjector:                           "com.google.inject.internal.SingleParameterInjector"
+[ERROR] SingletonScope$1:                                  "com.google.inject.internal.SingletonScope$1"
+[ERROR] SwissModeChoiceModule:                             "org.eqasim.switzerland.ch_cmdp.mode_choice.SwissModeChoiceModule"
+[ERROR] SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8:  "org.eqasim.switzerland.ch_cmdp.mode_choice.SwissModeChoiceModule$$FastClassByGuice$$1c4dbd8"
+[ERROR] ========================
+[ERROR] End of classname legend:
+[ERROR] ========================
+[ERROR] 
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

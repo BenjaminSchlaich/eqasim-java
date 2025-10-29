@@ -19,7 +19,7 @@ mvn exec:java -Dexec.mainClass=org.eqasim.switzerland.ch_cmdp.RunSimulation -Dex
 sbatch < simulation_job.sh
 
 // check job status:
-squeue -u <username>
+squeue -u bschlaich -i 5
 
 // find the resulting output log of stdout in the root directory:
 // slurm-<...>.out
