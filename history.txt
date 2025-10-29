@@ -1,0 +1,447 @@
+echo "hi"
+    2  ls
+    3  cd ..
+    4  ls
+    5  cd bschlaich
+    6  ls
+    7  cd ..
+    8  ls
+    9  cd schlaichb
+   10  cd bschlaich
+   11  ls
+   12  module avail
+   13  module load python/3.7.4
+   14  man python
+   15  python -V
+   16  sbatch --wrap="python run_pred.py"
+   17  squeue
+   18  scontrol
+   19  sstat
+   20  man sstat
+   21  sstat --all --format JobID,NTasks,MaxRSS,MinCPU -j 16371275
+   22  scontrol
+   23  scontrol show jobid 16371275
+   24  module list
+   25  sbatch --time=0:10 --wrap="echo HelloCluster" --output testOutput.txt
+   26  scontrol show jobid 16371607
+   27  myjobs
+   28  scontrol show jobid 16371607
+   29  ls
+   30  cat testOutput.txt
+   31  scontrol show jobid 16371275
+   32  cat slurm-16371275.out
+   33  ls
+   34  cd Project3
+   35  ls
+   36  cd
+   37  ls
+   38  cd Project3
+   39  ls
+   40  cd ..
+   41  ls
+   42  cd Project3
+   43  ls
+   44  rm run_pred.py
+   45  ls
+   46  cd ..
+   47  ls
+   48  mv run_pred.py Project3
+   49  ls
+   50  cd Project3
+   51  ls
+   52  sbatch --time=1:30:0 --ntasks=4 --wrap="python /cluster/home/bschlaich/Project3/run_pred.py"
+   53  myjobs
+   54  scontrol show jobid 16376060
+   55  ls
+   56  cat slurm-16376060.out
+   57  ls
+   58  cd ..
+   59  ls
+   60  mv Mobilenet_v3_large.pt Project3
+   61  ls
+   62  cd Project3
+   63  ls
+   64  cd ..
+   65  ls
+   66  cd Project3
+   67  ls
+   68  rm run_pred.py
+   69  cd ..
+   70  ls
+   71  mv run_pred.py
+   72  mv run_pred.py Project3
+   73  ls
+   74  Project3
+   75  cd Project3
+   76  ls
+   77  cat run_pred.py
+   78  ls
+   79  sbatch --time=1:30:0 --ntasks=4 --wrap="python /cluster/home/bschlaich/Project3/run_pred.py"
+   80  myjobs
+   81  nano
+   82  ls
+   83  ./bash_test.sh
+   84  ./cluster/home/bschlaich/Project3/bash_test.sh
+   85  ./ /cluster/home/bschlaich/Project3/bash_test.sh
+   86  ./ '/cluster/home/bschlaich/Project3/bash_test.sh'
+   87  /cluster/home/bschlaich/Project3/bash_test.sh
+   88  ls
+   89  dir
+   90  wd
+   91  $WD
+   92  $wd
+   93  ls
+   94  ./ '/cluster/home/bschlaich/Project3/batch_test.sh'
+   95  ./batch_test.sh
+   96  chmod +x batch_test.sh
+   97  ./batch_test.sh
+   98  timeout --help
+   99  nano batch_test.sh
+  100  cat batch_test.sh
+  101  ./batch_test.sh
+  102  nano batch_test.sh
+  103  ./batch_test.sh
+  104  nano batch_test.sh
+  105  ./batch_test.sh
+  106  myjobs
+  107  scontrol show jobid 16379423
+  108  ls
+  109  cd ..
+  110  ls
+  111  cat slurm-16371275.out
+  112  RUNNING="sbatch --time=1:30:0 --ntasks=4 --wrap="python /cluster/home/bschlaich/Project3/run_pred.py"
+  113  RUNNING="sbatch --time=1:30:0 --ntasks=4 --wrap="python /cluster/home/bschlaich/Project3/run_pred.py""
+  114  RUNNING='sbatch --time=1:30:0 --ntasks=4 --wrap="python /cluster/home/bschlaich/Project3/run_pred.py"'
+  115  echo $RUNNING
+  116  ls
+  117  cd ..
+  118  ls
+  119  cd bschlaich
+  120  ls
+  121  cd Project3
+  122  ls
+  123  cat slurm-16379423.out
+  124  ls
+  125  rm  Mobilenet_v3_large.pt
+  126  rm run_pred.py
+  127  ls
+  128  cat Task4.py
+  129  ls
+  130  rm Task4.py
+  131  ls
+  132  cat slurm-16376060.out
+  133  rm slurm-16376060.out
+  134  rm slurm-16379423.out
+  135  ls
+  136  cd archive
+  137  ls
+  138  cd ..
+  139  rm archive
+  140  man rm
+  141  rm -r archive
+  142  ls
+  143  cd ..
+  144  ls
+  145  cd Project3
+  146  ls
+  147  cd ..
+  148  mv run_pred_on_cluster.py Project3
+  149  mv Mobilenet_v3_large.pt Project3
+  150  ls
+  151  cd Project3
+  152  echo $RUNNING
+  153  RUNNING='sbatch --time=1:30:0 --ntasks=4 --wrap="python /cluster/home/bschlaich/Project3/run_pred_on_cluster.py"'
+  154  echo $RUNNING
+  155  eval $RUNNING
+  156  myjobs
+  157  ls
+  158  nano batch_test.sh
+  159  rm batch_test.sh
+  160  nano bash_jobs.sh
+  161  cls
+  162  clear
+  163  nano bash_jobs.sh
+  164  chmod +x bash_jobs.sh
+  165  ./bash_jobs.sh
+  166  ls
+  167  myjobs
+  168  history
+  169  ls
+  170  cat slurm-16380874.out
+  171  nano 
+  172  nano run_pred_on_cluster.py
+  173  eval $RUNNING
+  174  myjobs
+  175  scontrol show jobid 16382149
+  176  ls
+  177  cat slurm-16382149.out
+  178  nano run_pred_on_cluster.py
+  179  logout
+  180  ls
+  181  rm slurm-16371275.out
+  182  rm testOutput.txt
+  183  ls
+  184  cd Project3
+  185  ls
+  186  rm *.out
+  187  ls
+  188  cleanAll="rm *.out run_pred_on_cluster.py"
+  189  echo $cleanAll
+  190  eval $cleanAll
+  191  ls
+  192  pwd
+  193  ls
+  194  rm Spielanleitung.txt
+  195  ls
+  196  echo $RUNNING
+  197  echo run
+  198  run='sbatch --time=1:30:0 --ntasks=4 --wrap="python /cluster/home/bschlaich/Project3/run_pred_on_cluster.py"'
+  199  ls
+  200  pwd
+  201  ls
+  202  info
+  203  info Mobilenet_v3_large.pt
+  204  cd $SCRATCH
+  205  echo $cwdd
+  206  echo $cwd
+  207  ls
+  208  cat __USAGE_RULES__
+  209  git clone --single-branch --branch cmdp https://github.com/BenjaminSchlaich/eqasim-java.git
+  210  ls
+  211  cd eqasim-java
+  212  mkdir Zurich_10pct
+  213  ls
+  214  ls
+  215  cd Zurich_10pct
+  216  ls
+  217  mv Zurich_10pct ../
+  218  mv Zurich_10pct ../new
+  219  ls
+  220  cd ..
+  221  ls
+  222  cd new
+  223  ls
+  224  cd ..
+  225  ls
+  226  rm Zurich_10pct
+  227  rm -r Zurich_10pct
+  228  ls
+  229  mv new Zurich_10pct
+  230  ls
+  231  cd Zurich_10pct
+  232  ls
+  233  cd ..
+  234  ls
+  235  ls -a
+  236  cd .vscode
+  237  ls
+  238  module avail
+  239  module avail maven
+  240  module keyword maven
+  241  cd ..
+  242  ls
+  243  module load maven
+  244  module spider maven
+  245  https://www.gdc-docs.ethz.ch/EulerManual/site/overview/
+  246  module spider maven/3.9.8
+  247  module load stack/2025-06  gcc/12.2.0
+  248        stack/2025-06  gcc/8.5.0
+  249        stack/2025-06  oneapi/2023.2.0
+  250  module load gcc/12.2.0
+  251  module load gcc/8.5.0
+  252  module load oneapi/2023.2.0
+  253  module load  maven/3.9.8
+  254  mvn
+  255  module load java
+  256  module spider java
+  257  javac --version
+  258  module load openjdk
+  259  javac --version
+  260  mvn
+  261  mvn --version
+  262  module purge
+  263  mvn --version
+  264  javac --version
+  265  module load java
+  266  module load openjdk
+  267  module spider openjdk
+  268  module load openjdk/21.0.3_9
+  269  module load oneapi/2023.2.0
+  270  module load gcc/8.5.0
+  271  module load gcc/12.2.0
+  272  module spider gcc/12.2.0
+  273  module load stack/2025-06
+  274  module load gcc/12.2.0
+  275  module load oneapi/2023.2.0
+  276  module load openjdk
+  277  module load maven
+  278  mvn --version
+  279  mvn clean package
+  280  pwd
+  281  sbatch < simulation_job.sh
+  282  ls
+  283  ls
+  284  sbatch < simulation_job.sh
+  285  cat simulation_job.sh
+  286  sbatch < simulation_job.sh
+  287  jview
+  288  jview
+  289  myjobs -r
+  290  myjobs
+  291  jeff24
+  292  bjobs
+  293  jview
+  294  ls
+  295  cd target
+  296  ls
+  297  cd ..
+  298  ls
+  299  jview
+  300  java -version
+  301  man sbatch
+  302  sstat
+  303  sstat --jobs=jview
+  304* -bash: jview: command not 
+  305  sstat --jobs=matsim_simulation
+  306  squeue -u bschlaich
+  307  ls
+  308  cd slurm-47178854.out
+  309  cd slurm-47178854.out
+  310  ls
+  311  pwd
+  312  module spider openjdk
+  313  cat simulation_job.sh
+  314  sbatch < simulation_job.sh
+  315  squeue -u bschlaich
+  316  squeue -u bschlaich
+  317  squeue -u bschlaich
+  318  ls
+  319  rm slurm-47178854.out
+  320  module spider openjdk
+  321  module load openjdk/21.0.3_9
+  322  module spider openjdk/21.0.3_9
+  323  module load stack/2024-06
+  324  module load gcc/12.2.0
+  325  module load openjdk/21.0.3_9
+  326  module purrge
+  327  module purge
+  328  java -version
+  329  mvn -version
+  330  module load stack/2024-06
+  331  module load gcc/12.2.0
+  332  module load openjdk/21.0.3_9
+  333  module load maven
+  334  mvn -version
+  335  cat simulation_job.sh
+  336  sbatch < simulation_job.sh
+  337  ls
+  338  rm slurm-47180068.out
+  339  ls
+  340  cd ..
+  341  ls
+  342  cd ..
+  343  ls
+  344  cd bschlaih
+  345  cd bschlaich
+  346  ls
+  347  cd $HOME
+  348  ls
+  349  cd ..
+  350  ls
+  351  ls -a
+  352  cd bschlaich
+  353  ls
+  354  cd ~/.m2
+  355  ls
+  356  cd repository
+  357  pwd
+  358  ls
+  359  cd mvn dependency:go-offline
+  360  cd /cluster/scratch/bschlaich/
+  361  ls
+  362  cd eqasim-java
+  363  ls
+  364  cat simulation_job.sh
+  365  sbatch < simulation_job.sh
+  366  squeue -u bschlaich
+  367  squeue -u bschlaich
+  368  ls
+  369  pwd
+  370  cd ~/.m2/repository
+  371  ls
+  372  cd /cluster/scratch/bschlaich/eqasim-java
+  373  ls
+  374  mvn clean package
+  375  sbatch < simulation_job.sh
+  376  squeue -u bschlaich
+  377  squeue -u bschlaich
+  378  ls
+  379  rm slurm-47180510.out slurm-47181566.out
+  380  sbatch < simulation_job.sh
+  381  ls
+  382  squeue -u bschlaich
+  383  squeue -u bschlaich
+  384  ls
+  385  ls
+  386  rm slurm-47182847.out slurm-47183050.out
+  387  squeue -u bschlaich
+  388  scancel 47182847
+  389  squeue -u bschlaich
+  390  ls
+  391  mvn exec:java -Dexec.mainClass="org.eqasim.switzerland.ch_cmdp.RunSimulation" -Dexec.args="--config-path /cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_config.xml"
+  392  sbatch < simulation_job.sh
+  393  squeue -u bschlaich
+  394  ls
+  395  squeue -u bschlaich
+  396  rm slurm*
+  397  ls
+  398  ls
+  399  squeue -u bschlaich
+  400  ls
+  401  jview
+  402  squeue -u bschlaich
+  403  ls
+  404  squeue -u bschlaich
+  405  ls
+  406  ls
+  407  squeue -u bschlaich
+  408  sbatch < simulation_job.sh
+  409  squeue -u bschlaich
+  410  squeue -u bschlaich
+  411  squeue -u bschlaich
+  412  squeue -u bschlaich
+  413  squeue -u bschlaich
+  414  squeue -u bschlaich
+  415  squeue -u bschlaich
+  416  squeue -u bschlaich
+  417  ls
+  418  mvn --offline -DskipTests clean package
+  419  ls
+  420  rm -r san_francisco sao_paulo los_angeles ile_de_france
+  421  mvn -DskipTests clean package
+  422  mvn -DskipTests clean package
+  423  rm examples
+  424  rm -r examples
+  425  ls
+  426  mvn -DskipTests clean package
+  427  git status
+  428  cd ..
+  429  ls
+  430  rm -r eqasim-java
+  431  ls
+  432  cd eqasim-java
+  433  ls
+  434  cd ..
+  435  rm -r eqasim-java
+  436  ls
+  437  git clone --single-branch -branch cmdp https://github.com/BenjaminSchlaich/eqasim-java.git
+  438  git clone --single-branch --branch cmdp https://github.com/BenjaminSchlaich/eqasim-java.git
+  439  cd eqasim-java
+  440  ls
+  441  git pull
+  442  squeue -u bschlaich
+  443  sbatch < simulation_job.sh
+  444  ls
+  445  ls
+  446  git push
+  447  ls

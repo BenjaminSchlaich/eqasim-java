@@ -1,0 +1,54 @@
+/var/spool/slurm/slurmd/state/job47185417/slurm_script: 9: source: not found
+/var/spool/slurm/slurmd/state/job47185417/slurm_script: 12: module: not found
+/var/spool/slurm/slurmd/state/job47185417/slurm_script: 13: module: not found
+/var/spool/slurm/slurmd/state/job47185417/slurm_script: 14: module: not found
+/var/spool/slurm/slurmd/state/job47185417/slurm_script: 15: module: not found
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.eqasim:switzerland:jar:2.0.0
+[WARNING] The expression ${parent.groupId} is deprecated. Please use ${project.parent.groupId} instead.
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] eqasim                                                             [pom]
+[INFO] core                                                               [jar]
+[INFO] switzerland                                                        [jar]
+[INFO] server                                                             [jar]
+[INFO] 
+[INFO] -------------------------< org.eqasim:eqasim >--------------------------
+[INFO] Building eqasim 2.0.0                                              [1/4]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- exec-maven-plugin:3.6.2:java (default-cli) @ eqasim ---
+[WARNING] 
+java.lang.ClassNotFoundException: org.eqasim.switzerland.ch_cmdp.RunSimulation
+    at org.codehaus.mojo.exec.URLClassLoaderBuilder$ExecJavaClassLoader.loadClass (URLClassLoaderBuilder.java:211)
+    at java.lang.ClassLoader.loadClass (ClassLoader.java:526)
+    at org.codehaus.mojo.exec.AbstractExecJavaBase.doExecClassLoader (AbstractExecJavaBase.java:376)
+    at org.codehaus.mojo.exec.AbstractExecJavaBase.lambda$execute$0 (AbstractExecJavaBase.java:287)
+    at java.lang.Thread.run (Thread.java:1583)
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for eqasim 2.0.0:
+[INFO] 
+[INFO] eqasim ............................................. FAILURE [  2.950 s]
+[INFO] core ............................................... SKIPPED
+[INFO] switzerland ........................................ SKIPPED
+[INFO] server ............................................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.730 s
+[INFO] Finished at: 2025-10-29T12:33:50+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:3.6.2:java (default-cli) on project eqasim: An exception occurred while executing the Java class. org.eqasim.switzerland.ch_cmdp.RunSimulation -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

@@ -1,4 +1,7 @@
 
+// login
+ssh bschlaich@euler.ethz.ch
+
 // get maven running:
 
 module load stack/2025-06
@@ -8,3 +11,7 @@ module load openjdk
 module load maven
 
 
+mvn --offline exec:java \
+  -Dexec.mainClass=org.eqasim.switzerland.ch_cmdp.RunSimulation \
+  -Dexec.args="--config-path /Users/benjaminschlaich/Coding/MatSim/eqasim-java/Zurich_10pct/zurich_10pct_config.xml" \
+  -Dexec.classpathScope=compile
