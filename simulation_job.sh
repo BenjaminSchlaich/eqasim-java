@@ -3,7 +3,7 @@
 #SBATCH --ntasks=1                      #Requesting 1 node (is always 1)
 #SBATCH --cpus-per-task=8               #Requesting 8 CPU
 #SBATCH --mem-per-cpu=3G                #Requesting 3 Gb memory per core, 24 Gb in total 
-#SBATCH --time=5:00:00                  #Requesting 24 hours run time
+#SBATCH --time=6:00:00                  #Requesting 6 hours run time
 
 #Source the GDC stack
 # source /cluster/project/gdc/shared/stack/GDCstack.sh
