@@ -7,4 +7,4 @@ dependency-reduced-pom.xml
 simulation_output
 Zurich_10pct
 .DS_Store
-**/target/
+target/
