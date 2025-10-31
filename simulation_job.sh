@@ -1,9 +1,9 @@
 #!/bin/sh
 #SBATCH --job-name=matsim_simulation    #Name of the job
 #SBATCH --ntasks=1                      #Requesting 1 node (is always 1)
-#SBATCH --cpus-per-task=8               #Requesting 4 CPU
-#SBATCH --mem-per-cpu=3000              #Requesting 0.5 Gb memory per core, 2 Gb in total 
-#SBATCH --time=1:00:00                  #Requesting 24 hours run time
+#SBATCH --cpus-per-task=8               #Requesting 8 CPU
+#SBATCH --mem-per-cpu=3G                #Requesting 3 Gb memory per core, 24 Gb in total 
+#SBATCH --time=5:00:00                  #Requesting 24 hours run time
 
 #Source the GDC stack
 # source /cluster/project/gdc/shared/stack/GDCstack.sh
