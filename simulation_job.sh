@@ -20,5 +20,5 @@ cd /cluster/scratch/bschlaich/eqasim-java/switzerland
 #  
 mvn --offline exec:java \
   -Dexec.mainClass=org.eqasim.switzerland.ch_cmdp.RunSimulation \
-  -Dexec.args="--config-path /cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_config.xml" \
+  -Dexec.args="--config-path /cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_config.xml" \
   -Dexec.classpathScope=compile

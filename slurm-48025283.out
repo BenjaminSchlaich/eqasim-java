@@ -1,0 +1,1581 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.eqasim:switzerland:jar:2.0.0
+[WARNING] The expression ${parent.groupId} is deprecated. Please use ${project.parent.groupId} instead.
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] -----------------------< org.eqasim:switzerland >-----------------------
+[INFO] Building switzerland 2.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec-maven-plugin:3.6.2:java (default-cli) @ switzerland ---
+2025-11-07T12:49:18,612  INFO CommandLine:511 Received 0 positional command line arguments:
+2025-11-07T12:49:18,616  INFO CommandLine:512    
+2025-11-07T12:49:18,616  INFO CommandLine:534 Received 1 command line options with 0 prefixes:
+2025-11-07T12:49:18,617  INFO CommandLine:539    config-path = /cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_config.xml
+2025-11-07T12:49:18,978  INFO IOUtils:212 Resolved /cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_config.xml to /cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_config.xml
+2025-11-07T12:49:18,984  INFO Config:461 setting context to [file:/cluster/scratch/bschlaich/eqasim-java/switzerland/]
+2025-11-07T12:49:19,082  INFO Version:18 HV000001: Hibernate Validator 9.0.1.Final
+2025-11-07T12:49:19,360  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_config.xml ...
+2025-11-07T12:49:19,439  INFO ConfigReader:105 using config_v2-reader
+2025-11-07T12:49:19,440  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/config_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-07T12:49:19,483  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-11-07T12:49:19,484  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/config_v2.dtd
+2025-11-07T12:49:19,523  INFO GlobalConfigGroup:99 setting number of threads to: 24
+2025-11-07T12:49:19,540  WARN RoutingConfigGroup:434 The first mode routing (= teleported mode) params that are explicitly defined clear the default mode routing (= teleported mode) params.  If you want to avoid this 
+2025-11-07T12:49:19,541  WARN RoutingConfigGroup:435     warning, use clearTeleportedModeParams(true) in code, and "clearDefaultTeleportedModeParams"=true in xml config.
+2025-11-07T12:49:19,542  WARN ScoringConfigGroup$ReflectiveDelegate:1685 Setting pathSizeLogitBeta different from zero is experimental.  KN, Sep'08
+2025-11-07T12:49:19,551  INFO ScoringConfigGroup:555 scoring parameters for subpopulation null were just replaced.
+2025-11-07T12:49:19,556  INFO Config:461 setting context to [file:/cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_config.xml]
+2025-11-07T12:49:19,571  INFO GlobalConfigGroup:99 setting number of threads to: 8
+Found the following transfer penalties: [[name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=rail][transferPenalty=0.101], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=subway][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=ferry][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=tram][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=funicular][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=cable-car][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=gondola][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=other][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=rail][transferPenalty=0.101], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=subway][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=ferry][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=tram][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=funicular][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=cable-car][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=gondola][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=rail][toMode=other][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=subway][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=ferry][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=tram][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=funicular][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=cable-car][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=gondola][toMode=other][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=rail][transferPenalty=0.218], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=subway][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=ferry][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=tram][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=funicular][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=cable-car][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=gondola][transferPenalty=0.177], [name=modeToModeTransferPenalty][nOfParams=3][fromMode=other][toMode=other][transferPenalty=0.177]]
+2025-11-07T12:49:19,712  INFO ScenarioLoaderImpl:135 loading network from file:/cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_network.xml.gz
+2025-11-07T12:49:19,723  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_network.xml.gz ...
+2025-11-07T12:49:19,847  INFO MatsimNetworkReader:122 using network_v2-reader.
+2025-11-07T12:49:19,847  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/network_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-07T12:49:19,852  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-11-07T12:49:19,852  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/network_v2.dtd
+2025-11-07T12:49:19,856  INFO NetworkImpl:165  node # 1
+2025-11-07T12:49:19,856  INFO NetworkImpl:165  node # 4
+2025-11-07T12:49:19,857  INFO NetworkImpl:165  node # 16
+2025-11-07T12:49:19,859  INFO NetworkImpl:165  node # 64
+2025-11-07T12:49:19,869  INFO NetworkImpl:165  node # 256
+2025-11-07T12:49:19,894  INFO NetworkImpl:165  node # 1024
+2025-11-07T12:49:19,913  INFO NetworkImpl:165  node # 4096
+2025-11-07T12:49:19,966  INFO NetworkImpl:165  node # 16384
+2025-11-07T12:49:20,104  INFO NetworkImpl:161  link # 1
+2025-11-07T12:49:20,106  INFO NetworkImpl:161  link # 4
+2025-11-07T12:49:20,124  WARN DisallowedNextLinks:67 Considering DisallowedNextLinks in routing is only implemented by SpeedyDijkstra and SpeedyALT!
+2025-11-07T12:49:20,126  INFO NetworkImpl:161  link # 16
+2025-11-07T12:49:20,130  INFO NetworkImpl:161  link # 64
+2025-11-07T12:49:20,138  WARN LinkImpl:121 permlanes=0.0 of link id 1002007_spec may cause problems
+2025-11-07T12:49:20,138  WARN LinkImpl:123  Future occurences of this logging statement are suppressed.
+2025-11-07T12:49:20,142  INFO NetworkImpl:161  link # 256
+2025-11-07T12:49:20,175  INFO NetworkImpl:161  link # 1024
+2025-11-07T12:49:20,243  INFO NetworkImpl:161  link # 4096
+2025-11-07T12:49:20,439  INFO NetworkImpl:161  link # 16384
+2025-11-07T12:49:21,024  INFO NetworkImpl:161  link # 65536
+2025-11-07T12:49:21,627  WARN LinkImpl:130 length=0.0 of link id pt_8502186:0:1/2 may cause problems
+2025-11-07T12:49:21,627  WARN LinkImpl:132  Future occurences of this logging statement are suppressed.
+2025-11-07T12:49:21,656  INFO ScenarioLoaderImpl:160 loading facilities from file:/cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_facilities.xml.gz
+2025-11-07T12:49:21,658  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_facilities.xml.gz ...
+2025-11-07T12:49:21,662  INFO MatsimFacilitiesReader:143 using facilities_v2-reader.
+2025-11-07T12:49:21,662  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/facilities_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-07T12:49:21,665  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-11-07T12:49:21,665  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/facilities_v2.dtd
+2025-11-07T12:49:22,303  INFO ScenarioLoaderImpl:169 loaded 197644 facilities from file:/cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_facilities.xml.gz
+2025-11-07T12:49:22,303  INFO ScenarioLoaderImpl:188 no facility-attributes file set in config, not loading any facility attributes
+2025-11-07T12:49:22,304  INFO ScenarioLoaderImpl:196 loading population from file:/cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_population.xml.gz
+2025-11-07T12:49:22,343  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_population.xml.gz ...
+2025-11-07T12:49:22,348  INFO PopulationReader:135 using population_v6-reader.
+2025-11-07T12:49:22,348  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/population_v6.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-07T12:49:22,352  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-11-07T12:49:22,353  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/population_v6.dtd
+2025-11-07T12:49:22,355  WARN PopulationReaderMatsimV6:227 coordinate transformation defined both in config and in input file: setting from input file will be used
+2025-11-07T12:49:22,355  INFO ParallelPopulationReaderMatsimV6:168 Start parallel population reading...
+2025-11-07T12:49:22,362  INFO PopulationImpl:111  person # 1
+2025-11-07T12:49:22,374  INFO PopulationImpl:111  person # 4
+2025-11-07T12:49:22,427  INFO PopulationImpl:111  person # 16
+2025-11-07T12:49:22,443  INFO PopulationImpl:111  person # 64
+2025-11-07T12:49:22,490  INFO PopulationImpl:111  person # 256
+2025-11-07T12:49:22,605  INFO PopulationImpl:111  person # 1024
+2025-11-07T12:49:23,114  INFO PopulationImpl:111  person # 4096
+2025-11-07T12:49:24,696  INFO PopulationImpl:111  person # 16384
+2025-11-07T12:49:30,861  INFO PopulationImpl:111  person # 65536
+2025-11-07T12:49:47,265  INFO ParallelPopulationReaderMatsimV6:238 Finished parallel population reading...
+2025-11-07T12:49:47,267  INFO PopulationUtils:1145  person # 199709
+2025-11-07T12:49:47,268  INFO ScenarioLoaderImpl:244 no person-attributes file set in config, not loading any person attributes
+2025-11-07T12:49:47,268  INFO ScenarioLoaderImpl:251 loading households from file:/cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_households.xml.gz
+2025-11-07T12:49:47,270  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_households.xml.gz ...
+2025-11-07T12:49:47,335  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/households_v1.0.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-07T12:49:47,340  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-11-07T12:49:47,340  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/households_v1.0.xsd
+2025-11-07T12:49:47,360  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/matsimCommon.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-07T12:49:47,364  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-11-07T12:49:47,364  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/matsimCommon.xsd
+2025-11-07T12:49:47,383  INFO Counter:70   households # 1
+2025-11-07T12:49:47,384  INFO Counter:70   households # 2
+2025-11-07T12:49:47,385  INFO Counter:70   households # 4
+2025-11-07T12:49:47,389  INFO Counter:70   households # 8
+2025-11-07T12:49:47,394  INFO Counter:70   households # 16
+2025-11-07T12:49:47,404  INFO Counter:70   households # 32
+2025-11-07T12:49:47,417  INFO Counter:70   households # 64
+2025-11-07T12:49:47,429  INFO Counter:70   households # 128
+2025-11-07T12:49:47,453  INFO Counter:70   households # 256
+2025-11-07T12:49:47,479  INFO Counter:70   households # 512
+2025-11-07T12:49:47,515  INFO Counter:70   households # 1024
+2025-11-07T12:49:47,567  INFO Counter:70   households # 2048
+2025-11-07T12:49:47,649  INFO Counter:70   households # 4096
+2025-11-07T12:49:47,856  INFO Counter:70   households # 8192
+2025-11-07T12:49:48,049  INFO Counter:70   households # 16384
+2025-11-07T12:49:48,433  INFO Counter:70   households # 32768
+2025-11-07T12:49:49,191  INFO Counter:70   households # 65536
+2025-11-07T12:49:49,972  INFO Counter:75   households # 102489
+2025-11-07T12:49:49,972  INFO ScenarioLoaderImpl:255 households loaded.
+2025-11-07T12:49:49,974  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_transit_schedule.xml.gz ...
+2025-11-07T12:49:49,977  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/transitSchedule_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-07T12:49:49,980  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-11-07T12:49:49,981  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/transitSchedule_v2.dtd
+2025-11-07T12:49:50,494  INFO ScenarioLoaderImpl:329 loading transit vehicles from zurich_10pct_transit_vehicles.xml.gz
+2025-11-07T12:49:50,496  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_transit_vehicles.xml.gz ...
+2025-11-07T12:49:50,502  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/vehicleDefinitions_v2.0.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-07T12:49:50,507  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-11-07T12:49:50,507  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/vehicleDefinitions_v2.0.xsd
+2025-11-07T12:49:50,511  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/matsimCommon.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-07T12:49:50,514  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-11-07T12:49:50,514  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/matsimCommon.xsd
+2025-11-07T12:49:50,517  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/vehicleDefinitionsEnumTypes.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-07T12:49:50,521  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-11-07T12:49:50,522  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/vehicleDefinitionsEnumTypes.xsd
+2025-11-07T12:49:50,528  INFO MatsimVehicleReader$VehicleReader:77 Found following schemaLocation in vehicle definition file: http://www.matsim.org/files/dtd http://www.matsim.org/files/dtd/vehicleDefinitions_v2.0.xsd
+2025-11-07T12:49:50,529  INFO VehicleReaderV2:24 Using org.matsim.vehicles.VehicleReaderV2
+2025-11-07T12:49:50,536  INFO Counter:70 [VehiclesImpl] added vehicle # 1
+2025-11-07T12:49:50,536  INFO Counter:70 [VehiclesImpl] added vehicle # 2
+2025-11-07T12:49:50,537  INFO Counter:70 [VehiclesImpl] added vehicle # 4
+2025-11-07T12:49:50,537  INFO Counter:70 [VehiclesImpl] added vehicle # 8
+2025-11-07T12:49:50,537  INFO Counter:70 [VehiclesImpl] added vehicle # 16
+2025-11-07T12:49:50,537  INFO Counter:70 [VehiclesImpl] added vehicle # 32
+2025-11-07T12:49:50,538  INFO Counter:70 [VehiclesImpl] added vehicle # 64
+2025-11-07T12:49:50,539  INFO Counter:70 [VehiclesImpl] added vehicle # 128
+2025-11-07T12:49:50,542  INFO Counter:70 [VehiclesImpl] added vehicle # 256
+2025-11-07T12:49:50,546  INFO Counter:70 [VehiclesImpl] added vehicle # 512
+2025-11-07T12:49:50,554  INFO Counter:70 [VehiclesImpl] added vehicle # 1024
+2025-11-07T12:49:50,577  INFO Counter:70 [VehiclesImpl] added vehicle # 2048
+2025-11-07T12:49:50,588  INFO Counter:70 [VehiclesImpl] added vehicle # 4096
+2025-11-07T12:49:50,615  INFO Counter:70 [VehiclesImpl] added vehicle # 8192
+2025-11-07T12:49:50,643  INFO Counter:70 [VehiclesImpl] added vehicle # 16384
+2025-11-07T12:49:50,694  INFO Counter:70 [VehiclesImpl] added vehicle # 32768
+2025-11-07T12:49:50,695  INFO ScenarioLoaderImpl:339 loading vehicles from zurich_10pct_vehicles.xml.gz
+2025-11-07T12:49:50,696  INFO MatsimXmlParser:172 starting to parse xml from url file:/cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_vehicles.xml.gz ...
+2025-11-07T12:49:50,700  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/vehicleDefinitions_v2.0.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-07T12:49:50,703  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-11-07T12:49:50,703  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/vehicleDefinitions_v2.0.xsd
+2025-11-07T12:49:50,705  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/matsimCommon.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-07T12:49:50,707  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-11-07T12:49:50,708  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/matsimCommon.xsd
+2025-11-07T12:49:50,710  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/vehicleDefinitionsEnumTypes.xsd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-07T12:49:50,714  INFO MatsimXmlParser:314 java.net.ConnectException: Connection refused. May not be fatal, will try to load it locally.
+2025-11-07T12:49:50,714  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/vehicleDefinitionsEnumTypes.xsd
+2025-11-07T12:49:50,720  INFO MatsimVehicleReader$VehicleReader:77 Found following schemaLocation in vehicle definition file: http://www.matsim.org/files/dtd http://www.matsim.org/files/dtd/vehicleDefinitions_v2.0.xsd
+2025-11-07T12:49:50,720  INFO VehicleReaderV2:24 Using org.matsim.vehicles.VehicleReaderV2
+2025-11-07T12:49:50,722  INFO Counter:70 [VehiclesImpl] added vehicle # 1
+2025-11-07T12:49:50,722  INFO Counter:70 [VehiclesImpl] added vehicle # 2
+2025-11-07T12:49:50,722  INFO Counter:70 [VehiclesImpl] added vehicle # 4
+2025-11-07T12:49:50,722  INFO Counter:70 [VehiclesImpl] added vehicle # 8
+2025-11-07T12:49:50,723  INFO Counter:70 [VehiclesImpl] added vehicle # 16
+2025-11-07T12:49:50,723  INFO Counter:70 [VehiclesImpl] added vehicle # 32
+2025-11-07T12:49:50,724  INFO Counter:70 [VehiclesImpl] added vehicle # 64
+2025-11-07T12:49:50,726  INFO Counter:70 [VehiclesImpl] added vehicle # 128
+2025-11-07T12:49:50,728  INFO Counter:70 [VehiclesImpl] added vehicle # 256
+2025-11-07T12:49:50,733  INFO Counter:70 [VehiclesImpl] added vehicle # 512
+2025-11-07T12:49:50,738  INFO Counter:70 [VehiclesImpl] added vehicle # 1024
+2025-11-07T12:49:50,753  INFO Counter:70 [VehiclesImpl] added vehicle # 2048
+2025-11-07T12:49:50,776  INFO Counter:70 [VehiclesImpl] added vehicle # 4096
+2025-11-07T12:49:50,801  INFO Counter:70 [VehiclesImpl] added vehicle # 8192
+2025-11-07T12:49:50,845  INFO Counter:70 [VehiclesImpl] added vehicle # 16384
+2025-11-07T12:49:50,929  INFO Counter:70 [VehiclesImpl] added vehicle # 32768
+2025-11-07T12:49:51,092  INFO Counter:70 [VehiclesImpl] added vehicle # 65536
+2025-11-07T12:49:51,415  INFO Counter:70 [VehiclesImpl] added vehicle # 131072
+2025-11-07T12:49:52,060  INFO Counter:70 [VehiclesImpl] added vehicle # 262144
+2025-11-07T12:49:53,211  INFO ScoringConfigGroup$ScoringParameterSet:1608 NO OPENING OR CLOSING TIMES DEFINED!
+
+There is no activity type that has an opening *and* closing time (or opening time and late penalty) defined.
+This usually means that the activity chains can be shifted by an arbitrary
+number of hours without having an effect on the score of the plans, and thus
+resulting in wrong results / traffic patterns.
+If you are using MATSim without time adaptation, you can ignore this warning.
+
+
+2025-11-07T12:49:53,213  INFO VspConfigConsistencyCheckerImpl:62 NOT running vsp config consistency check because vsp defaults checking level is set to IGNORE
+2025-11-07T12:49:54,381  INFO EqasimTrafficModule:23 Attribute crossing penalty is enabled.
+2025-11-07T12:49:54,416  INFO DelaysModule:36 Traffic light is disabled, skipping installation.
+2025-11-07T12:49:54,442  INFO CalibrationModule:32 Calibration module is not activated.
+2025-11-07T12:49:54,700  INFO EqasimTrafficModule:23 Attribute crossing penalty is enabled.
+2025-11-07T12:49:54,725  INFO DelaysModule:36 Traffic light is disabled, skipping installation.
+2025-11-07T12:49:54,743  INFO CalibrationModule:32 Calibration module is not activated.
+2025-11-07T12:49:54,879  INFO EqasimTrafficModule:23 Attribute crossing penalty is enabled.
+2025-11-07T12:49:54,900  INFO DelaysModule:36 Traffic light is disabled, skipping installation.
+2025-11-07T12:49:54,915  INFO CalibrationModule:32 Calibration module is not activated.
+2025-11-07T12:49:55,034  INFO EqasimTrafficModule:23 Attribute crossing penalty is enabled.
+2025-11-07T12:49:55,055  INFO DelaysModule:36 Traffic light is disabled, skipping installation.
+2025-11-07T12:49:55,070  INFO CalibrationModule:32 Calibration module is not activated.
+2025-11-07T12:49:55,262  INFO OutputDirectoryHierarchy:285 ###########################################################
+2025-11-07T12:49:55,262  INFO OutputDirectoryHierarchy:286 ### THE CONTROLER WILL DELETE THE EXISTING OUTPUT DIRECTORY:
+2025-11-07T12:49:55,262  INFO OutputDirectoryHierarchy:287 ### simulation_output
+2025-11-07T12:49:55,262  INFO OutputDirectoryHierarchy:288 ### full path: /cluster/scratch/bschlaich/eqasim-java/switzerland/simulation_output
+2025-11-07T12:49:55,263  INFO OutputDirectoryHierarchy:289 ###########################################################
+2025-11-07T12:49:55,474  INFO ParameterDefinition:81 Set lambdaCostIncome = -0.11724074844135468
+2025-11-07T12:49:55,474  INFO ParameterDefinition:81 Set car.travelTimeExponent = 0.7015863662531053
+2025-11-07T12:49:55,474  INFO ParameterDefinition:81 Set walk.betaUrbanDestination_u = -0.06031475408201358
+2025-11-07T12:49:55,475  INFO ParameterDefinition:81 Set walk.betaShortDistance_u = 0.29390148940013466
+2025-11-07T12:49:55,475  INFO ParameterDefinition:81 Set cp.betaDistance_km = 0.0
+2025-11-07T12:49:55,475  INFO ParameterDefinition:81 Set lambdaCostEuclideanDistance = -0.2602137096630935
+2025-11-07T12:49:55,475  INFO ParameterDefinition:81 Set car.betaTravelTime_u_min = -0.3071185784340749
+2025-11-07T12:49:55,476  INFO ParameterDefinition:81 Set pt.inVehicleTimeExponent = 1.956883047403238
+2025-11-07T12:49:55,476  INFO ParameterDefinition:81 Set walk.alpha_u = 3.1516
+2025-11-07T12:49:55,476  INFO ParameterDefinition:81 Set pt.betaAge_u = -0.008953695369293347
+2025-11-07T12:49:55,477  INFO ParameterDefinition:81 Set pt.betaWaitingTime_u_min = -0.0018261888082569712
+2025-11-07T12:49:55,477  INFO ParameterDefinition:81 Set bike.betaSex_u = -0.2205314944100013
+2025-11-07T12:49:55,477  INFO ParameterDefinition:81 Set pt.betaDistance_u_km = -0.2751615929888168
+2025-11-07T12:49:55,477  INFO ParameterDefinition:81 Set pt.betaRegion2_u = 0.0
+2025-11-07T12:49:55,477  INFO ParameterDefinition:81 Set pt.waitingTimeExponent = 1.0
+2025-11-07T12:49:55,478  INFO ParameterDefinition:81 Set bike.travelTimeExponent = 0.6527887243208809
+2025-11-07T12:49:55,478  INFO ParameterDefinition:81 Set car.betaRegion2_u = -0.0
+2025-11-07T12:49:55,478  INFO ParameterDefinition:81 Set pt.alpha_u = 0.0
+2025-11-07T12:49:55,478  INFO ParameterDefinition:81 Set pt.accessEgressTimeExponent = 0.12694679536569203
+2025-11-07T12:49:55,478  INFO ParameterDefinition:81 Set cp.distanceExponent = 1.0
+2025-11-07T12:49:55,478  INFO ParameterDefinition:81 Set car.betaSex_u = -0.3032688924886081
+2025-11-07T12:49:55,478  INFO ParameterDefinition:81 Set cp.betaSex_u = 0.3102647548423854
+2025-11-07T12:49:55,478  INFO ParameterDefinition:81 Set car.betaUrbanDestination_u = -0.11011914742248337
+2025-11-07T12:49:55,479  INFO ParameterDefinition:81 Set bike.alpha_u = -0.3963
+2025-11-07T12:49:55,479  INFO ParameterDefinition:81 Set bike.betaUrbanDestination_u = -0.24848449195124958
+2025-11-07T12:49:55,479  INFO ParameterDefinition:81 Set cp.travelTimeExponent = 0.7332296760439541
+2025-11-07T12:49:55,479  INFO ParameterDefinition:81 Set car.betaAge_u = 0.0036841891451104415
+2025-11-07T12:49:55,479  INFO ParameterDefinition:81 Set car.betaDestinationWork_u = 0.45466938040488875
+2025-11-07T12:49:55,479  INFO ParameterDefinition:81 Set pt.lineSwitchExponent = 1.0671158677194374
+2025-11-07T12:49:55,479  INFO ParameterDefinition:81 Set bike.betaAge_u = 0.003030076714393973
+2025-11-07T12:49:55,479  INFO ParameterDefinition:81 Set referenceIncome = 3700.0
+2025-11-07T12:49:55,480  INFO ParameterDefinition:81 Set bike.betaTravelTime_u_min = -0.5488396301872032
+2025-11-07T12:49:55,480  INFO ParameterDefinition:81 Set walk.betaRegion1_u = 0.0
+2025-11-07T12:49:55,480  INFO ParameterDefinition:81 Set parking.suburbanParkingSearchDuration_min = 1.0
+2025-11-07T12:49:55,480  INFO ParameterDefinition:81 Set bike.betaRegion2_u = -0.0
+2025-11-07T12:49:55,480  INFO ParameterDefinition:81 Set car.alpha_u = -1.0967
+2025-11-07T12:49:55,480  INFO ParameterDefinition:81 Set car.betaOriginHome_u = -0.06346943219441203
+2025-11-07T12:49:55,480  INFO ParameterDefinition:81 Set car.betaShortDistance_u = -0.025429472259839665
+2025-11-07T12:49:55,480  INFO ParameterDefinition:81 Set cp.betaRegion2_u = -0.0
+2025-11-07T12:49:55,480  INFO ParameterDefinition:81 Set cp.betaTravelTime_u_min = -0.2976752465681369
+2025-11-07T12:49:55,481  INFO ParameterDefinition:81 Set cp.betaDrivingLicense_u = -1.873256692343035
+2025-11-07T12:49:55,481  INFO ParameterDefinition:81 Set parking.urbanParkingSearchDuration_min = 2.0
+2025-11-07T12:49:55,481  INFO ParameterDefinition:81 Set walk.travelTimeExponent = 0.4289837393032499
+2025-11-07T12:49:55,481  INFO ParameterDefinition:81 Set pt.betaDestinationWork_u = 0.0944780416959123
+2025-11-07T12:49:55,481  INFO ParameterDefinition:81 Set pt.distanceExponent = 1.088850988330516
+2025-11-07T12:49:55,481  INFO ParameterDefinition:81 Set pt.betaAccessEgressTime_u_min = -2.7938145040191
+2025-11-07T12:49:55,481  INFO ParameterDefinition:81 Set walk.betaDestinationWork_u = -0.018393024986099425
+2025-11-07T12:49:55,481  INFO ParameterDefinition:81 Set bike.betaShortDistance_u = 0.19896798737297347
+2025-11-07T12:49:55,482  INFO ParameterDefinition:81 Set pt.betaShortDistance_u = -0.35986473235212335
+2025-11-07T12:49:55,482  INFO ParameterDefinition:81 Set walk.betaTravelTime_u_min = -1.8876324880399542
+2025-11-07T12:49:55,482  INFO ParameterDefinition:81 Set pt.betaInVehicleTime_u_min = -0.00038402283082442784
+2025-11-07T12:49:55,482  INFO ParameterDefinition:81 Set pt.betaSex_u = 0.19982659444399753
+2025-11-07T12:49:55,482  INFO ParameterDefinition:81 Set walk.betaOriginHome_u = 0.10808704664523897
+2025-11-07T12:49:55,482  INFO ParameterDefinition:81 Set car.betaRegion1_u = 0.0
+2025-11-07T12:49:55,482  INFO ParameterDefinition:81 Set bike.betaDestinationWork_u = 0.29726050489212846
+2025-11-07T12:49:55,482  INFO ParameterDefinition:81 Set pt.betaRegion1_u = 0.0
+2025-11-07T12:49:55,483  INFO ParameterDefinition:81 Set bike.betaOriginHome_u = 0.0438383562556667
+2025-11-07T12:49:55,483  INFO ParameterDefinition:81 Set betaCost_u_MU = -0.16797308416478535
+2025-11-07T12:49:55,483  INFO ParameterDefinition:81 Set cp.betaOriginHome_u = -0.08225399296199933
+2025-11-07T12:49:55,483  INFO ParameterDefinition:81 Set walk.betaAge_u = -0.0038163753707746604
+2025-11-07T12:49:55,483  INFO ParameterDefinition:81 Set cp.betaShortDistance_u = -0.10757527216114736
+2025-11-07T12:49:55,483  INFO ParameterDefinition:81 Set pt.betaUrbanDestination_u = 0.5224617730273693
+2025-11-07T12:49:55,483  INFO ParameterDefinition:81 Set cp.alpha_u = -2.0109
+2025-11-07T12:49:55,483  INFO ParameterDefinition:81 Set walk.betaRegion2_u = -0.0
+2025-11-07T12:49:55,483  INFO ParameterDefinition:81 Set pt.betaOriginHome_u = -0.006201977744494427
+2025-11-07T12:49:55,484  INFO ParameterDefinition:81 Set pt.betaLineSwitch_u = -0.5669795136881604
+2025-11-07T12:49:55,484  INFO ParameterDefinition:81 Set bike.betaRegion1_u = -0.0
+2025-11-07T12:49:55,484  INFO ParameterDefinition:81 Set cp.betaUrbanDestination_u = -0.1035433795716292
+2025-11-07T12:49:55,484  INFO ParameterDefinition:81 Set cp.betaRegion1_u = 0.0
+2025-11-07T12:49:55,484  INFO ParameterDefinition:81 Set cp.betaDestinationWork_u = -0.8280149020068308
+2025-11-07T12:49:55,484  INFO ParameterDefinition:81 Set walk.betaSex_u = 0.013709037612225769
+2025-11-07T12:49:55,484  INFO ParameterDefinition:81 Set cp.betaAge_u = 0.006055804880645965
+2025-11-07T12:49:55,485  INFO ParameterDefinition:81 Set referenceEuclideanDistance_km = 8.0
+2025-11-07T12:49:56,523  INFO SimStepParallelEventsManagerImpl:83 number of threads=1
+2025-11-07T12:49:56,530  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:49:56,530  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:49:56,530  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkEnterEvent
+2025-11-07T12:49:56,530  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkLeaveEvent
+2025-11-07T12:49:56,530  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleEntersTrafficEvent
+2025-11-07T12:49:56,530  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleLeavesTrafficEvent
+2025-11-07T12:49:56,530  INFO EventsManagerImpl:210     > org.matsim.core.api.experimental.events.VehicleArrivesAtFacilityEvent
+2025-11-07T12:49:56,530  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleAbortsEvent
+2025-11-07T12:49:56,530  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:49:56,531  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:49:56,531  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkEnterEvent
+2025-11-07T12:49:56,531  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkLeaveEvent
+2025-11-07T12:49:56,531  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleEntersTrafficEvent
+2025-11-07T12:49:56,531  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleLeavesTrafficEvent
+2025-11-07T12:49:56,531  INFO EventsManagerImpl:210     > org.matsim.core.api.experimental.events.VehicleArrivesAtFacilityEvent
+2025-11-07T12:49:56,531  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleAbortsEvent
+2025-11-07T12:49:56,538  INFO StrategyManager:77 global innovation switch off after iteration: 2147483647
+2025-11-07T12:49:56,540  INFO GenericStrategyManagerImpl:332 added change request:  iteration=-2147483648 newWeight=0.0 strategy=RandomPlanSelector_DiscreteModeChoiceReplanningModule_CheckConsistentRoutingReplanningModule
+2025-11-07T12:49:56,540  INFO GenericStrategyManagerImpl:332 added change request:  iteration=-2147483648 newWeight=0.0 strategy=RandomPlanSelector_ReRoute
+2025-11-07T12:49:56,540  INFO GenericStrategyManagerImpl:332 added change request:  iteration=-2147483648 newWeight=0.0 strategy=RandomPlanSelector_ReRoute
+2025-11-07T12:49:56,540  INFO GenericStrategyManagerImpl:364 setting PlanSelectorForRemoval to class org.matsim.contribs.discrete_mode_choice.replanning.NonSelectedPlanSelector
+2025-11-07T12:49:56,543  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:49:56,543  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:49:56,543  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.Event
+2025-11-07T12:49:56,543  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:49:56,544  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:49:56,544  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.Event
+2025-11-07T12:49:56,596  INFO CalcLinkStats:151  resetting `count' to zero.  This info is here since we want to check when this is happening during normal simulation runs.  kai, jan'11
+2025-11-07T12:49:56,678  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:49:56,679  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:49:56,679  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkLeaveEvent
+2025-11-07T12:49:56,679  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleEntersTrafficEvent
+2025-11-07T12:49:56,679  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:49:56,679  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:49:56,679  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkLeaveEvent
+2025-11-07T12:49:56,679  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleEntersTrafficEvent
+2025-11-07T12:49:56,759  INFO AbstractController:57 Used Controler-Class: org.matsim.core.controler.NewControler
+2025-11-07T12:49:56,760  INFO Config:421 ConfigConsistencyChecker with runtime type=class org.matsim.core.config.consistency.ConfigConsistencyCheckerImpl was already added; not adding it a second time
+2025-11-07T12:49:56,760  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:49:56,760  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:49:56,760  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonDepartureEvent
+2025-11-07T12:49:56,761  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:49:56,761  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:49:56,761  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonDepartureEvent
+2025-11-07T12:49:56,761  INFO Injector:81 === printInjector output skipped ===
+2025-11-07T12:49:56,761  INFO Injector:82 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:49:56,813  INFO Gbl:64 JVM: 21.0.3; Eclipse Adoptium; mixed mode, sharing; 64-bit
+2025-11-07T12:49:56,814  INFO Gbl:68 OS: Linux; 5.15.0-153-generic; amd64
+2025-11-07T12:49:56,815  INFO Gbl:71 CPU cores: 8
+2025-11-07T12:49:56,817  INFO Gbl:72 max. Memory: 30208.0MB (31675383808B)
+2025-11-07T12:49:56,818  INFO Gbl:114 MATSim-Build: r8431aaa5c112086c96bff0382638f2623399f646 ({2025-08-11 02:37:25})
+2025-11-07T12:49:56,818  INFO Gbl:76 Command: org.codehaus.plexus.classworlds.launcher.Launcher --offline exec:java -Dexec.mainClass=org.eqasim.switzerland.ch_cmdp.RunSimulation -Dexec.args=--config-path /cluster/scratch/bschlaich/eqasim-java/switzerland/Zurich_10pct/zurich_10pct_config.xml -Dexec.classpathScope=compile
+2025-11-07T12:49:56,825  INFO MemoryObserver:43 used RAM: 2439 MB  free: 2200 MB  total: 4640 MB  max: 30208 MB
+2025-11-07T12:49:56,825  INFO ControllerListenerManagerImpl:121 calling notifyStartup on org.matsim.core.controler.ControlerDefaultsModule$1 with priority 0.0
+2025-11-07T12:49:57,027  INFO ControllerListenerManagerImpl:121 calling notifyStartup on org.matsim.guice.DependencyGraphControllerListener with priority 0.0
+2025-11-07T12:49:57,240  INFO ControllerListenerManagerImpl:121 calling notifyStartup on org.matsim.counts.CountsControllerListener with priority 0.0
+2025-11-07T12:49:57,241  INFO ControllerListenerManagerImpl:121 calling notifyStartup on org.matsim.analysis.ModeChoiceCoverageControllerListener with priority 0.0
+2025-11-07T12:49:57,241  INFO ControllerListenerManagerImpl:121 calling notifyStartup on org.matsim.analysis.ModeStatsControllerListener with priority 0.0
+2025-11-07T12:49:57,241  INFO ControllerListenerManagerImpl:121 calling notifyStartup on org.matsim.analysis.ScoreStatsControlerListener with priority 0.0
+2025-11-07T12:49:57,242  INFO ControllerListenerManagerImpl:121 calling notifyStartup on org.matsim.contribs.discrete_mode_choice.modules.utils.ModeChoiceInTheLoopChecker with priority 0.0
+2025-11-07T12:49:57,242  INFO ControllerListenerManagerImpl:124 all ControllerStartupListeners called.
+2025-11-07T12:49:57,243  INFO ControllerUtils:99 config dump before iterations start
+2025-11-07T12:49:57,260  INFO ControllerUtils:105 === logging config.xml skipped ===
+2025-11-07T12:49:57,260  INFO ControllerUtils:106 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:49:57,261  INFO ControllerUtils:110 Complete config dump done.
+2025-11-07T12:49:57,261  INFO ControllerUtils:111 Checking consistency of config...
+2025-11-07T12:49:57,261  INFO ScoringConfigGroup$ScoringParameterSet:1608 NO OPENING OR CLOSING TIMES DEFINED!
+
+There is no activity type that has an opening *and* closing time (or opening time and late penalty) defined.
+This usually means that the activity chains can be shifted by an arbitrary
+number of hours without having an effect on the score of the plans, and thus
+resulting in wrong results / traffic patterns.
+If you are using MATSim without time adaptation, you can ignore this warning.
+
+
+2025-11-07T12:49:57,261  INFO VspConfigConsistencyCheckerImpl:62 NOT running vsp config consistency check because vsp defaults checking level is set to IGNORE
+2025-11-07T12:49:57,270  INFO ControllerUtils:113 Checking consistency of config done.
+2025-11-07T12:49:57,270  INFO PrepareForSimImpl:126 Network seems to be multimodal. Create car-only network which is handed over to PersonPrepareForSim.
+2025-11-07T12:49:57,271  INFO NetworkImpl:165  node # 1
+2025-11-07T12:49:57,271  INFO NetworkImpl:165  node # 4
+2025-11-07T12:49:57,271  INFO NetworkImpl:165  node # 16
+2025-11-07T12:49:57,271  INFO NetworkImpl:165  node # 64
+2025-11-07T12:49:57,271  INFO NetworkImpl:165  node # 256
+2025-11-07T12:49:57,272  INFO NetworkImpl:165  node # 1024
+2025-11-07T12:49:57,274  INFO NetworkImpl:165  node # 4096
+2025-11-07T12:49:57,280  INFO NetworkImpl:165  node # 16384
+2025-11-07T12:49:57,294  INFO NetworkImpl:161  link # 1
+2025-11-07T12:49:57,294  INFO NetworkImpl:161  link # 4
+2025-11-07T12:49:57,294  INFO NetworkImpl:161  link # 16
+2025-11-07T12:49:57,295  INFO NetworkImpl:161  link # 64
+2025-11-07T12:49:57,296  INFO NetworkImpl:161  link # 256
+2025-11-07T12:49:57,299  INFO NetworkImpl:161  link # 1024
+2025-11-07T12:49:57,307  INFO NetworkImpl:161  link # 4096
+2025-11-07T12:49:57,331  INFO NetworkImpl:161  link # 16384
+2025-11-07T12:49:57,403  INFO NetworkImpl:161  link # 65536
+2025-11-07T12:49:58,654  WARN EqasimRaptorUtils:49 Setting 'other' routing cost for following modes: funicular, cable car, ferry
+2025-11-07T12:49:58,656  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:49:58,656  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:49:58,657  INFO EventsManagerImpl:210     > org.matsim.pt.router.TransitScheduleChangedEvent
+2025-11-07T12:49:58,657  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:49:58,657  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:49:58,657  INFO EventsManagerImpl:210     > org.matsim.pt.router.TransitScheduleChangedEvent
+2025-11-07T12:49:58,678  INFO SwissRailRaptorData:106 Preparing data for SwissRailRaptor...
+2025-11-07T12:50:02,223  INFO SwissRailRaptorData:313 SwissRailRaptor data preparation done. Took 3 seconds.
+2025-11-07T12:50:02,224  INFO SwissRailRaptorData:314 SwissRailRaptor statistics:  #routes = 4151
+2025-11-07T12:50:02,225  INFO SwissRailRaptorData:315 SwissRailRaptor statistics:  #departures = 32906
+2025-11-07T12:50:02,225  INFO SwissRailRaptorData:316 SwissRailRaptor statistics:  #routeStops = 57422
+2025-11-07T12:50:02,225  INFO SwissRailRaptorData:317 SwissRailRaptor statistics:  #stopFacilities = 9245
+2025-11-07T12:50:02,225  INFO SwissRailRaptorData:318 SwissRailRaptor statistics:  #transfers (between routeStops) = 1906929
+2025-11-07T12:50:02,225  INFO SwissRailRaptorData:319 SwissRailRaptor statistics:  #chainedDepartures = 0
+2025-11-07T12:50:02,228  INFO NetworkImpl:165  node # 1
+2025-11-07T12:50:02,228  INFO NetworkImpl:165  node # 4
+2025-11-07T12:50:02,229  INFO NetworkImpl:165  node # 16
+2025-11-07T12:50:02,229  INFO NetworkImpl:165  node # 64
+2025-11-07T12:50:02,229  INFO NetworkImpl:165  node # 256
+2025-11-07T12:50:02,229  INFO NetworkImpl:165  node # 1024
+2025-11-07T12:50:02,229  INFO NetworkImpl:165  node # 4096
+2025-11-07T12:50:02,231  INFO NetworkImpl:165  node # 16384
+2025-11-07T12:50:02,237  INFO NetworkImpl:161  link # 1
+2025-11-07T12:50:02,237  INFO NetworkImpl:161  link # 4
+2025-11-07T12:50:02,238  INFO NetworkImpl:161  link # 16
+2025-11-07T12:50:02,238  INFO NetworkImpl:161  link # 64
+2025-11-07T12:50:02,238  INFO NetworkImpl:161  link # 256
+2025-11-07T12:50:02,239  INFO NetworkImpl:161  link # 1024
+2025-11-07T12:50:02,243  INFO NetworkImpl:161  link # 4096
+2025-11-07T12:50:02,256  INFO NetworkImpl:161  link # 16384
+2025-11-07T12:50:02,318  INFO NetworkImpl:161  link # 65536
+2025-11-07T12:50:02,400  INFO NetworkRoutingProvider:157 Checking network for mode 'car' for consistency...
+2025-11-07T12:50:02,432  INFO DisallowedNextLinksUtils:131 Link 1007819: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,433  INFO DisallowedNextLinksUtils:131 Link 1014143: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,435  INFO DisallowedNextLinksUtils:131 Link 1020003: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,444  INFO DisallowedNextLinksUtils:131 Link 1123502: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,444  INFO DisallowedNextLinksUtils:131 Link 1123510: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,445  INFO DisallowedNextLinksUtils:131 Link 1131665: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,445  INFO DisallowedNextLinksUtils:131 Link 113467: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,445  INFO DisallowedNextLinksUtils:131 Link 113469: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,445  INFO DisallowedNextLinksUtils:131 Link 113922: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,448  INFO DisallowedNextLinksUtils:131 Link 146616: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,450  INFO DisallowedNextLinksUtils:131 Link 181276: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,450  INFO DisallowedNextLinksUtils:131 Link 181693: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,450  INFO DisallowedNextLinksUtils:131 Link 181731: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,451  INFO DisallowedNextLinksUtils:131 Link 193681: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,453  INFO DisallowedNextLinksUtils:131 Link 916845: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,454  INFO DisallowedNextLinksUtils:131 Link 281694: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,457  INFO DisallowedNextLinksUtils:131 Link 348372: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,457  INFO DisallowedNextLinksUtils:131 Link 349152: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,457  INFO DisallowedNextLinksUtils:131 Link 359038: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,457  INFO DisallowedNextLinksUtils:131 Link 361631: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,458  INFO DisallowedNextLinksUtils:131 Link 38357: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,459  INFO DisallowedNextLinksUtils:131 Link 901956: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,459  INFO DisallowedNextLinksUtils:131 Link 400513: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,460  INFO DisallowedNextLinksUtils:131 Link 456324: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,461  INFO DisallowedNextLinksUtils:131 Link 473718: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,462  INFO DisallowedNextLinksUtils:131 Link 526225: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,463  INFO DisallowedNextLinksUtils:131 Link 572200: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,466  INFO DisallowedNextLinksUtils:131 Link 684700: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,467  INFO DisallowedNextLinksUtils:131 Link 685929: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,468  INFO DisallowedNextLinksUtils:131 Link 732023: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,469  INFO DisallowedNextLinksUtils:131 Link 746322: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,472  INFO DisallowedNextLinksUtils:131 Link 874891: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,472  INFO DisallowedNextLinksUtils:131 Link 901952: Removed 2 disallowed next link sequences for mode car
+2025-11-07T12:50:02,473  INFO DisallowedNextLinksUtils:131 Link 937295: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,474  INFO DisallowedNextLinksUtils:131 Link 943994: Removed 1 disallowed next link sequences for mode car
+2025-11-07T12:50:02,548  INFO MultimodalNetworkCleaner:104 running org.matsim.core.network.algorithms.MultimodalNetworkCleaner algorithm for modes [car] with connectivity modes []...
+2025-11-07T12:50:02,550  INFO MultimodalNetworkCleaner:108   checking 55170 nodes and 120185 links for dead-ends...
+2025-11-07T12:50:02,806  INFO MultimodalNetworkCleaner:126     The biggest cluster consists of 119878 links.
+2025-11-07T12:50:02,806  INFO MultimodalNetworkCleaner:127   done.
+2025-11-07T12:50:02,868  INFO MultimodalNetworkCleaner:151   resulting network contains 55023 nodes and 119878 links.
+2025-11-07T12:50:02,868  INFO MultimodalNetworkCleaner:153 done.
+2025-11-07T12:50:02,958  WARN TurnRestrictionsContext:144 No mode was specified, merging available DisallowedNextLinks from all modes.
+2025-11-07T12:50:02,959  WARN TurnRestrictionsContext:145 This could result in a graph that is more restrictive than meant to be for routing.
+2025-11-07T12:50:03,076  INFO SpeedyALTData:51 find dead ends...
+2025-11-07T12:50:03,094  INFO SpeedyALTData:132 calculate landmarks...
+2025-11-07T12:50:03,450  INFO SpeedyALTData:173 calculate min travelcost...
+2025-11-07T12:50:03,471  INFO NetworkImpl:165  node # 1
+2025-11-07T12:50:03,471  INFO NetworkImpl:165  node # 4
+2025-11-07T12:50:03,471  INFO NetworkImpl:165  node # 16
+2025-11-07T12:50:03,471  INFO NetworkImpl:165  node # 64
+2025-11-07T12:50:03,471  INFO NetworkImpl:165  node # 256
+2025-11-07T12:50:03,471  INFO NetworkImpl:165  node # 1024
+2025-11-07T12:50:03,472  INFO NetworkImpl:165  node # 4096
+2025-11-07T12:50:03,474  INFO NetworkImpl:165  node # 16384
+2025-11-07T12:50:03,478  INFO NetworkImpl:161  link # 1
+2025-11-07T12:50:03,478  INFO NetworkImpl:161  link # 4
+2025-11-07T12:50:03,478  INFO NetworkImpl:161  link # 16
+2025-11-07T12:50:03,478  INFO NetworkImpl:161  link # 64
+2025-11-07T12:50:03,479  INFO NetworkImpl:161  link # 256
+2025-11-07T12:50:03,479  INFO NetworkImpl:161  link # 1024
+2025-11-07T12:50:03,483  INFO NetworkImpl:161  link # 4096
+2025-11-07T12:50:03,496  INFO NetworkImpl:161  link # 16384
+2025-11-07T12:50:03,548  INFO NetworkImpl:161  link # 65536
+2025-11-07T12:50:03,617  INFO NetworkRoutingProvider:157 Checking network for mode 'truck' for consistency...
+2025-11-07T12:50:03,634  INFO DisallowedNextLinksUtils:131 Link 1007819: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,634  INFO DisallowedNextLinksUtils:131 Link 1014143: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,634  INFO DisallowedNextLinksUtils:131 Link 1020003: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,636  INFO DisallowedNextLinksUtils:131 Link 1123502: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,636  INFO DisallowedNextLinksUtils:131 Link 1123510: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,636  INFO DisallowedNextLinksUtils:131 Link 1131665: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,636  INFO DisallowedNextLinksUtils:131 Link 113467: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,637  INFO DisallowedNextLinksUtils:131 Link 113469: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,637  INFO DisallowedNextLinksUtils:131 Link 113922: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,638  INFO DisallowedNextLinksUtils:131 Link 146616: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,638  INFO DisallowedNextLinksUtils:131 Link 181276: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,638  INFO DisallowedNextLinksUtils:131 Link 181693: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,638  INFO DisallowedNextLinksUtils:131 Link 181731: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,639  INFO DisallowedNextLinksUtils:131 Link 193681: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,639  INFO DisallowedNextLinksUtils:131 Link 916845: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,640  INFO DisallowedNextLinksUtils:131 Link 281694: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,641  INFO DisallowedNextLinksUtils:131 Link 348372: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,641  INFO DisallowedNextLinksUtils:131 Link 349152: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,641  INFO DisallowedNextLinksUtils:131 Link 359038: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,642  INFO DisallowedNextLinksUtils:131 Link 361631: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,642  INFO DisallowedNextLinksUtils:131 Link 38357: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,642  INFO DisallowedNextLinksUtils:131 Link 901956: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,642  INFO DisallowedNextLinksUtils:131 Link 400513: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,643  INFO DisallowedNextLinksUtils:131 Link 456324: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,644  INFO DisallowedNextLinksUtils:131 Link 473718: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,644  INFO DisallowedNextLinksUtils:131 Link 526225: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,645  INFO DisallowedNextLinksUtils:131 Link 572200: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,647  INFO DisallowedNextLinksUtils:131 Link 684700: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,647  INFO DisallowedNextLinksUtils:131 Link 685929: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,648  INFO DisallowedNextLinksUtils:131 Link 732023: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,649  INFO DisallowedNextLinksUtils:131 Link 746322: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,652  INFO DisallowedNextLinksUtils:131 Link 874891: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,653  INFO DisallowedNextLinksUtils:131 Link 901952: Removed 2 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,654  INFO DisallowedNextLinksUtils:131 Link 937295: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,654  INFO DisallowedNextLinksUtils:131 Link 943994: Removed 1 disallowed next link sequences for mode truck
+2025-11-07T12:50:03,695  INFO MultimodalNetworkCleaner:104 running org.matsim.core.network.algorithms.MultimodalNetworkCleaner algorithm for modes [truck] with connectivity modes []...
+2025-11-07T12:50:03,695  INFO MultimodalNetworkCleaner:108   checking 55170 nodes and 120185 links for dead-ends...
+2025-11-07T12:50:03,913  INFO MultimodalNetworkCleaner:126     The biggest cluster consists of 119878 links.
+2025-11-07T12:50:03,913  INFO MultimodalNetworkCleaner:127   done.
+2025-11-07T12:50:03,950  INFO MultimodalNetworkCleaner:151   resulting network contains 55023 nodes and 119878 links.
+2025-11-07T12:50:03,950  INFO MultimodalNetworkCleaner:153 done.
+2025-11-07T12:50:04,011  WARN TurnRestrictionsContext:144 No mode was specified, merging available DisallowedNextLinks from all modes.
+2025-11-07T12:50:04,011  WARN TurnRestrictionsContext:145 This could result in a graph that is more restrictive than meant to be for routing.
+2025-11-07T12:50:04,078  INFO SpeedyALTData:51 find dead ends...
+2025-11-07T12:50:04,084  INFO SpeedyALTData:132 calculate landmarks...
+2025-11-07T12:50:04,441  INFO SpeedyALTData:173 calculate min travelcost...
+2025-11-07T12:50:04,460  INFO NetworkImpl:165  node # 1
+2025-11-07T12:50:04,460  INFO NetworkImpl:165  node # 4
+2025-11-07T12:50:04,461  INFO NetworkImpl:165  node # 16
+2025-11-07T12:50:04,461  INFO NetworkImpl:165  node # 64
+2025-11-07T12:50:04,461  INFO NetworkImpl:165  node # 256
+2025-11-07T12:50:04,461  INFO NetworkImpl:165  node # 1024
+2025-11-07T12:50:04,462  INFO NetworkImpl:165  node # 4096
+2025-11-07T12:50:04,463  INFO NetworkImpl:165  node # 16384
+2025-11-07T12:50:04,467  INFO NetworkImpl:161  link # 1
+2025-11-07T12:50:04,468  INFO NetworkImpl:161  link # 4
+2025-11-07T12:50:04,468  INFO NetworkImpl:161  link # 16
+2025-11-07T12:50:04,468  INFO NetworkImpl:161  link # 64
+2025-11-07T12:50:04,468  INFO NetworkImpl:161  link # 256
+2025-11-07T12:50:04,469  INFO NetworkImpl:161  link # 1024
+2025-11-07T12:50:04,471  INFO NetworkImpl:161  link # 4096
+2025-11-07T12:50:04,482  INFO NetworkImpl:161  link # 16384
+2025-11-07T12:50:04,530  INFO NetworkImpl:161  link # 65536
+2025-11-07T12:50:04,597  INFO NetworkRoutingProvider:157 Checking network for mode 'car_passenger' for consistency...
+2025-11-07T12:50:04,612  INFO DisallowedNextLinksUtils:131 Link 1007819: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,613  INFO DisallowedNextLinksUtils:131 Link 1014143: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,613  INFO DisallowedNextLinksUtils:131 Link 1020003: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,614  INFO DisallowedNextLinksUtils:131 Link 1123502: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,614  INFO DisallowedNextLinksUtils:131 Link 1123510: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,615  INFO DisallowedNextLinksUtils:131 Link 1131665: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,615  INFO DisallowedNextLinksUtils:131 Link 113467: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,615  INFO DisallowedNextLinksUtils:131 Link 113469: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,615  INFO DisallowedNextLinksUtils:131 Link 113922: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,616  INFO DisallowedNextLinksUtils:131 Link 146616: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,616  INFO DisallowedNextLinksUtils:131 Link 181276: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,616  INFO DisallowedNextLinksUtils:131 Link 181693: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,617  INFO DisallowedNextLinksUtils:131 Link 181731: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,617  INFO DisallowedNextLinksUtils:131 Link 193681: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,618  INFO DisallowedNextLinksUtils:131 Link 916845: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,618  INFO DisallowedNextLinksUtils:131 Link 281694: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,619  INFO DisallowedNextLinksUtils:131 Link 348372: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,619  INFO DisallowedNextLinksUtils:131 Link 349152: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,620  INFO DisallowedNextLinksUtils:131 Link 359038: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,620  INFO DisallowedNextLinksUtils:131 Link 361631: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,620  INFO DisallowedNextLinksUtils:131 Link 38357: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,621  INFO DisallowedNextLinksUtils:131 Link 901956: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,621  INFO DisallowedNextLinksUtils:131 Link 400513: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,621  INFO DisallowedNextLinksUtils:131 Link 456324: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,622  INFO DisallowedNextLinksUtils:131 Link 473718: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,623  INFO DisallowedNextLinksUtils:131 Link 526225: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,623  INFO DisallowedNextLinksUtils:131 Link 572200: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,625  INFO DisallowedNextLinksUtils:131 Link 684700: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,625  INFO DisallowedNextLinksUtils:131 Link 685929: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,626  INFO DisallowedNextLinksUtils:131 Link 732023: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,626  INFO DisallowedNextLinksUtils:131 Link 746322: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,628  INFO DisallowedNextLinksUtils:131 Link 874891: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,629  INFO DisallowedNextLinksUtils:131 Link 901952: Removed 2 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,629  INFO DisallowedNextLinksUtils:131 Link 937295: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,629  INFO DisallowedNextLinksUtils:131 Link 943994: Removed 1 disallowed next link sequences for mode car_passenger
+2025-11-07T12:50:04,663  INFO MultimodalNetworkCleaner:104 running org.matsim.core.network.algorithms.MultimodalNetworkCleaner algorithm for modes [car_passenger] with connectivity modes []...
+2025-11-07T12:50:04,664  INFO MultimodalNetworkCleaner:108   checking 55170 nodes and 120185 links for dead-ends...
+2025-11-07T12:50:04,868  INFO MultimodalNetworkCleaner:126     The biggest cluster consists of 119878 links.
+2025-11-07T12:50:04,868  INFO MultimodalNetworkCleaner:127   done.
+2025-11-07T12:50:04,907  INFO MultimodalNetworkCleaner:151   resulting network contains 55023 nodes and 119878 links.
+2025-11-07T12:50:04,907  INFO MultimodalNetworkCleaner:153 done.
+2025-11-07T12:50:04,962  WARN TurnRestrictionsContext:144 No mode was specified, merging available DisallowedNextLinks from all modes.
+2025-11-07T12:50:04,962  WARN TurnRestrictionsContext:145 This could result in a graph that is more restrictive than meant to be for routing.
+2025-11-07T12:50:05,048  INFO SpeedyALTData:51 find dead ends...
+2025-11-07T12:50:05,057  INFO SpeedyALTData:132 calculate landmarks...
+2025-11-07T12:50:05,376  INFO SpeedyALTData:173 calculate min travelcost...
+2025-11-07T12:50:05,525  INFO Counter:70 [PersonPrepareForSim] handled person # 1
+2025-11-07T12:50:05,525  INFO Counter:70 [PersonPrepareForSim] handled person # 2
+2025-11-07T12:50:05,526  INFO Counter:70 [PersonPrepareForSim] handled person # 4
+2025-11-07T12:50:05,526  INFO Counter:70 [PersonPrepareForSim] handled person # 8
+2025-11-07T12:50:05,527  INFO Counter:70 [PersonPrepareForSim] handled person # 16
+2025-11-07T12:50:05,527  INFO Counter:70 [PersonPrepareForSim] handled person # 32
+2025-11-07T12:50:05,529  INFO Counter:70 [PersonPrepareForSim] handled person # 64
+2025-11-07T12:50:05,533  INFO Counter:70 [PersonPrepareForSim] handled person # 128
+2025-11-07T12:50:05,538  INFO Counter:70 [PersonPrepareForSim] handled person # 256
+2025-11-07T12:50:05,546  INFO Counter:70 [PersonPrepareForSim] handled person # 512
+2025-11-07T12:50:05,561  INFO Counter:70 [PersonPrepareForSim] handled person # 1024
+2025-11-07T12:50:05,575  INFO Counter:70 [PersonPrepareForSim] handled person # 2048
+2025-11-07T12:50:05,598  INFO Counter:70 [PersonPrepareForSim] handled person # 4096
+2025-11-07T12:50:05,609  INFO Counter:70 [PersonPrepareForSim] handled person # 8192
+2025-11-07T12:50:05,631  INFO Counter:70 [PersonPrepareForSim] handled person # 16384
+2025-11-07T12:50:05,673  INFO Counter:70 [PersonPrepareForSim] handled person # 32768
+2025-11-07T12:50:05,897  INFO Counter:70 [PersonPrepareForSim] handled person # 65536
+2025-11-07T12:50:06,065  INFO Counter:70 [PersonPrepareForSim] handled person # 131072
+2025-11-07T12:50:06,323  INFO Counter:75 [PersonPrepareForSim] handled person # 199709
+2025-11-07T12:50:06,386  INFO AbstractController:136 ###################################################
+2025-11-07T12:50:06,386  INFO AbstractController:137 ### ITERATION 0 BEGINS
+2025-11-07T12:50:06,389  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.matsim.analysis.LegTimesControllerListener with priority 0.0
+2025-11-07T12:50:06,389  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:50:06,389  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:50:06,389  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonDepartureEvent
+2025-11-07T12:50:06,389  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonArrivalEvent
+2025-11-07T12:50:06,389  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.ActivityEndEvent
+2025-11-07T12:50:06,389  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.ActivityStartEvent
+2025-11-07T12:50:06,389  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:50:06,389  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:50:06,389  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonDepartureEvent
+2025-11-07T12:50:06,389  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonArrivalEvent
+2025-11-07T12:50:06,389  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.ActivityEndEvent
+2025-11-07T12:50:06,389  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.ActivityStartEvent
+2025-11-07T12:50:06,389  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.matsim.analysis.LegHistogramListener with priority 0.0
+2025-11-07T12:50:06,390  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:50:06,390  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:50:06,390  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonDepartureEvent
+2025-11-07T12:50:06,390  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonArrivalEvent
+2025-11-07T12:50:06,390  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonStuckEvent
+2025-11-07T12:50:06,390  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:50:06,390  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:50:06,390  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonDepartureEvent
+2025-11-07T12:50:06,390  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonArrivalEvent
+2025-11-07T12:50:06,390  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonStuckEvent
+2025-11-07T12:50:06,391  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.matsim.analysis.LinkStatsControllerListener with priority 0.0
+2025-11-07T12:50:06,391  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.matsim.contribs.discrete_mode_choice.modules.UtilitiesWriterHandler with priority 0.0
+2025-11-07T12:50:06,391  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.eqasim.core.components.fast_calibration.AlphaCalibrator with priority 0.0
+2025-11-07T12:50:06,391  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.eqasim.switzerland.ch.utils.pt.PTPassengerAnalyser with priority 0.0
+2025-11-07T12:50:06,391  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.eqasim.switzerland.ch.utils.pt.PTLinkVolumesAnalyser with priority 0.0
+2025-11-07T12:50:06,391  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.matsim.core.replanning.ReplanningContextImpl with priority 0.0
+2025-11-07T12:50:06,391  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.matsim.core.scoring.ScoringFunctionsForPopulation$$Lambda/0x000014ebe0572678 with priority 0.0
+2025-11-07T12:50:06,685  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.matsim.core.scoring.ExperiencedPlansServiceImpl$1 with priority 0.0
+2025-11-07T12:50:06,723  INFO ControllerListenerManagerImpl:191 [it.0] all ControllerIterationStartsListeners called.
+2025-11-07T12:50:06,724  INFO ControllerListenerManagerImpl:293 calling notifyBeforeMobsim on org.matsim.core.controler.corelisteners.EventsHandlingImpl with priority 0.0
+2025-11-07T12:50:06,724  INFO EventsManagerImpl:173 resetting Event-Handlers
+2025-11-07T12:50:06,724  INFO EventsManagerImpl:180   org.matsim.core.trafficmonitoring.TravelTimeCalculator
+2025-11-07T12:50:06,725  INFO EventsManagerImpl:180   org.matsim.analysis.VolumesAnalyzer
+2025-11-07T12:50:06,725  INFO EventsManagerImpl:180   org.matsim.core.scoring.ScoringFunctionsForPopulation
+2025-11-07T12:50:06,728  INFO EventsManagerImpl:180   org.eqasim.core.simulation.termination.mode_share.ModeShareTracker
+2025-11-07T12:50:06,728  INFO EventsManagerImpl:180   org.matsim.analysis.CalcLegTimes
+2025-11-07T12:50:06,729  INFO EventsManagerImpl:180   org.matsim.analysis.LegHistogram
+2025-11-07T12:50:06,729  INFO EventsManagerImpl:180   ch.sbb.matsim.routing.pt.raptor.SwissRailRaptorFactory$$Lambda/0x000014ebe05af690
+2025-11-07T12:50:06,736  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:50:06,736  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:50:06,736  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.Event
+2025-11-07T12:50:06,737  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:50:06,737  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:50:06,737  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.Event
+2025-11-07T12:50:06,737  INFO ControllerListenerManagerImpl:293 calling notifyBeforeMobsim on org.matsim.core.controler.corelisteners.PlansDumpingImpl with priority 0.0
+2025-11-07T12:50:06,737  INFO PlansDumpingImpl:78 dumping plans...
+2025-11-07T12:50:06,929  INFO Counter:70 [PopulationWriter] dumped person # 1
+2025-11-07T12:50:06,929  INFO Counter:70 [PopulationWriter] dumped person # 2
+2025-11-07T12:50:06,929  INFO Counter:70 [PopulationWriter] dumped person # 4
+2025-11-07T12:50:06,929  INFO Counter:70 [PopulationWriter] dumped person # 8
+2025-11-07T12:50:06,929  INFO Counter:70 [PopulationWriter] dumped person # 16
+2025-11-07T12:50:06,929  INFO Counter:70 [PopulationWriter] dumped person # 32
+2025-11-07T12:50:06,929  INFO Counter:70 [PopulationWriter] dumped person # 64
+2025-11-07T12:50:06,929  INFO Counter:70 [PopulationWriter] dumped person # 128
+2025-11-07T12:50:06,930  INFO Counter:70 [PopulationWriter] dumped person # 256
+2025-11-07T12:50:06,930  INFO Counter:70 [PopulationWriter] dumped person # 512
+2025-11-07T12:50:06,940  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 1
+2025-11-07T12:50:06,951  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 2
+2025-11-07T12:50:06,951  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 4
+2025-11-07T12:50:06,954  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 8
+2025-11-07T12:50:06,958  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 16
+2025-11-07T12:50:06,961  INFO Counter:70 [PopulationWriter] dumped person # 1024
+2025-11-07T12:50:06,965  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 32
+2025-11-07T12:50:06,974  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 64
+2025-11-07T12:50:06,986  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 128
+2025-11-07T12:50:07,014  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 256
+2025-11-07T12:50:07,062  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 512
+2025-11-07T12:50:07,144  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 1024
+2025-11-07T12:50:07,148  INFO Counter:70 [PopulationWriter] dumped person # 2048
+2025-11-07T12:50:07,297  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 2048
+2025-11-07T12:50:07,442  INFO Counter:70 [PopulationWriter] dumped person # 4096
+2025-11-07T12:50:07,589  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 4096
+2025-11-07T12:50:08,014  INFO Counter:70 [PopulationWriter] dumped person # 8192
+2025-11-07T12:50:08,149  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 8192
+2025-11-07T12:50:09,152  INFO Counter:70 [PopulationWriter] dumped person # 16384
+2025-11-07T12:50:09,293  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 16384
+2025-11-07T12:50:11,413  INFO Counter:70 [PopulationWriter] dumped person # 32768
+2025-11-07T12:50:11,580  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 32768
+2025-11-07T12:50:16,000  INFO Counter:70 [PopulationWriter] dumped person # 65536
+2025-11-07T12:50:16,136  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 65536
+2025-11-07T12:50:24,941  INFO Counter:70 [PopulationWriter] dumped person # 131072
+2025-11-07T12:50:25,078  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 131072
+2025-11-07T12:50:34,066  INFO Counter:75 [ParallelPopulationWriterV6] dumped person # 199709
+2025-11-07T12:50:34,066  INFO PopulationWriter:150 Population written to: simulation_output/ITERS/it.0/0.plans.xml.gz
+2025-11-07T12:50:34,068  INFO Counter:75 [PopulationWriter] dumped person # 199709
+2025-11-07T12:50:34,068  INFO PlansDumpingImpl:95 finished plans dump.
+2025-11-07T12:50:34,069  INFO ControllerListenerManagerImpl:299 calling notifyBeforeMobsim on org.matsim.core.population.VspPlansCleaner with priority 0.0
+2025-11-07T12:50:34,347  INFO ControllerListenerManagerImpl:302 [it.0] all ControlerBeforeMobsimListeners called.
+2025-11-07T12:50:34,349  INFO PrepareForMobsimImpl:86 Network seems to be multimodal. Create car-only network which is handed over to PersonPrepareForSim.
+2025-11-07T12:50:34,349  INFO NetworkImpl:165  node # 1
+2025-11-07T12:50:34,349  INFO NetworkImpl:165  node # 4
+2025-11-07T12:50:34,349  INFO NetworkImpl:165  node # 16
+2025-11-07T12:50:34,349  INFO NetworkImpl:165  node # 64
+2025-11-07T12:50:34,349  INFO NetworkImpl:165  node # 256
+2025-11-07T12:50:34,349  INFO NetworkImpl:165  node # 1024
+2025-11-07T12:50:34,350  INFO NetworkImpl:165  node # 4096
+2025-11-07T12:50:34,352  INFO NetworkImpl:165  node # 16384
+2025-11-07T12:50:34,357  INFO NetworkImpl:161  link # 1
+2025-11-07T12:50:34,357  INFO NetworkImpl:161  link # 4
+2025-11-07T12:50:34,357  INFO NetworkImpl:161  link # 16
+2025-11-07T12:50:34,357  INFO NetworkImpl:161  link # 64
+2025-11-07T12:50:34,357  INFO NetworkImpl:161  link # 256
+2025-11-07T12:50:34,358  INFO NetworkImpl:161  link # 1024
+2025-11-07T12:50:34,361  INFO NetworkImpl:161  link # 4096
+2025-11-07T12:50:34,372  INFO NetworkImpl:161  link # 16384
+2025-11-07T12:50:34,422  INFO NetworkImpl:161  link # 65536
+2025-11-07T12:50:34,595  INFO Counter:70 [PersonPrepareForSim] handled person # 1
+2025-11-07T12:50:34,595  INFO Counter:70 [PersonPrepareForSim] handled person # 2
+2025-11-07T12:50:34,595  INFO Counter:70 [PersonPrepareForSim] handled person # 4
+2025-11-07T12:50:34,596  INFO Counter:70 [PersonPrepareForSim] handled person # 8
+2025-11-07T12:50:34,596  INFO Counter:70 [PersonPrepareForSim] handled person # 16
+2025-11-07T12:50:34,597  INFO Counter:70 [PersonPrepareForSim] handled person # 32
+2025-11-07T12:50:34,598  INFO Counter:70 [PersonPrepareForSim] handled person # 64
+2025-11-07T12:50:34,600  INFO Counter:70 [PersonPrepareForSim] handled person # 128
+2025-11-07T12:50:34,603  INFO Counter:70 [PersonPrepareForSim] handled person # 256
+2025-11-07T12:50:34,607  INFO Counter:70 [PersonPrepareForSim] handled person # 512
+2025-11-07T12:50:34,612  INFO Counter:70 [PersonPrepareForSim] handled person # 1024
+2025-11-07T12:50:34,618  INFO Counter:70 [PersonPrepareForSim] handled person # 2048
+2025-11-07T12:50:34,625  INFO Counter:70 [PersonPrepareForSim] handled person # 4096
+2025-11-07T12:50:34,638  INFO Counter:70 [PersonPrepareForSim] handled person # 8192
+2025-11-07T12:50:34,663  INFO Counter:70 [PersonPrepareForSim] handled person # 16384
+2025-11-07T12:50:34,710  INFO Counter:70 [PersonPrepareForSim] handled person # 32768
+2025-11-07T12:50:34,798  INFO Counter:70 [PersonPrepareForSim] handled person # 65536
+2025-11-07T12:50:34,963  INFO Counter:70 [PersonPrepareForSim] handled person # 131072
+2025-11-07T12:50:35,245  INFO Counter:75 [PersonPrepareForSim] handled person # 199709
+2025-11-07T12:50:35,335  INFO MobsimListenerManager:50 calling addQueueSimulationListener
+2025-11-07T12:50:35,335  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimAfterSimStepListener
+2025-11-07T12:50:35,335  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimListener
+2025-11-07T12:50:35,336  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.vis.snapshotwriters.SnapshotWriterManager
+2025-11-07T12:50:35,336  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimBeforeCleanupListener
+2025-11-07T12:50:35,336  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimInitializedListener
+2025-11-07T12:50:35,350  INFO QSimProvider:131 Added MobsimEngine class org.matsim.core.mobsim.qsim.ActivityEngineDefaultImpl
+2025-11-07T12:50:35,351  INFO QSimProvider:137 Added Activityhandler class org.matsim.core.mobsim.qsim.ActivityEngineDefaultImpl
+2025-11-07T12:50:35,524  WARN QueueWithBuffer:504 Link 1002007_spec too small: enlarge storage capacity from: 0.01388888888888889 Vehicles to: 0.05070615334741835 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2025-11-07T12:50:35,524  WARN QueueWithBuffer:504 Link 1002011_spec too small: enlarge storage capacity from: 0.01388888888888889 Vehicles to: 0.05518635864717573 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2025-11-07T12:50:35,524  WARN QueueWithBuffer:504 Link 1002012_spec too small: enlarge storage capacity from: 0.01388888888888889 Vehicles to: 0.05518635864717573 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2025-11-07T12:50:35,526  WARN QueueWithBuffer:504 Link 1003973_spec too small: enlarge storage capacity from: 0.01388888888888889 Vehicles to: 0.06363811853391228 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2025-11-07T12:50:35,526  WARN QueueWithBuffer:504 Link 1003977_spec too small: enlarge storage capacity from: 0.01388888888888889 Vehicles to: 0.029354551731843617 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2025-11-07T12:50:35,527  WARN QueueWithBuffer:504 Link 1003978_spec too small: enlarge storage capacity from: 0.01388888888888889 Vehicles to: 0.029354551731843617 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2025-11-07T12:50:35,527  WARN QueueWithBuffer:504 Link 1004368_spec too small: enlarge storage capacity from: 0.008333333333333333 Vehicles to: 0.06125374409435402 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2025-11-07T12:50:35,528  WARN QueueWithBuffer:504 Link 100544_spec too small: enlarge storage capacity from: 0.01388888888888889 Vehicles to: 0.03791644424643687 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2025-11-07T12:50:35,531  WARN QueueWithBuffer:504 Link 1010562_spec too small: enlarge storage capacity from: 0.020833333333333336 Vehicles to: 0.20136922591188974 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2025-11-07T12:50:35,531  WARN QueueWithBuffer:504 Link 1010563_spec too small: enlarge storage capacity from: 0.020833333333333336 Vehicles to: 0.20136922591188974 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2025-11-07T12:50:35,531  WARN QueueWithBuffer:504 Link 1010689_spec too small: enlarge storage capacity from: 0.020833333333333336 Vehicles to: 0.0216128457941165 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2025-11-07T12:50:35,531  WARN QueueWithBuffer:507 Additional warnings of this type are suppressed.
+2025-11-07T12:50:35,748  INFO QSimProvider:131 Added MobsimEngine class org.matsim.core.mobsim.qsim.qnetsimengine.QNetsimEngineWithThreadpool
+2025-11-07T12:50:35,748  INFO QSimProvider:143 Added DepartureHandler class org.matsim.core.mobsim.qsim.qnetsimengine.NetworkModeDepartureHandlerDefaultImpl
+2025-11-07T12:50:35,748  INFO QSimProvider:131 Added MobsimEngine class org.matsim.core.mobsim.qsim.DefaultTeleportationEngine
+2025-11-07T12:50:35,748  INFO QSimProvider:143 Added DepartureHandler class org.matsim.core.mobsim.qsim.DefaultTeleportationEngine
+2025-11-07T12:50:35,748  INFO QSimProvider:149 Added AgentSource class org.matsim.core.mobsim.qsim.agents.PopulationAgentSource
+2025-11-07T12:50:35,748  INFO MobsimListenerManager:50 calling addQueueSimulationListener
+2025-11-07T12:50:35,749  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimListener
+2025-11-07T12:50:35,749  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimBeforeSimStepListener
+2025-11-07T12:50:35,749  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.qsim.messagequeueengine.MessageQueueEngine
+2025-11-07T12:50:35,749  INFO QSimProvider:155 Added MobsimListener class org.matsim.core.mobsim.qsim.messagequeueengine.MessageQueueEngine
+2025-11-07T12:50:35,749  INFO QSimProvider:131 Added MobsimEngine class ch.sbb.matsim.mobsim.qsim.pt.SBBTransitQSimEngine
+2025-11-07T12:50:35,749  INFO QSimProvider:143 Added DepartureHandler class ch.sbb.matsim.mobsim.qsim.pt.SBBTransitQSimEngine
+2025-11-07T12:50:35,749  INFO QSimProvider:149 Added AgentSource class ch.sbb.matsim.mobsim.qsim.pt.SBBTransitQSimEngine
+2025-11-07T12:50:35,754  INFO PopulationUtils:1292 adding scenario element for allpersons container
+2025-11-07T12:50:35,754  INFO PopulationImpl:111  person # 1
+2025-11-07T12:50:35,754  INFO PopulationImpl:111  person # 4
+2025-11-07T12:50:35,755  INFO PopulationImpl:111  person # 16
+2025-11-07T12:50:35,755  INFO PopulationImpl:111  person # 64
+2025-11-07T12:50:35,757  INFO PopulationImpl:111  person # 256
+2025-11-07T12:50:35,762  INFO PopulationImpl:111  person # 1024
+2025-11-07T12:50:35,774  INFO PopulationImpl:111  person # 4096
+2025-11-07T12:50:35,807  INFO PopulationImpl:111  person # 16384
+2025-11-07T12:50:35,917  INFO PopulationImpl:111  person # 65536
+2025-11-07T12:50:36,213  INFO VehicleUtils:431 adding scenario element for allvehicles container
+2025-11-07T12:50:36,214  INFO Counter:70 [VehiclesImpl] added vehicle # 1
+2025-11-07T12:50:36,214  INFO PopulationAgentSource:174 have seen vehicle with id 202340001091362:car before; not placing it again.
+2025-11-07T12:50:36,214  INFO PopulationAgentSource:174 have seen vehicle with id 202340001091362:car before; not placing it again.
+2025-11-07T12:50:36,214  INFO PopulationAgentSource:174 have seen vehicle with id 202340001091362:car before; not placing it again.
+2025-11-07T12:50:36,214  INFO Counter:70 [VehiclesImpl] added vehicle # 2
+2025-11-07T12:50:36,214  INFO PopulationAgentSource:174 have seen vehicle with id 202340001091931:car before; not placing it again.
+2025-11-07T12:50:36,214  INFO PopulationAgentSource:174 have seen vehicle with id 202340001091931:car before; not placing it again.
+2025-11-07T12:50:36,215  INFO PopulationAgentSource:174 have seen vehicle with id 202340001092010:car before; not placing it again.
+2025-11-07T12:50:36,215  WARN PopulationAgentSource:177  Future occurences of this logging statement are suppressed.
+2025-11-07T12:50:36,215  INFO Counter:70 [VehiclesImpl] added vehicle # 4
+2025-11-07T12:50:36,215  INFO Counter:70 [VehiclesImpl] added vehicle # 8
+2025-11-07T12:50:36,215  INFO Counter:70 [VehiclesImpl] added vehicle # 16
+2025-11-07T12:50:36,215  INFO Counter:70 [VehiclesImpl] added vehicle # 32
+2025-11-07T12:50:36,216  INFO Counter:70 [VehiclesImpl] added vehicle # 64
+2025-11-07T12:50:36,217  INFO Counter:70 [VehiclesImpl] added vehicle # 128
+2025-11-07T12:50:36,220  INFO Counter:70 [VehiclesImpl] added vehicle # 256
+2025-11-07T12:50:36,224  INFO Counter:70 [VehiclesImpl] added vehicle # 512
+2025-11-07T12:50:36,229  INFO Counter:70 [VehiclesImpl] added vehicle # 1024
+2025-11-07T12:50:36,238  INFO Counter:70 [VehiclesImpl] added vehicle # 2048
+2025-11-07T12:50:36,255  INFO Counter:70 [VehiclesImpl] added vehicle # 4096
+2025-11-07T12:50:36,285  INFO Counter:70 [VehiclesImpl] added vehicle # 8192
+2025-11-07T12:50:36,344  INFO Counter:70 [VehiclesImpl] added vehicle # 16384
+2025-11-07T12:50:36,455  INFO Counter:70 [VehiclesImpl] added vehicle # 32768
+2025-11-07T12:50:36,661  INFO Counter:70 [VehiclesImpl] added vehicle # 65536
+2025-11-07T12:50:36,979  INFO AbstractQNetsimEngine:421 Assigned 6902 nodes and 15322 links to QSimEngineRunner #0
+2025-11-07T12:50:36,979  INFO AbstractQNetsimEngine:421 Assigned 6902 nodes and 15318 links to QSimEngineRunner #1
+2025-11-07T12:50:36,979  INFO AbstractQNetsimEngine:421 Assigned 6902 nodes and 15398 links to QSimEngineRunner #2
+2025-11-07T12:50:36,979  INFO AbstractQNetsimEngine:421 Assigned 6902 nodes and 15334 links to QSimEngineRunner #3
+2025-11-07T12:50:36,979  INFO AbstractQNetsimEngine:421 Assigned 6902 nodes and 15303 links to QSimEngineRunner #4
+2025-11-07T12:50:36,979  INFO AbstractQNetsimEngine:421 Assigned 6902 nodes and 15394 links to QSimEngineRunner #5
+2025-11-07T12:50:36,979  INFO AbstractQNetsimEngine:421 Assigned 6901 nodes and 15287 links to QSimEngineRunner #6
+2025-11-07T12:50:36,979  INFO AbstractQNetsimEngine:421 Assigned 6901 nodes and 15331 links to QSimEngineRunner #7
+2025-11-07T12:50:37,154  INFO EventsManagerImpl:116  event # 1
+2025-11-07T12:50:37,156  INFO EventsManagerImpl:116  event # 4
+2025-11-07T12:50:37,156  INFO EventsManagerImpl:116  event # 16
+2025-11-07T12:50:37,169  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 00:00:00 : #links=0 #nodes=0
+2025-11-07T12:50:37,174  INFO QSim:552 SIMULATION (NEW QSim) AT 00:00:00 : #active agents=210780 lost=0 simT=0.0s realT=1s; (s/r): 0.0
+2025-11-07T12:50:37,182  INFO EventsManagerImpl:116  event # 64
+2025-11-07T12:50:37,188 ERROR BasicPlanAgentImpl:187 last activity of person driver agent id 202340002402099 has end time < infty; setting it to infty
+2025-11-07T12:50:37,188 ERROR BasicPlanAgentImpl:188  This message given only once.
+2025-11-07T12:50:37,202  INFO EventsManagerImpl:116  event # 256
+2025-11-07T12:50:37,250  INFO EventsManagerImpl:116  event # 1024
+2025-11-07T12:50:37,331  INFO NetworkModeDepartureHandlerDefaultImpl:109 teleport vehicle 202340001888061:car from link 1097914 to link 1025397
+2025-11-07T12:50:37,354  INFO EventsManagerImpl:116  event # 4096
+2025-11-07T12:50:37,525  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 01:00:00 : #links=9 #nodes=0
+2025-11-07T12:50:37,525  INFO QSim:552 SIMULATION (NEW QSim) AT 01:00:00 : #active agents=210730 lost=0 simT=3600.0s realT=2s; (s/r): 1800.0
+2025-11-07T12:50:37,723  INFO EventsManagerImpl:116  event # 16384
+2025-11-07T12:50:37,740  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 02:00:00 : #links=7 #nodes=1
+2025-11-07T12:50:37,740  INFO QSim:552 SIMULATION (NEW QSim) AT 02:00:00 : #active agents=210704 lost=0 simT=7200.0s realT=2s; (s/r): 3600.0
+2025-11-07T12:50:37,971  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 03:00:00 : #links=26 #nodes=5
+2025-11-07T12:50:37,971  INFO QSim:552 SIMULATION (NEW QSim) AT 03:00:00 : #active agents=210661 lost=0 simT=10800.0s realT=2s; (s/r): 5400.0
+2025-11-07T12:50:38,134  INFO NetworkModeDepartureHandlerDefaultImpl:109 teleport vehicle 202340002707066:car from link 1064020 to link 762576
+2025-11-07T12:50:38,177  INFO NetworkModeDepartureHandlerDefaultImpl:109 teleport vehicle 202340002667970:car from link 186880 to link 832097
+2025-11-07T12:50:38,242  INFO NetworkModeDepartureHandlerDefaultImpl:109 teleport vehicle 202340004031771:car from link 294774 to link 544929
+2025-11-07T12:50:38,331  INFO NetworkModeDepartureHandlerDefaultImpl:109 teleport vehicle 202340002654243:car from link 521111 to link 421282
+2025-11-07T12:50:38,380  INFO EventsManagerImpl:116  event # 65536
+2025-11-07T12:50:38,394  INFO NetworkModeDepartureHandlerDefaultImpl:109 teleport vehicle 202340007767767:car from link 523868 to link 421415
+2025-11-07T12:50:38,404  INFO NetworkModeDepartureHandlerDefaultImpl:109 teleport vehicle 202340010350309:car from link 252191 to link 276034
+2025-11-07T12:50:38,452  INFO NetworkModeDepartureHandlerDefaultImpl:109 teleport vehicle 202340009988051:car from link 294774 to link 544929
+2025-11-07T12:50:38,490  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 04:00:00 : #links=124 #nodes=18
+2025-11-07T12:50:38,490  INFO QSim:552 SIMULATION (NEW QSim) AT 04:00:00 : #active agents=210609 lost=0 simT=14400.0s realT=3s; (s/r): 4800.0
+2025-11-07T12:50:38,511  INFO NetworkModeDepartureHandlerDefaultImpl:109 teleport vehicle 202340001403392:car from link 46553 to link 704042
+2025-11-07T12:50:38,511  INFO NetworkModeDepartureHandlerDefaultImpl:111 No more occurrences of teleported vehicles will be reported.
+2025-11-07T12:50:39,604  INFO EventsManagerImpl:116  event # 262144
+2025-11-07T12:50:39,731  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 05:00:00 : #links=442 #nodes=102
+2025-11-07T12:50:39,732  INFO QSim:552 SIMULATION (NEW QSim) AT 05:00:00 : #active agents=210506 lost=0 simT=18000.0s realT=4s; (s/r): 4500.0
+2025-11-07T12:50:42,757  INFO EventsManagerImpl:116  event # 1048576
+2025-11-07T12:50:43,666  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 06:00:00 : #links=1868 #nodes=498
+2025-11-07T12:50:43,667  INFO QSim:552 SIMULATION (NEW QSim) AT 06:00:00 : #active agents=209570 lost=0 simT=21600.0s realT=8s; (s/r): 2700.0
+2025-11-07T12:50:52,802  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 07:00:00 : #links=3566 #nodes=868
+2025-11-07T12:50:52,804  INFO QSim:552 SIMULATION (NEW QSim) AT 07:00:00 : #active agents=207069 lost=0 simT=25200.0s realT=17s; (s/r): 1482.3529411764705
+2025-11-07T12:50:53,685  INFO EventsManagerImpl:116  event # 4194304
+2025-11-07T12:50:56,825  INFO MemoryObserver:43 used RAM: 3009 MB  free: 1934 MB  total: 4944 MB  max: 30208 MB
+2025-11-07T12:51:03,917  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 08:00:00 : #links=3456 #nodes=839
+2025-11-07T12:51:03,921  INFO QSim:552 SIMULATION (NEW QSim) AT 08:00:00 : #active agents=204090 lost=0 simT=28800.0s realT=28s; (s/r): 1028.5714285714287
+2025-11-07T12:51:14,316  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 09:00:00 : #links=2767 #nodes=681
+2025-11-07T12:51:14,318  INFO QSim:552 SIMULATION (NEW QSim) AT 09:00:00 : #active agents=200591 lost=0 simT=32400.0s realT=38s; (s/r): 852.6315789473684
+2025-11-07T12:51:23,537  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 10:00:00 : #links=2461 #nodes=591
+2025-11-07T12:51:23,539  INFO QSim:552 SIMULATION (NEW QSim) AT 10:00:00 : #active agents=196073 lost=0 simT=36000.0s realT=48s; (s/r): 750.0
+2025-11-07T12:51:32,056  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 11:00:00 : #links=2305 #nodes=586
+2025-11-07T12:51:32,057  INFO QSim:552 SIMULATION (NEW QSim) AT 11:00:00 : #active agents=190444 lost=0 simT=39600.0s realT=56s; (s/r): 707.1428571428571
+2025-11-07T12:51:40,928  INFO EventsManagerImpl:116  event # 16777216
+2025-11-07T12:51:41,570  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 12:00:00 : #links=3046 #nodes=689
+2025-11-07T12:51:41,571  INFO QSim:552 SIMULATION (NEW QSim) AT 12:00:00 : #active agents=183994 lost=0 simT=43200.0s realT=66s; (s/r): 654.5454545454545
+2025-11-07T12:51:52,114  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 13:00:00 : #links=2629 #nodes=599
+2025-11-07T12:51:52,116  INFO QSim:552 SIMULATION (NEW QSim) AT 13:00:00 : #active agents=177554 lost=0 simT=46800.0s realT=76s; (s/r): 615.7894736842105
+2025-11-07T12:51:56,826  INFO MemoryObserver:43 used RAM: 3596 MB  free: 2275 MB  total: 5872 MB  max: 30208 MB
+2025-11-07T12:52:02,222  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 14:00:00 : #links=2717 #nodes=633
+2025-11-07T12:52:02,225  INFO QSim:552 SIMULATION (NEW QSim) AT 14:00:00 : #active agents=170980 lost=0 simT=50400.0s realT=86s; (s/r): 586.046511627907
+2025-11-07T12:52:12,023  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 15:00:00 : #links=2551 #nodes=638
+2025-11-07T12:52:12,024  INFO QSim:552 SIMULATION (NEW QSim) AT 15:00:00 : #active agents=162175 lost=0 simT=54000.0s realT=96s; (s/r): 562.5
+2025-11-07T12:52:21,950  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 16:00:00 : #links=2962 #nodes=711
+2025-11-07T12:52:21,951  INFO QSim:552 SIMULATION (NEW QSim) AT 16:00:00 : #active agents=149549 lost=0 simT=57600.0s realT=106s; (s/r): 543.3962264150944
+2025-11-07T12:52:34,673  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 17:00:00 : #links=4143 #nodes=929
+2025-11-07T12:52:34,676  INFO QSim:552 SIMULATION (NEW QSim) AT 17:00:00 : #active agents=131489 lost=0 simT=61200.0s realT=119s; (s/r): 514.2857142857143
+2025-11-07T12:52:49,524  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 18:00:00 : #links=4189 #nodes=966
+2025-11-07T12:52:49,526  INFO QSim:552 SIMULATION (NEW QSim) AT 18:00:00 : #active agents=108683 lost=0 simT=64800.0s realT=134s; (s/r): 483.5820895522388
+2025-11-07T12:52:56,826  INFO MemoryObserver:43 used RAM: 4038 MB  free: 2521 MB  total: 6560 MB  max: 30208 MB
+2025-11-07T12:53:02,649  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 19:00:00 : #links=3406 #nodes=783
+2025-11-07T12:53:02,651  INFO QSim:552 SIMULATION (NEW QSim) AT 19:00:00 : #active agents=85824 lost=0 simT=68400.0s realT=147s; (s/r): 465.3061224489796
+2025-11-07T12:53:12,802  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 20:00:00 : #links=2507 #nodes=594
+2025-11-07T12:53:12,803  INFO QSim:552 SIMULATION (NEW QSim) AT 20:00:00 : #active agents=67411 lost=0 simT=72000.0s realT=157s; (s/r): 458.5987261146497
+2025-11-07T12:53:20,271  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 21:00:00 : #links=1882 #nodes=435
+2025-11-07T12:53:20,272  INFO QSim:552 SIMULATION (NEW QSim) AT 21:00:00 : #active agents=52121 lost=0 simT=75600.0s realT=164s; (s/r): 460.9756097560976
+2025-11-07T12:53:26,306  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 22:00:00 : #links=1563 #nodes=406
+2025-11-07T12:53:26,307  INFO QSim:552 SIMULATION (NEW QSim) AT 22:00:00 : #active agents=39783 lost=0 simT=79200.0s realT=170s; (s/r): 465.88235294117646
+2025-11-07T12:53:31,692  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 23:00:00 : #links=1314 #nodes=313
+2025-11-07T12:53:31,693  INFO QSim:552 SIMULATION (NEW QSim) AT 23:00:00 : #active agents=28991 lost=0 simT=82800.0s realT=176s; (s/r): 470.45454545454544
+2025-11-07T12:53:34,954  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 24:00:00 : #links=951 #nodes=265
+2025-11-07T12:53:34,955  INFO QSim:552 SIMULATION (NEW QSim) AT 24:00:00 : #active agents=21485 lost=0 simT=86400.0s realT=179s; (s/r): 482.6815642458101
+2025-11-07T12:53:37,145  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 25:00:00 : #links=633 #nodes=161
+2025-11-07T12:53:37,146  INFO QSim:552 SIMULATION (NEW QSim) AT 25:00:00 : #active agents=16962 lost=0 simT=90000.0s realT=181s; (s/r): 497.23756906077347
+2025-11-07T12:53:38,626  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 26:00:00 : #links=515 #nodes=118
+2025-11-07T12:53:38,626  INFO QSim:552 SIMULATION (NEW QSim) AT 26:00:00 : #active agents=14768 lost=0 simT=93600.0s realT=183s; (s/r): 511.4754098360656
+2025-11-07T12:53:39,905  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 27:00:00 : #links=411 #nodes=112
+2025-11-07T12:53:39,906  INFO QSim:552 SIMULATION (NEW QSim) AT 27:00:00 : #active agents=13316 lost=0 simT=97200.0s realT=184s; (s/r): 528.2608695652174
+2025-11-07T12:53:40,986  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 28:00:00 : #links=362 #nodes=72
+2025-11-07T12:53:40,986  INFO QSim:552 SIMULATION (NEW QSim) AT 28:00:00 : #active agents=12198 lost=0 simT=100800.0s realT=185s; (s/r): 544.8648648648649
+2025-11-07T12:53:42,044  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 29:00:00 : #links=305 #nodes=67
+2025-11-07T12:53:42,045  INFO QSim:552 SIMULATION (NEW QSim) AT 29:00:00 : #active agents=11223 lost=0 simT=104400.0s realT=186s; (s/r): 561.2903225806451
+2025-11-07T12:53:42,998  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 30:00:00 : #links=313 #nodes=46
+2025-11-07T12:53:42,998  INFO QSim:552 SIMULATION (NEW QSim) AT 30:00:00 : #active agents=10384 lost=0 simT=108000.0s realT=187s; (s/r): 577.5401069518716
+2025-11-07T12:53:43,120  INFO Gbl:196 Thread performance: Thread=class org.matsim.core.events.SimStepParallelEventsManagerImpl$ProcessEventsRunnable0  cpu-time=178.307154316sec
+2025-11-07T12:53:43,120  INFO AbstractController$9:237 ### ITERATION 0 fires after mobsim event
+2025-11-07T12:53:43,121  INFO ControllerListenerManagerImpl:324 calling notifyAfterMobsim on org.matsim.analysis.LegTimesControllerListener with priority 0.0
+2025-11-07T12:53:43,125  INFO LegTimesControllerListener:73 [0] average leg duration is: 811 seconds = 00:13:31
+2025-11-07T12:53:43,125  INFO ControllerListenerManagerImpl:324 calling notifyAfterMobsim on org.matsim.core.events.MobsimScopeEventHandling with priority 0.0
+2025-11-07T12:53:43,125  INFO ControllerListenerManagerImpl:324 calling notifyAfterMobsim on org.matsim.core.scoring.EventsToActivities$1 with priority 0.0
+2025-11-07T12:53:43,126  WARN CharyparNagelActivityScoring:271 The first and the last activity do not have the same type. 
+2025-11-07T12:53:43,126  WARN CharyparNagelActivityScoring:272 Will score the first activity from midnight to its end, and the last activity from its start to midnight.
+2025-11-07T12:53:43,126  WARN CharyparNagelActivityScoring:273 Because of the nonlinear function, this is not the same as scoring from start to end.
+2025-11-07T12:53:43,129  WARN CharyparNagelActivityScoring:274 first activity: act [type=leisure][coord=[x=2678201.0 | y=1248820.0]][linkId=283948][startTime=undefined][endTime=12:37:30][duration=undefined][facilityId=693464]
+2025-11-07T12:53:43,129  WARN CharyparNagelActivityScoring:275 last activity: act [type=home][coord=[x=2676257.0 | y=1250488.0]][linkId=846189][startTime=12:52:26][endTime=undefined][duration=undefined][facilityId=home202302472123396]
+2025-11-07T12:53:43,129  WARN CharyparNagelActivityScoring:276 This may also happen when plans are not completed when the simulation ends.
+2025-11-07T12:53:43,129  WARN CharyparNagelActivityScoring:278 Additional warnings of this type are suppressed.
+2025-11-07T12:53:43,268  INFO ControllerListenerManagerImpl:327 [it.0] all ControllerAfterMobsimListeners called.
+2025-11-07T12:53:43,269  INFO AbstractController$4:162 ### ITERATION 0 fires scoring event
+2025-11-07T12:53:43,269  INFO ControllerListenerManagerImpl:238 calling notifyScoring on org.matsim.core.scoring.PlansScoringImpl with priority 0.0
+2025-11-07T12:53:43,378  INFO NewScoreAssignerImpl:60 it: 0 msaStart: null
+2025-11-07T12:53:43,467  INFO ControllerListenerManagerImpl:250 [it.0] all ControllerScoringListeners called.
+2025-11-07T12:53:43,468  INFO AbstractController$5:170 ### ITERATION 0 fires iteration end event
+2025-11-07T12:53:43,468  INFO ControllerListenerManagerImpl:209 calling notifyIterationEnds on org.matsim.core.controler.corelisteners.EventsHandlingImpl with priority 0.0
+2025-11-07T12:53:43,470  INFO EventsManagerImpl:164 removing Event-Handler: org.matsim.core.events.algorithms.EventWriterXML
+2025-11-07T12:53:43,470  INFO EventsManagerImpl:164 removing Event-Handler: org.matsim.core.events.algorithms.EventWriterXML
+2025-11-07T12:53:43,470  INFO ControllerListenerManagerImpl:209 calling notifyIterationEnds on org.matsim.core.scoring.PlansScoringImpl with priority 0.0
+2025-11-07T12:53:43,546  INFO PopulationImpl:111  person # 1
+2025-11-07T12:53:43,547  INFO PopulationImpl:111  person # 4
+2025-11-07T12:53:43,547  INFO PopulationImpl:111  person # 16
+2025-11-07T12:53:43,547  INFO PopulationImpl:111  person # 64
+2025-11-07T12:53:43,547  INFO PopulationImpl:111  person # 256
+2025-11-07T12:53:43,547  INFO PopulationImpl:111  person # 1024
+2025-11-07T12:53:43,548  INFO PopulationImpl:111  person # 4096
+2025-11-07T12:53:43,554  INFO PopulationImpl:111  person # 16384
+2025-11-07T12:53:43,572  INFO PopulationImpl:111  person # 65536
+2025-11-07T12:53:43,757  INFO Counter:70 [PopulationWriter] dumped person # 1
+2025-11-07T12:53:43,758  INFO Counter:70 [PopulationWriter] dumped person # 2
+2025-11-07T12:53:43,758  INFO Counter:70 [PopulationWriter] dumped person # 4
+2025-11-07T12:53:43,758  INFO Counter:70 [PopulationWriter] dumped person # 8
+2025-11-07T12:53:43,758  INFO Counter:70 [PopulationWriter] dumped person # 16
+2025-11-07T12:53:43,758  INFO Counter:70 [PopulationWriter] dumped person # 32
+2025-11-07T12:53:43,758  INFO Counter:70 [PopulationWriter] dumped person # 64
+2025-11-07T12:53:43,758  INFO Counter:70 [PopulationWriter] dumped person # 128
+2025-11-07T12:53:43,758  INFO Counter:70 [PopulationWriter] dumped person # 256
+2025-11-07T12:53:43,758  INFO Counter:70 [PopulationWriter] dumped person # 512
+2025-11-07T12:53:43,758  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 1
+2025-11-07T12:53:43,758  WARN ObjectAttributesConverter:96 No AttributeConverter found for class org.matsim.api.core.v01.Id$IdImpl. Not all attribute values can be converted.
+2025-11-07T12:53:43,758  WARN ObjectAttributesConverter:96 No AttributeConverter found for class org.matsim.api.core.v01.Id$IdImpl. Not all attribute values can be converted.
+2025-11-07T12:53:43,760  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 2
+2025-11-07T12:53:43,760  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 4
+2025-11-07T12:53:43,761  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 8
+2025-11-07T12:53:43,762  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 16
+2025-11-07T12:53:43,769  INFO Counter:70 [PopulationWriter] dumped person # 1024
+2025-11-07T12:53:43,770  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 32
+2025-11-07T12:53:43,773  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 64
+2025-11-07T12:53:43,794  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 128
+2025-11-07T12:53:43,819  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 256
+2025-11-07T12:53:43,856  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 512
+2025-11-07T12:53:43,912  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 1024
+2025-11-07T12:53:43,914  INFO Counter:70 [PopulationWriter] dumped person # 2048
+2025-11-07T12:53:44,021  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 2048
+2025-11-07T12:53:44,127  INFO Counter:70 [PopulationWriter] dumped person # 4096
+2025-11-07T12:53:44,234  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 4096
+2025-11-07T12:53:44,563  INFO Counter:70 [PopulationWriter] dumped person # 8192
+2025-11-07T12:53:44,670  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 8192
+2025-11-07T12:53:45,481  INFO Counter:70 [PopulationWriter] dumped person # 16384
+2025-11-07T12:53:45,591  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 16384
+2025-11-07T12:53:47,278  INFO Counter:70 [PopulationWriter] dumped person # 32768
+2025-11-07T12:53:47,389  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 32768
+2025-11-07T12:53:50,882  INFO Counter:70 [PopulationWriter] dumped person # 65536
+2025-11-07T12:53:50,992  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 65536
+2025-11-07T12:53:56,827  INFO MemoryObserver:43 used RAM: 4365 MB  free: 2418 MB  total: 6784 MB  max: 30208 MB
+2025-11-07T12:53:58,169  INFO Counter:70 [PopulationWriter] dumped person # 131072
+2025-11-07T12:53:58,278  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 131072
+2025-11-07T12:54:05,453  INFO Counter:75 [ParallelPopulationWriterV6] dumped person # 199709
+2025-11-07T12:54:05,454  INFO PopulationWriter:150 Population written to: simulation_output/ITERS/it.0/0.experienced_plans.xml.gz
+2025-11-07T12:54:05,455  INFO Counter:75 [PopulationWriter] dumped person # 199709
+2025-11-07T12:54:07,727  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.counts.CountsControllerListener with priority 0.0
+2025-11-07T12:54:07,728  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.analysis.ModeChoiceCoverageControllerListener with priority 0.0
+2025-11-07T12:54:09,060  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode bike = 0.07651385328868315
+2025-11-07T12:54:09,060  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode bike_loop = 0.00202205935835256
+2025-11-07T12:54:09,060  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode car = 0.3454230177272053
+2025-11-07T12:54:09,060  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode car_loop = 4.7423838188700323E-4
+2025-11-07T12:54:09,060  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode car_passenger = 0.0833233927537539
+2025-11-07T12:54:09,060  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode car_passenger_loop = 5.0915163699524886E-5
+2025-11-07T12:54:09,060  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode outside = 0.06216886959608273
+2025-11-07T12:54:09,060  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode pt = 0.1778452120834776
+2025-11-07T12:54:09,060  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode pt_loop = 7.273594814217841E-6
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode truck = 0.0076561859014457
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode walk = 0.21808855747158207
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode walk_loop = 0.02642642467901626
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode bike = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode bike_loop = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode car = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode car_loop = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode car_passenger = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode car_passenger_loop = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode outside = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode pt = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode pt_loop = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode truck = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode walk = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode walk_loop = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode bike = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode bike_loop = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode car = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode car_loop = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode car_passenger = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode car_passenger_loop = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode outside = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode pt = 0.0
+2025-11-07T12:54:09,061  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode pt_loop = 0.0
+2025-11-07T12:54:09,062  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode truck = 0.0
+2025-11-07T12:54:09,062  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode walk = 0.0
+2025-11-07T12:54:09,062  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode walk_loop = 0.0
+2025-11-07T12:54:09,069  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.analysis.ModeStatsControllerListener with priority 0.0
+2025-11-07T12:54:09,970  INFO ModeStatsControllerListener:132 Mode shares over all 687418.0 trips found. MainModeIdentifier: class org.matsim.core.router.DefaultAnalysisMainModeIdentifier
+2025-11-07T12:54:09,970  INFO ModeStatsControllerListener:139 -- mode share of mode bike = 0.07651385328868315
+2025-11-07T12:54:09,970  INFO ModeStatsControllerListener:139 -- mode share of mode bike_loop = 0.00202205935835256
+2025-11-07T12:54:09,970  INFO ModeStatsControllerListener:139 -- mode share of mode car = 0.3454230177272053
+2025-11-07T12:54:09,970  INFO ModeStatsControllerListener:139 -- mode share of mode car_loop = 4.7423838188700323E-4
+2025-11-07T12:54:09,970  INFO ModeStatsControllerListener:139 -- mode share of mode car_passenger = 0.0833233927537539
+2025-11-07T12:54:09,970  INFO ModeStatsControllerListener:139 -- mode share of mode car_passenger_loop = 5.0915163699524886E-5
+2025-11-07T12:54:09,970  INFO ModeStatsControllerListener:139 -- mode share of mode outside = 0.06216886959608273
+2025-11-07T12:54:09,970  INFO ModeStatsControllerListener:139 -- mode share of mode pt = 0.1778452120834776
+2025-11-07T12:54:09,970  INFO ModeStatsControllerListener:139 -- mode share of mode pt_loop = 7.273594814217841E-6
+2025-11-07T12:54:09,970  INFO ModeStatsControllerListener:139 -- mode share of mode truck = 0.0076561859014457
+2025-11-07T12:54:09,970  INFO ModeStatsControllerListener:139 -- mode share of mode walk = 0.21808855747158207
+2025-11-07T12:54:09,970  INFO ModeStatsControllerListener:139 -- mode share of mode walk_loop = 0.02642642467901626
+2025-11-07T12:54:09,973  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.analysis.ScoreStatsControlerListener with priority 0.0
+2025-11-07T12:54:10,040  INFO ScoreStatsControlerListener:154 -- avg. score of the executed plan of each agent: -24.6704590262167
+2025-11-07T12:54:10,041  INFO ScoreStatsControlerListener:155 -- avg. score of the worst plan of each agent: -24.6704590262167
+2025-11-07T12:54:10,041  INFO ScoreStatsControlerListener:156 -- avg. of the avg. plan score per agent: -24.6704590262167
+2025-11-07T12:54:10,041  INFO ScoreStatsControlerListener:157 -- avg. score of the best plan of each agent: -24.6704590262167
+2025-11-07T12:54:10,045  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.analysis.IterationTravelStatsControllerListener with priority 0.0
+2025-11-07T12:54:10,797  INFO TravelDistanceStats:115 -- average leg distance per plan (executed plans only): 2969.2445264092735 meters
+2025-11-07T12:54:10,797  INFO TravelDistanceStats:116 average leg distance per Person (executed plans only): 25409.80413075066 meters (statistic on all 1709043 legs which have a finite distance)
+2025-11-07T12:54:10,798  INFO TravelDistanceStats:117 -- average trip distance per plan (executed plans only): 7634.309835851297 meters
+2025-11-07T12:54:10,798  INFO TravelDistanceStats:118 average trip distance per Person (executed plans only): 25351.226818876527 meters (statistic on all 663173 trips which have a finite distance)
+2025-11-07T12:54:10,798  INFO TravelDistanceStats:119 (TravelDistanceStats takes an average over all legs where the simulation reports travelled (network) distances
+2025-11-07T12:54:10,798  INFO TravelDistanceStats:120 (and teleported legs whose route contains a distance.)
+2025-11-07T12:54:33,167  INFO ActivityWriter:39 Writing all Activities to activitiescsv
+2025-11-07T12:54:38,970  INFO ActivityWriter:59 ...done
+2025-11-07T12:54:38,970  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.analysis.LegTimesControllerListener with priority 0.0
+2025-11-07T12:54:38,970  INFO EventsManagerImpl:164 removing Event-Handler: org.matsim.analysis.CalcLegTimes
+2025-11-07T12:54:38,970  INFO EventsManagerImpl:164 removing Event-Handler: org.matsim.analysis.CalcLegTimes
+2025-11-07T12:54:38,970  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.analysis.LegHistogramListener with priority 0.0
+2025-11-07T12:54:38,988  INFO LegHistogramListener:79 number of legs:	1718888	100%
+2025-11-07T12:54:38,990  INFO LegHistogramListener:86 number of bike legs:	52114	3.031843843228878%
+2025-11-07T12:54:38,990  INFO LegHistogramListener:86 number of bike_loop legs:	1353	0.07871368000707434%
+2025-11-07T12:54:38,990  INFO LegHistogramListener:86 number of car legs:	228641	13.30168108684219%
+2025-11-07T12:54:38,990  INFO LegHistogramListener:86 number of car_loop legs:	324	0.01884939565579607%
+2025-11-07T12:54:38,990  INFO LegHistogramListener:86 number of car_passenger legs:	56745	3.301262211383173%
+2025-11-07T12:54:38,990  INFO LegHistogramListener:86 number of car_passenger_loop legs:	35	0.0020362001480026624%
+2025-11-07T12:54:38,990  INFO LegHistogramListener:86 number of outside legs:	41297	2.402541643201884%
+2025-11-07T12:54:38,990  INFO LegHistogramListener:86 number of pt legs:	237152	13.796826785689353%
+2025-11-07T12:54:38,990  INFO LegHistogramListener:86 number of pt_loop legs:	5	2.9088573542895174E-4%
+2025-11-07T12:54:38,990  INFO LegHistogramListener:86 number of truck legs:	5263	0.3061863251125146%
+2025-11-07T12:54:38,990  INFO LegHistogramListener:86 number of walk legs:	1078193	62.726192747869554%
+2025-11-07T12:54:38,990  INFO LegHistogramListener:86 number of walk_loop legs:	17766	1.0335751951261514%
+2025-11-07T12:54:40,099  INFO EventsManagerImpl:164 removing Event-Handler: org.matsim.analysis.LegHistogram
+2025-11-07T12:54:40,099  INFO EventsManagerImpl:164 removing Event-Handler: org.matsim.analysis.LegHistogram
+2025-11-07T12:54:40,099  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.analysis.LinkStatsControllerListener with priority 0.0
+2025-11-07T12:54:43,386  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.contribs.discrete_mode_choice.modules.UtilitiesWriterHandler with priority 0.0
+2025-11-07T12:54:43,386  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.eqasim.core.simulation.termination.mode_share.ModeShareTracker with priority 0.0
+2025-11-07T12:54:43,389  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.eqasim.switzerland.ch.utils.pt.PTPassengerAnalyser with priority 0.0
+2025-11-07T12:54:43,389  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.eqasim.switzerland.ch.utils.pt.PTLinkVolumesAnalyser with priority 0.0
+2025-11-07T12:54:43,389  INFO ControllerListenerManagerImpl:221 [it.0] all ControllerIterationEndsListeners called.
+2025-11-07T12:54:43,463  INFO AbstractController:184 ### ITERATION 0 ENDS
+2025-11-07T12:54:43,463  INFO AbstractController:185 ###################################################
+2025-11-07T12:54:43,486  INFO AbstractController:136 ###################################################
+2025-11-07T12:54:43,486  INFO AbstractController:137 ### ITERATION 1 BEGINS
+2025-11-07T12:54:43,487  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.matsim.analysis.LegTimesControllerListener with priority 0.0
+2025-11-07T12:54:43,487  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:54:43,487  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:54:43,487  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonDepartureEvent
+2025-11-07T12:54:43,487  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonArrivalEvent
+2025-11-07T12:54:43,487  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.ActivityEndEvent
+2025-11-07T12:54:43,487  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.ActivityStartEvent
+2025-11-07T12:54:43,487  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:54:43,487  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:54:43,487  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonDepartureEvent
+2025-11-07T12:54:43,487  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonArrivalEvent
+2025-11-07T12:54:43,487  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.ActivityEndEvent
+2025-11-07T12:54:43,487  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.ActivityStartEvent
+2025-11-07T12:54:43,487  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.matsim.analysis.LegHistogramListener with priority 0.0
+2025-11-07T12:54:43,487  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:54:43,488  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:54:43,488  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonDepartureEvent
+2025-11-07T12:54:43,488  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonArrivalEvent
+2025-11-07T12:54:43,488  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonStuckEvent
+2025-11-07T12:54:43,488  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:54:43,488  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:54:43,488  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonDepartureEvent
+2025-11-07T12:54:43,488  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonArrivalEvent
+2025-11-07T12:54:43,488  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonStuckEvent
+2025-11-07T12:54:43,488  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.matsim.analysis.LinkStatsControllerListener with priority 0.0
+2025-11-07T12:54:43,488  INFO CalcLinkStats:151  resetting `count' to zero.  This info is here since we want to check when this is happening during normal simulation runs.  kai, jan'11
+2025-11-07T12:54:43,512  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.matsim.contribs.discrete_mode_choice.modules.UtilitiesWriterHandler with priority 0.0
+2025-11-07T12:54:43,668  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.eqasim.core.components.fast_calibration.AlphaCalibrator with priority 0.0
+2025-11-07T12:54:43,668  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.eqasim.switzerland.ch.utils.pt.PTPassengerAnalyser with priority 0.0
+2025-11-07T12:54:43,668  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:54:43,668  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:54:43,668  INFO EventsManagerImpl:210     > org.matsim.core.api.experimental.events.VehicleArrivesAtFacilityEvent
+2025-11-07T12:54:43,668  INFO EventsManagerImpl:210     > org.matsim.core.api.experimental.events.VehicleDepartsAtFacilityEvent
+2025-11-07T12:54:43,668  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonEntersVehicleEvent
+2025-11-07T12:54:43,668  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonLeavesVehicleEvent
+2025-11-07T12:54:43,668  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:54:43,668  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:54:43,668  INFO EventsManagerImpl:210     > org.matsim.core.api.experimental.events.VehicleArrivesAtFacilityEvent
+2025-11-07T12:54:43,668  INFO EventsManagerImpl:210     > org.matsim.core.api.experimental.events.VehicleDepartsAtFacilityEvent
+2025-11-07T12:54:43,668  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonEntersVehicleEvent
+2025-11-07T12:54:43,668  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonLeavesVehicleEvent
+2025-11-07T12:54:43,669  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.eqasim.switzerland.ch.utils.pt.PTLinkVolumesAnalyser with priority 0.0
+2025-11-07T12:54:43,669  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:54:43,669  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:54:43,669  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonEntersVehicleEvent
+2025-11-07T12:54:43,669  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonLeavesVehicleEvent
+2025-11-07T12:54:43,669  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkEnterEvent
+2025-11-07T12:54:43,669  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:54:43,669  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:54:43,669  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonEntersVehicleEvent
+2025-11-07T12:54:43,669  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.PersonLeavesVehicleEvent
+2025-11-07T12:54:43,669  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkEnterEvent
+2025-11-07T12:54:43,669  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.matsim.core.replanning.ReplanningContextImpl with priority 0.0
+2025-11-07T12:54:43,669  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.matsim.core.scoring.ScoringFunctionsForPopulation$$Lambda/0x000014ebe0572678 with priority 0.0
+2025-11-07T12:54:43,847  INFO ControllerListenerManagerImpl:188 calling notifyIterationStarts on org.matsim.core.scoring.ExperiencedPlansServiceImpl$1 with priority 0.0
+2025-11-07T12:54:43,890  INFO ControllerListenerManagerImpl:191 [it.1] all ControllerIterationStartsListeners called.
+2025-11-07T12:54:43,890  INFO ControllerListenerManagerImpl:267 calling notifyReplanning on org.matsim.core.controler.corelisteners.PlansReplanningImpl with priority 0.0
+2025-11-07T12:54:50,540  INFO AbstractMultithreadedModule:142 [DiscreteModeChoiceAlgorithm] starting 8 threads, handling 9677 plans
+2025-11-07T12:54:50,544  INFO Counter:70 [DiscreteModeChoiceAlgorithm] handled plan # 1
+2025-11-07T12:54:50,545  INFO Counter:70 [DiscreteModeChoiceAlgorithm] handled plan # 2
+2025-11-07T12:54:50,588  INFO Counter:70 [DiscreteModeChoiceAlgorithm] handled plan # 4
+2025-11-07T12:54:50,599  INFO Counter:70 [DiscreteModeChoiceAlgorithm] handled plan # 8
+2025-11-07T12:54:50,673  INFO Counter:70 [DiscreteModeChoiceAlgorithm] handled plan # 16
+2025-11-07T12:54:50,817  INFO Counter:70 [DiscreteModeChoiceAlgorithm] handled plan # 32
+2025-11-07T12:54:50,988  INFO Counter:70 [DiscreteModeChoiceAlgorithm] handled plan # 64
+2025-11-07T12:54:51,455  INFO Counter:70 [DiscreteModeChoiceAlgorithm] handled plan # 128
+2025-11-07T12:54:51,944  INFO Counter:70 [DiscreteModeChoiceAlgorithm] handled plan # 256
+2025-11-07T12:54:52,705  INFO Counter:70 [DiscreteModeChoiceAlgorithm] handled plan # 512
+2025-11-07T12:54:54,079  INFO Counter:70 [DiscreteModeChoiceAlgorithm] handled plan # 1024
+2025-11-07T12:54:56,828  INFO MemoryObserver:43 used RAM: 6706 MB  free: 1309 MB  total: 8016 MB  max: 30208 MB
+2025-11-07T12:54:57,157  INFO Counter:70 [DiscreteModeChoiceAlgorithm] handled plan # 2048
+2025-11-07T12:55:02,726  INFO Counter:70 [DiscreteModeChoiceAlgorithm] handled plan # 4096
+2025-11-07T12:55:14,036  INFO Counter:70 [DiscreteModeChoiceAlgorithm] handled plan # 8192
+2025-11-07T12:55:20,359  INFO AbstractMultithreadedModule:157 [DiscreteModeChoiceAlgorithm] all 8 threads finished.
+2025-11-07T12:55:20,367  INFO AbstractMultithreadedModule:142 [] starting 8 threads, handling 9677 plans
+2025-11-07T12:55:20,368  INFO Counter:70 [] handled plan # 1
+2025-11-07T12:55:20,368  INFO Counter:70 [] handled plan # 2
+2025-11-07T12:55:20,369  INFO Counter:70 [] handled plan # 8
+2025-11-07T12:55:20,369  INFO Counter:70 [] handled plan # 16
+2025-11-07T12:55:20,368  INFO Counter:70 [] handled plan # 4
+2025-11-07T12:55:20,369  INFO Counter:70 [] handled plan # 32
+2025-11-07T12:55:20,369  INFO Counter:70 [] handled plan # 64
+2025-11-07T12:55:20,369  INFO Counter:70 [] handled plan # 128
+2025-11-07T12:55:20,370  INFO Counter:70 [] handled plan # 256
+2025-11-07T12:55:20,372  INFO Counter:70 [] handled plan # 512
+2025-11-07T12:55:20,375  INFO Counter:70 [] handled plan # 1024
+2025-11-07T12:55:20,381  INFO Counter:70 [] handled plan # 2048
+2025-11-07T12:55:20,383  INFO Counter:70 [] handled plan # 4096
+2025-11-07T12:55:20,387  INFO Counter:70 [] handled plan # 8192
+2025-11-07T12:55:20,389  INFO AbstractMultithreadedModule:157 [] all 8 threads finished.
+2025-11-07T12:55:20,392  INFO GenericPlanStrategyImpl:135 Plan-Strategy finished, 9677 plans handled. Strategy: RandomPlanSelector_DiscreteModeChoiceReplanningModule_CheckConsistentRoutingReplanningModule
+2025-11-07T12:55:20,392  INFO GenericPlanStrategyImpl:135 Plan-Strategy finished, 184878 plans handled. Strategy: KeepSelected
+2025-11-07T12:55:20,392  INFO AbstractMultithreadedModule:142 [PlanRouter] starting 8 threads, handling 257 plans
+2025-11-07T12:55:20,394  INFO Counter:70 [PlanRouter] handled plan # 1
+2025-11-07T12:55:20,405  INFO Counter:70 [PlanRouter] handled plan # 2
+2025-11-07T12:55:20,444  INFO Counter:70 [PlanRouter] handled plan # 4
+2025-11-07T12:55:20,460  INFO Counter:70 [PlanRouter] handled plan # 8
+2025-11-07T12:55:20,515  INFO Counter:70 [PlanRouter] handled plan # 16
+2025-11-07T12:55:20,557  INFO Counter:70 [PlanRouter] handled plan # 32
+2025-11-07T12:55:20,631  INFO Counter:70 [PlanRouter] handled plan # 64
+2025-11-07T12:55:20,724  INFO Counter:70 [PlanRouter] handled plan # 128
+2025-11-07T12:55:21,057  INFO Counter:70 [PlanRouter] handled plan # 256
+2025-11-07T12:55:21,062  INFO AbstractMultithreadedModule:157 [PlanRouter] all 8 threads finished.
+2025-11-07T12:55:21,063  INFO GenericPlanStrategyImpl:135 Plan-Strategy finished, 257 plans handled. Strategy: RandomPlanSelector_ReRoute
+2025-11-07T12:55:21,063  INFO GenericPlanStrategyImpl:135 Plan-Strategy finished, 4897 plans handled. Strategy: KeepSelected
+2025-11-07T12:55:21,063  INFO AbstractMultithreadedModule:142 [PlanRouter] starting 8 threads, handling 0 plans
+2025-11-07T12:55:21,064  INFO AbstractMultithreadedModule:157 [PlanRouter] all 8 threads finished.
+2025-11-07T12:55:21,064  INFO GenericPlanStrategyImpl:135 Plan-Strategy finished, 0 plans handled. Strategy: RandomPlanSelector_ReRoute
+2025-11-07T12:55:21,064  INFO GenericPlanStrategyImpl:135 Plan-Strategy finished, 0 plans handled. Strategy: KeepSelected
+2025-11-07T12:55:21,066  INFO ControllerListenerManagerImpl:276 [it.1] all ControllerReplanningListeners called.
+2025-11-07T12:55:21,066  INFO ControllerListenerManagerImpl:293 calling notifyBeforeMobsim on org.matsim.core.controler.corelisteners.EventsHandlingImpl with priority 0.0
+2025-11-07T12:55:21,066  INFO EventsManagerImpl:173 resetting Event-Handlers
+2025-11-07T12:55:21,066  INFO EventsManagerImpl:180   org.matsim.core.trafficmonitoring.TravelTimeCalculator
+2025-11-07T12:55:21,102  INFO EventsManagerImpl:180   org.eqasim.switzerland.ch.utils.pt.PTLinkVolumesHandler
+2025-11-07T12:55:21,102  INFO EventsManagerImpl:180   org.matsim.analysis.VolumesAnalyzer
+2025-11-07T12:55:21,102  INFO EventsManagerImpl:180   org.eqasim.switzerland.ch.utils.pt.PTPassengerCountingHandler
+2025-11-07T12:55:21,102  INFO EventsManagerImpl:180   org.matsim.core.scoring.ScoringFunctionsForPopulation
+2025-11-07T12:55:21,104  INFO EventsManagerImpl:180   org.eqasim.core.simulation.termination.mode_share.ModeShareTracker
+2025-11-07T12:55:21,104  INFO EventsManagerImpl:180   org.matsim.analysis.CalcLegTimes
+2025-11-07T12:55:21,104  INFO EventsManagerImpl:180   org.matsim.analysis.LegHistogram
+2025-11-07T12:55:21,104  INFO EventsManagerImpl:180   ch.sbb.matsim.routing.pt.raptor.SwissRailRaptorFactory$$Lambda/0x000014ebe05af690
+2025-11-07T12:55:21,108  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:55:21,108  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:55:21,108  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.Event
+2025-11-07T12:55:21,108  INFO EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-11-07T12:55:21,108  INFO EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-11-07T12:55:21,108  INFO EventsManagerImpl:210     > org.matsim.api.core.v01.events.Event
+2025-11-07T12:55:21,108  INFO ControllerListenerManagerImpl:293 calling notifyBeforeMobsim on org.matsim.core.controler.corelisteners.PlansDumpingImpl with priority 0.0
+2025-11-07T12:55:21,108  INFO PlansDumpingImpl:78 dumping plans...
+2025-11-07T12:55:21,259  INFO Counter:70 [PopulationWriter] dumped person # 1
+2025-11-07T12:55:21,259  INFO Counter:70 [PopulationWriter] dumped person # 2
+2025-11-07T12:55:21,259  INFO Counter:70 [PopulationWriter] dumped person # 4
+2025-11-07T12:55:21,259  INFO Counter:70 [PopulationWriter] dumped person # 8
+2025-11-07T12:55:21,259  INFO Counter:70 [PopulationWriter] dumped person # 16
+2025-11-07T12:55:21,259  INFO Counter:70 [PopulationWriter] dumped person # 32
+2025-11-07T12:55:21,259  INFO Counter:70 [PopulationWriter] dumped person # 64
+2025-11-07T12:55:21,259  INFO Counter:70 [PopulationWriter] dumped person # 128
+2025-11-07T12:55:21,259  INFO Counter:70 [PopulationWriter] dumped person # 256
+2025-11-07T12:55:21,259  INFO Counter:70 [PopulationWriter] dumped person # 512
+2025-11-07T12:55:21,264  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 1
+2025-11-07T12:55:21,264  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 2
+2025-11-07T12:55:21,265  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 4
+2025-11-07T12:55:21,265  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 8
+2025-11-07T12:55:21,268  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 16
+2025-11-07T12:55:21,269  INFO Counter:70 [PopulationWriter] dumped person # 1024
+2025-11-07T12:55:21,271  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 32
+2025-11-07T12:55:21,275  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 64
+2025-11-07T12:55:21,285  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 128
+2025-11-07T12:55:21,306  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 256
+2025-11-07T12:55:21,343  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 512
+2025-11-07T12:55:21,417  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 1024
+2025-11-07T12:55:21,420  INFO Counter:70 [PopulationWriter] dumped person # 2048
+2025-11-07T12:55:21,563  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 2048
+2025-11-07T12:55:21,716  INFO Counter:70 [PopulationWriter] dumped person # 4096
+2025-11-07T12:55:21,850  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 4096
+2025-11-07T12:55:22,273  INFO Counter:70 [PopulationWriter] dumped person # 8192
+2025-11-07T12:55:22,409  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 8192
+2025-11-07T12:55:23,422  INFO Counter:70 [PopulationWriter] dumped person # 16384
+2025-11-07T12:55:23,564  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 16384
+2025-11-07T12:55:25,695  INFO Counter:70 [PopulationWriter] dumped person # 32768
+2025-11-07T12:55:25,836  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 32768
+2025-11-07T12:55:30,280  INFO Counter:70 [PopulationWriter] dumped person # 65536
+2025-11-07T12:55:30,418  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 65536
+2025-11-07T12:55:39,367  INFO Counter:70 [PopulationWriter] dumped person # 131072
+2025-11-07T12:55:39,507  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 131072
+2025-11-07T12:55:48,656  INFO Counter:75 [ParallelPopulationWriterV6] dumped person # 199709
+2025-11-07T12:55:48,656  INFO PopulationWriter:150 Population written to: simulation_output/ITERS/it.1/1.plans.xml.gz
+2025-11-07T12:55:48,658  INFO Counter:75 [PopulationWriter] dumped person # 199709
+2025-11-07T12:55:48,658  INFO PlansDumpingImpl:95 finished plans dump.
+2025-11-07T12:55:48,658  INFO ControllerListenerManagerImpl:299 calling notifyBeforeMobsim on org.matsim.core.population.VspPlansCleaner with priority 0.0
+2025-11-07T12:55:48,930  INFO ControllerListenerManagerImpl:302 [it.1] all ControlerBeforeMobsimListeners called.
+2025-11-07T12:55:48,931  INFO PrepareForMobsimImpl:86 Network seems to be multimodal. Create car-only network which is handed over to PersonPrepareForSim.
+2025-11-07T12:55:48,931  INFO NetworkImpl:165  node # 1
+2025-11-07T12:55:48,931  INFO NetworkImpl:165  node # 4
+2025-11-07T12:55:48,931  INFO NetworkImpl:165  node # 16
+2025-11-07T12:55:48,931  INFO NetworkImpl:165  node # 64
+2025-11-07T12:55:48,931  INFO NetworkImpl:165  node # 256
+2025-11-07T12:55:48,931  INFO NetworkImpl:165  node # 1024
+2025-11-07T12:55:48,932  INFO NetworkImpl:165  node # 4096
+2025-11-07T12:55:48,934  INFO NetworkImpl:165  node # 16384
+2025-11-07T12:55:48,938  INFO NetworkImpl:161  link # 1
+2025-11-07T12:55:48,938  INFO NetworkImpl:161  link # 4
+2025-11-07T12:55:48,938  INFO NetworkImpl:161  link # 16
+2025-11-07T12:55:48,938  INFO NetworkImpl:161  link # 64
+2025-11-07T12:55:48,938  INFO NetworkImpl:161  link # 256
+2025-11-07T12:55:48,939  INFO NetworkImpl:161  link # 1024
+2025-11-07T12:55:48,942  INFO NetworkImpl:161  link # 4096
+2025-11-07T12:55:48,956  INFO NetworkImpl:161  link # 16384
+2025-11-07T12:55:49,008  INFO NetworkImpl:161  link # 65536
+2025-11-07T12:55:49,169  INFO Counter:70 [PersonPrepareForSim] handled person # 1
+2025-11-07T12:55:49,169  INFO Counter:70 [PersonPrepareForSim] handled person # 8
+2025-11-07T12:55:49,169  INFO Counter:70 [PersonPrepareForSim] handled person # 16
+2025-11-07T12:55:49,170  INFO Counter:70 [PersonPrepareForSim] handled person # 32
+2025-11-07T12:55:49,169  INFO Counter:70 [PersonPrepareForSim] handled person # 2
+2025-11-07T12:55:49,169  INFO Counter:70 [PersonPrepareForSim] handled person # 4
+2025-11-07T12:55:49,171  INFO Counter:70 [PersonPrepareForSim] handled person # 64
+2025-11-07T12:55:49,172  INFO Counter:70 [PersonPrepareForSim] handled person # 128
+2025-11-07T12:55:49,175  INFO Counter:70 [PersonPrepareForSim] handled person # 256
+2025-11-07T12:55:49,179  INFO Counter:70 [PersonPrepareForSim] handled person # 512
+2025-11-07T12:55:49,185  INFO Counter:70 [PersonPrepareForSim] handled person # 1024
+2025-11-07T12:55:49,196  INFO Counter:70 [PersonPrepareForSim] handled person # 2048
+2025-11-07T12:55:49,216  INFO Counter:70 [PersonPrepareForSim] handled person # 4096
+2025-11-07T12:55:49,238  INFO Counter:70 [PersonPrepareForSim] handled person # 8192
+2025-11-07T12:55:49,258  INFO Counter:70 [PersonPrepareForSim] handled person # 16384
+2025-11-07T12:55:49,300  INFO Counter:70 [PersonPrepareForSim] handled person # 32768
+2025-11-07T12:55:49,383  INFO Counter:70 [PersonPrepareForSim] handled person # 65536
+2025-11-07T12:55:49,550  INFO Counter:70 [PersonPrepareForSim] handled person # 131072
+2025-11-07T12:55:49,750  INFO Counter:75 [PersonPrepareForSim] handled person # 199709
+2025-11-07T12:55:49,765  INFO MobsimListenerManager:50 calling addQueueSimulationListener
+2025-11-07T12:55:49,766  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimAfterSimStepListener
+2025-11-07T12:55:49,766  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimListener
+2025-11-07T12:55:49,766  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.vis.snapshotwriters.SnapshotWriterManager
+2025-11-07T12:55:49,766  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimBeforeCleanupListener
+2025-11-07T12:55:49,766  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimInitializedListener
+2025-11-07T12:55:49,766  INFO QSimProvider:131 Added MobsimEngine class org.matsim.core.mobsim.qsim.ActivityEngineDefaultImpl
+2025-11-07T12:55:49,766  INFO QSimProvider:137 Added Activityhandler class org.matsim.core.mobsim.qsim.ActivityEngineDefaultImpl
+2025-11-07T12:55:49,935  INFO QSimProvider:131 Added MobsimEngine class org.matsim.core.mobsim.qsim.qnetsimengine.QNetsimEngineWithThreadpool
+2025-11-07T12:55:49,936  INFO QSimProvider:143 Added DepartureHandler class org.matsim.core.mobsim.qsim.qnetsimengine.NetworkModeDepartureHandlerDefaultImpl
+2025-11-07T12:55:49,936  INFO QSimProvider:131 Added MobsimEngine class org.matsim.core.mobsim.qsim.DefaultTeleportationEngine
+2025-11-07T12:55:49,936  INFO QSimProvider:143 Added DepartureHandler class org.matsim.core.mobsim.qsim.DefaultTeleportationEngine
+2025-11-07T12:55:49,936  INFO QSimProvider:149 Added AgentSource class org.matsim.core.mobsim.qsim.agents.PopulationAgentSource
+2025-11-07T12:55:49,936  INFO MobsimListenerManager:50 calling addQueueSimulationListener
+2025-11-07T12:55:49,936  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimListener
+2025-11-07T12:55:49,936  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimBeforeSimStepListener
+2025-11-07T12:55:49,936  INFO MobsimListenerManager:54   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.qsim.messagequeueengine.MessageQueueEngine
+2025-11-07T12:55:49,936  INFO QSimProvider:155 Added MobsimListener class org.matsim.core.mobsim.qsim.messagequeueengine.MessageQueueEngine
+2025-11-07T12:55:49,936  INFO QSimProvider:131 Added MobsimEngine class ch.sbb.matsim.mobsim.qsim.pt.SBBTransitQSimEngine
+2025-11-07T12:55:49,936  INFO QSimProvider:143 Added DepartureHandler class ch.sbb.matsim.mobsim.qsim.pt.SBBTransitQSimEngine
+2025-11-07T12:55:49,936  INFO QSimProvider:149 Added AgentSource class ch.sbb.matsim.mobsim.qsim.pt.SBBTransitQSimEngine
+2025-11-07T12:55:50,345  INFO PopulationAgentSource:174 have seen vehicle with id 202340001091362:car before; not placing it again.
+2025-11-07T12:55:50,345  INFO PopulationAgentSource:174 have seen vehicle with id 202340001091362:car before; not placing it again.
+2025-11-07T12:55:50,345  INFO PopulationAgentSource:174 have seen vehicle with id 202340001091362:car before; not placing it again.
+2025-11-07T12:55:50,345  INFO PopulationAgentSource:174 have seen vehicle with id 202340001091931:car before; not placing it again.
+2025-11-07T12:55:50,345  INFO PopulationAgentSource:174 have seen vehicle with id 202340001091931:car before; not placing it again.
+2025-11-07T12:55:50,345  INFO PopulationAgentSource:174 have seen vehicle with id 202340001092010:car before; not placing it again.
+2025-11-07T12:55:50,345  WARN PopulationAgentSource:177  Future occurences of this logging statement are suppressed.
+2025-11-07T12:55:50,995  INFO AbstractQNetsimEngine:421 Assigned 6902 nodes and 15322 links to QSimEngineRunner #0
+2025-11-07T12:55:50,995  INFO AbstractQNetsimEngine:421 Assigned 6902 nodes and 15318 links to QSimEngineRunner #1
+2025-11-07T12:55:50,995  INFO AbstractQNetsimEngine:421 Assigned 6902 nodes and 15398 links to QSimEngineRunner #2
+2025-11-07T12:55:50,995  INFO AbstractQNetsimEngine:421 Assigned 6902 nodes and 15334 links to QSimEngineRunner #3
+2025-11-07T12:55:50,995  INFO AbstractQNetsimEngine:421 Assigned 6902 nodes and 15303 links to QSimEngineRunner #4
+2025-11-07T12:55:50,996  INFO AbstractQNetsimEngine:421 Assigned 6902 nodes and 15394 links to QSimEngineRunner #5
+2025-11-07T12:55:50,996  INFO AbstractQNetsimEngine:421 Assigned 6901 nodes and 15287 links to QSimEngineRunner #6
+2025-11-07T12:55:50,996  INFO AbstractQNetsimEngine:421 Assigned 6901 nodes and 15331 links to QSimEngineRunner #7
+2025-11-07T12:55:51,121  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 00:00:00 : #links=0 #nodes=0
+2025-11-07T12:55:51,122  INFO QSim:552 SIMULATION (NEW QSim) AT 00:00:00 : #active agents=210780 lost=0 simT=0.0s realT=1s; (s/r): 0.0
+2025-11-07T12:55:51,349  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 01:00:00 : #links=8 #nodes=0
+2025-11-07T12:55:51,349  INFO QSim:552 SIMULATION (NEW QSim) AT 01:00:00 : #active agents=210730 lost=0 simT=3600.0s realT=1s; (s/r): 3600.0
+2025-11-07T12:55:51,548  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 02:00:00 : #links=7 #nodes=1
+2025-11-07T12:55:51,548  INFO QSim:552 SIMULATION (NEW QSim) AT 02:00:00 : #active agents=210704 lost=0 simT=7200.0s realT=1s; (s/r): 7200.0
+2025-11-07T12:55:51,760  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 03:00:00 : #links=27 #nodes=4
+2025-11-07T12:55:51,760  INFO QSim:552 SIMULATION (NEW QSim) AT 03:00:00 : #active agents=210661 lost=0 simT=10800.0s realT=1s; (s/r): 10800.0
+2025-11-07T12:55:52,159  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 04:00:00 : #links=123 #nodes=20
+2025-11-07T12:55:52,159  INFO QSim:552 SIMULATION (NEW QSim) AT 04:00:00 : #active agents=210609 lost=0 simT=14400.0s realT=2s; (s/r): 7200.0
+2025-11-07T12:55:53,243  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 05:00:00 : #links=442 #nodes=104
+2025-11-07T12:55:53,243  INFO QSim:552 SIMULATION (NEW QSim) AT 05:00:00 : #active agents=210506 lost=0 simT=18000.0s realT=3s; (s/r): 6000.0
+2025-11-07T12:55:56,828  INFO MemoryObserver:43 used RAM: 7432 MB  free: 1847 MB  total: 9280 MB  max: 30208 MB
+2025-11-07T12:55:57,002  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 06:00:00 : #links=1907 #nodes=499
+2025-11-07T12:55:57,003  INFO QSim:552 SIMULATION (NEW QSim) AT 06:00:00 : #active agents=209569 lost=0 simT=21600.0s realT=7s; (s/r): 3085.714285714286
+2025-11-07T12:56:06,538  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 07:00:00 : #links=3690 #nodes=872
+2025-11-07T12:56:06,540  INFO QSim:552 SIMULATION (NEW QSim) AT 07:00:00 : #active agents=207067 lost=0 simT=25200.0s realT=16s; (s/r): 1575.0
+2025-11-07T12:56:19,352  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 08:00:00 : #links=3547 #nodes=879
+2025-11-07T12:56:19,354  INFO QSim:552 SIMULATION (NEW QSim) AT 08:00:00 : #active agents=204077 lost=0 simT=28800.0s realT=29s; (s/r): 993.1034482758621
+2025-11-07T12:56:30,695  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 09:00:00 : #links=2789 #nodes=696
+2025-11-07T12:56:30,697  INFO QSim:552 SIMULATION (NEW QSim) AT 09:00:00 : #active agents=200553 lost=0 simT=32400.0s realT=40s; (s/r): 810.0
+2025-11-07T12:56:39,947  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 10:00:00 : #links=2493 #nodes=623
+2025-11-07T12:56:39,952  INFO QSim:552 SIMULATION (NEW QSim) AT 10:00:00 : #active agents=196025 lost=0 simT=36000.0s realT=50s; (s/r): 720.0
+2025-11-07T12:56:48,718  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 11:00:00 : #links=2276 #nodes=602
+2025-11-07T12:56:48,719  INFO QSim:552 SIMULATION (NEW QSim) AT 11:00:00 : #active agents=190376 lost=0 simT=39600.0s realT=58s; (s/r): 682.7586206896551
+2025-11-07T12:56:56,829  INFO MemoryObserver:43 used RAM: 5726 MB  free: 3681 MB  total: 9408 MB  max: 30208 MB
+2025-11-07T12:56:58,333  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 12:00:00 : #links=3052 #nodes=704
+2025-11-07T12:56:58,334  INFO QSim:552 SIMULATION (NEW QSim) AT 12:00:00 : #active agents=183928 lost=0 simT=43200.0s realT=68s; (s/r): 635.2941176470588
+2025-11-07T12:57:06,224  INFO EventsManagerImpl:116  event # 67108864
+2025-11-07T12:57:09,203  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 13:00:00 : #links=2666 #nodes=670
+2025-11-07T12:57:09,204  INFO QSim:552 SIMULATION (NEW QSim) AT 13:00:00 : #active agents=177448 lost=0 simT=46800.0s realT=79s; (s/r): 592.4050632911392
+2025-11-07T12:57:19,797  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 14:00:00 : #links=2770 #nodes=655
+2025-11-07T12:57:19,798  INFO QSim:552 SIMULATION (NEW QSim) AT 14:00:00 : #active agents=170809 lost=0 simT=50400.0s realT=90s; (s/r): 560.0
+2025-11-07T12:57:29,639  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 15:00:00 : #links=2634 #nodes=634
+2025-11-07T12:57:29,641  INFO QSim:552 SIMULATION (NEW QSim) AT 15:00:00 : #active agents=161982 lost=0 simT=54000.0s realT=99s; (s/r): 545.4545454545455
+2025-11-07T12:57:39,892  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 16:00:00 : #links=3035 #nodes=676
+2025-11-07T12:57:39,894  INFO QSim:552 SIMULATION (NEW QSim) AT 16:00:00 : #active agents=149267 lost=0 simT=57600.0s realT=110s; (s/r): 523.6363636363636
+2025-11-07T12:57:53,137  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 17:00:00 : #links=4186 #nodes=946
+2025-11-07T12:57:53,138  INFO QSim:552 SIMULATION (NEW QSim) AT 17:00:00 : #active agents=131006 lost=0 simT=61200.0s realT=123s; (s/r): 497.5609756097561
+2025-11-07T12:57:56,829  INFO MemoryObserver:43 used RAM: 5030 MB  free: 4377 MB  total: 9408 MB  max: 30208 MB
+2025-11-07T12:58:08,123  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 18:00:00 : #links=4378 #nodes=980
+2025-11-07T12:58:08,125  INFO QSim:552 SIMULATION (NEW QSim) AT 18:00:00 : #active agents=107867 lost=0 simT=64800.0s realT=138s; (s/r): 469.5652173913044
+2025-11-07T12:58:21,705  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 19:00:00 : #links=3523 #nodes=771
+2025-11-07T12:58:21,707  INFO QSim:552 SIMULATION (NEW QSim) AT 19:00:00 : #active agents=84588 lost=0 simT=68400.0s realT=151s; (s/r): 452.9801324503311
+2025-11-07T12:58:31,979  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 20:00:00 : #links=2439 #nodes=619
+2025-11-07T12:58:31,981  INFO QSim:552 SIMULATION (NEW QSim) AT 20:00:00 : #active agents=65886 lost=0 simT=72000.0s realT=162s; (s/r): 444.44444444444446
+2025-11-07T12:58:39,792  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 21:00:00 : #links=1873 #nodes=470
+2025-11-07T12:58:39,792  INFO QSim:552 SIMULATION (NEW QSim) AT 21:00:00 : #active agents=50460 lost=0 simT=75600.0s realT=170s; (s/r): 444.70588235294116
+2025-11-07T12:58:45,993  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 22:00:00 : #links=1543 #nodes=380
+2025-11-07T12:58:45,994  INFO QSim:552 SIMULATION (NEW QSim) AT 22:00:00 : #active agents=38120 lost=0 simT=79200.0s realT=176s; (s/r): 450.0
+2025-11-07T12:58:51,044  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 23:00:00 : #links=1276 #nodes=314
+2025-11-07T12:58:51,044  INFO QSim:552 SIMULATION (NEW QSim) AT 23:00:00 : #active agents=27403 lost=0 simT=82800.0s realT=181s; (s/r): 457.4585635359116
+2025-11-07T12:58:54,690  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 24:00:00 : #links=933 #nodes=244
+2025-11-07T12:58:54,690  INFO QSim:552 SIMULATION (NEW QSim) AT 24:00:00 : #active agents=19865 lost=0 simT=86400.0s realT=184s; (s/r): 469.5652173913044
+2025-11-07T12:58:56,830  INFO MemoryObserver:43 used RAM: 6404 MB  free: 3003 MB  total: 9408 MB  max: 30208 MB
+2025-11-07T12:58:57,188  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 25:00:00 : #links=594 #nodes=150
+2025-11-07T12:58:57,188  INFO QSim:552 SIMULATION (NEW QSim) AT 25:00:00 : #active agents=15446 lost=0 simT=90000.0s realT=187s; (s/r): 481.2834224598931
+2025-11-07T12:58:58,857  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 26:00:00 : #links=444 #nodes=106
+2025-11-07T12:58:58,857  INFO QSim:552 SIMULATION (NEW QSim) AT 26:00:00 : #active agents=13382 lost=0 simT=93600.0s realT=189s; (s/r): 495.23809523809524
+2025-11-07T12:59:00,373  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 27:00:00 : #links=386 #nodes=94
+2025-11-07T12:59:00,377  INFO QSim:552 SIMULATION (NEW QSim) AT 27:00:00 : #active agents=12097 lost=0 simT=97200.0s realT=190s; (s/r): 511.57894736842104
+2025-11-07T12:59:01,724  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 28:00:00 : #links=325 #nodes=72
+2025-11-07T12:59:01,724  INFO QSim:552 SIMULATION (NEW QSim) AT 28:00:00 : #active agents=11024 lost=0 simT=100800.0s realT=191s; (s/r): 527.7486910994764
+2025-11-07T12:59:02,957  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 29:00:00 : #links=300 #nodes=67
+2025-11-07T12:59:02,958  INFO QSim:552 SIMULATION (NEW QSim) AT 29:00:00 : #active agents=10057 lost=0 simT=104400.0s realT=193s; (s/r): 540.9326424870467
+2025-11-07T12:59:04,145  INFO AbstractQNetsimEngine:359 SIMULATION (QNetsimEngine) AT 30:00:00 : #links=277 #nodes=54
+2025-11-07T12:59:04,146  INFO QSim:552 SIMULATION (NEW QSim) AT 30:00:00 : #active agents=9192 lost=0 simT=108000.0s realT=194s; (s/r): 556.7010309278351
+2025-11-07T12:59:04,289  INFO Gbl:196 Thread performance: Thread=class org.matsim.core.events.SimStepParallelEventsManagerImpl$ProcessEventsRunnable0  cpu-time=186.816416564sec
+2025-11-07T12:59:04,289  INFO AbstractController$9:237 ### ITERATION 1 fires after mobsim event
+2025-11-07T12:59:04,290  INFO ControllerListenerManagerImpl:324 calling notifyAfterMobsim on org.matsim.analysis.LegTimesControllerListener with priority 0.0
+2025-11-07T12:59:04,294  INFO LegTimesControllerListener:73 [1] average leg duration is: 774 seconds = 00:12:54
+2025-11-07T12:59:04,294  INFO ControllerListenerManagerImpl:324 calling notifyAfterMobsim on org.matsim.core.events.MobsimScopeEventHandling with priority 0.0
+2025-11-07T12:59:04,294  INFO ControllerListenerManagerImpl:324 calling notifyAfterMobsim on org.matsim.core.scoring.EventsToActivities$1 with priority 0.0
+2025-11-07T12:59:04,401  INFO ControllerListenerManagerImpl:327 [it.1] all ControllerAfterMobsimListeners called.
+2025-11-07T12:59:04,402  INFO AbstractController$4:162 ### ITERATION 1 fires scoring event
+2025-11-07T12:59:04,402  INFO ControllerListenerManagerImpl:238 calling notifyScoring on org.matsim.core.scoring.PlansScoringImpl with priority 0.0
+2025-11-07T12:59:04,499  INFO NewScoreAssignerImpl:60 it: 1 msaStart: null
+2025-11-07T12:59:04,570  INFO ControllerListenerManagerImpl:250 [it.1] all ControllerScoringListeners called.
+2025-11-07T12:59:04,570  INFO AbstractController$5:170 ### ITERATION 1 fires iteration end event
+2025-11-07T12:59:04,570  INFO ControllerListenerManagerImpl:209 calling notifyIterationEnds on org.matsim.core.controler.corelisteners.EventsHandlingImpl with priority 0.0
+2025-11-07T12:59:04,571  INFO EventsManagerImpl:164 removing Event-Handler: org.matsim.core.events.algorithms.EventWriterXML
+2025-11-07T12:59:04,572  INFO EventsManagerImpl:164 removing Event-Handler: org.matsim.core.events.algorithms.EventWriterXML
+2025-11-07T12:59:04,572  INFO ControllerListenerManagerImpl:209 calling notifyIterationEnds on org.matsim.core.scoring.PlansScoringImpl with priority 0.0
+2025-11-07T12:59:04,631  INFO PopulationImpl:111  person # 1
+2025-11-07T12:59:04,631  INFO PopulationImpl:111  person # 4
+2025-11-07T12:59:04,631  INFO PopulationImpl:111  person # 16
+2025-11-07T12:59:04,632  INFO PopulationImpl:111  person # 64
+2025-11-07T12:59:04,632  INFO PopulationImpl:111  person # 256
+2025-11-07T12:59:04,632  INFO PopulationImpl:111  person # 1024
+2025-11-07T12:59:04,633  INFO PopulationImpl:111  person # 4096
+2025-11-07T12:59:04,635  INFO PopulationImpl:111  person # 16384
+2025-11-07T12:59:04,644  INFO PopulationImpl:111  person # 65536
+2025-11-07T12:59:04,823  INFO Counter:70 [PopulationWriter] dumped person # 1
+2025-11-07T12:59:04,823  INFO Counter:70 [PopulationWriter] dumped person # 2
+2025-11-07T12:59:04,823  INFO Counter:70 [PopulationWriter] dumped person # 4
+2025-11-07T12:59:04,823  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 1
+2025-11-07T12:59:04,823  INFO Counter:70 [PopulationWriter] dumped person # 8
+2025-11-07T12:59:04,823  INFO Counter:70 [PopulationWriter] dumped person # 16
+2025-11-07T12:59:04,824  INFO Counter:70 [PopulationWriter] dumped person # 32
+2025-11-07T12:59:04,824  INFO Counter:70 [PopulationWriter] dumped person # 64
+2025-11-07T12:59:04,824  INFO Counter:70 [PopulationWriter] dumped person # 128
+2025-11-07T12:59:04,824  INFO Counter:70 [PopulationWriter] dumped person # 256
+2025-11-07T12:59:04,824  INFO Counter:70 [PopulationWriter] dumped person # 512
+2025-11-07T12:59:04,824  WARN ObjectAttributesConverter:96 No AttributeConverter found for class org.matsim.api.core.v01.Id$IdImpl. Not all attribute values can be converted.
+2025-11-07T12:59:04,824  WARN ObjectAttributesConverter:96 No AttributeConverter found for class org.matsim.api.core.v01.Id$IdImpl. Not all attribute values can be converted.
+2025-11-07T12:59:04,825  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 2
+2025-11-07T12:59:04,825  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 4
+2025-11-07T12:59:04,826  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 8
+2025-11-07T12:59:04,827  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 16
+2025-11-07T12:59:04,829  INFO Counter:70 [PopulationWriter] dumped person # 1024
+2025-11-07T12:59:04,832  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 32
+2025-11-07T12:59:04,836  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 64
+2025-11-07T12:59:04,844  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 128
+2025-11-07T12:59:04,862  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 256
+2025-11-07T12:59:04,890  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 512
+2025-11-07T12:59:04,946  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 1024
+2025-11-07T12:59:04,948  INFO Counter:70 [PopulationWriter] dumped person # 2048
+2025-11-07T12:59:05,058  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 2048
+2025-11-07T12:59:05,166  INFO Counter:70 [PopulationWriter] dumped person # 4096
+2025-11-07T12:59:05,273  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 4096
+2025-11-07T12:59:05,608  INFO Counter:70 [PopulationWriter] dumped person # 8192
+2025-11-07T12:59:05,888  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 8192
+2025-11-07T12:59:06,693  INFO Counter:70 [PopulationWriter] dumped person # 16384
+2025-11-07T12:59:06,806  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 16384
+2025-11-07T12:59:08,492  INFO Counter:70 [PopulationWriter] dumped person # 32768
+2025-11-07T12:59:08,603  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 32768
+2025-11-07T12:59:12,106  INFO Counter:70 [PopulationWriter] dumped person # 65536
+2025-11-07T12:59:12,215  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 65536
+2025-11-07T12:59:19,283  INFO Counter:70 [PopulationWriter] dumped person # 131072
+2025-11-07T12:59:19,392  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 131072
+2025-11-07T12:59:26,597  INFO Counter:75 [ParallelPopulationWriterV6] dumped person # 199709
+2025-11-07T12:59:26,597  INFO PopulationWriter:150 Population written to: simulation_output/ITERS/it.1/1.experienced_plans.xml.gz
+2025-11-07T12:59:26,599  INFO Counter:75 [PopulationWriter] dumped person # 199709
+2025-11-07T12:59:28,783  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.counts.CountsControllerListener with priority 0.0
+2025-11-07T12:59:28,783  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.analysis.ModeChoiceCoverageControllerListener with priority 0.0
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode bike = 0.07874393745872235
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode bike_loop = 0.0020293329531667777
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode car = 0.3476705585247986
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode car_loop = 4.756931008498468E-4
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode car_passenger = 0.08459336240831633
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode car_passenger_loop = 5.0915163699524886E-5
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode outside = 0.06216886959608273
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode pt = 0.1809306710036688
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode pt_loop = 7.273594814217841E-6
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode truck = 0.0076561859014457
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode walk = 0.22039137758976343
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (1x) of mode walk_loop = 0.026429334116941948
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode bike = 0.0
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode bike_loop = 0.0
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode car = 0.0
+2025-11-07T12:59:29,887  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode car_loop = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode car_passenger = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode car_passenger_loop = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode outside = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode pt = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode pt_loop = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode truck = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode walk = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (5x) of mode walk_loop = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode bike = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode bike_loop = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode car = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode car_loop = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode car_passenger = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode car_passenger_loop = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode outside = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode pt = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode pt_loop = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode truck = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode walk = 0.0
+2025-11-07T12:59:29,888  INFO ModeChoiceCoverageControllerListener:144 -- mode choice coverage (10x) of mode walk_loop = 0.0
+2025-11-07T12:59:30,073  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.analysis.ModeStatsControllerListener with priority 0.0
+2025-11-07T12:59:30,774  INFO ModeStatsControllerListener:132 Mode shares over all 687418.0 trips found. MainModeIdentifier: class org.matsim.core.router.DefaultAnalysisMainModeIdentifier
+2025-11-07T12:59:30,775  INFO ModeStatsControllerListener:139 -- mode share of mode bike = 0.07676988382614362
+2025-11-07T12:59:30,775  INFO ModeStatsControllerListener:139 -- mode share of mode bike_loop = 0.002024968796278247
+2025-11-07T12:59:30,775  INFO ModeStatsControllerListener:139 -- mode share of mode car = 0.3448804075540646
+2025-11-07T12:59:30,775  INFO ModeStatsControllerListener:139 -- mode share of mode car_loop = 4.756931008498468E-4
+2025-11-07T12:59:30,775  INFO ModeStatsControllerListener:139 -- mode share of mode car_passenger = 0.08304554143185078
+2025-11-07T12:59:30,775  INFO ModeStatsControllerListener:139 -- mode share of mode car_passenger_loop = 5.0915163699524886E-5
+2025-11-07T12:59:30,775  INFO ModeStatsControllerListener:139 -- mode share of mode outside = 0.06216886959608273
+2025-11-07T12:59:30,775  INFO ModeStatsControllerListener:139 -- mode share of mode pt = 0.17833836181188156
+2025-11-07T12:59:30,775  INFO ModeStatsControllerListener:139 -- mode share of mode pt_loop = 7.273594814217841E-6
+2025-11-07T12:59:30,775  INFO ModeStatsControllerListener:139 -- mode share of mode truck = 0.0076561859014457
+2025-11-07T12:59:30,775  INFO ModeStatsControllerListener:139 -- mode share of mode walk = 0.2181598387007614
+2025-11-07T12:59:30,775  INFO ModeStatsControllerListener:139 -- mode share of mode walk_loop = 0.02642206052212773
+2025-11-07T12:59:30,878  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.analysis.ScoreStatsControlerListener with priority 0.0
+2025-11-07T12:59:30,967  INFO ScoreStatsControlerListener:154 -- avg. score of the executed plan of each agent: -22.081611614343377
+2025-11-07T12:59:30,967  INFO ScoreStatsControlerListener:155 -- avg. score of the worst plan of each agent: -23.134763781301803
+2025-11-07T12:59:30,967  INFO ScoreStatsControlerListener:156 -- avg. of the avg. plan score per agent: -22.576438755889832
+2025-11-07T12:59:30,967  INFO ScoreStatsControlerListener:157 -- avg. score of the best plan of each agent: -22.018113730477946
+2025-11-07T12:59:31,034  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.analysis.IterationTravelStatsControllerListener with priority 0.0
+2025-11-07T12:59:31,601  INFO TravelDistanceStats:115 -- average leg distance per plan (executed plans only): 2989.0809815077732 meters
+2025-11-07T12:59:31,601  INFO TravelDistanceStats:116 average leg distance per Person (executed plans only): 25688.773424337665 meters (statistic on all 1716340 legs which have a finite distance)
+2025-11-07T12:59:31,601  INFO TravelDistanceStats:117 -- average trip distance per plan (executed plans only): 7685.2427493698315 meters
+2025-11-07T12:59:31,601  INFO TravelDistanceStats:118 average trip distance per Person (executed plans only): 25631.95796784828 meters (statistic on all 666073 trips which have a finite distance)
+2025-11-07T12:59:31,601  INFO TravelDistanceStats:119 (TravelDistanceStats takes an average over all legs where the simulation reports travelled (network) distances
+2025-11-07T12:59:31,601  INFO TravelDistanceStats:120 (and teleported legs whose route contains a distance.)
+2025-11-07T12:59:54,308  INFO ActivityWriter:39 Writing all Activities to activitiescsv
+2025-11-07T12:59:56,831  INFO MemoryObserver:43 used RAM: 8468 MB  free: 939 MB  total: 9408 MB  max: 30208 MB
+2025-11-07T13:00:00,252  INFO ActivityWriter:59 ...done
+2025-11-07T13:00:00,252  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.analysis.LegTimesControllerListener with priority 0.0
+2025-11-07T13:00:00,252  INFO EventsManagerImpl:164 removing Event-Handler: org.matsim.analysis.CalcLegTimes
+2025-11-07T13:00:00,252  INFO EventsManagerImpl:164 removing Event-Handler: org.matsim.analysis.CalcLegTimes
+2025-11-07T13:00:00,252  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.analysis.LegHistogramListener with priority 0.0
+2025-11-07T13:00:00,259  INFO LegHistogramListener:79 number of legs:	1724995	100%
+2025-11-07T13:00:00,259  INFO LegHistogramListener:86 number of bike legs:	52337	3.0340377798196516%
+2025-11-07T13:00:00,260  INFO LegHistogramListener:86 number of bike_loop legs:	1358	0.07872486586917643%
+2025-11-07T13:00:00,260  INFO LegHistogramListener:86 number of car legs:	229416	13.299516810193653%
+2025-11-07T13:00:00,260  INFO LegHistogramListener:86 number of car_loop legs:	325	0.01884063432067919%
+2025-11-07T13:00:00,260  INFO LegHistogramListener:86 number of car_passenger legs:	56599	3.281110959741912%
+2025-11-07T13:00:00,260  INFO LegHistogramListener:86 number of car_passenger_loop legs:	35	0.0020289913883808357%
+2025-11-07T13:00:00,260  INFO LegHistogramListener:86 number of outside legs:	41469	2.4040069681361396%
+2025-11-07T13:00:00,260  INFO LegHistogramListener:86 number of pt legs:	238124	13.804329867622805%
+2025-11-07T13:00:00,260  INFO LegHistogramListener:86 number of pt_loop legs:	5	2.898559126258337E-4%
+2025-11-07T13:00:00,260  INFO LegHistogramListener:86 number of truck legs:	5263	0.30510233362995254%
+2025-11-07T13:00:00,260  INFO LegHistogramListener:86 number of walk legs:	1082257	62.73971808613938%
+2025-11-07T13:00:00,260  INFO LegHistogramListener:86 number of walk_loop legs:	17807	1.032292847225644%
+2025-11-07T13:00:00,970  INFO EventsManagerImpl:164 removing Event-Handler: org.matsim.analysis.LegHistogram
+2025-11-07T13:00:00,970  INFO EventsManagerImpl:164 removing Event-Handler: org.matsim.analysis.LegHistogram
+2025-11-07T13:00:00,970  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.analysis.LinkStatsControllerListener with priority 0.0
+2025-11-07T13:00:00,970  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.matsim.contribs.discrete_mode_choice.modules.UtilitiesWriterHandler with priority 0.0
+2025-11-07T13:00:00,970  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.eqasim.core.simulation.termination.mode_share.ModeShareTracker with priority 0.0
+2025-11-07T13:00:00,970  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.eqasim.switzerland.ch.utils.pt.PTPassengerAnalyser with priority 0.0
+2025-11-07T13:00:00,970  INFO EventsManagerImpl:164 removing Event-Handler: org.eqasim.switzerland.ch.utils.pt.PTPassengerCountingHandler
+2025-11-07T13:00:00,970  INFO EventsManagerImpl:164 removing Event-Handler: org.eqasim.switzerland.ch.utils.pt.PTPassengerCountingHandler
+✔ PT passenger counts written to: simulation_output/pt_passenger_counts.csv.gz
+2025-11-07T13:00:03,642  INFO ControllerListenerManagerImpl:217 calling notifyIterationEnds on org.eqasim.switzerland.ch.utils.pt.PTLinkVolumesAnalyser with priority 0.0
+2025-11-07T13:00:03,642  INFO EventsManagerImpl:164 removing Event-Handler: org.eqasim.switzerland.ch.utils.pt.PTLinkVolumesHandler
+2025-11-07T13:00:03,642  INFO EventsManagerImpl:164 removing Event-Handler: org.eqasim.switzerland.ch.utils.pt.PTLinkVolumesHandler
+✔ PT link volumes written to: simulation_output/pt_link_volumes.csv.gz
+2025-11-07T13:00:11,188  INFO ControllerListenerManagerImpl:221 [it.1] all ControllerIterationEndsListeners called.
+2025-11-07T13:00:11,249  INFO AbstractController:184 ### ITERATION 1 ENDS
+2025-11-07T13:00:11,249  INFO AbstractController:185 ###################################################
+2025-11-07T13:00:11,258  INFO MatsimRuntimeModifications:81 S H U T D O W N   ---   start shutdown.
+2025-11-07T13:00:11,259  INFO ControllerListenerManagerImpl:155 calling notifyShutdown on org.matsim.core.controler.corelisteners.EventsHandlingImpl with priority 0.0
+2025-11-07T13:00:11,259  INFO ControllerListenerManagerImpl:155 calling notifyShutdown on org.matsim.core.controler.corelisteners.DumpDataAtEndImpl with priority 0.0
+2025-11-07T13:00:11,417  INFO Counter:70 [PopulationWriter] dumped person # 1
+2025-11-07T13:00:11,417  INFO Counter:70 [PopulationWriter] dumped person # 2
+2025-11-07T13:00:11,417  INFO Counter:70 [PopulationWriter] dumped person # 4
+2025-11-07T13:00:11,417  INFO Counter:70 [PopulationWriter] dumped person # 8
+2025-11-07T13:00:11,417  INFO Counter:70 [PopulationWriter] dumped person # 16
+2025-11-07T13:00:11,417  INFO Counter:70 [PopulationWriter] dumped person # 32
+2025-11-07T13:00:11,417  INFO Counter:70 [PopulationWriter] dumped person # 64
+2025-11-07T13:00:11,417  INFO Counter:70 [PopulationWriter] dumped person # 128
+2025-11-07T13:00:11,417  INFO Counter:70 [PopulationWriter] dumped person # 256
+2025-11-07T13:00:11,417  INFO Counter:70 [PopulationWriter] dumped person # 512
+2025-11-07T13:00:11,417  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 1
+2025-11-07T13:00:11,418  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 2
+2025-11-07T13:00:11,418  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 4
+2025-11-07T13:00:11,419  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 8
+2025-11-07T13:00:11,421  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 16
+2025-11-07T13:00:11,423  INFO Counter:70 [PopulationWriter] dumped person # 1024
+2025-11-07T13:00:11,427  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 32
+2025-11-07T13:00:11,432  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 64
+2025-11-07T13:00:11,442  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 128
+2025-11-07T13:00:11,463  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 256
+2025-11-07T13:00:11,498  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 512
+2025-11-07T13:00:11,569  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 1024
+2025-11-07T13:00:11,572  INFO Counter:70 [PopulationWriter] dumped person # 2048
+2025-11-07T13:00:11,708  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 2048
+2025-11-07T13:00:11,846  INFO Counter:70 [PopulationWriter] dumped person # 4096
+2025-11-07T13:00:11,980  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 4096
+2025-11-07T13:00:12,403  INFO Counter:70 [PopulationWriter] dumped person # 8192
+2025-11-07T13:00:12,538  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 8192
+2025-11-07T13:00:13,551  INFO Counter:70 [PopulationWriter] dumped person # 16384
+2025-11-07T13:00:13,694  INFO Counter:70 [ParallelPopulationWriterV6] dumped person # 16384
