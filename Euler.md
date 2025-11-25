@@ -1,0 +1,40 @@
+# login
+```
+ssh bschlaich@euler.ethz.ch
+```
+
+
+# get maven running:
+```
+module load stack/2024-06
+module load gcc/12.2.0
+module load openjdk/21.0.3_9
+module load maven
+```
+
+# build the repository online before running the job offline:
+# from root directory:
+```
+mvn clean install -DskipTests
+```
+# from switzerland directory, stop when simulation starts:
+```
+cd switzerland
+```
+```
+mvn exec:java -Dexec.mainClass=org.eqasim.switzerland.ch_cmdp.RunSimulation -Dexec.args="--config-path ./scenarios/Zurich_10pct/zurich_10pct_config.xml" -Dexec.classpathScope=compile
+```
+
+# then run the simulation on a node by submitting the execution job:
+# run from root directory, again:
+```
+sbatch < simulation_job.sh
+```
+
+# check job status. Make sure to replace <username> with your own username (eg. mbalac):
+```
+squeue -u <username> -i 5
+```
+
+# find the resulting output log of stdout in the root directory:
+# slurm-<...>.out
