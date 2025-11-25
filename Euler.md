@@ -22,7 +22,7 @@ mvn clean install -DskipTests
 cd switzerland
 ```
 ```
-mvn exec:java -Dexec.mainClass=org.eqasim.switzerland.ch_cmdp.RunSimulation -Dexec.args="--config-path ./scenarios/Zurich_10pct/zurich_10pct_config.xml" -Dexec.classpathScope=compile
+mvn exec:java -Dexec.mainClass=org.eqasim.switzerland.ch_cmdp.RunSimulation -Dexec.args="--config-path ../scenarios/Zurich_10pct/zurich_10pct_config.xml" -Dexec.classpathScope=compile
 ```
 
 # then run the simulation on a node by submitting the execution job:

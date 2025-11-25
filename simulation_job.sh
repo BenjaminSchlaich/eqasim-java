@@ -14,11 +14,11 @@
 # module load openjdk/21.0.3_9
 # module load maven
 
-cd $(pwd)/eqasim-java/switzerland
+cd ./eqasim-java/switzerland
 # mvn --offline -DskipTests clean package
 # mvn --offline exec:java -Dexec.mainClass="org.eqasim.switzerland.ch_cmdp.RunSimulation" -Dexec.args="--config-path /cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_config.xml"
 #  
 mvn --offline exec:java \
   -Dexec.mainClass=org.eqasim.switzerland.ch_cmdp.RunSimulation \
-  -Dexec.args="--config-path $(pwd)/scenarios/Zurich_10pct/zurich_10pct_config.xml" \
+  -Dexec.args="--config-path ../scenarios/Zurich_10pct/zurich_10pct_config.xml" \
   -Dexec.classpathScope=compile
