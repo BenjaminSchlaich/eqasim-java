@@ -9,3 +9,7 @@ Zurich_10pct
 .DS_Store
 target/
 slurm*
+switzerland/cantons_mode_shares.csv
+switzerland/gtfs_zones.csv
+switzerland/SBB_all_distances.csv
+switzerland/estimated_dmc_parameters.yml
