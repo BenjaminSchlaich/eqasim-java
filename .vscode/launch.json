@@ -6,9 +6,9 @@
     "configurations": [
         {
             "type": "java",
-            "name": "RunSimulation",
+            "name": "AddBikeVehicles",
             "request": "launch",
-            "mainClass": "org.eqasim.switzerland.zurich.RunSimulation",
+            "mainClass": "org.eqasim.switzerland.zurich.AddBikeVehicles",
             "projectName": "switzerland"
         },
         {
