@@ -26,7 +26,10 @@ mvn exec:java -Dexec.mainClass=org.eqasim.switzerland.ch_cmdp.RunSimulation -Dex
 ```
 
 # then run the simulation on a node by submitting the execution job:
-# run from root directory, again:
+# run from root directory of the repository, again:
+```
+cd ..
+```
 ```
 sbatch < simulation_job.sh
 ```

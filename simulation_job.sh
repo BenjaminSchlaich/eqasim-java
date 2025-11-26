@@ -2,7 +2,7 @@
 #SBATCH --job-name=matsim_simulation    #Name of the job
 #SBATCH --ntasks=1                      #Requesting 1 node (is always 1)
 #SBATCH --cpus-per-task=8               #Requesting 8 CPU
-#SBATCH --mem-per-cpu=3G                #Requesting 3 Gb memory per core, 24 Gb in total 
+#SBATCH --mem-per-cpu=16G                #Requesting 3 Gb memory per core, 24 Gb in total 
 #SBATCH --time=6:00:00                  #Requesting 6 hours run time
 
 #Source the GDC stack
@@ -14,11 +14,13 @@
 # module load openjdk/21.0.3_9
 # module load maven
 
-cd ./eqasim-java/switzerland
+cd ./switzerland
 # mvn --offline -DskipTests clean package
 # mvn --offline exec:java -Dexec.mainClass="org.eqasim.switzerland.ch_cmdp.RunSimulation" -Dexec.args="--config-path /cluster/scratch/bschlaich/eqasim-java/Zurich_10pct/zurich_10pct_config.xml"
 #  
 mvn --offline exec:java \
-  -Dexec.mainClass=org.eqasim.switzerland.ch_cmdp.RunSimulation \
+  -Dexec.mainClass=org.eqasim.switzerland.zurich.RunSimulation \
   -Dexec.args="--config-path ../scenarios/Zurich_10pct/zurich_10pct_config.xml" \
-  -Dexec.classpathScope=compile
+  -Dexec.classpathScope=compile \
+  -Dexec.jvmArgs="-Xmx120G -Xms120G"
+
