@@ -6,11 +6,18 @@
     "configurations": [
         {
             "type": "java",
+            "name": "AddBikeVehicles",
+            "request": "launch",
+            "mainClass": "org.eqasim.switzerland.zurich.AddBikeVehicles",
+            "projectName": "switzerland"
+        },
+        {
+            "type": "java",
             "name": "RunSimulation(5)",
             "request": "launch",
             "mainClass": "org.eqasim.switzerland.ch_cmdp.RunSimulation",
             "projectName": "switzerland",
-            "args": "--config-path /Users/benjaminschlaich/Coding/MatSim/eqasim-java/Zurich_10pct/zurich_10pct_config.xml"
+            "args": "--config-path scenarios/Zurich_10pct/zurich_10pct_config.xml"
         }
     ]
 }
