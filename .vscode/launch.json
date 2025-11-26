@@ -6,11 +6,18 @@
     "configurations": [
         {
             "type": "java",
+            "name": "RunSimulation",
+            "request": "launch",
+            "mainClass": "org.eqasim.switzerland.zurich.RunSimulation",
+            "projectName": "switzerland"
+        },
+        {
+            "type": "java",
             "name": "RunSimulation(5)",
             "request": "launch",
             "mainClass": "org.eqasim.switzerland.ch_cmdp.RunSimulation",
             "projectName": "switzerland",
-            "args": "--config-path /Users/benjaminschlaich/Coding/MatSim/eqasim-java/Zurich_10pct/zurich_10pct_config.xml"
+            "args": "--config-path scenarios/Zurich_10pct/zurich_10pct_config.xml"
         }
     ]
 }
