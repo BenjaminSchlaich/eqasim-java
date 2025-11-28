@@ -6,7 +6,7 @@ Which specifies the main class to be used when running the jar. You can of cours
 
 First, compile the project with:
 ```
-module load stack/2024-06 openjdk/21.0.3_9
+mvn clean package -Pstandalone -pl switzerland -am -DskipTests
 ```
 
 This gives you multiple jar files in the inner `target` folder. Then copy the `switzerland-2.0.0.jar` file to the cluster.
@@ -16,4 +16,9 @@ Also have the scenario on the cluster (at `scenarios/Zurich_10pct`) and move the
 From `scratch/<your_user>` run the following command to submit the job:
 ```
 batch < jar_job.sh 
+```
+
+The `jar_job.sh` file should load these modules:
+```
+module load stack/2024-06 openjdk/21.0.3_9
 ```
