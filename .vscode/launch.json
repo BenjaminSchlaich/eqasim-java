@@ -15,6 +15,13 @@
             "type": "java",
             "name": "AddBikeVehicles",
             "request": "launch",
+            "mainClass": "org.eqasim.switzerland.ch_cmdp.AddBikeVehicles",
+            "projectName": "switzerland"
+        },
+        {
+            "type": "java",
+            "name": "AddBikeVehicles",
+            "request": "launch",
             "mainClass": "org.eqasim.switzerland.zurich.AddBikeVehicles",
             "projectName": "switzerland"
         },
