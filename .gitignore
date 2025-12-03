@@ -14,3 +14,5 @@ switzerland/gtfs_zones.csv
 switzerland/SBB_all_distances.csv
 switzerland/estimated_dmc_parameters.yml
 data/*
+output.png
+.vscode/launch.json
