@@ -8,7 +8,7 @@ def main():
     wege = pd.read_csv("data/microcensus/wege_alt.csv", encoding="latin1")
     etappen = pd.read_csv("data/microcensus/etappen_alt.csv", encoding="latin1")
 
-    idx = 2347
+    idx = 100
     if idx >= len(etappen):
         print(f"Index {idx} out of range for etappen_alt.csv (len={len(etappen)})")
         sys.exit(1)
