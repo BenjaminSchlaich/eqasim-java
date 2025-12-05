@@ -67,23 +67,26 @@ public class RunSimulation {
 
 		});
 
-		// XX logging coordinates of nodes for debugging
-		// TODO: try to find a way to load z coords from network
-		Logger logger = LogManager.getLogger(RunSimulation.class);
+		// 2025-12-05T20:11:01,299  WARN CoordUtils:393 Mix of 2D / 3D coordinates. Assuming 2D only.
 
+
+		// XX logging coordinates of nodes for debugging
+		Logger logger = LogManager.getLogger(RunSimulation.class);
+		
 		for (var node : scenario.getNetwork().getNodes().values()) {
 			logger.info("XX Node " + node.getId() + " has coordinates: " + node.getCoord());
 			logger.info("XX Node " + node.getId() + " has z-coordinate: " + node.getAttributes());
 		}
-
+		
 		logger.info("Network attributes: " + scenario.getNetwork().getAttributes());
 		logger.info("Network name: " + scenario.getNetwork().getName());
-
+		
 		// for (var link : scenario.getNetwork().getLinks().values()) {
-		// 	logger.info("XX Link " + link.getId() + " has attributes: " + link.getCoord());
-		// 	logger.info("XX Link " + link.getId() + " has attributes: " + link.getAttributes());
-		// }
-
+			// 	logger.info("XX Link " + link.getId() + " has attributes: " + link.getCoord());
+			// 	logger.info("XX Link " + link.getId() + " has attributes: " + link.getAttributes());
+			// }
+			// TODO: try to find a way for z coords to be also added Activity s
+			
 		controller.run();
 	}
 }

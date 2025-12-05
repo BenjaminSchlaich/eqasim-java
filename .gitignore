@@ -16,3 +16,5 @@ switzerland/estimated_dmc_parameters.yml
 data/*
 output.png
 .vscode/launch.json
+*.csv
+*.yml

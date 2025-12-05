@@ -35,183 +35,10 @@ import java.awt.image.BufferedImage;
 // TODO: this code should work, but I could not test it, since I do not have the ram on my laptop
 
 public class LoadAndTestZCoordsInNetwork {
-
-
-    public static List<Coord> getHeightPoints() {
-        String height_path = "data/heights";
-
-        List<Path> xyzPaths;
-
-        try (Stream<Path> stream = Files.walk(Path.of(height_path))) {
-            xyzPaths = stream
-                    .filter(Files::isRegularFile)
-                    .filter(p -> p.toString().endsWith(".xyz"))
-                    .collect(Collectors.toList());
-        } catch (Exception e) {
-            throw new RuntimeException("Error reading .xyz files", e);
-        }
-
-        System.out.println("Found " + xyzPaths.size() + " .xyz files.");
-
-        List<Coord> points = new ArrayList<>();
-
-        Random random = new Random(42);
-
-
-        // int j = 0;
-        // int j_upperLimit = 10000;
-
-        for (Path xyzPath : xyzPaths) {
-            System.out.println("Reading file: " + xyzPath);
-
-
-            try (BufferedReader br = new BufferedReader(new FileReader(xyzPath.toFile()))) {
     
-                // Skip the first line (Python used header=1)
-                br.readLine();
-    
-                String line;
-            
-                while ((line = br.readLine()) != null) {
-                    // j++;
-                    // if (j > j_upperLimit) {
-                    //     break;
-                    // }
-
-                    String[] parts = line.trim().split("\\s+");
-                    if (parts.length < 3) continue;
-    
-                    double x = Double.parseDouble(parts[0]);
-                    double y = Double.parseDouble(parts[1]);
-                    double z = Double.parseDouble(parts[2]);
-    
-                    points.add(new Coord(x, y, z));
-                }
-            } catch (Exception e) {
-                System.err.println("Error reading file: " + xyzPath);
-                e.printStackTrace();
-            }
-            // j = 0;
-        }
-
-        System.out.println("Loaded " + points.size() + " points from .xyz files.");
-        return points;
-    }
+    static Logger logger = LogManager.getLogger(LoadAndTestZCoordsInNetwork.class);
 
 
-    public static List<Coord> getHeightGrid() {
-        String height_path = "data/heights";
-
-        List<Path> xyzPaths;
-
-        try (Stream<Path> stream = Files.walk(Path.of(height_path))) {
-            xyzPaths = stream
-                    .filter(Files::isRegularFile)
-                    .filter(p -> p.toString().endsWith(".xyz"))
-                    .collect(Collectors.toList());
-        } catch (Exception e) {
-            throw new RuntimeException("Error reading .xyz files", e);
-        }
-        // Sort the paths alphabetically to ensure consistent order
-        xyzPaths.sort((p1, p2) -> p1.toString().compareTo(p2.toString()));
-
-
-        System.out.println("Found " + xyzPaths.size() + " .xyz files.");
-// getHeightPoints
-
-
-        List<Coord> points = new ArrayList<>();
-
-        Random random = new Random(42);
-
-
-        // int j = 0;
-        // int j_upperLimit = 10000;
-
-        for (Path xyzPath : xyzPaths) {
-            System.out.println("Reading file: " + xyzPath);
-
-
-            try (BufferedReader br = new BufferedReader(new FileReader(xyzPath.toFile()))) {
-    
-                // Skip the first line (Python used header=1)
-                br.readLine();
-    
-                String line;
-            
-                while ((line = br.readLine()) != null) {
-                    // j++;
-                    // if (j > j_upperLimit) {
-                    //     break;
-                    // }
-
-                    String[] parts = line.trim().split("\\s+");
-                    if (parts.length < 3) continue;
-    
-                    double x = Double.parseDouble(parts[0]);
-                    double y = Double.parseDouble(parts[1]);
-                    double z = Double.parseDouble(parts[2]);
-    
-                    points.add(new Coord(x, y, z));
-                }
-            } catch (Exception e) {
-                System.err.println("Error reading file: " + xyzPath);
-                e.printStackTrace();
-            }
-            // j = 0;
-        }
-
-        System.out.println("Loaded " + points.size() + " points from .xyz files.");
-        return points;
-    }
-
-
-
-    public static void createImage(List<Coord> sampledPoints) {
-        int width = 800;
-        int height = 600;
-
-        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g = image.createGraphics();
-
-        g.setColor(Color.white);
-        g.fillRect(0, 0, width, height);
-
-        // Determine bounds
-        double minX = sampledPoints.stream().mapToDouble(p -> p.getX()).min().orElse(0);
-        double maxX = sampledPoints.stream().mapToDouble(p -> p.getX()).max().orElse(1);
-        double minY = sampledPoints.stream().mapToDouble(p -> p.getY()).min().orElse(0);
-        double maxY = sampledPoints.stream().mapToDouble(p -> p.getY()).max().orElse(1);
-        double minZ = sampledPoints.stream().mapToDouble(p -> p.getZ()).min().orElse(0);
-        double maxZ = sampledPoints.stream().mapToDouble(p -> p.getZ()).max().orElse(1);
-
-        for (Coord p : sampledPoints) {
-
-            // Normalize x,y to image coordinates
-            int px = (int) ((p.getX() - minX) / (maxX - minX) * (width - 1));
-            int py = (int) ((p.getY() - minY) / (maxY - minY) * (height - 1));
-
-            // Flip Y axis for image space (optional)
-            py = height - py;
-
-            // Map z to color (simple grayscale)
-            float intensity = (float) ((p.getZ() - minZ) / (maxZ - minZ));
-            Color color = new Color(intensity, 0, 1 - intensity); // Purple gradient
-
-            g.setColor(color);
-            g.fillOval(px - 3, py - 3, 6, 6); // draw a 6px dot
-        }
-
-        g.dispose();
-
-        try {
-            ImageIO.write(image, "png", new File("output.png"));
-            System.out.println("Saved image: output.png");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    // (((310000000 * 3 * 16) / 8 ) / 1024) / 1024
 
     public static void main(String[] args) {
 
@@ -222,13 +49,14 @@ public class LoadAndTestZCoordsInNetwork {
 
         Config config = ConfigUtils.loadConfig(configPath);
 
+        logger.info("Config loaded from: " + configPath);
+
         Scenario scenario = ScenarioUtils.loadScenario(config);
         Network network = scenario.getNetwork();
 
         Network netterworker = NetworkUtils.readNetwork("scenarios/Zurich_10pct/zurich_10pct_network.xml");
 
 
-        Logger logger = LogManager.getLogger(LoadAndTestZCoordsInNetwork.class);
 
 
         int i = 0;
@@ -246,8 +74,6 @@ public class LoadAndTestZCoordsInNetwork {
             i++;
 			logger.info("YY Node " + node.getId() + " has coordinates: " + node.getCoord());
 		}
-
-
     }
 }
 
