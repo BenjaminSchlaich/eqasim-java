@@ -86,7 +86,7 @@ def process_file(path):
 # 4. Run for both datasets
 # ---------------------------
 
-process_file("data/microcensus/wege.csv")
-process_file("data/microcensus/etappen.csv")
+process_file("data/microcensus/wege_zurich.csv")
+process_file("data/microcensus/etappen_zurich.csv")
 
 print("\nDone.")
