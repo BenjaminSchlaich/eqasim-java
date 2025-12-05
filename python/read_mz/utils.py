@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-import constants as c
+import read_mz.constants as c
 
 
 def fix_marital_status(df):

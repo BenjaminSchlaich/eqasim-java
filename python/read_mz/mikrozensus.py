@@ -1,9 +1,9 @@
 import numpy as np
 import pandas as pd
 
-import constants as c
-import utils
-import trips
+import read_mz.constants as c
+import read_mz.utils as utils
+import read_mz.trips as trips
 
 def main(data_path):
 

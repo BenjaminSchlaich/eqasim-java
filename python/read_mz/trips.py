@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import pyproj
 
-import constants as c
+import read_mz.constants as c
 
 def get_trips(data_path):
 
