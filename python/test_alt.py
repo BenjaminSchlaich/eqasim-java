@@ -13,13 +13,10 @@ def main():
     if missing:
         raise ValueError(f"{path} missing required columns: {sorted(missing)}")
 
-    sample_size = min(1000, len(etappen))
-    sampled = etappen #etappen.sample(n=sample_size, random_state=42)
-
-    lon = pd.concat([sampled["S_X"], sampled["Z_X"]], ignore_index=True)
-    lat = pd.concat([sampled["S_Y"], sampled["Z_Y"]], ignore_index=True)
+    lon = pd.concat([etappen["S_X"], etappen["Z_X"]], ignore_index=True)
+    lat = pd.concat([etappen["S_Y"], etappen["Z_Y"]], ignore_index=True)
     z = pd.concat(
-        [pd.Series(sampled["S_Z"], name="z"), pd.Series(sampled["Z_Z"], name="z")],
+        [pd.Series(etappen["S_Z"], name="z"), pd.Series(etappen["Z_Z"], name="z")],
         ignore_index=True,
     )
 
@@ -42,7 +39,7 @@ def main():
     )
     ctx.add_basemap(ax, crs="EPSG:3857")
     fig.colorbar(scatter, ax=ax, label="Height (m)")
-    ax.set_title(f"Heights for {sample_size} Random Etappen (start & end points)")
+    ax.set_title(f"Heights for {etappen} Etappen (start & end points)")
     ax.set_xlabel("Web Mercator X")
     ax.set_ylabel("Web Mercator Y")
     ax.set_aspect("equal")
