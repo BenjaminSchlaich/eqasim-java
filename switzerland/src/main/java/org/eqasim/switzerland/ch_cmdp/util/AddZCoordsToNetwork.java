@@ -6,7 +6,9 @@ import java.io.FileReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -95,6 +97,74 @@ public class AddZCoordsToNetwork {
     }
 
 
+    public static List<Coord> getHeightGrid() {
+        String height_path = "data/heights";
+
+        List<Path> xyzPaths;
+
+        try (Stream<Path> stream = Files.walk(Path.of(height_path))) {
+            xyzPaths = stream
+                    .filter(Files::isRegularFile)
+                    .filter(p -> p.toString().endsWith(".xyz"))
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new RuntimeException("Error reading .xyz files", e);
+        }
+        // Sort the paths alphabetically to ensure consistent order
+        xyzPaths.sort((p1, p2) -> p1.toString().compareTo(p2.toString()));
+
+
+        System.out.println("Found " + xyzPaths.size() + " .xyz files.");
+// getHeightPoints
+
+
+        List<Coord> points = new ArrayList<>();
+
+        Random random = new Random(42);
+
+
+        // int j = 0;
+        // int j_upperLimit = 10000;
+
+        for (Path xyzPath : xyzPaths) {
+            System.out.println("Reading file: " + xyzPath);
+
+
+            try (BufferedReader br = new BufferedReader(new FileReader(xyzPath.toFile()))) {
+    
+                // Skip the first line (Python used header=1)
+                br.readLine();
+    
+                String line;
+            
+                while ((line = br.readLine()) != null) {
+                    // j++;
+                    // if (j > j_upperLimit) {
+                    //     break;
+                    // }
+
+                    String[] parts = line.trim().split("\\s+");
+                    if (parts.length < 3) continue;
+    
+                    double x = Double.parseDouble(parts[0]);
+                    double y = Double.parseDouble(parts[1]);
+                    double z = Double.parseDouble(parts[2]);
+    
+                    points.add(new Coord(x, y, z));
+                }
+            } catch (Exception e) {
+                System.err.println("Error reading file: " + xyzPath);
+                e.printStackTrace();
+            }
+            // j = 0;
+        }
+
+        System.out.println("Loaded " + points.size() + " points from .xyz files.");
+        return points;
+    }
+
+
+
     public static void createImage(List<Coord> sampledPoints) {
         int width = 800;
         int height = 600;
@@ -139,14 +209,42 @@ public class AddZCoordsToNetwork {
             e.printStackTrace();
         }
     }
+    // (((310000000 * 3 * 16) / 8 ) / 1024) / 1024
 
     public static void main(String[] args) {
 
+        // Get the first command line argument as the config path
+        String configPath = args.length > 0 ? args[0] : "scenarios/Zurich_10pct/zurich_10pct_config.xml";
+        
+        // get the second command line argument as the output network file
+        String outputNetworkFile = args.length > 1 ? args[1] : "scenarios/Zurich_10pct/zurich_10pct_network_with_z.xml";
+
         List<Coord> points = AddZCoordsToNetwork.getHeightPoints();
 
+        // Cast the points to integers
+        List<Coord> intPoints = points.stream()
+                .map(p -> new Coord((int) p.getX(), (int) p.getY(), p.getZ()))
+                .collect(Collectors.toList());
+
+
+        // Now identify the minimum and maximum X and Y coordinates from the points, to cast to a grid
+        // int minX = points.stream().mapToInt(p -> p.getX()).max().orElse(0);
+
+
+
+
+        // int maxX = points.stream().mapToDouble(p -> p.getX()).max().orElse(1);
+
+        // double minY = points.stream().mapToDouble(p -> p.getY()).min().orElse(0);
+        // double maxY = points.stream().mapToDouble(p -> p.getY()).max().orElse(1);
+
+
+
+
+
         
-        String configPath = "scenarios/Zurich_10pct/zurich_10pct_config.xml";
-        String outputNetworkFile = "scenarios/Zurich_10pct/zurich_10pct_network_with_z.xml";
+        // String configPath = "scenarios/Zurich_10pct/zurich_10pct_config.xml";
+        // String outputNetworkFile = "scenarios/Zurich_10pct/zurich_10pct_network_with_z.xml";
 
 
 
@@ -160,8 +258,12 @@ public class AddZCoordsToNetwork {
         // int l_upperLimit = 10000;
 
         List<Coord> sampledPoints = new ArrayList<>();
+        int progress = 0;
 
         for (var node : network.getNodes().values()) {
+            if (progress % 10000 == 0) {
+                System.out.println("Processing node " + progress + " / " + network.getNodes().size());
+            }
             // if (l >= l_upperLimit) {
             //     break;
             // }
