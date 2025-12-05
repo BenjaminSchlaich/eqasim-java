@@ -19,8 +19,8 @@ def main():
     end = (float(row["Z_X"]), float(row["Z_Y"]), float(row.get("Z_Z", float("nan"))))
 
     print(f"Etappe #{idx}")
-    print(f"  Start (x, y, z): {start[0]} {start[1]} {start[2]}")
-    print(f"  End   (x, y, z): {end[0]} {end[1]} {end[2]}")
+    print(f"  Start (y, x, z): {start[1]} {start[0]} {start[2]}")
+    print(f"  End   (y, x, z): {end[1]} {end[0]} {end[2]}")
 
 
 if __name__ == "__main__":
