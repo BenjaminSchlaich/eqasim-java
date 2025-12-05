@@ -3,6 +3,10 @@ package org.eqasim.switzerland.ch_cmdp;
 import ch.sbb.matsim.config.SwissRailRaptorConfigGroup;
 import ch.sbb.matsim.mobsim.qsim.SBBTransitModule;
 import ch.sbb.matsim.mobsim.qsim.pt.SBBTransitEngineQSimModule;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.eqasim.core.components.fast_calibration.AlphaCalibrator;
 import org.eqasim.switzerland.ch.PTLinkVolumesModule;
 import org.eqasim.switzerland.ch.PTPassengerCountsModule;
 import org.matsim.api.core.v01.Scenario;
@@ -18,6 +22,7 @@ import java.io.IOException;
 
 
 public class RunSimulation {
+
 	@SuppressWarnings("deprecation")
 	static public void main(String[] args) throws ConfigurationException, IOException {
 		// set preventwaitingtoentertraffic to y if you want to to prevent that waiting traffic has to wait for space in the link buffer
@@ -61,6 +66,24 @@ public class RunSimulation {
 			new SBBTransitEngineQSimModule().configure(components);
 
 		});
+
+		// XX logging coordinates of nodes for debugging
+		// TODO: try to find a way to load z coords from network
+		Logger logger = LogManager.getLogger(RunSimulation.class);
+
+		for (var node : scenario.getNetwork().getNodes().values()) {
+			logger.info("XX Node " + node.getId() + " has coordinates: " + node.getCoord());
+			logger.info("XX Node " + node.getId() + " has z-coordinate: " + node.getAttributes());
+		}
+
+		logger.info("Network attributes: " + scenario.getNetwork().getAttributes());
+		logger.info("Network name: " + scenario.getNetwork().getName());
+
+		// for (var link : scenario.getNetwork().getLinks().values()) {
+		// 	logger.info("XX Link " + link.getId() + " has attributes: " + link.getCoord());
+		// 	logger.info("XX Link " + link.getId() + " has attributes: " + link.getAttributes());
+		// }
+
 		controller.run();
 	}
 }

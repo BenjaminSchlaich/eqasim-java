@@ -2,6 +2,9 @@ package org.eqasim.core.simulation.mode_choice.utilities.estimators;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.eqasim.core.components.fast_calibration.AlphaCalibrator;
 import org.eqasim.core.simulation.mode_choice.parameters.ModeParameters;
 import org.eqasim.core.simulation.mode_choice.utilities.UtilityEstimator;
 import org.eqasim.core.simulation.mode_choice.utilities.predictors.BikePredictor;
@@ -18,6 +21,10 @@ public class BikeUtilityEstimator implements UtilityEstimator {
 	private final ModeParameters parameters;
 	private final BikePredictor bikePredictor;
 	private final PersonPredictor personPredictor;
+
+	// XX For logging purposes
+	private static final Logger logger = LogManager.getLogger(BikeUtilityEstimator.class);
+
 
 	@Inject
 	public BikeUtilityEstimator(ModeParameters parameters, PersonPredictor personPredictor,
@@ -38,8 +45,23 @@ public class BikeUtilityEstimator implements UtilityEstimator {
 		return parameters.bike.alpha_u;
 	}
 
-	protected double estimateTravelTimeUtility(BikeVariables variables) {
-		return parameters.bike.betaTravelTime_u_min * variables.travelTime_min;
+	protected double estimateTravelUtility(BikeVariables variables) {
+		double result = parameters.bike.betaTravelTime_u_min * variables.travelTime_min;
+		// XX here, we add a penalty for slope
+		// if the beta is still zero, we will use the travel time one, always print something
+		if (Math.abs(parameters.bike.betaSlope_u_perGrad) > 0.0 + 1e-10) {
+			logger.info("Using another beta, since the the one for slope is not set yet.");
+			result += parameters.bike.betaTravelTime_u_min * variables.slope;
+
+		} else {
+			result += parameters.bike.betaSlope_u_perGrad * variables.slope;
+		}
+
+
+		logger.info("BikeUtilityEstimator: travelTime_min = " + variables.travelTime_min + ", slope = " + variables.slope + ", using betaTravelTime_u_min = " + parameters.bike.betaTravelTime_u_min + ", betaSlope_u_perGrad = " + parameters.bike.betaSlope_u_perGrad + ",	travel utility = " + result);
+
+
+		return result;
 	}
 
 	protected double estimateAgeOver18Utility(PersonVariables variables) {
@@ -54,7 +76,8 @@ public class BikeUtilityEstimator implements UtilityEstimator {
 		double utility = 0.0;
 
 		utility += estimateConstantUtility();
-		utility += estimateTravelTimeUtility(bikeVariables);
+		// XX renamed from estimateTravelTimeUtility to estimateTravelUtility since we added more
+		utility += estimateTravelUtility(bikeVariables);
 		utility += estimateAgeOver18Utility(personVariables);
 
 		return utility;

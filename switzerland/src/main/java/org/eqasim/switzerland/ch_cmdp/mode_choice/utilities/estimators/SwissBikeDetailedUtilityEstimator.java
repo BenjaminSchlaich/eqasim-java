@@ -39,7 +39,8 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
         return parameters.bike.alpha_u;
     }
 
-    protected double estimateTravelTimeUtility(BikeVariables variables) {
+    // XX renamed from estimateTravelTimeUtility to estimateTravelUtility since we added more
+    protected double estimateTravelUtility(BikeVariables variables) {
         return parameters.bike.betaTravelTime_u_min * Math.pow(variables.travelTime_min, parameters.bike.travelTimeExponent);
     }
 
@@ -97,7 +98,7 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
 
         double utility = 0.0;
         utility += estimateConstantUtility();
-        utility += estimateTravelTimeUtility(bikeVariables);
+        utility += estimateTravelUtility(bikeVariables);
 
         utility += estimateAgeUtility(personVariables);
         utility += estimateSexUtility(personVariables);
