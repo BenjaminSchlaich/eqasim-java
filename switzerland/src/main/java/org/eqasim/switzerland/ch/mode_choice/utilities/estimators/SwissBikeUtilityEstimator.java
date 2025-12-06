@@ -30,6 +30,8 @@ public class SwissBikeUtilityEstimator extends BikeUtilityEstimator {
 
 		this.parameters = parameters;
 		this.personPredictor = personPredictor;
+		// XX debug
+		System.out.println("SwissBikeUtilityEstimator's bikePredictor: " + bikePredictor);
 		this.bikePredictor = bikePredictor;
 		this.variablesWriter = variablesWriter;
 	}
@@ -52,6 +54,7 @@ public class SwissBikeUtilityEstimator extends BikeUtilityEstimator {
 
 		double utility = 0.0;
 
+		// XX here is where the slope information from BikeVariables will be used
 		utility += super.estimateUtility(person, trip, elements);
 		utility += estimateRegionalUtility(personVariables);
 		utility += estimateCantonUtility(person);

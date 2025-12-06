@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "LoadAndTestZCoordsInNetwork",
+            "request": "launch",
+            "mainClass": "org.eqasim.switzerland.ch_cmdp.util.LoadAndTestZCoordsInNetwork",
+            "projectName": "switzerland"
+        },
+        {
+            "type": "java",
+            "name": "AddZCoordsToNetwork",
+            "request": "launch",
+            "mainClass": "org.eqasim.switzerland.ch_cmdp.util.AddZCoordsToNetwork",
+            "projectName": "switzerland"
+        },
+        {
+            "type": "java",
             "name": "AddBikeVehicles",
             "request": "launch",
             "mainClass": "org.eqasim.switzerland.ch_cmdp.AddBikeVehicles",
