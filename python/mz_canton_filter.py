@@ -20,6 +20,7 @@ from pyproj import Transformer
 
 import read_mz.mikrozensus as mz
 import read_mz.trips as tr
+import read_mz.utils as util
 
 import add_heights
 
@@ -185,14 +186,65 @@ def height():
 
     return df
 
+def compute_beta(wege):
+
+    util.require_columns(wege, {"S_Z", "Z_Z", "mode", "person_weight"})
+
+    delta_h = (wege["Z_Z"] - wege["S_Z"])
+    weights = wege["person_weight"]
+
+    # compute the median altitude difference of bike trips: 
+    med_dh = delta_h[wege["mode"] == "bike"].median()
+    # category 1: the indices of trips with less than or equal to bike median altitude difference
+    cat_1 = delta_h <= med_dh
+    # total weight of category 1:
+    cat_1_w = weights[cat_1].sum()
+
+    # category 2: the indices of trips with more than bike median altitude difference
+    cat_2 = delta_h > med_dh
+    # total weight of category 2:
+    cat_2_w = weights[cat_2].sum()
+
+    # bike trips only filter:
+    is_bike = wege["mode"] == "bike"
+
+    # mean altitude difference of bike trips in category 1
+    mean_dh_bike_1 = (delta_h[cat_1 & is_bike] * weights[cat_1 & is_bike]).sum() / cat_1_w
+
+    # mean altitude difference of bike trips in category 2
+    mean_dh_bike_2 = (delta_h[cat_2 & is_bike] * weights[cat_2 & is_bike]).sum() / cat_2_w
+
+    # the weighted sum of bike trips in category 1
+    bike_s1 = weights[is_bike & cat_1].sum()
+    # the weighted sum of all trips in category 1
+    all_s1 = weights[cat_1].sum()
+    # the bike mode share for trips in category 1
+    m1 =  bike_s1 / all_s1
+
+    # the weighted sum of bike trips in category 2
+    bike_s2 = weights[is_bike & cat_2].sum()
+    # the weighted sum of all trips in category 2
+    all_s2 = weights[cat_2].sum()
+    # the bike mode share for trips in category 2
+    m2 =  bike_s2 / all_s2
+
+    # the increase/decrease in mode share relative to m1 per altitude difference
+    beta = ((m2 - m1) / m1) / (mean_dh_bike_2 - mean_dh_bike_1)
+    
+    print(f"Mode share goes from {m1} to {m2} for changing the mean altitude difference from {mean_dh_bike_1} to {mean_dh_bike_2}.")
+
+    return beta
 
 def main():
 
     wege = height()
 
-    plot_age_distribution(wege)
+    # plot_age_distribution(wege)
+    # plot_map(wege)
 
-    plot_map(wege)
+    beta = compute_beta(wege)
+
+    print(f"The computed beta is {beta}")
 
 
 if __name__ == "__main__":

@@ -3,6 +3,10 @@ import pandas as pd
 
 import read_mz.constants as c
 
+def require_columns(df, cols):
+    missing = cols.difference(df.columns)
+    if missing:
+        raise ValueError(f"etappen missing required columns: {sorted(missing)}")
 
 def fix_marital_status(df):
     """ Makes young people, who are separated, be treated as single! """
