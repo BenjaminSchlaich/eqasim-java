@@ -12,6 +12,7 @@ def get_trips(data_path):
     df_mz_trips = df_mz_trips[[
         "HHNR", "WEGNR", "f51100", "f51400", "wzweck1", "wzweck2", "wmittel",
         "S_X_CH1903", "S_Y_CH1903", "Z_X_CH1903", "Z_Y_CH1903", "W_X_CH1903", "W_Y_CH1903",
+        "S_X", "S_Y", "Z_X", "Z_Y",
         "w_rdist"
     ]]
 
@@ -157,5 +158,6 @@ def get_trips(data_path):
     return df_mz_trips[[
         "person_id", "trip_id", "departure_time", "arrival_time", "mode", "purpose", "destination_x", "destination_y", "origin_x", "origin_y",
         "activity_duration", "crowfly_distance", "parking_cost", "network_distance",
+        "S_X", "S_Y", "Z_X", "Z_Y",
         "mode_detailed"
     ]], filterout_ids
