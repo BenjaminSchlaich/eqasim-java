@@ -6,12 +6,16 @@ import numpy as np
 import glob
 from scipy.spatial import cKDTree
 from pyproj import Transformer
+import pathlib
+
+RECOMPUTE_ALTITUDE = False
 
 # ---------------------------
 # 1. Load and convert altitude grid (LV95 → WGS84)
 # ---------------------------
 
 transformer = Transformer.from_crs("EPSG:2056", "EPSG:4326", always_xy=True)
+HEIGHTS_DIR = (pathlib.Path(__file__).resolve().parents[1] / "data" / "heights").as_posix()
 
 
 def lv95_to_wgs84(x, y):
@@ -19,9 +23,12 @@ def lv95_to_wgs84(x, y):
     return lon, lat
 
 
-def load_altitude_points(path="data/heights/*.xyz"):
+def load_altitude_points(path=None):
 
     print("Loading altitude data…")
+
+    if path is None:
+        path = f"{HEIGHTS_DIR}/*.xyz"
 
     files = glob.glob(path)
     points_lv95 = []
@@ -40,6 +47,9 @@ def load_altitude_points(path="data/heights/*.xyz"):
         points_lv95.append(df[["x", "y"]].values)
         alts.append(df["z"].values)
 
+    if not points_lv95:
+        raise FileNotFoundError(f"No altitude tiles found under {path}")
+
     pts = np.vstack(points_lv95)
     zs = np.hstack(alts)
 
@@ -51,7 +61,8 @@ def load_altitude_points(path="data/heights/*.xyz"):
 
     return tree, zs
 
-tree, zs = load_altitude_points()
+if RECOMPUTE_ALTITUDE:
+    tree, zs = load_altitude_points()
 
 # ---------------------------
 # 2. Altitude lookup function

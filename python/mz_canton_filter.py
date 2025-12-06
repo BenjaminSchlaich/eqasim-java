@@ -14,7 +14,9 @@ import geopandas as gpd
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import contextily as ctx
 from shapely.geometry import Point
+from pyproj import Transformer
 
 import read_mz.mikrozensus as mz
 import read_mz.trips as tr
@@ -22,19 +24,20 @@ import read_mz.trips as tr
 import add_heights
 
 
-BOUNDARY_PATH = "../data/Boundary/Zurich.shp"
-ETAPPEN_PATH = "../data/microcensus/etappen.csv"
-ETAPPEN_OUT = "../data/microcensus/etappen_zurich.csv"
-WEGE_PATH = "../data/microcensus/wege.csv"
-WEGE_OUT = "../data/microcensus/wege_zurich.csv"
-MZ_PATH = "../data"
+ROOT_DIR = pathlib.Path(__file__).resolve().parents[1]
+DATA_DIR = ROOT_DIR / "data"
+BOUNDARY_PATH = DATA_DIR / "Boundary" / "Zurich.shp"
+ETAPPEN_PATH = DATA_DIR / "microcensus" / "etappen.csv"
+ETAPPEN_OUT = DATA_DIR / "microcensus" / "etappen_zurich.csv"
+WEGE_PATH = DATA_DIR / "microcensus" / "wege.csv"
+WEGE_OUT = DATA_DIR / "microcensus" / "wege_zurich.csv"
+MZ_PATH = DATA_DIR
 ENCODING = "latin1"
 
-RECOMPUTE_FILTER = True
-RECOMPUTE_ALTITUDE = True
+RECOMPUTE_FILTER = False
 
 boundary = gpd.read_file(BOUNDARY_PATH).to_crs("EPSG:4326").geometry
-canton_geom = boundary.unary_union  # merge into a single polygon for spatial tests
+canton_geom = boundary.union_all()  # merge into a single polygon for spatial tests
 
 def filter_location(df):
     """Return rows where start/end points fall within the canton."""
@@ -91,16 +94,22 @@ def plot_age_distribution(df):
     plt.tight_layout()
     plt.show()
 
-def plot_map(df):
-    required_cols = {"S_X", "S_Y", "Z_X", "Z_Y"}
-    missing = required_cols.difference(df.columns)
+def plot_map(etappen):
+    required_cols = {"S_X", "S_Y", "Z_X", "Z_Y", "S_Z", "Z_Z"}
+    missing = required_cols.difference(etappen.columns)
     if missing:
-        raise ValueError(f"dataframe missing required columns: {sorted(missing)}")
+        raise ValueError(f"etappen missing required columns: {sorted(missing)}")
 
-    lon = pd.concat([df["S_X"], df["Z_X"]], ignore_index=True)
-    lat = pd.concat([df["S_Y"], df["Z_Y"]], ignore_index=True)
+    lon = pd.concat([etappen["S_X"], etappen["Z_X"]], ignore_index=True)
+    lat = pd.concat([etappen["S_Y"], etappen["Z_Y"]], ignore_index=True)
+    z = pd.concat(
+        [pd.Series(etappen["S_Z"], name="z"), pd.Series(etappen["Z_Z"], name="z")],
+        ignore_index=True,
+    )
 
-    points = pd.DataFrame({"x": lon, "y": lat}).dropna(subset=["x", "y"])
+    points = pd.DataFrame({"x": lon, "y": lat, "z": z}).dropna(subset=["x", "y", "z"])
+    if points.empty:
+        raise ValueError(f"No complete altitude records found in {path}")
 
     # Project to Web Mercator for contextily basemap.
     merc_transformer = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy=True)
@@ -110,11 +119,14 @@ def plot_map(df):
     scatter = ax.scatter(
         mx,
         my,
+        c=points["z"],
+        cmap="coolwarm",
         s=8,
         alpha=0.7,
     )
     ctx.add_basemap(ax, crs="EPSG:3857")
-    ax.set_title(f"Startpoints and Endpoints of Wege")
+    fig.colorbar(scatter, ax=ax, label="Height (m)")
+    ax.set_title(f"Heights for {etappen} Etappen (start & end points)")
     ax.set_xlabel("Web Mercator X")
     ax.set_ylabel("Web Mercator Y")
     ax.set_aspect("equal")
@@ -145,32 +157,31 @@ def filter():
         print(f"The remaining number of wege is {wege}")
 
         print(f"saving filtered wege to csv")
-        output_path = pathlib.Path(MZ_PATH) / "microcensus" / "filtered.csv"
+        output_path = MZ_PATH / "microcensus" / "filtered.csv"
         output_path.parent.mkdir(parents=True, exist_ok=True)
         wege.to_csv(output_path, index=False, encoding=ENCODING)
         
     else:
         print("loading filtered microzensus wege")
-
-        wege = pd.read_csv("%s/microcensus/filtered.csv" % MZ_PATH, encoding = ENCODING)
+        wege = pd.read_csv(MZ_PATH / "microcensus" / "filtered.csv", encoding=ENCODING)
 
     return wege
 
 def height():
 
-    if(RECOMPUTE_ALTITUDE):
+    if(add_heights.RECOMPUTE_ALTITUDE):
         df = filter()
 
         print("adding height data to wege...")
         df = add_heights.process_df(df)
 
         print("saving wege with altitude to csv")
-        output_path = pathlib.Path(MZ_PATH) / "microcensus" / "heights.csv"
+        output_path = MZ_PATH / "microcensus" / "heights.csv"
         output_path.parent.mkdir(parents=True, exist_ok=True)
         df.to_csv(output_path, index=False, encoding=ENCODING)
         
     else:
-        df = pd.read_csv("%s/microcensus/height.csv" % MZ_PATH, encoding = ENCODING)
+        df = pd.read_csv(MZ_PATH / "microcensus" / "heights.csv", encoding=ENCODING)
 
     return df
 
