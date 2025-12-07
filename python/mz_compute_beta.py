@@ -188,7 +188,7 @@ def height():
 
 def compute_beta(wege):
 
-    util.require_columns(wege, {"S_Z", "Z_Z", "mode", "person_weight"})
+    util.require_columns(wege, {"S_Z", "Z_Z", "mode", "person_weight", "crowfly_distance"})
 
     slope = (wege["Z_Z"] - wege["S_Z"]) / (wege["crowfly_distance"])
     weights = wege["person_weight"]
@@ -205,24 +205,25 @@ def compute_beta(wege):
     # total weight of category 2:
     cat_2_w = weights[cat_2].sum()
 
+
     # bike trips only filter:
     is_bike = wege["mode"] == "bike"
-
-    # mean slope of bike trips in category 1
-    mean_dh_bike_1 = (slope[cat_1 & is_bike] * weights[cat_1 & is_bike]).sum() / cat_1_w
-
-    # mean slope of bike trips in category 2
-    mean_dh_bike_2 = (slope[cat_2 & is_bike] * weights[cat_2 & is_bike]).sum() / cat_2_w
-
     # the weighted sum of bike trips in category 1
     bike_s1 = weights[is_bike & cat_1].sum()
+    # the weighted sum of bike trips in category 2
+    bike_s2 = weights[is_bike & cat_2].sum()
+
+    # mean slope of bike trips in category 1
+    mean_dh_bike_1 = (slope[cat_1 & is_bike] * weights[cat_1 & is_bike]).sum() / bike_s1
+
+    # mean slope of bike trips in category 2
+    mean_dh_bike_2 = (slope[cat_2 & is_bike] * weights[cat_2 & is_bike]).sum() / bike_s2
+
     # the weighted sum of all trips in category 1
     all_s1 = weights[cat_1].sum()
     # the bike mode share for trips in category 1
     m1 =  bike_s1 / all_s1
 
-    # the weighted sum of bike trips in category 2
-    bike_s2 = weights[is_bike & cat_2].sum()
     # the weighted sum of all trips in category 2
     all_s2 = weights[cat_2].sum()
     # the bike mode share for trips in category 2
