@@ -194,14 +194,14 @@ def compute_beta(wege):
     weights = wege["person_weight"]
 
     # compute the median slope of bike trips: 
-    med_dh = slope[wege["mode"] == "bike"].median()
+    med_slope = slope[wege["mode"] == "bike"].median()
     # category 1: the indices of trips with less than or equal to bike median slope
-    cat_1 = slope <= med_dh
+    cat_1 = slope <= med_slope
     # total weight of category 1:
     cat_1_w = weights[cat_1].sum()
 
     # category 2: the indices of trips with more than bike median slope
-    cat_2 = slope > med_dh
+    cat_2 = slope > med_slope
     # total weight of category 2:
     cat_2_w = weights[cat_2].sum()
 
@@ -214,10 +214,10 @@ def compute_beta(wege):
     bike_s2 = weights[is_bike & cat_2].sum()
 
     # mean slope of bike trips in category 1
-    mean_dh_bike_1 = (slope[cat_1 & is_bike] * weights[cat_1 & is_bike]).sum() / bike_s1
+    mean_slope_bike_1 = (slope[cat_1 & is_bike] * weights[cat_1 & is_bike]).sum() / bike_s1
 
     # mean slope of bike trips in category 2
-    mean_dh_bike_2 = (slope[cat_2 & is_bike] * weights[cat_2 & is_bike]).sum() / bike_s2
+    mean_slope_bike_2 = (slope[cat_2 & is_bike] * weights[cat_2 & is_bike]).sum() / bike_s2
 
     # the weighted sum of all trips in category 1
     all_s1 = weights[cat_1].sum()
@@ -230,9 +230,9 @@ def compute_beta(wege):
     m2 =  bike_s2 / all_s2
 
     # the increase/decrease in mode share relative to m1 per slope
-    beta = ((m2 - m1) / m1) / (mean_dh_bike_2 - mean_dh_bike_1)
+    beta = ((m2 - m1) / m1) / (mean_slope_bike_2 - mean_slope_bike_1)
     
-    print(f"Mode share goes from {m1} to {m2} for changing the mean slope from {mean_dh_bike_1} to {mean_dh_bike_2}.")
+    print(f"Mode share goes from {m1} to {m2} for changing the mean slope from {mean_slope_bike_1} to {mean_slope_bike_2}.")
 
     return beta
 
