@@ -221,12 +221,6 @@ def compute_beta(wege):
     # the weighted sum of bike trips in category 2
     bike_s2 = weights[is_bike & cat_2].sum()
 
-    # # mean slope of bike trips in category 1
-    # mean_slope_bike_1 = (slope[cat_1 & is_bike] * weights[cat_1 & is_bike]).sum() / bike_s1
-
-    # # mean slope of bike trips in category 2
-    # mean_slope_bike_2 = (slope[cat_2 & is_bike] * weights[cat_2 & is_bike]).sum() / bike_s2
-
     # mean slope of trips in category 1
     mean_slope_1 = (slope[cat_1] * weights[cat_1]).sum() / cat_1_w
     # mean slope of trips in category 2
