@@ -190,29 +190,29 @@ def compute_beta(wege):
 
     util.require_columns(wege, {"S_Z", "Z_Z", "mode", "person_weight"})
 
-    delta_h = (wege["Z_Z"] - wege["S_Z"])
+    slope = (wege["Z_Z"] - wege["S_Z"]) / (wege["crowfly_distance"])
     weights = wege["person_weight"]
 
-    # compute the median altitude difference of bike trips: 
-    med_dh = delta_h[wege["mode"] == "bike"].median()
-    # category 1: the indices of trips with less than or equal to bike median altitude difference
-    cat_1 = delta_h <= med_dh
+    # compute the median slope of bike trips: 
+    med_dh = slope[wege["mode"] == "bike"].median()
+    # category 1: the indices of trips with less than or equal to bike median slope
+    cat_1 = slope <= med_dh
     # total weight of category 1:
     cat_1_w = weights[cat_1].sum()
 
-    # category 2: the indices of trips with more than bike median altitude difference
-    cat_2 = delta_h > med_dh
+    # category 2: the indices of trips with more than bike median slope
+    cat_2 = slope > med_dh
     # total weight of category 2:
     cat_2_w = weights[cat_2].sum()
 
     # bike trips only filter:
     is_bike = wege["mode"] == "bike"
 
-    # mean altitude difference of bike trips in category 1
-    mean_dh_bike_1 = (delta_h[cat_1 & is_bike] * weights[cat_1 & is_bike]).sum() / cat_1_w
+    # mean slope of bike trips in category 1
+    mean_dh_bike_1 = (slope[cat_1 & is_bike] * weights[cat_1 & is_bike]).sum() / cat_1_w
 
-    # mean altitude difference of bike trips in category 2
-    mean_dh_bike_2 = (delta_h[cat_2 & is_bike] * weights[cat_2 & is_bike]).sum() / cat_2_w
+    # mean slope of bike trips in category 2
+    mean_dh_bike_2 = (slope[cat_2 & is_bike] * weights[cat_2 & is_bike]).sum() / cat_2_w
 
     # the weighted sum of bike trips in category 1
     bike_s1 = weights[is_bike & cat_1].sum()
@@ -228,10 +228,10 @@ def compute_beta(wege):
     # the bike mode share for trips in category 2
     m2 =  bike_s2 / all_s2
 
-    # the increase/decrease in mode share relative to m1 per altitude difference
+    # the increase/decrease in mode share relative to m1 per slope
     beta = ((m2 - m1) / m1) / (mean_dh_bike_2 - mean_dh_bike_1)
     
-    print(f"Mode share goes from {m1} to {m2} for changing the mean altitude difference from {mean_dh_bike_1} to {mean_dh_bike_2}.")
+    print(f"Mode share goes from {m1} to {m2} for changing the mean slope from {mean_dh_bike_1} to {mean_dh_bike_2}.")
 
     return beta
 
