@@ -221,11 +221,16 @@ def compute_beta(wege):
     # the weighted sum of bike trips in category 2
     bike_s2 = weights[is_bike & cat_2].sum()
 
-    # mean slope of bike trips in category 1
-    mean_slope_bike_1 = (slope[cat_1 & is_bike] * weights[cat_1 & is_bike]).sum() / bike_s1
+    # # mean slope of bike trips in category 1
+    # mean_slope_bike_1 = (slope[cat_1 & is_bike] * weights[cat_1 & is_bike]).sum() / bike_s1
 
-    # mean slope of bike trips in category 2
-    mean_slope_bike_2 = (slope[cat_2 & is_bike] * weights[cat_2 & is_bike]).sum() / bike_s2
+    # # mean slope of bike trips in category 2
+    # mean_slope_bike_2 = (slope[cat_2 & is_bike] * weights[cat_2 & is_bike]).sum() / bike_s2
+
+    # mean slope of trips in category 1
+    mean_slope_1 = (slope[cat_1] * weights[cat_1]).sum() / cat_1_w
+    # mean slope of trips in category 2
+    mean_slope_2 = (slope[cat_2] * weights[cat_2]).sum() / cat_2_w
 
     # the weighted sum of all trips in category 1
     all_s1 = weights[cat_1].sum()
@@ -238,9 +243,9 @@ def compute_beta(wege):
     m2 =  bike_s2 / all_s2
 
     # the increase/decrease in mode share relative to m1 per slope
-    beta = ((m2 - m1) / m1) / (mean_slope_bike_2 - mean_slope_bike_1)
+    beta = ((m2 - m1) / m1) / (mean_slope_2 - mean_slope_1) # (mean_slope_bike_2 - mean_slope_bike_1)
     
-    print(f"Mode share goes from {m1} to {m2} for changing the mean slope from {mean_slope_bike_1} to {mean_slope_bike_2}.")
+    print(f"Mode share goes from {m1} to {m2} for changing the mean slope from {mean_slope_1} to {mean_slope_2}.")
 
     return beta
 
