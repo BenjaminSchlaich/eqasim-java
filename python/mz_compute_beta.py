@@ -186,6 +186,14 @@ def height():
 
     return df
 
+def weighted_median(values, weights):
+    sorter = np.argsort(values)
+    v_sorted = np.array(values)[sorter]
+    w_sorted = np.array(weights)[sorter]
+    cum_weights = np.cumsum(w_sorted)
+    cutoff = 0.5 * w_sorted.sum()
+    return v_sorted[np.searchsorted(cum_weights, cutoff)]
+
 def compute_beta(wege):
 
     util.require_columns(wege, {"S_Z", "Z_Z", "mode", "person_weight", "crowfly_distance"})
@@ -193,8 +201,11 @@ def compute_beta(wege):
     slope = (wege["Z_Z"] - wege["S_Z"]) / (wege["crowfly_distance"])
     weights = wege["person_weight"]
 
+    # bike trips only filter:
+    is_bike = wege["mode"] == "bike"
+
     # compute the median slope of bike trips: 
-    med_slope = slope[wege["mode"] == "bike"].median()
+    med_slope = weighted_median(slope[is_bike], weights[is_bike])
     # category 1: the indices of trips with less than or equal to bike median slope
     cat_1 = slope <= med_slope
     # total weight of category 1:
@@ -205,9 +216,6 @@ def compute_beta(wege):
     # total weight of category 2:
     cat_2_w = weights[cat_2].sum()
 
-
-    # bike trips only filter:
-    is_bike = wege["mode"] == "bike"
     # the weighted sum of bike trips in category 1
     bike_s1 = weights[is_bike & cat_1].sum()
     # the weighted sum of bike trips in category 2
