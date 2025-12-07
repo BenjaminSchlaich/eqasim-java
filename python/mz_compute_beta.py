@@ -206,6 +206,9 @@ def compute_beta(wege):
 
     # compute the median slope of bike trips: 
     med_slope = weighted_median(slope[is_bike], weights[is_bike])
+
+    print(f"The weighted median slope over all bike trips is {med_slope}.")
+
     # category 1: the indices of trips with less than or equal to bike median slope
     cat_1 = slope <= med_slope
     # total weight of category 1:
