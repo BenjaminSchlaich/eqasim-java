@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MakeNetworkSlow",
+            "request": "launch",
+            "mainClass": "org.eqasim.switzerland.ch_cmdp.util.MakeNetworkSlow",
+            "projectName": "switzerland"
+        },
+        {
+            "type": "java",
+            "name": "TakeMoneyAway",
+            "request": "launch",
+            "mainClass": "org.eqasim.switzerland.ch_cmdp.util.TakeMoneyAway",
+            "projectName": "switzerland"
+        },
+        {
+            "type": "java",
             "name": "MakeATinyPopulationFile",
             "request": "launch",
             "mainClass": "org.eqasim.switzerland.ch_cmdp.util.MakeATinyPopulationFile",

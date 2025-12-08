@@ -129,6 +129,9 @@ public class SwissCarDetailedUtilityEstimator extends CarUtilityEstimator {
             writeVariablesToCsv(person, trip, variables, personVariables, utility);
         }
 
+        // XX we hate cars
+        utility -= 1000.0; // The swiss hate cars!
+
         return utility;
     }
 
