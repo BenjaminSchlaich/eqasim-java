@@ -63,7 +63,8 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
 		// if the beta is still zero, we will use the travel time one, always print something
 		if (Math.abs(parameters.bike.betaSlope_u_perGrad) < 0.0 + 1e-10) {
 			logger.info("Using another beta, since the the one for slope is not set yet.");
-			result += parameters.bike.betaTravelTime_u_min * Math.abs(variables.slope) * (- 100.0);
+			// result += parameters.bike.betaTravelTime_u_min * Math.abs(variables.slope) * (- 100.0);
+            result += parameters.bike.betaTravelTime_u_min * variables.travelTime_min;
 
 		} else {
 			result += parameters.bike.betaSlope_u_perGrad * variables.slope;
@@ -151,7 +152,7 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
         if(variablesWriter.isInitiated()) {
             writeVariablesToCsv(person, trip, bikeVariables, personVariables, utility);
         }
-        utility += 1000.0; // The swiss love biking!
+        // utility += 1000.0; // The swiss love biking!
         // Log the final utility for debugging
         logger.info("Final bike utility for person " + person.getId() + " on trip " + trip.getIndex() + " is: " + utility);
     
