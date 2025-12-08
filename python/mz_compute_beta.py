@@ -35,11 +35,13 @@ WEGE_OUT = DATA_DIR / "microcensus" / "wege_zurich.csv"
 MZ_PATH = DATA_DIR
 ENCODING = "latin1"
 
+# should the trips be filtered using load_filtered_zurich() again or just reloaded from the stored .csv?
 RECOMPUTE_FILTER = False
 
 boundary = gpd.read_file(BOUNDARY_PATH).to_crs("EPSG:4326").geometry
 canton_geom = boundary.union_all()  # merge into a single polygon for spatial tests
 
+# filter out for only trips that start&end within zürich
 def filter_location(df):
     """Return rows where start/end points fall within the canton."""
     start = gpd.GeoSeries(
@@ -51,6 +53,7 @@ def filter_location(df):
     mask = start.within(canton_geom) & end.within(canton_geom)
     return df[mask].copy()
 
+# Plot the age demographic of the data frame nicely
 def plot_age_distribution(df):
     required_cols = {"age", "sex"}
     missing = required_cols.difference(df.columns)
@@ -95,6 +98,7 @@ def plot_age_distribution(df):
     plt.tight_layout()
     plt.show()
 
+# Plot trips with height data on a map
 def plot_map(etappen):
     required_cols = {"S_X", "S_Y", "Z_X", "Z_Y", "S_Z", "Z_Z"}
     missing = required_cols.difference(etappen.columns)
@@ -135,7 +139,8 @@ def plot_map(etappen):
     plt.show()
     return
 
-def filter():
+# Returns the filtered trips inside Zürich joined with persons. Filtered by demographics, location and sanity checks.
+def load_filtered_zurich():
 
     if(RECOMPUTE_FILTER):
         print("refiltering the microzensus wege...")
@@ -168,10 +173,11 @@ def filter():
 
     return wege
 
-def height():
+# Returns the dataframe from filtered_zurich() with added z-coordinates
+def with_height_zurich():
 
     if(add_heights.RECOMPUTE_ALTITUDE):
-        df = filter()
+        df = load_filtered_zurich()
 
         print("adding height data to wege...")
         df = add_heights.process_df(df)
@@ -186,6 +192,7 @@ def height():
 
     return df
 
+# Computes the weighted median...
 def weighted_median(values, weights):
     sorter = np.argsort(values)
     v_sorted = np.array(values)[sorter]
@@ -194,6 +201,7 @@ def weighted_median(values, weights):
     cutoff = 0.5 * w_sorted.sum()
     return v_sorted[np.searchsorted(cum_weights, cutoff)]
 
+# Computes the beta for bike utility.
 def compute_beta(wege):
 
     util.require_columns(wege, {"S_Z", "Z_Z", "mode", "person_weight", "crowfly_distance"})
@@ -244,6 +252,7 @@ def compute_beta(wege):
 
     return beta
 
+# Plot mode shares per slope bin nicely
 def plot_slope_shares(wege):
     """Plot bike mode share for minimum slope thresholds from 0.0 to 0.1."""
     util.require_columns(wege, {"S_Z", "Z_Z", "mode", "person_weight", "crowfly_distance"})
@@ -251,8 +260,6 @@ def plot_slope_shares(wege):
     slope = (wege["Z_Z"] - wege["S_Z"]) / (wege["crowfly_distance"])
     weights = wege["person_weight"]
     is_bike = wege["mode"] == "bike"
-
-    print(f"There are {len(wege[is_bike])} bike trips in our zürich")
 
     thresholds = np.arange(-0.20, 0.20, 0.02)
     shares = []
@@ -272,39 +279,69 @@ def plot_slope_shares(wege):
     plt.grid(True, linestyle="--", alpha=0.6)
     plt.tight_layout()
     plt.show()
-    
+
+# Returns the filtered trips with joined persons. Filtered by demographics, location and sanity checks.
+def load_filtered_switzerland():
+
+    if(RECOMPUTE_FILTER):
+        print("refiltering the microzensus wege...")
+
+        pop = mz.main(MZ_PATH)                              # load the population
+
+        print(f"filtering age")
+        pop = pop[pop["age"] >= 6]                          # filter out individuals younger than 6
+
+        wege, filterout_ids = tr.get_trips(MZ_PATH)         # load the wege
+
+        print(f"filtering milos' stuff")
+        pop = pop[~pop["person_id"].isin(filterout_ids)]    # filter out individuals with stupid trip stats according to Milos
+
+        wege = pd.merge(wege, pop, on="person_id")          # keep only wege of filtered population
+
+        print(f"The remaining number of wege is {wege}")
+
+        print(f"saving filtered wege to csv")
+        output_path = MZ_PATH / "microcensus" / "filtered.csv"
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        wege.to_csv(output_path, index=False, encoding=ENCODING)
+        
+    else:
+        print("loading filtered microzensus wege")
+        wege = pd.read_csv(MZ_PATH / "microcensus" / "filtered_switzerland.csv", encoding=ENCODING)
+
+    return wege
+
+# Returns the dataframe from filtered_zurich() with added z-coordinates
+def with_height_switzerland():
+
+    if(add_heights.RECOMPUTE_ALTITUDE):
+        df = load_filtered_switzerland()
+
+        print("adding height data to wege...")
+        df = add_heights.process_df(df)
+
+        print("saving wege with altitude to csv")
+        output_path = MZ_PATH / "microcensus" / "heights.csv"
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        df.to_csv(output_path, index=False, encoding=ENCODING)
+        
+    else:
+        df = pd.read_csv(MZ_PATH / "microcensus" / "heights.csv", encoding=ENCODING)
+
+    return df
 
 def main():
 
-    print("refiltering the microzensus wege...")
-
-    pop = mz.main(MZ_PATH)                              # load the population
-
-    print(f"filtering age")
-    pop = pop[pop["age"] >= 6]                          # filter out individuals younger than 6
-
-    wege, filterout_ids = tr.get_trips(MZ_PATH)         # load the wege
-
-    print(f"filtering milos' stuff")
-    pop = pop[~pop["person_id"].isin(filterout_ids)]    # filter out individuals with stupid trip stats according to Milos
-
-    wege = pd.merge(wege, pop, on="person_id")          # keep only wege of filtered population
-
-    print(f"The remaining number of wege is {wege}")
-
-    is_bike = wege["mode"] == "bike"
-
-    print(f"There are {len(wege[is_bike])} bike trips in switzerland")
-
-    # wege = height()
+    wege = with_height_switzerland()
 
     # plot_age_distribution(wege)
     # plot_map(wege)
-    # plot_slope_shares(wege)
 
-    # beta = compute_beta(wege)
-    # print(f"The computed beta is {beta}")
-    # plot_slope_shares(wege)
+    plot_slope_shares(wege)
+
+    beta = compute_beta(wege)
+    print(f"The computed beta is {beta}")
+    plot_slope_shares(wege)
 
 
 if __name__ == "__main__":
