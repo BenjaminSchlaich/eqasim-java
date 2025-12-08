@@ -153,7 +153,7 @@ def filter():
         print(f"filtering milos' stuff")
         pop = pop[~pop["person_id"].isin(filterout_ids)]    # filter out individuals with stupid trip stats according to Milos
 
-        wege = pd.merge(wege, pop)                          # keep only wege of filtered population
+        wege = pd.merge(wege, pop, on="person_id")          # keep only wege of filtered population
 
         print(f"The remaining number of wege is {wege}")
 
@@ -207,8 +207,6 @@ def compute_beta(wege):
     # compute the median slope of bike trips: 
     med_slope = weighted_median(slope[is_bike], weights[is_bike])
 
-    print(f"The weighted median slope over all bike trips is {med_slope}.")
-
     # category 1: the indices of trips with less than or equal to bike median slope
     cat_1 = slope <= med_slope
     # total weight of category 1:
@@ -246,16 +244,67 @@ def compute_beta(wege):
 
     return beta
 
+def plot_slope_shares(wege):
+    """Plot bike mode share for minimum slope thresholds from 0.0 to 0.1."""
+    util.require_columns(wege, {"S_Z", "Z_Z", "mode", "person_weight", "crowfly_distance"})
+
+    slope = (wege["Z_Z"] - wege["S_Z"]) / (wege["crowfly_distance"])
+    weights = wege["person_weight"]
+    is_bike = wege["mode"] == "bike"
+
+    print(f"There are {len(wege[is_bike])} bike trips in our zürich")
+
+    thresholds = np.arange(-0.20, 0.20, 0.02)
+    shares = []
+
+    for t in thresholds:
+        mask = (slope >= t) & (slope <= t + 0.01)
+        total_w = weights[mask].sum()
+        bike_w = weights[mask & is_bike].sum()
+        share = bike_w / total_w if total_w > 0 else np.nan
+        shares.append(share)
+
+    plt.figure(figsize=(8, 5))
+    plt.plot(thresholds, shares, marker="o")
+    plt.xlabel("Minimum slope")
+    plt.ylabel("Bike mode share")
+    plt.title("Bike mode share by minimum slope threshold")
+    plt.grid(True, linestyle="--", alpha=0.6)
+    plt.tight_layout()
+    plt.show()
+    
+
 def main():
 
-    wege = height()
+    print("refiltering the microzensus wege...")
+
+    pop = mz.main(MZ_PATH)                              # load the population
+
+    print(f"filtering age")
+    pop = pop[pop["age"] >= 6]                          # filter out individuals younger than 6
+
+    wege, filterout_ids = tr.get_trips(MZ_PATH)         # load the wege
+
+    print(f"filtering milos' stuff")
+    pop = pop[~pop["person_id"].isin(filterout_ids)]    # filter out individuals with stupid trip stats according to Milos
+
+    wege = pd.merge(wege, pop, on="person_id")          # keep only wege of filtered population
+
+    print(f"The remaining number of wege is {wege}")
+
+    is_bike = wege["mode"] == "bike"
+
+    print(f"There are {len(wege[is_bike])} bike trips in switzerland")
+
+    # wege = height()
 
     # plot_age_distribution(wege)
     # plot_map(wege)
+    # plot_slope_shares(wege)
 
-    beta = compute_beta(wege)
-
-    print(f"The computed beta is {beta}")
+    # beta = compute_beta(wege)
+    # print(f"The computed beta is {beta}")
+    # plot_slope_shares(wege)
 
 
 if __name__ == "__main__":
