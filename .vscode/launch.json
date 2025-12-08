@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MakeATinyPopulationFile",
+            "request": "launch",
+            "mainClass": "org.eqasim.switzerland.ch_cmdp.util.MakeATinyPopulationFile",
+            "projectName": "switzerland"
+        },
+        {
+            "type": "java",
             "name": "LoadAndTestZCoordsInNetwork",
             "request": "launch",
             "mainClass": "org.eqasim.switzerland.ch_cmdp.util.LoadAndTestZCoordsInNetwork",
@@ -38,7 +45,8 @@
             "request": "launch",
             "mainClass": "org.eqasim.switzerland.ch_cmdp.RunSimulation",
             "projectName": "switzerland",
-            "args": "--config-path scenarios/Zurich_10pct/zurich_10pct_config.xml"
+            "args": "--config-path scenarios/Zurich_10pct/zurich_10pct_config.xml",
+            "vmArgs": "-Xms1g -Xmx8g"
         }
     ]
 }

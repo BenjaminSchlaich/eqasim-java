@@ -58,7 +58,6 @@ public class LoadAndTestZCoordsInNetwork {
 
 
 
-
         int i = 0;
         int cap = 10;
         for (var node : scenario.getNetwork().getNodes().values()) {

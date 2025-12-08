@@ -4,6 +4,8 @@
 #SBATCH --cpus-per-task=8               #Requesting 8 CPU
 #SBATCH --mem-per-cpu=16G                #Requesting 3 Gb memory per core, 24 Gb in total 
 #SBATCH --time=6:00:00                  #Requesting 6 hours run time
+#SBATCH --mail-user=lfrieberger@ethz.ch     # or your preferred email address  
+#SBATCH --mail-type=END,FAIL               # or BEGIN,ALL, etc.
 
 #Source the GDC stack
 # source /cluster/project/gdc/shared/stack/GDCstack.sh
@@ -14,7 +16,7 @@
 # module load openjdk/21.0.3_9
 # module load maven
 
-module load stack/2024-06 openjdk/21.0.3_9
+# module load stack/2024-06 openjdk/21.0.3_9
 
 cd scenarios/Zurich_10pct
 

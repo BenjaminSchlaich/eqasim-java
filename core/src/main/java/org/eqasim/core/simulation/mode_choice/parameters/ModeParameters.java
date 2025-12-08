@@ -22,11 +22,9 @@ public class ModeParameters implements ParameterDefinition {
 		public double betaAccessEgressTime_u_min = 0.0;
 	}
 
-	// XX added slope parameters for bike mode
 	public class BikeParameters {
 		public double alpha_u = 0.0;
 		public double betaTravelTime_u_min = 0.0;
-		public double betaSlope_u_perGrad = 0.0;
 		public double betaAgeOver18_u_a = 0.0;
 	}
 
