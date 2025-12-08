@@ -1,6 +1,8 @@
 package org.eqasim.switzerland.ch_cmdp.mode_choice.utilities.estimators;
 
 import com.google.inject.Inject;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eqasim.core.components.calibration.VariablesWriter;
 import org.eqasim.core.simulation.mode_choice.utilities.estimators.BikeUtilityEstimator;
 import org.eqasim.core.simulation.mode_choice.utilities.predictors.BikePredictor;
@@ -13,6 +15,7 @@ import org.matsim.api.core.v01.population.Person;
 import org.matsim.api.core.v01.population.PlanElement;
 import org.matsim.contribs.discrete_mode_choice.model.DiscreteModeChoiceTrip;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +27,8 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
     private final BikePredictor bikePredictor;
     private final VariablesWriter variablesWriter;
 
+    Logger logger = LogManager.getLogger(SwissBikeDetailedUtilityEstimator.class);
+
     @Inject
     public SwissBikeDetailedUtilityEstimator(SwissCmdpModeParameters parameters, SwissPersonPredictor personPredictor,
                                              BikePredictor bikePredictor, VariablesWriter variablesWriter) {
@@ -33,7 +38,12 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
         this.personPredictor = personPredictor;
         this.bikePredictor = bikePredictor;
         this.variablesWriter = variablesWriter;
+
+        // XX debug
+		System.out.println("SwissBikeUtilityEstimator's bikePredictor: " + bikePredictor);
     }
+
+    
 
     protected double estimateConstantUtility() {
         return parameters.bike.alpha_u;
@@ -41,8 +51,27 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
 
     // XX renamed from estimateTravelTimeUtility to estimateTravelUtility since we added more
     protected double estimateTravelUtility(BikeVariables variables) {
-        return parameters.bike.betaTravelTime_u_min * Math.pow(variables.travelTime_min, parameters.bike.travelTimeExponent);
-    }
+		double result = parameters.bike.betaTravelTime_u_min * Math.pow(variables.travelTime_min, parameters.bike.travelTimeExponent);
+		// XX here, we add a penalty for slope
+		// if the beta is still zero, we will use the travel time one, always print something
+		if (Math.abs(parameters.bike.betaSlope_u_perGrad) < 0.0 + 1e-10) {
+			logger.info("Using another beta, since the the one for slope is not set yet.");
+			result += parameters.bike.betaTravelTime_u_min * variables.slope;
+
+		} else {
+			result += parameters.bike.betaSlope_u_perGrad * variables.slope;
+		}
+
+
+		logger.info("BikeUtilityEstimator: travelTime_min = " + variables.travelTime_min + ", slope = " + variables.slope + ", using betaTravelTime_u_min = " + parameters.bike.betaTravelTime_u_min + ", betaSlope_u_perGrad = " + parameters.bike.betaSlope_u_perGrad + ",	travel utility = " + result);
+
+
+		return result;
+	}
+
+
+
+
 
     protected double estimateAgeUtility(SwissPersonVariables personVariables) {
         return parameters.bike.betaAge_u * Math.max(0.0, personVariables.age_a - 18);
@@ -97,6 +126,8 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
         BikeVariables bikeVariables = bikePredictor.predictVariables(person, trip, elements);
 
         double utility = 0.0;
+
+        // XX here is where the slope information from BikeVariables will be used
         utility += estimateConstantUtility();
         utility += estimateTravelUtility(bikeVariables);
 
