@@ -50,9 +50,16 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
     }
 
     // XX renamed from estimateTravelTimeUtility to estimateTravelUtility since we added more
-    protected double estimateTravelUtility(BikeVariables variables) {
-		double result = parameters.bike.betaTravelTime_u_min * Math.pow(variables.travelTime_min, parameters.bike.travelTimeExponent);
-		// XX here, we add a penalty for slope
+    protected double estimateTravelTimeUtility(BikeVariables variables) {
+        // parameters.bike.betaTravelTime_u_min= -0.8566142999818513;
+		return parameters.bike.betaTravelTime_u_min * Math.pow(variables.travelTime_min, parameters.bike.travelTimeExponent);
+    
+	}
+
+
+    protected double estimateSlopeUtility(BikeVariables variables) {
+        double result = 0.0;
+        // XX here, we add a penalty for slope
 		// if the beta is still zero, we will use the travel time one, always print something
 		if (Math.abs(parameters.bike.betaSlope_u_perGrad) < 0.0 + 1e-10) {
 			logger.info("Using another beta, since the the one for slope is not set yet.");
@@ -62,13 +69,10 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
 			result += parameters.bike.betaSlope_u_perGrad * variables.slope;
 		}
 
-
 		logger.info("BikeUtilityEstimator: travelTime_min = " + variables.travelTime_min + ", slope = " + variables.slope + ", using betaTravelTime_u_min = " + parameters.bike.betaTravelTime_u_min + ", betaSlope_u_perGrad = " + parameters.bike.betaSlope_u_perGrad + ",	travel utility = " + result);
 
-
 		return result;
-	}
-
+    }
 
 
 
@@ -129,7 +133,9 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
 
         // XX here is where the slope information from BikeVariables will be used
         utility += estimateConstantUtility();
-        utility += estimateTravelUtility(bikeVariables);
+        utility += estimateTravelTimeUtility(bikeVariables);
+        // XX here, we add a penalty for slope
+        utility += estimateSlopeUtility(bikeVariables);
 
         utility += estimateAgeUtility(personVariables);
         utility += estimateSexUtility(personVariables);
