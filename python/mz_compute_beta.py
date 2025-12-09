@@ -23,6 +23,7 @@ import read_mz.trips as tr
 import read_mz.utils as util
 
 import add_heights
+import add_heights_big
 
 
 ROOT_DIR = pathlib.Path(__file__).resolve().parents[1]
@@ -318,7 +319,7 @@ def with_height_switzerland():
         df = load_filtered_switzerland()
 
         print("adding height data to wege...")
-        df = add_heights.process_df(df)
+        df = add_heights_big.process_df(df)
 
         print("saving wege with altitude to csv")
         output_path = MZ_PATH / "microcensus" / "heights.csv"
