@@ -254,6 +254,10 @@ def process_df(df):
     z_z = np.full(len(df), np.nan)
 
     tile_cache: Dict[str, Tuple[np.ndarray, np.ndarray]] = {}
+    total_queries = sum(
+        len(bucket) for column in start_buckets for bucket in column
+    ) + sum(len(bucket) for column in end_buckets for bucket in column)
+    processed = 0
 
     for x_idx in range(len(xs)):
         for y_idx in range(len(columns[x_idx])):
@@ -290,7 +294,14 @@ def process_df(df):
                 _, idx = tree.query([lon, lat])
                 z_z[pos] = zs_all[idx]
 
+            processed += len(bucket_points)
+            if total_queries:
+                progress = processed / total_queries * 100
+                print(f"Processing altitude lookup… {progress:5.1f}% ({processed}/{total_queries})", end="\r", flush=True)
+
     df = df.copy()
     df["S_Z"] = pd.Series(s_z, index=df.index)
     df["Z_Z"] = pd.Series(z_z, index=df.index)
+    if total_queries:
+        print(f"Processing altitude lookup… 100.0% ({total_queries}/{total_queries})")
     return df
