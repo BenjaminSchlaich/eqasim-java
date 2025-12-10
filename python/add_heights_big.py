@@ -2,13 +2,18 @@
 import os
 import zipfile
 import bisect
-from typing import Iterable, List, Optional, Tuple
+from typing import Iterable, List, Optional, Tuple, Dict
+
+import numpy as np
+import pandas as pd
+from scipy.spatial import cKDTree
 
 import matplotlib.pyplot as plt
 import contextily as ctx
 from pyproj import Transformer
 
 transformer = Transformer.from_crs("EPSG:2056", "EPSG:4326", always_xy=True)
+HEIGHTS_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "heights")
 
 # convert from swiss to global coordinates
 def lv95_to_wgs84(x, y):
@@ -132,6 +137,8 @@ def coordinates_to_grid(
     ]
 
     for lon, lat in coords:
+        if not np.isfinite(lon) or not np.isfinite(lat):
+            continue
         idx = coordinate_to_grid(lon, lat, file_grid)
         if idx is None:
             continue
@@ -139,3 +146,140 @@ def coordinates_to_grid(
         buckets[x_idx][y_idx].append((lon, lat))
 
     return buckets
+
+
+def _tile_inner_filename(zip_name: str) -> str:
+    """Derive inner xyz filename from zip filename."""
+    parts = zip_name.split("_")
+    if len(parts) < 2:
+        raise ValueError(f"Unexpected tile name {zip_name}")
+    prefix_part = parts[1]
+    return prefix_part.replace("-", "_") + ".xyz"
+
+
+def _load_tile(zip_name: str) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Load a tile's xyz data, returning (pts_wgs, zs).
+
+    Tries to reuse an extracted .xyz file if present; otherwise reads from zip.
+    """
+    inner_name = _tile_inner_filename(zip_name)
+    extracted_path = os.path.join(HEIGHTS_DIR, inner_name)
+    if os.path.exists(extracted_path):
+        df = pd.read_csv(
+            extracted_path,
+            sep=r"\s+",
+            header=0,
+            names=["x", "y", "z"],
+            dtype=float,
+            comment="#",
+        )
+    else:
+        zip_path = os.path.join(HEIGHTS_DIR, zip_name)
+        with zipfile.ZipFile(zip_path) as zf, zf.open(inner_name) as fh:
+            df = pd.read_csv(
+                fh,
+                sep=r"\s+",
+                header=0,
+                names=["x", "y", "z"],
+                dtype=float,
+                comment="#",
+            )
+
+    xs = df["x"].to_numpy()
+    ys = df["y"].to_numpy()
+    zs = df["z"].to_numpy()
+    lon, lat = lv95_to_wgs84(xs, ys)
+    pts_wgs = np.column_stack((lon, lat))
+    return pts_wgs, zs
+
+
+def _neighbor_tiles(x_idx: int, y_idx: int) -> List[Tuple[int, int]]:
+    """Return indices for the 3x3 neighborhood around (x_idx, y_idx)."""
+    xs, columns = file_grid
+    coords = []
+    for dx in (-1, 0, 1):
+        for dy in (-1, 0, 1):
+            xi = x_idx + dx
+            yi = y_idx + dy
+            if 0 <= xi < len(xs) and 0 <= yi < len(columns[xi]):
+                coords.append((xi, yi))
+    return coords
+
+
+def process_df(df):
+    """
+    Add altitude columns (S_Z, Z_Z) by loading only needed tiles on demand.
+
+    Coordinates are bucketed into the file grid, then for each bucket a KDTree
+    is built from the tile plus its 8 neighbors to resolve nearest heights.
+    """
+    xs, columns = file_grid
+
+    start_coords = df[["S_X", "S_Y"]].to_numpy()
+    end_coords = df[["Z_X", "Z_Y"]].to_numpy()
+
+    # Bucket coordinates using the prepared grid
+    start_buckets = coordinates_to_grid(start_coords, file_grid)
+    end_buckets = coordinates_to_grid(end_coords, file_grid)
+
+    # Mirror grids but store dataframe row indices
+    start_indices: List[List[List[int]]] = [[[] for _ in col] for col in columns]
+    end_indices: List[List[List[int]]] = [[[] for _ in col] for col in columns]
+
+    for pos, (lon, lat) in enumerate(start_coords):
+        if not np.isfinite(lon) or not np.isfinite(lat):
+            continue
+        xi, yi = coordinate_to_grid(lon, lat, file_grid)
+        start_indices[xi][yi].append(pos)
+
+    for pos, (lon, lat) in enumerate(end_coords):
+        if not np.isfinite(lon) or not np.isfinite(lat):
+            continue
+        xi, yi = coordinate_to_grid(lon, lat, file_grid)
+        end_indices[xi][yi].append(pos)
+
+    s_z = np.full(len(df), np.nan)
+    z_z = np.full(len(df), np.nan)
+
+    tile_cache: Dict[str, Tuple[np.ndarray, np.ndarray]] = {}
+
+    for x_idx in range(len(xs)):
+        for y_idx in range(len(columns[x_idx])):
+            bucket_points = start_buckets[x_idx][y_idx] + end_buckets[x_idx][y_idx]
+            if not bucket_points:
+                continue
+
+            neighbor_coords = _neighbor_tiles(x_idx, y_idx)
+            filenames = []
+            for xi, yi in neighbor_coords:
+                filenames.append(columns[xi][yi][1])
+            filenames = list(dict.fromkeys(filenames))  # preserve order, remove dupes
+
+            pts_list = []
+            zs_list = []
+            for fname in filenames:
+                if fname not in tile_cache:
+                    tile_cache[fname] = _load_tile(fname)
+                pts, zs_tile = tile_cache[fname]
+                pts_list.append(pts)
+                zs_list.append(zs_tile)
+
+            pts_all = np.vstack(pts_list)
+            zs_all = np.concatenate(zs_list)
+            tree = cKDTree(pts_all)
+
+            # Assign start points
+            for pos, (lon, lat) in zip(start_indices[x_idx][y_idx], start_buckets[x_idx][y_idx]):
+                _, idx = tree.query([lon, lat])
+                s_z[pos] = zs_all[idx]
+
+            # Assign end points
+            for pos, (lon, lat) in zip(end_indices[x_idx][y_idx], end_buckets[x_idx][y_idx]):
+                _, idx = tree.query([lon, lat])
+                z_z[pos] = zs_all[idx]
+
+    df = df.copy()
+    df["S_Z"] = pd.Series(s_z, index=df.index)
+    df["Z_Z"] = pd.Series(z_z, index=df.index)
+    return df
