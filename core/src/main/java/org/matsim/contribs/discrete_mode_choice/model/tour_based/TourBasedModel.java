@@ -91,6 +91,13 @@ public class TourBasedModel implements DiscreteModeChoiceModel {
 					}
 
 					TourCandidate candidate = estimator.estimateTour(person, tourModes, tourTrips, tourCandidates);
+					
+					// XX the candidate utility is NaN for some reason
+					// if (!Double.isFinite(candidate.getUtility())) {
+					// 	logger.warn("Received NaN utility for tour starting at trip " + tripIndex + " of agent "
+					// 			+ person.getId().toString() + ". Continuing with next candidate.");
+					// 	continue;
+					// }
 
 					if (!Double.isFinite(candidate.getUtility())) {
 						logger.warn(buildIllegalUtilityMessage(tripIndex, person, candidate));
@@ -174,6 +181,13 @@ public class TourBasedModel implements DiscreteModeChoiceModel {
 	}
 
 	private String buildIllegalUtilityMessage(int tripIndex, Person person, TourCandidate candidate) {
+		// XX TODO for some reason, this is giving index out of bounds exceptions, lovely
+		if (candidate.getTripCandidates().size() <= tripIndex) {
+			return String.format(
+					"Received illegal utility for tour starting at trip %d of agent %s. Continuing with next candidate. Also the candidate has only %d trips, so the index is out of bounds.",
+					tripIndex, person.getId().toString(), candidate.getTripCandidates().size());
+		}
+
 		TripCandidate trip = candidate.getTripCandidates().get(tripIndex);
 
 		return String.format(

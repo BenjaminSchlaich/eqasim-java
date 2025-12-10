@@ -132,6 +132,9 @@ public class SwissPtDetailedUtilityEstimator extends PtUtilityEstimator {
             writeVariablesToCsv(person, trip, variables, personVariables, utility);
         }
 
+        // XX let's make everyone hate PT
+        // utility -= 1000.0; // The swiss hate PT!
+
         return utility;
     }
 
