@@ -105,6 +105,9 @@ def coordinate_to_grid(
     When the coordinate lies outside the known range, return the nearest tile.
     """
     xs, columns = grid
+    if not xs or not columns:
+        return None
+
     x_idx = bisect.bisect_right(xs, lon) - 1
     if x_idx < 0:
         x_idx = 0
@@ -230,13 +233,19 @@ def process_df(df):
     for pos, (lon, lat) in enumerate(start_coords):
         if not np.isfinite(lon) or not np.isfinite(lat):
             continue
-        xi, yi = coordinate_to_grid(lon, lat, file_grid)
+        idx = coordinate_to_grid(lon, lat, file_grid)
+        if idx is None:
+            continue
+        xi, yi = idx
         start_indices[xi][yi].append(pos)
 
     for pos, (lon, lat) in enumerate(end_coords):
         if not np.isfinite(lon) or not np.isfinite(lat):
             continue
-        xi, yi = coordinate_to_grid(lon, lat, file_grid)
+        idx = coordinate_to_grid(lon, lat, file_grid)
+        if idx is None:
+            continue
+        xi, yi = idx
         end_indices[xi][yi].append(pos)
 
     s_z = np.full(len(df), np.nan)
