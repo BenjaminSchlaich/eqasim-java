@@ -37,7 +37,7 @@ MZ_PATH = DATA_DIR
 ENCODING = "latin1"
 
 # should the trips be filtered using load_filtered_zurich() again or just reloaded from the stored .csv?
-RECOMPUTE_FILTER = True
+RECOMPUTE_FILTER = False
 
 boundary = gpd.read_file(BOUNDARY_PATH).to_crs("EPSG:4326").geometry
 canton_geom = boundary.union_all()  # merge into a single polygon for spatial tests

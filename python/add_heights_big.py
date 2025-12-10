@@ -2,7 +2,7 @@
 import os
 import zipfile
 import bisect
-from typing import Iterable, List, Optional, Tuple, Dict
+from typing import Iterable, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
@@ -15,7 +15,7 @@ from pyproj import Transformer
 transformer = Transformer.from_crs("EPSG:2056", "EPSG:4326", always_xy=True)
 HEIGHTS_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "heights")
 
-RECOMPUTE_ALTITUDE = True
+RECOMPUTE_ALTITUDE = False
 
 # convert from swiss to global coordinates
 def lv95_to_wgs84(x, y):
@@ -253,7 +253,6 @@ def process_df(df):
     s_z = np.full(len(df), np.nan)
     z_z = np.full(len(df), np.nan)
 
-    tile_cache: Dict[str, Tuple[np.ndarray, np.ndarray]] = {}
     total_queries = sum(
         len(bucket) for column in start_buckets for bucket in column
     ) + sum(len(bucket) for column in end_buckets for bucket in column)
@@ -274,9 +273,7 @@ def process_df(df):
             pts_list = []
             zs_list = []
             for fname in filenames:
-                if fname not in tile_cache:
-                    tile_cache[fname] = _load_tile(fname)
-                pts, zs_tile = tile_cache[fname]
+                pts, zs_tile = _load_tile(fname)
                 pts_list.append(pts)
                 zs_list.append(zs_tile)
 
@@ -298,6 +295,9 @@ def process_df(df):
             if total_queries:
                 progress = processed / total_queries * 100
                 print(f"Processing altitude lookup… {progress:5.1f}% ({processed}/{total_queries})", end="\r", flush=True)
+
+            # Explicitly drop large intermediates to ease memory pressure
+            del tree, pts_all, zs_all
 
     df = df.copy()
     df["S_Z"] = pd.Series(s_z, index=df.index)
