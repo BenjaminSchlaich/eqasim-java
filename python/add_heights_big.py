@@ -15,6 +15,8 @@ from pyproj import Transformer
 transformer = Transformer.from_crs("EPSG:2056", "EPSG:4326", always_xy=True)
 HEIGHTS_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "heights")
 
+RECOMPUTE_ALTITUDE = True
+
 # convert from swiss to global coordinates
 def lv95_to_wgs84(x, y):
     lon, lat = transformer.transform(x, y)

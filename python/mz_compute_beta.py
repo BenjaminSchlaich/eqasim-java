@@ -37,7 +37,7 @@ MZ_PATH = DATA_DIR
 ENCODING = "latin1"
 
 # should the trips be filtered using load_filtered_zurich() again or just reloaded from the stored .csv?
-RECOMPUTE_FILTER = False
+RECOMPUTE_FILTER = True
 
 boundary = gpd.read_file(BOUNDARY_PATH).to_crs("EPSG:4326").geometry
 canton_geom = boundary.union_all()  # merge into a single polygon for spatial tests
@@ -153,7 +153,7 @@ def load_filtered_zurich():
 
         wege, filterout_ids = tr.get_trips(MZ_PATH)         # load the wege
 
-        print(f"filtering location")
+        print(f"filtering location (only zürich)")
         wege = filter_location(wege)                        # filter for only wege with start&end inside zürich
 
         print(f"filtering milos' stuff")
@@ -164,13 +164,13 @@ def load_filtered_zurich():
         print(f"The remaining number of wege is {wege}")
 
         print(f"saving filtered wege to csv")
-        output_path = MZ_PATH / "microcensus" / "filtered.csv"
+        output_path = MZ_PATH / "microcensus" / "filtered_zurich.csv"
         output_path.parent.mkdir(parents=True, exist_ok=True)
         wege.to_csv(output_path, index=False, encoding=ENCODING)
         
     else:
         print("loading filtered microzensus wege")
-        wege = pd.read_csv(MZ_PATH / "microcensus" / "filtered.csv", encoding=ENCODING)
+        wege = pd.read_csv(MZ_PATH / "microcensus" / "filtered_zurich.csv", encoding=ENCODING)
 
     return wege
 
@@ -184,12 +184,12 @@ def with_height_zurich():
         df = add_heights.process_df(df)
 
         print("saving wege with altitude to csv")
-        output_path = MZ_PATH / "microcensus" / "heights.csv"
+        output_path = MZ_PATH / "microcensus" / "heights_zurich.csv"
         output_path.parent.mkdir(parents=True, exist_ok=True)
         df.to_csv(output_path, index=False, encoding=ENCODING)
         
     else:
-        df = pd.read_csv(MZ_PATH / "microcensus" / "heights.csv", encoding=ENCODING)
+        df = pd.read_csv(MZ_PATH / "microcensus" / "heights_zurich.csv", encoding=ENCODING)
 
     return df
 
@@ -302,7 +302,7 @@ def load_filtered_switzerland():
         print(f"The remaining number of wege is {wege}")
 
         print(f"saving filtered wege to csv")
-        output_path = MZ_PATH / "microcensus" / "filtered.csv"
+        output_path = MZ_PATH / "microcensus" / "filtered_switzerland.csv"
         output_path.parent.mkdir(parents=True, exist_ok=True)
         wege.to_csv(output_path, index=False, encoding=ENCODING)
         
@@ -315,19 +315,19 @@ def load_filtered_switzerland():
 # Returns the dataframe from filtered_zurich() with added z-coordinates
 def with_height_switzerland():
 
-    if(add_heights.RECOMPUTE_ALTITUDE):
+    if(add_heights_big.RECOMPUTE_ALTITUDE):
         df = load_filtered_switzerland()
 
         print("adding height data to wege...")
         df = add_heights_big.process_df(df)
 
         print("saving wege with altitude to csv")
-        output_path = MZ_PATH / "microcensus" / "heights.csv"
+        output_path = MZ_PATH / "microcensus" / "heights_switzerland.csv"
         output_path.parent.mkdir(parents=True, exist_ok=True)
         df.to_csv(output_path, index=False, encoding=ENCODING)
         
     else:
-        df = pd.read_csv(MZ_PATH / "microcensus" / "heights.csv", encoding=ENCODING)
+        df = pd.read_csv(MZ_PATH / "microcensus" / "heights_switzerland.csv", encoding=ENCODING)
 
     return df
 
@@ -336,13 +336,12 @@ def main():
     wege = with_height_switzerland()
 
     # plot_age_distribution(wege)
-    # plot_map(wege)
+    plot_map(wege)
 
     plot_slope_shares(wege)
 
     beta = compute_beta(wege)
     print(f"The computed beta is {beta}")
-    plot_slope_shares(wege)
 
 
 if __name__ == "__main__":
