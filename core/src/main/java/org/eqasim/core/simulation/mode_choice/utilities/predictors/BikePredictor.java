@@ -45,7 +45,18 @@ public class BikePredictor extends CachedVariablePredictor<BikeVariables> {
 	public BikeVariables predict(Person person, DiscreteModeChoiceTrip trip, List<? extends PlanElement> elements) {
 
 		// XX .get(2) because the bike trip is at index 2 in the chain walk-bikeinteraction-bike-bikeinteraction-walk
-		double travelTime_min = ((Leg) elements.get(2)).getTravelTime().seconds() / 60.0;
+		// XX TODO, get(2) gets out of bounds exception, so we use a safe way
+		double travelTime_min = 0.0;
+
+		if (elements.size() >= 3) {
+			logger.info("BikePredictor: Trip elements size is sufficient to get bike leg travel time.");
+			travelTime_min = ((Leg) elements.get(2)).getTravelTime().seconds() / 60.0;
+
+		} else {
+			// log a warning
+			logger.warn("BikePredictor: Trip elements size is less than 3, cannot get bike leg travel time. Setting travel time to 0.");
+			travelTime_min = ((Leg) elements.get(0)).getTravelTime().seconds() / 60.0;
+		}
 
 		// XX placeholder for slope calculation
 		double slope = 0.0;

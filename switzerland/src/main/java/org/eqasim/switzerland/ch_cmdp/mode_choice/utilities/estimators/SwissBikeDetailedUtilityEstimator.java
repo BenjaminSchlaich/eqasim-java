@@ -71,7 +71,7 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
 			result += parameters.bike.betaSlope_u_perGrad * variables.slope;
 		}
 
-		logger.info("Bike UtilityEstimator: travelTime_min = " + variables.travelTime_min + ", slope = " + variables.slope + ", using betaTravelTime_u_min = " + parameters.bike.betaTravelTime_u_min + ", betaSlope_u_perGrad = " + parameters.bike.betaSlope_u_perGrad + ",	travel utility = " + result);
+		logger.info("travelTime_min = " + variables.travelTime_min + ", slope = " + variables.slope + ", using betaTravelTime_u_min = " + parameters.bike.betaTravelTime_u_min + ", betaSlope_u_perGrad = " + parameters.bike.betaSlope_u_perGrad + ",	travel utility = " + result);
 
 		return result;
     }
