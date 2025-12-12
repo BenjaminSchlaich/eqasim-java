@@ -8,6 +8,7 @@ import org.eqasim.core.simulation.mode_choice.utilities.variables.PtVariables;
 import org.eqasim.switzerland.ch_cmdp.mode_choice.parameters.SwissCmdpModeParameters;
 import org.eqasim.switzerland.ch_cmdp.mode_choice.utilities.predictors.SwissPersonPredictor;
 import org.eqasim.switzerland.ch_cmdp.mode_choice.utilities.variables.SwissPersonVariables;
+import org.eqasim.switzerland.ch_cmdp.our_configurations.OurGlobalParameters;
 import org.matsim.api.core.v01.population.Person;
 import org.matsim.api.core.v01.population.PlanElement;
 import org.matsim.contribs.discrete_mode_choice.model.DiscreteModeChoiceTrip;
@@ -133,7 +134,7 @@ public class SwissPtDetailedUtilityEstimator extends PtUtilityEstimator {
         }
 
         // XX let's make everyone hate PT
-        // utility -= 1000.0; // The swiss hate PT!
+        utility += OurGlobalParameters.PT_BIAS;
 
         return utility;
     }

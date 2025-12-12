@@ -11,6 +11,7 @@ import org.eqasim.core.simulation.mode_choice.utilities.variables.BikeVariables;
 import org.eqasim.switzerland.ch_cmdp.mode_choice.parameters.SwissCmdpModeParameters;
 import org.eqasim.switzerland.ch_cmdp.mode_choice.utilities.predictors.SwissPersonPredictor;
 import org.eqasim.switzerland.ch_cmdp.mode_choice.utilities.variables.SwissPersonVariables;
+import org.eqasim.switzerland.ch_cmdp.our_configurations.OurGlobalParameters;
 import org.matsim.api.core.v01.population.Person;
 import org.matsim.api.core.v01.population.PlanElement;
 import org.matsim.contribs.discrete_mode_choice.model.DiscreteModeChoiceTrip;
@@ -152,7 +153,9 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
         if(variablesWriter.isInitiated()) {
             writeVariablesToCsv(person, trip, bikeVariables, personVariables, utility);
         }
-        // utility += 1000.0; // The swiss love biking!
+
+        // XX
+        utility += OurGlobalParameters.BIKE_BIAS; // The swiss love biking!
         // Log the final utility for debugging
         logger.info("Final bike utility for person " + person.getId() + " on trip " + trip.getIndex() + " is: " + utility);
     

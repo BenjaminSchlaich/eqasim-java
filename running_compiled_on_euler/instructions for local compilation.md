@@ -21,3 +21,8 @@ From `scratch/<your_user>` run the following command to submit the job:
 ```
 sbatch < jar_job.sh 
 ```
+
+Check the queue with
+```
+squeue -u lfrieberger -i 20
+```

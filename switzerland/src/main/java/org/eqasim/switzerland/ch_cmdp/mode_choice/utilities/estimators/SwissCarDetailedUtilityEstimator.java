@@ -9,6 +9,7 @@ import org.eqasim.switzerland.ch_cmdp.mode_choice.costs.SwissParkingCostModel;
 import org.eqasim.switzerland.ch_cmdp.mode_choice.parameters.SwissCmdpModeParameters;
 import org.eqasim.switzerland.ch_cmdp.mode_choice.utilities.predictors.SwissPersonPredictor;
 import org.eqasim.switzerland.ch_cmdp.mode_choice.utilities.variables.SwissPersonVariables;
+import org.eqasim.switzerland.ch_cmdp.our_configurations.OurGlobalParameters;
 import org.matsim.api.core.v01.population.Person;
 import org.matsim.api.core.v01.population.PlanElement;
 import org.matsim.contribs.discrete_mode_choice.model.DiscreteModeChoiceTrip;
@@ -130,7 +131,7 @@ public class SwissCarDetailedUtilityEstimator extends CarUtilityEstimator {
         }
 
         // XX we hate cars
-        // utility -= 1000.0; // The swiss hate cars!
+        utility += OurGlobalParameters.CAR_BIAS; // The swiss hate cars!
 
         return utility;
     }
