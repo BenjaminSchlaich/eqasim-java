@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GetRidOfMotorways",
+            "request": "launch",
+            "mainClass": "org.eqasim.switzerland.ch_cmdp.util.GetRidOfMotorways",
+            "projectName": "switzerland"
+        },
+        {
+            "type": "java",
+            "name": "GiveBikes",
+            "request": "launch",
+            "mainClass": "org.eqasim.switzerland.ch_cmdp.util.GiveBikes",
+            "projectName": "switzerland"
+        },
+        {
+            "type": "java",
             "name": "MakeNetworkSlow",
             "request": "launch",
             "mainClass": "org.eqasim.switzerland.ch_cmdp.util.MakeNetworkSlow",

@@ -45,7 +45,7 @@ public class BikePredictor extends CachedVariablePredictor<BikeVariables> {
 	public BikeVariables predict(Person person, DiscreteModeChoiceTrip trip, List<? extends PlanElement> elements) {
 
 		// XX .get(2) because the bike trip is at index 2 in the chain walk-bikeinteraction-bike-bikeinteraction-walk
-		double travelTime_min = ((Leg) elements.get(0)).getTravelTime().seconds() / 60.0;
+		double travelTime_min = ((Leg) elements.get(2)).getTravelTime().seconds() / 60.0;
 
 		// XX placeholder for slope calculation
 		double slope = 0.0;
