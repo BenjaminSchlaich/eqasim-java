@@ -16,9 +16,9 @@ import org.matsim.vehicles.PersonVehicles;
 
 public class AddBikeVehicles {
     public static void main(String[] args) {
-        String configPath = "/Users/benjaminschlaich/Coding/MatSim/eqasim-java/scenarios/Zurich_10pct/zurich_10pct_config.xml";//"..\\scenarios\\Lausanne_10pct\\lausanne_10pctconfig.xml"; //change to your config path
-        String outputVehiclesFile = "/Users/benjaminschlaich/Coding/MatSim/eqasim-java/scenarios/Zurich_10pct/zurich_10pct_vehicles_new.xml.gz";//= "..\\scenarios\\Lausanne_10pct\\new_vehicles.xml"; // can name as you like and change to the path you want to save the file 
-        String outputPopFile = "/Users/benjaminschlaich/Coding/MatSim/eqasim-java/scenarios/Zurich_10pct/zurich_10pct_population_new.xml.gz";//= "..\\scenarios\\Lausanne_10pct\\new_vehicles.xml"; // can name as you like and change to the path you want to save the file 
+        String configPath = "scenarios/Zurich_10pct/zurich_10pct_config.xml";//"..\\scenarios\\Lausanne_10pct\\lausanne_10pctconfig.xml"; //change to your config path
+        String outputVehiclesFile = "scenarios/Zurich_10pct/zurich_10pct_vehicles_new.xml.gz";//= "..\\scenarios\\Lausanne_10pct\\new_vehicles.xml"; // can name as you like and change to the path you want to save the file 
+        String outputPopFile = "scenarios/Zurich_10pct/zurich_10pct_population_new.xml.gz";//= "..\\scenarios\\Lausanne_10pct\\new_vehicles.xml"; // can name as you like and change to the path you want to save the file 
 
         Config config = ConfigUtils.loadConfig(configPath);
         Scenario scenario = ScenarioUtils.loadScenario(config);

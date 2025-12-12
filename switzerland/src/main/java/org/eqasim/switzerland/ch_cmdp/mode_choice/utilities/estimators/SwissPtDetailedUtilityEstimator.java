@@ -2,13 +2,13 @@ package org.eqasim.switzerland.ch_cmdp.mode_choice.utilities.estimators;
 
 import com.google.inject.Inject;
 import org.eqasim.core.components.calibration.VariablesWriter;
+import org.eqasim.core.simulation.OurGlobalParameters;
 import org.eqasim.core.simulation.mode_choice.utilities.estimators.PtUtilityEstimator;
 import org.eqasim.core.simulation.mode_choice.utilities.predictors.PtPredictor;
 import org.eqasim.core.simulation.mode_choice.utilities.variables.PtVariables;
 import org.eqasim.switzerland.ch_cmdp.mode_choice.parameters.SwissCmdpModeParameters;
 import org.eqasim.switzerland.ch_cmdp.mode_choice.utilities.predictors.SwissPersonPredictor;
 import org.eqasim.switzerland.ch_cmdp.mode_choice.utilities.variables.SwissPersonVariables;
-import org.eqasim.switzerland.ch_cmdp.our_configurations.OurGlobalParameters;
 import org.matsim.api.core.v01.population.Person;
 import org.matsim.api.core.v01.population.PlanElement;
 import org.matsim.contribs.discrete_mode_choice.model.DiscreteModeChoiceTrip;

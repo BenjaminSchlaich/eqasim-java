@@ -7,10 +7,10 @@ import ch.sbb.matsim.mobsim.qsim.pt.SBBTransitEngineQSimModule;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eqasim.core.components.fast_calibration.AlphaCalibrator;
+import org.eqasim.core.simulation.OurGlobalParameters;
 import org.eqasim.switzerland.ch.PTLinkVolumesModule;
 import org.eqasim.switzerland.ch.PTPassengerCountsModule;
 import org.eqasim.switzerland.ch_cmdp.our_configurations.NetworkConfigurator;
-import org.eqasim.switzerland.ch_cmdp.our_configurations.OurGlobalParameters;
 import org.eqasim.switzerland.ch_cmdp.our_configurations.PopulationConfigurator;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.core.config.CommandLine;
@@ -37,7 +37,7 @@ public class RunSimulation {
 				.requireOptions("config-path") //
 				.allowPrefixes("mode-parameter", "cost-parameter", "preventwaitingtoentertraffic", "samplingRateForPT") //
 				// XX these are our prefixes:
-				.allowPrefixes("bike-bias", "car-bias", "pt-bias", "population-wealth-factor", "network-speed-factor", "population-bike-chance", "early-exit") //
+				.allowPrefixes("add-bike-vehicles", "bike-bias", "car-bias", "pt-bias", "population-wealth-factor", "network-speed-factor", "population-bike-chance", "early-exit") //
 				.build();
 
 		SwitzerlandConfigurator configurator = new SwitzerlandConfigurator(cmd);
@@ -63,6 +63,15 @@ public class RunSimulation {
 		configurator.adjustScenario(scenario);
 		configurator.adjustPTpcu(scenario);
 
+
+
+		if (cmd.hasOption("add-bike-vehicles")) {
+			NetworkConfigurator networkConfigurator = new NetworkConfigurator();
+			networkConfigurator.addBikeVehicles(scenario);
+
+			OurGlobalParameters.index_to_get_bike = 2;
+			logger.info("Added bike vehicles to the scenario.");
+		}
 
 		
 		// XX TODO: make these be used
