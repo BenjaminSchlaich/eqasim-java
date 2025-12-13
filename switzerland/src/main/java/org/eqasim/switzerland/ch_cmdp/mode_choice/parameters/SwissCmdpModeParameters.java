@@ -133,7 +133,7 @@ public class SwissCmdpModeParameters extends SwissModeParameters {
 
         // XX added slope parameters for bike mode
         // XX TODO: set to a value that makes sense
-        parameters.bike.betaSlope_u_perGrad = -0.69;
+        parameters.bike.betaSlope_u_perGrad = -0.002897168014293872;
 
         parameters.bike.betaUrbanDestination_u= -0.2517193568167992;
         parameters.bike.travelTimeExponent= 0.5618774653314881;
