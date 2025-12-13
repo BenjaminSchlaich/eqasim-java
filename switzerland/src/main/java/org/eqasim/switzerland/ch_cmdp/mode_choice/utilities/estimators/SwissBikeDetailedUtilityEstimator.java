@@ -61,17 +61,12 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
     protected double estimateSlopeUtility(BikeVariables variables) {
         double result = 0.0;
         // XX here, we add a penalty for slope
-		// if the beta is still zero, we will use the travel time one, always print something
-		if (Math.abs(parameters.bike.betaSlope_u_perGrad) < 0.0 + 1e-10) {
-			logger.info("Using another beta, since the the one for slope is not set yet.");
-			// result += parameters.bike.betaTravelTime_u_min * Math.abs(variables.slope) * (- 100.0);
-            result += parameters.bike.betaTravelTime_u_min * variables.travelTime_min;
+        
+        // The line regression for the slope gives us the following:
+        // Regression line: share = -1.0974 * slope + 0.1461
+        result += parameters.bike.betaSlope_u * variables.slope + parameters.bike.alphaSlope_u;
 
-		} else {
-			result += parameters.bike.betaSlope_u_perGrad * variables.slope;
-		}
-
-		logger.info("travelTime_min = " + variables.travelTime_min + ", slope = " + variables.slope + ", using betaTravelTime_u_min = " + parameters.bike.betaTravelTime_u_min + ", betaSlope_u_perGrad = " + parameters.bike.betaSlope_u_perGrad + ",	travel utility = " + result);
+		logger.info("travelTime_min = " + variables.travelTime_min + ", slope = " + variables.slope + ", using betaTravelTime_u_min = " + parameters.bike.betaTravelTime_u_min + ", betaSlope_u_perGrad = " + parameters.bike.betaSlope_u + ",	travel utility = " + result);
 
 		return result;
     }
