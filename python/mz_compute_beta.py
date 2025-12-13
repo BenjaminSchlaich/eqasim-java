@@ -397,10 +397,25 @@ def main():
     # plot_age_distribution(wege)
     # plot_map(wege)
 
-    plot_slope_shares(wege)
+    # plot_slope_shares(wege)
 
-    beta = compute_beta(wege)
-    print(f"The computed beta is {beta}")
+    # beta = compute_beta(wege)
+    # print(f"The computed beta is {beta}")
+
+    # mode share of bike trips in zürich data:
+    bike_trips = wege[wege["mode"] == "bike"]
+    total_weight = wege["person_weight"].sum()
+    bike_weight = bike_trips["person_weight"].sum()
+    bike_share = bike_weight / total_weight
+    print(f"Bike mode share in Zürich microcensus data: {bike_share:.4f}")
+
+    wege_swiss = with_height_switzerland()
+    bike_trips_swiss = wege_swiss[wege_swiss["mode"] == "bike"]
+    total_weight_swiss = wege_swiss["person_weight"].sum()
+    bike_weight_swiss = bike_trips_swiss["person_weight"].sum()
+    bike_share_swiss = bike_weight_swiss / total_weight_swiss
+    print(f"Bike mode share in Switzerland microcensus data: {bike_share_swiss:.4f}")
+
 
 
 
