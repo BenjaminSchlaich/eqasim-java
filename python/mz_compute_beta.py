@@ -274,6 +274,15 @@ def plot_slope_shares(wege):
     for t in thresholds:
         mask = (slope >= t) & (slope <= t + stepsize)
         total_w = weights[mask].sum()
+
+        stat_len = len(wege[mask])
+
+        # if(total_w < 20):# skip outliers with too few trips
+        #     shares.append(np.nan)
+        #     trip_counts.append(total_w)
+        #     print(f"Skipping bin {t:.3f}-{t+stepsize:.3f} with only {stat_len} trips (weight {total_w})")
+        #     continue
+
         bike_w = weights[mask & is_bike].sum()
         share = bike_w / total_w if total_w > 0 else np.nan
         shares.append(share)
