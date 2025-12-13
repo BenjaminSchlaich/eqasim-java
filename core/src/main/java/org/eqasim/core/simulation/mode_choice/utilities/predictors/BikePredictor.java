@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eqasim.core.analysis.run.RunActivityAnalysis;
+import org.eqasim.core.simulation.OurGlobalParameters;
 import org.eqasim.core.simulation.mode_choice.utilities.variables.BikeVariables;
 import org.matsim.api.core.v01.TransportMode;
 import org.matsim.api.core.v01.network.Network;
@@ -15,6 +16,7 @@ import org.matsim.api.core.v01.population.Person;
 import org.matsim.api.core.v01.population.PlanElement;
 import org.matsim.contribs.discrete_mode_choice.model.DiscreteModeChoiceTrip;
 import org.matsim.core.router.TripStructureUtils;
+
 
 import com.google.common.base.Verify;
 import com.google.inject.Inject;
@@ -45,7 +47,20 @@ public class BikePredictor extends CachedVariablePredictor<BikeVariables> {
 	public BikeVariables predict(Person person, DiscreteModeChoiceTrip trip, List<? extends PlanElement> elements) {
 
 		// XX .get(2) because the bike trip is at index 2 in the chain walk-bikeinteraction-bike-bikeinteraction-walk
-		double travelTime_min = ((Leg) elements.get(0)).getTravelTime().seconds() / 60.0;
+		// XX TODO, get(2) gets out of bounds exception, so we use a safe way
+		double travelTime_min = 0.0;
+
+		int special_bike_index = OurGlobalParameters.index_to_get_bike;
+
+		if (elements.size() >= special_bike_index + 1) {
+			logger.info("BikePredictor: Trip elements size is sufficient to get bike leg travel time.");
+			travelTime_min = ((Leg) elements.get(special_bike_index)).getTravelTime().seconds() / 60.0;
+
+		} else {
+			// log a warning
+			logger.warn("BikePredictor: Trip elements size is less than 3, cannot get bike leg travel time. Setting travel time to 0.");
+			travelTime_min = ((Leg) elements.get(0)).getTravelTime().seconds() / 60.0;
+		}
 
 		// XX placeholder for slope calculation
 		double slope = 0.0;

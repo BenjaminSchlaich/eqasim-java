@@ -1,28 +1,58 @@
-package org.eqasim.switzerland.ch_cmdp;
+package org.eqasim.switzerland.ch_cmdp.our_configurations;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.Scenario;
+import org.matsim.api.core.v01.network.Link;
+import org.matsim.api.core.v01.network.Network;
 import org.matsim.api.core.v01.population.Person;
 import org.matsim.api.core.v01.population.PopulationWriter;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
+import org.matsim.core.network.NetworkUtils;
 import org.matsim.core.scenario.ScenarioUtils;
+import org.matsim.vehicles.MatsimVehicleWriter;
+import org.matsim.vehicles.PersonVehicles;
 import org.matsim.vehicles.Vehicle;
 import org.matsim.vehicles.VehicleType;
 import org.matsim.vehicles.VehicleUtils;
 import org.matsim.vehicles.Vehicles;
-import org.matsim.vehicles.MatsimVehicleWriter;
-import org.matsim.vehicles.PersonVehicles;
 
-public class AddBikeVehicles {
-    public static void main(String[] args) {
-        String configPath = "scenarios/Zurich_10pct/zurich_10pct_config.xml";//"..\\scenarios\\Lausanne_10pct\\lausanne_10pctconfig.xml"; //change to your config path
-        String outputVehiclesFile = "scenarios/Zurich_10pct/zurich_10pct_vehicles_new.xml.gz";//= "..\\scenarios\\Lausanne_10pct\\new_vehicles.xml"; // can name as you like and change to the path you want to save the file 
-        String outputPopFile = "scenarios/Zurich_10pct/zurich_10pct_population_new.xml.gz";//= "..\\scenarios\\Lausanne_10pct\\new_vehicles.xml"; // can name as you like and change to the path you want to save the file 
+// XX this is entirely ours
+public class NetworkConfigurator {
+	private final static Logger logger = LogManager.getLogger(NetworkConfigurator.class);
 
-        Config config = ConfigUtils.loadConfig(configPath);
-        Scenario scenario = ScenarioUtils.loadScenario(config);
 
+    public void applySpeedFactor(Network network, double speedFactor) {
+        List<Link> links = new ArrayList<>(network.getLinks().values());
+        for (Link link : links) {
+            double freespeed = link.getFreespeed();
+            link.setFreespeed(freespeed * speedFactor);
+        }
+        logger.info("Applied speed factor of {} to network", speedFactor);
+    }
+
+    public void applySpeedFactor(String configPath, String outputPath, double speedFactor) {
+        Network network = NetworkUtils.readNetwork(configPath);
+        applySpeedFactor(network, speedFactor);
+        NetworkUtils.writeNetwork(network, outputPath);
+    }
+
+
+
+    // String configPath = "scenarios/Zurich_10pct/zurich_10pct_config.xml";//"..\\scenarios\\Lausanne_10pct\\lausanne_10pctconfig.xml"; //change to your config path
+    //     String outputVehiclesFile = "scenarios/Zurich_10pct/zurich_10pct_vehicles_new.xml.gz";//= "..\\scenarios\\Lausanne_10pct\\new_vehicles.xml"; // can name as you like and change to the path you want to save the file 
+    //     String outputPopFile = "scenarios/Zurich_10pct/zurich_10pct_population_new.xml.gz";//= "..\\scenarios\\Lausanne_10pct\\new_vehicles.xml"; // can name as you like and change to the path you want to save the file 
+
+    //     Config config = ConfigUtils.loadConfig(configPath);
+    //     Scenario scenario = ScenarioUtils.loadScenario(config);
+
+
+    public void addBikeVehicles(Scenario scenario) {
         Vehicles vehicles = scenario.getVehicles();
         String vehicleMode = "bike";
 
@@ -69,7 +99,8 @@ public class AddBikeVehicles {
             
         }
 
-        new MatsimVehicleWriter(vehicles).writeFile(outputVehiclesFile);
-        new PopulationWriter(scenario.getPopulation()).write(outputPopFile);
+        // new MatsimVehicleWriter(vehicles).writeFile(outputVehiclesFile);
+        // new PopulationWriter(scenario.getPopulation()).write(outputPopFile);
     }
+
 }

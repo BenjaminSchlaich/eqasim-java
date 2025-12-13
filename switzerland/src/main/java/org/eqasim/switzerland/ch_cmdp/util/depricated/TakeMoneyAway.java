@@ -1,4 +1,4 @@
-package org.eqasim.switzerland.ch_cmdp.util;
+package org.eqasim.switzerland.ch_cmdp.util.depricated;
 
 import java.util.ArrayList;
 import java.util.List;

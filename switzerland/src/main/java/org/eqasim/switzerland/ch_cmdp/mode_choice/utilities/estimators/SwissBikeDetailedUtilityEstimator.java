@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eqasim.core.components.calibration.VariablesWriter;
+import org.eqasim.core.simulation.OurGlobalParameters;
 import org.eqasim.core.simulation.mode_choice.utilities.estimators.BikeUtilityEstimator;
 import org.eqasim.core.simulation.mode_choice.utilities.predictors.BikePredictor;
 import org.eqasim.core.simulation.mode_choice.utilities.predictors.PredictorUtils;
@@ -70,7 +71,7 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
 			result += parameters.bike.betaSlope_u_perGrad * variables.slope;
 		}
 
-		logger.info("Bike UtilityEstimator: travelTime_min = " + variables.travelTime_min + ", slope = " + variables.slope + ", using betaTravelTime_u_min = " + parameters.bike.betaTravelTime_u_min + ", betaSlope_u_perGrad = " + parameters.bike.betaSlope_u_perGrad + ",	travel utility = " + result);
+		logger.info("travelTime_min = " + variables.travelTime_min + ", slope = " + variables.slope + ", using betaTravelTime_u_min = " + parameters.bike.betaTravelTime_u_min + ", betaSlope_u_perGrad = " + parameters.bike.betaSlope_u_perGrad + ",	travel utility = " + result);
 
 		return result;
     }
@@ -152,7 +153,9 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
         if(variablesWriter.isInitiated()) {
             writeVariablesToCsv(person, trip, bikeVariables, personVariables, utility);
         }
-        // utility += 1000.0; // The swiss love biking!
+
+        // XX
+        utility += OurGlobalParameters.BIKE_BIAS; // The swiss love biking!
         // Log the final utility for debugging
         logger.info("Final bike utility for person " + person.getId() + " on trip " + trip.getIndex() + " is: " + utility);
     

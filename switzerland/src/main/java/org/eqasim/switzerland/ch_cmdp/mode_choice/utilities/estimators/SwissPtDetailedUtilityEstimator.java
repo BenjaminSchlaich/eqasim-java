@@ -2,6 +2,7 @@ package org.eqasim.switzerland.ch_cmdp.mode_choice.utilities.estimators;
 
 import com.google.inject.Inject;
 import org.eqasim.core.components.calibration.VariablesWriter;
+import org.eqasim.core.simulation.OurGlobalParameters;
 import org.eqasim.core.simulation.mode_choice.utilities.estimators.PtUtilityEstimator;
 import org.eqasim.core.simulation.mode_choice.utilities.predictors.PtPredictor;
 import org.eqasim.core.simulation.mode_choice.utilities.variables.PtVariables;
@@ -133,7 +134,7 @@ public class SwissPtDetailedUtilityEstimator extends PtUtilityEstimator {
         }
 
         // XX let's make everyone hate PT
-        // utility -= 1000.0; // The swiss hate PT!
+        utility += OurGlobalParameters.PT_BIAS;
 
         return utility;
     }
