@@ -288,25 +288,29 @@ def plot_slope_shares(wege):
         shares.append(share)
         trip_counts.append(total_w)
 
-    sus = wege[(slope >= 0.14) & (slope < 0.145)]
-
-    print(f"Suspicious bin of size: {len(sus)}")
-
-    for weg in sus.itertuples():
-        print(weg)
-
+    # Plotting the slopes
     fig, ax1 = plt.subplots(figsize=(8, 5))
     share_line = ax1.plot(thresholds, shares, marker="o", color="tab:blue", label="Bike mode share")
-    ax1.set_xlabel("Minimum slope")
+    ax1.set_xlabel("Minimum Average slope")
     ax1.set_ylabel("Bike mode share", color="tab:blue")
     ax1.tick_params(axis="y", labelcolor="tab:blue")
 
+    # plotting person-weights to see how representative each bin is
     ax2 = ax1.twinx()
     count_line = ax2.plot(thresholds, trip_counts, marker="s", color="tab:orange", label="Trip count (weighted)")
     ax2.set_ylabel("Trips in bin (person-weighted)", color="tab:orange")
     ax2.tick_params(axis="y", labelcolor="tab:orange")
 
-    lines = share_line + count_line
+    # Weighted linear regression of bike share vs. bin center using trip counts as weights
+    bin_centers = thresholds + stepsize / 2
+    valid_mask = ~np.isnan(shares) & (np.array(trip_counts) > 0)
+    if valid_mask.any():
+        coef = np.polyfit(bin_centers[valid_mask], np.array(shares)[valid_mask], 1, w=np.array(trip_counts)[valid_mask])
+        reg_line = ax1.plot(thresholds, np.polyval(coef, thresholds), color="tab:green", linestyle="--", label="Weighted regression")
+    else:
+        reg_line = []
+
+    lines = share_line + count_line + reg_line
     labels = [line.get_label() for line in lines]
     ax1.legend(lines, labels, loc="best")
 
