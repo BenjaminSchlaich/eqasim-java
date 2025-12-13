@@ -29,6 +29,7 @@ import add_heights_big
 ROOT_DIR = pathlib.Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT_DIR / "data"
 BOUNDARY_PATH = DATA_DIR / "Boundary" / "Zurich.shp"
+SWISS_BOUNDARY_PATH = DATA_DIR / "Boundary" / "Switzerland.shp"
 ETAPPEN_PATH = DATA_DIR / "microcensus" / "etappen.csv"
 ETAPPEN_OUT = DATA_DIR / "microcensus" / "etappen_zurich.csv"
 WEGE_PATH = DATA_DIR / "microcensus" / "wege.csv"
@@ -41,6 +42,8 @@ RECOMPUTE_FILTER = False
 
 boundary = gpd.read_file(BOUNDARY_PATH).to_crs("EPSG:4326").geometry
 canton_geom = boundary.union_all()  # merge into a single polygon for spatial tests
+
+swiss_boundary = gpd.read_file(SWISS_BOUNDARY_PATH).to_crs("EPSG:4326")
 
 # filter out for only trips that start&end within zürich
 def filter_location(df):
@@ -262,23 +265,59 @@ def plot_slope_shares(wege):
     weights = wege["person_weight"]
     is_bike = wege["mode"] == "bike"
 
-    thresholds = np.arange(-0.20, 0.20, 0.02)
+    stepsize = 0.005
+
+    thresholds = np.arange(0.0, 0.30, stepsize)
     shares = []
+    trip_counts = []
 
     for t in thresholds:
-        mask = (slope >= t) & (slope <= t + 0.01)
+        mask = (slope >= t) & (slope <= t + stepsize)
         total_w = weights[mask].sum()
+
+        stat_len = len(wege[mask])
+
+        if(total_w < 20):# skip outliers with too few trips
+            shares.append(np.nan)
+            trip_counts.append(total_w)
+            print(f"Skipping bin {t:.3f}-{t+stepsize:.3f} with only {stat_len} trips (weight {total_w})")
+            continue
+
         bike_w = weights[mask & is_bike].sum()
         share = bike_w / total_w if total_w > 0 else np.nan
         shares.append(share)
+        trip_counts.append(total_w)
 
-    plt.figure(figsize=(8, 5))
-    plt.plot(thresholds, shares, marker="o")
-    plt.xlabel("Minimum slope")
-    plt.ylabel("Bike mode share")
-    plt.title("Bike mode share by minimum slope threshold")
-    plt.grid(True, linestyle="--", alpha=0.6)
-    plt.tight_layout()
+    # Plotting the slopes
+    fig, ax1 = plt.subplots(figsize=(8, 5))
+    share_line = ax1.plot(thresholds, shares, marker="o", color="tab:blue", label="Bike mode share")
+    ax1.set_xlabel("Minimum Average slope")
+    ax1.set_ylabel("Bike mode share", color="tab:blue")
+    ax1.tick_params(axis="y", labelcolor="tab:blue")
+
+    # plotting person-weights to see how representative each bin is
+    ax2 = ax1.twinx()
+    count_line = ax2.plot(thresholds, trip_counts, marker="s", color="tab:orange", label="Trip count (weighted)")
+    ax2.set_ylabel("Trips in bin (person-weighted)", color="tab:orange")
+    ax2.tick_params(axis="y", labelcolor="tab:orange")
+
+    # Unweighted linear regression of bike share vs. bin center
+    bin_centers = thresholds + stepsize / 2
+    valid_mask = ~np.isnan(shares) & (np.array(trip_counts) > 0)
+    if valid_mask.any():
+        coef = np.polyfit(bin_centers[valid_mask], np.array(shares)[valid_mask], 1)
+        reg_line = ax1.plot(thresholds, np.polyval(coef, thresholds), color="tab:green", linestyle="--", label="Regression")
+        print(f"Regression line: share = {coef[0]:.4f} * slope + {coef[1]:.4f}")
+    else:
+        reg_line = []
+
+    lines = share_line + count_line + reg_line
+    labels = [line.get_label() for line in lines]
+    ax1.legend(lines, labels, loc="best")
+
+    ax1.set_title("Bike mode share and trip counts by minimum slope")
+    ax1.grid(True, linestyle="--", alpha=0.6)
+    fig.tight_layout()
     plt.show()
 
 # Returns the filtered trips with joined persons. Filtered by demographics, location and sanity checks.
@@ -331,17 +370,39 @@ def with_height_switzerland():
 
     return df
 
+# Returns the dataframe from with_height_switzerland(), filtered for trips only with start and end in Switzerland
+# def filtered_switzerland():
+
+#     df = with_height_switzerland()
+
+#     lon_start = df["S_X"]
+#     lat_start = df["S_Y"]
+#     lon_end = df["Z_X"]
+#     lat_end = df["Z_Y"]
+
+#     start_points = gpd.GeoSeries(
+#         [Point(xy) for xy in zip(lon_start, lat_start)], crs="EPSG:4326"
+#     )
+#     end_points = gpd.GeoSeries(
+#         [Point(xy) for xy in zip(lon_end, lat_end)], crs="EPSG:4326"
+#     )
+
+#     mask = start_points.within(swiss_boundary.unary_union) & end_points.within(swiss_boundary.unary_union)
+#     return df[mask].copy()
+
 def main():
 
-    wege = with_height_switzerland()
+    wege = with_height_zurich()
 
     # plot_age_distribution(wege)
-    plot_map(wege)
+    # plot_map(wege)
 
     plot_slope_shares(wege)
 
     beta = compute_beta(wege)
     print(f"The computed beta is {beta}")
+
+
 
 
 if __name__ == "__main__":
