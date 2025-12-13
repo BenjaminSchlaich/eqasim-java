@@ -277,11 +277,11 @@ def plot_slope_shares(wege):
 
         stat_len = len(wege[mask])
 
-        # if(total_w < 20):# skip outliers with too few trips
-        #     shares.append(np.nan)
-        #     trip_counts.append(total_w)
-        #     print(f"Skipping bin {t:.3f}-{t+stepsize:.3f} with only {stat_len} trips (weight {total_w})")
-        #     continue
+        if(total_w < 20):# skip outliers with too few trips
+            shares.append(np.nan)
+            trip_counts.append(total_w)
+            print(f"Skipping bin {t:.3f}-{t+stepsize:.3f} with only {stat_len} trips (weight {total_w})")
+            continue
 
         bike_w = weights[mask & is_bike].sum()
         share = bike_w / total_w if total_w > 0 else np.nan
@@ -301,12 +301,13 @@ def plot_slope_shares(wege):
     ax2.set_ylabel("Trips in bin (person-weighted)", color="tab:orange")
     ax2.tick_params(axis="y", labelcolor="tab:orange")
 
-    # Weighted linear regression of bike share vs. bin center using trip counts as weights
+    # Unweighted linear regression of bike share vs. bin center
     bin_centers = thresholds + stepsize / 2
     valid_mask = ~np.isnan(shares) & (np.array(trip_counts) > 0)
     if valid_mask.any():
-        coef = np.polyfit(bin_centers[valid_mask], np.array(shares)[valid_mask], 1, w=np.array(trip_counts)[valid_mask])
-        reg_line = ax1.plot(thresholds, np.polyval(coef, thresholds), color="tab:green", linestyle="--", label="Weighted regression")
+        coef = np.polyfit(bin_centers[valid_mask], np.array(shares)[valid_mask], 1)
+        reg_line = ax1.plot(thresholds, np.polyval(coef, thresholds), color="tab:green", linestyle="--", label="Regression")
+        print(f"Regression line: share = {coef[0]:.4f} * slope + {coef[1]:.4f}")
     else:
         reg_line = []
 
