@@ -2,6 +2,7 @@
 import os
 import zipfile
 import bisect
+import re
 from typing import Iterable, List, Optional, Tuple
 
 import numpy as np
@@ -13,6 +14,7 @@ import contextily as ctx
 from pyproj import Transformer
 
 transformer = Transformer.from_crs("EPSG:2056", "EPSG:4326", always_xy=True)
+transformer_wgs_to_lv95 = Transformer.from_crs("EPSG:4326", "EPSG:2056", always_xy=True)
 HEIGHTS_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "heights")
 
 RECOMPUTE_ALTITUDE = False
@@ -22,45 +24,30 @@ def lv95_to_wgs84(x, y):
     lon, lat = transformer.transform(x, y)
     return lon, lat
 
-# Returns a ditionary mapping from (east, north) coordinate tuples to the corresponding .zip filename
+# Returns a dictionary mapping from (east, north) coordinate tuples to the corresponding filename
 def load_location_files():
-    # Get all of the filenames from the .zip files in data/heights 
-    # an example filename would be "data/heights/swissaltiregio_2465-1104_2056_5728.xyz.zip"
-    # where the name can be broken down into:
-    # swissaltiregio_<PREFIX_EAST>-<PREFIX_NORTH>_<...>_<...>.xyz.zip
-    data_dir = 'data/heights'
-    zip_filenames = [f for f in os.listdir(data_dir) if f.endswith('.zip')]
-    
-    # For each filename, PREFIX_EAST*1000 is the lowest east coordinate within that file
-    # and PREFIX_NORTH*1000 is the lowest north coordinate within that file
-    # We will store these in a list of tuples for easy access later
+    """
+    Parse altitude tiles in data/heights and return (east_min, north_min, filename).
+
+    Supports both zipped swissalti files and extracted .xyz tiles.
+    """
+    pattern_zip = re.compile(r"swissaltiregio_(\d+)-(\d+)_.*\.xyz\.zip$")
+    pattern_xyz = re.compile(r"(\d+)_(\d+)\.xyz$")
+
     location_files = []
-    for zip_filename in zip_filenames:
-        parts = zip_filename.split('_')
-        if len(parts) < 2:
+    for fname in os.listdir(HEIGHTS_DIR):
+        m_zip = pattern_zip.match(fname)
+        m_xyz = pattern_xyz.match(fname)
+        if m_zip:
+            prefix_east = int(m_zip.group(1)) * 1000
+            prefix_north = int(m_zip.group(2)) * 1000
+        elif m_xyz:
+            prefix_east = int(m_xyz.group(1)) * 1000
+            prefix_north = int(m_xyz.group(2)) * 1000
+        else:
             continue
-        prefix_part = parts[1]
-        prefix_east_str, prefix_north_str = prefix_part.split('-')
-        prefix_east = int(prefix_east_str) * 1000
-        prefix_north = int(prefix_north_str) * 1000
+        location_files.append((prefix_east, prefix_north, fname))
 
-        # convert to WGS84
-        lon, lat = lv95_to_wgs84(prefix_east, prefix_north)
-
-        location_files.append((lon, lat, zip_filename))
-    
-    # draw the map of switzerland with these locations using contextily for visualization
-    # lons = [loc[0] for loc in location_files]
-    # lats = [loc[1] for loc in location_files]
-    # plt.figure(figsize=(10, 10))
-    # plt.scatter(lons, lats, c='red', marker='o')
-    # plt.title('Altitude Tile Locations in Switzerland')
-    # plt.xlabel('Longitude')
-    # plt.ylabel('Latitude')
-    # ctx.add_basemap(plt.gca(), crs='EPSG:4326')
-    # plt.show()
-
-    # map the (prefix_east, prefix_north) to the corresponding zip filename
     return location_files
 
 
@@ -78,8 +65,8 @@ def loctaion_files_to_grid(
     then j = bisect_right([y for y, _ in grid[i]], y) - 1 to locate the tile.
     """
     buckets = {}
-    for lon, lat, filename in locations:
-        buckets.setdefault(lon, []).append((lat, filename))
+    for east, north, filename in locations:
+        buckets.setdefault(east, []).append((north, filename))
 
     xs = sorted(buckets.keys())
     grid = []
@@ -95,8 +82,8 @@ file_grid = loctaion_files_to_grid(location_files)
 
 
 def coordinate_to_grid(
-    lon: float,
-    lat: float,
+    east: float,
+    north: float,
     grid: Tuple[List[float], List[List[Tuple[float, str]]]] = file_grid,
 ) -> Optional[Tuple[int, int]]:
     """
@@ -110,14 +97,14 @@ def coordinate_to_grid(
     if not xs or not columns:
         return None
 
-    x_idx = bisect.bisect_right(xs, lon) - 1
+    x_idx = bisect.bisect_right(xs, east) - 1
     if x_idx < 0:
         x_idx = 0
     elif x_idx >= len(xs):
         x_idx = len(xs) - 1
 
     y_mins = [y for y, _ in columns[x_idx]]
-    y_idx = bisect.bisect_right(y_mins, lat) - 1
+    y_idx = bisect.bisect_right(y_mins, north) - 1
     if y_idx < 0:
         y_idx = 0
     elif y_idx >= len(columns[x_idx]):
@@ -141,14 +128,14 @@ def coordinates_to_grid(
         [[] for _ in col] for col in columns
     ]
 
-    for lon, lat in coords:
-        if not np.isfinite(lon) or not np.isfinite(lat):
+    for east, north in coords:
+        if not np.isfinite(east) or not np.isfinite(north):
             continue
-        idx = coordinate_to_grid(lon, lat, file_grid)
+        idx = coordinate_to_grid(east, north, file_grid)
         if idx is None:
             continue
         x_idx, y_idx = idx
-        buckets[x_idx][y_idx].append((lon, lat))
+        buckets[x_idx][y_idx].append((east, north))
 
     return buckets
 
@@ -164,39 +151,49 @@ def _tile_inner_filename(zip_name: str) -> str:
 
 def _load_tile(zip_name: str) -> Tuple[np.ndarray, np.ndarray]:
     """
-    Load a tile's xyz data, returning (pts_wgs, zs).
+    Load a tile's xyz data, returning (pts_lv95, zs).
 
-    Tries to reuse an extracted .xyz file if present; otherwise reads from zip.
+    Supports both zipped tiles and already-extracted .xyz files.
     """
-    inner_name = _tile_inner_filename(zip_name)
-    extracted_path = os.path.join(HEIGHTS_DIR, inner_name)
-    if os.path.exists(extracted_path):
-        df = pd.read_csv(
-            extracted_path,
-            sep=r"\s+",
-            header=0,
-            names=["x", "y", "z"],
-            dtype=float,
-            comment="#",
-        )
-    else:
-        zip_path = os.path.join(HEIGHTS_DIR, zip_name)
-        with zipfile.ZipFile(zip_path) as zf, zf.open(inner_name) as fh:
+    if zip_name.endswith(".zip"):
+        inner_name = _tile_inner_filename(zip_name)
+        extracted_path = os.path.join(HEIGHTS_DIR, inner_name)
+        if os.path.exists(extracted_path):
             df = pd.read_csv(
-                fh,
+                extracted_path,
                 sep=r"\s+",
                 header=0,
                 names=["x", "y", "z"],
                 dtype=float,
                 comment="#",
             )
+        else:
+            zip_path = os.path.join(HEIGHTS_DIR, zip_name)
+            with zipfile.ZipFile(zip_path) as zf, zf.open(inner_name) as fh:
+                df = pd.read_csv(
+                    fh,
+                    sep=r"\s+",
+                    header=0,
+                    names=["x", "y", "z"],
+                    dtype=float,
+                    comment="#",
+                )
+    else:
+        path = os.path.join(HEIGHTS_DIR, zip_name)
+        df = pd.read_csv(
+            path,
+            sep=r"\s+",
+            header=0,
+            names=["x", "y", "z"],
+            dtype=float,
+            comment="#",
+        )
 
     xs = df["x"].to_numpy()
     ys = df["y"].to_numpy()
     zs = df["z"].to_numpy()
-    lon, lat = lv95_to_wgs84(xs, ys)
-    pts_wgs = np.column_stack((lon, lat))
-    return pts_wgs, zs
+    pts_lv95 = np.column_stack((xs, ys))
+    return pts_lv95, zs
 
 
 def _neighbor_tiles(x_idx: int, y_idx: int) -> List[Tuple[int, int]]:
@@ -221,8 +218,12 @@ def process_df(df):
     """
     xs, columns = file_grid
 
-    start_coords = df[["S_X", "S_Y"]].to_numpy()
-    end_coords = df[["Z_X", "Z_Y"]].to_numpy()
+    # Transform input lon/lat to LV95 once up front
+    s_east, s_north = transformer_wgs_to_lv95.transform(df["S_X"].to_numpy(), df["S_Y"].to_numpy())
+    z_east, z_north = transformer_wgs_to_lv95.transform(df["Z_X"].to_numpy(), df["Z_Y"].to_numpy())
+
+    start_coords = np.column_stack((s_east, s_north))
+    end_coords = np.column_stack((z_east, z_north))
 
     # Bucket coordinates using the prepared grid
     start_buckets = coordinates_to_grid(start_coords, file_grid)
@@ -232,19 +233,19 @@ def process_df(df):
     start_indices: List[List[List[int]]] = [[[] for _ in col] for col in columns]
     end_indices: List[List[List[int]]] = [[[] for _ in col] for col in columns]
 
-    for pos, (lon, lat) in enumerate(start_coords):
-        if not np.isfinite(lon) or not np.isfinite(lat):
+    for pos, (east, north) in enumerate(start_coords):
+        if not np.isfinite(east) or not np.isfinite(north):
             continue
-        idx = coordinate_to_grid(lon, lat, file_grid)
+        idx = coordinate_to_grid(east, north, file_grid)
         if idx is None:
             continue
         xi, yi = idx
         start_indices[xi][yi].append(pos)
 
-    for pos, (lon, lat) in enumerate(end_coords):
-        if not np.isfinite(lon) or not np.isfinite(lat):
+    for pos, (east, north) in enumerate(end_coords):
+        if not np.isfinite(east) or not np.isfinite(north):
             continue
-        idx = coordinate_to_grid(lon, lat, file_grid)
+        idx = coordinate_to_grid(east, north, file_grid)
         if idx is None:
             continue
         xi, yi = idx
@@ -282,13 +283,13 @@ def process_df(df):
             tree = cKDTree(pts_all)
 
             # Assign start points
-            for pos, (lon, lat) in zip(start_indices[x_idx][y_idx], start_buckets[x_idx][y_idx]):
-                _, idx = tree.query([lon, lat])
+            for pos, (east, north) in zip(start_indices[x_idx][y_idx], start_buckets[x_idx][y_idx]):
+                _, idx = tree.query([east, north])
                 s_z[pos] = zs_all[idx]
 
             # Assign end points
-            for pos, (lon, lat) in zip(end_indices[x_idx][y_idx], end_buckets[x_idx][y_idx]):
-                _, idx = tree.query([lon, lat])
+            for pos, (east, north) in zip(end_indices[x_idx][y_idx], end_buckets[x_idx][y_idx]):
+                _, idx = tree.query([east, north])
                 z_z[pos] = zs_all[idx]
 
             processed += len(bucket_points)
