@@ -269,7 +269,7 @@ def plot_slope_shares(wege):
 
     thresholds = np.arange(0.0, 0.30, stepsize)
     shares = []
-    avg_lengths = []
+    trip_counts = []
 
     for t in thresholds:
         mask = (slope >= t) & (slope <= t + stepsize)
@@ -277,8 +277,7 @@ def plot_slope_shares(wege):
         bike_w = weights[mask & is_bike].sum()
         share = bike_w / total_w if total_w > 0 else np.nan
         shares.append(share)
-        avg_length = (wege["crowfly_distance"][mask] * weights[mask]).sum() / total_w if total_w > 0 else np.nan
-        avg_lengths.append(avg_length)
+        trip_counts.append(total_w)
 
     sus = wege[(slope >= 0.14) & (slope < 0.145)]
 
@@ -294,15 +293,15 @@ def plot_slope_shares(wege):
     ax1.tick_params(axis="y", labelcolor="tab:blue")
 
     ax2 = ax1.twinx()
-    length_line = ax2.plot(thresholds, avg_lengths, marker="s", color="tab:orange", label="Avg. trip length")
-    ax2.set_ylabel("Average trip length (crowfly distance)", color="tab:orange")
+    count_line = ax2.plot(thresholds, trip_counts, marker="s", color="tab:orange", label="Trip count (weighted)")
+    ax2.set_ylabel("Trips in bin (person-weighted)", color="tab:orange")
     ax2.tick_params(axis="y", labelcolor="tab:orange")
 
-    lines = share_line + length_line
+    lines = share_line + count_line
     labels = [line.get_label() for line in lines]
     ax1.legend(lines, labels, loc="best")
 
-    ax1.set_title("Bike mode share and average trip length by minimum slope")
+    ax1.set_title("Bike mode share and trip counts by minimum slope")
     ax1.grid(True, linestyle="--", alpha=0.6)
     fig.tight_layout()
     plt.show()
