@@ -53,13 +53,13 @@ public class BikePredictor extends CachedVariablePredictor<BikeVariables> {
 		int special_bike_index = OurGlobalParameters.index_to_get_bike;
 
 		if (elements.size() >= special_bike_index + 1) {
-			logger.info("BikePredictor: Trip elements size is sufficient to get bike leg travel time.");
 			travelTime_min = ((Leg) elements.get(special_bike_index)).getTravelTime().seconds() / 60.0;
+			logger.info("Trip elements size is sufficient to get bike leg travel time: " + travelTime_min + " minutes.");
 
 		} else {
 			// log a warning
-			logger.warn("BikePredictor: Trip elements size is less than 3, cannot get bike leg travel time. Setting travel time to 0.");
 			travelTime_min = ((Leg) elements.get(0)).getTravelTime().seconds() / 60.0;
+			logger.warn("Trip elements size is less than 3, cannot get bike leg travel time. Setting travel time to " + travelTime_min + " minutes.");
 		}
 
 		// XX placeholder for slope calculation
@@ -114,6 +114,9 @@ public class BikePredictor extends CachedVariablePredictor<BikeVariables> {
 
 		
 		slope = (destinationHeight - originHeight) / PredictorUtils.calculateEuclideanDistance_km(trip);
+		// log the slope calculation process
+		logger.info("Calculated slope: (destHeight " + destinationHeight + " - origHeight " + originHeight + ") / euclideanDistance_km " + PredictorUtils.calculateEuclideanDistance_km(trip) + " = " + slope);
+
 		// Check if nan:
 		if (!Double.isFinite(slope)) {
 			slope = 0.0;
