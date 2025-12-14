@@ -30,7 +30,7 @@ MERCATOR = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy=True)
 WGS_TO_LV95 = Transformer.from_crs("EPSG:4326", "EPSG:2056", always_xy=True)
 HEIGHTS_DIR = add_heights_big.HEIGHTS_DIR
 
-SUBSAMPLE = 10  # keep every 10th point (10 m -> 100 m) to speed up interpolation and reduce memory
+SUBSAMPLE = 5  # keep every 10th point (10 m -> 100 m) to speed up interpolation and reduce memory
 
 
 def load_zurich_boundary() -> gpd.GeoDataFrame:
@@ -52,7 +52,7 @@ def _mask_polygon(lon_grid: np.ndarray, lat_grid: np.ndarray, polygon) -> np.nda
     return mask_flat.reshape(lon_grid.shape)
 
 
-def make_grid(boundary: gpd.GeoDataFrame, n_cols: int = 500) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+def make_grid(boundary: gpd.GeoDataFrame, n_cols: int = 500, pad_ratio: float = 0.10) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """
     Build a lon/lat grid covering the canton and mask it to the polygon.
 
@@ -61,6 +61,16 @@ def make_grid(boundary: gpd.GeoDataFrame, n_cols: int = 500) -> Tuple[np.ndarray
     """
     canton = boundary.unary_union
     minx, miny, maxx, maxy = canton.bounds
+
+    # Expand the bounding box to leave a margin around the canton outline
+    width = maxx - minx
+    height = maxy - miny
+    pad_x = width * pad_ratio * 0.5
+    pad_y = height * pad_ratio * 0.5
+    minx -= pad_x
+    maxx += pad_x
+    miny -= pad_y
+    maxy += pad_y
 
     width = maxx - minx
     height = maxy - miny
@@ -250,7 +260,7 @@ def plot_zurich_height_map(n_cols: int = 500):
     """Create and show the Zürich elevation map."""
     boundary = load_zurich_boundary()
     print("Building grid over canton extent…")
-    lon_grid, lat_grid, mask = make_grid(boundary, n_cols=n_cols)
+    lon_grid, lat_grid, mask = make_grid(boundary, n_cols=n_cols, pad_ratio=0.10)
 
     print("Sampling altitude grid for Zürich…")
     heights = sample_heights(lon_grid, lat_grid)
@@ -262,7 +272,7 @@ def plot_zurich_height_map(n_cols: int = 500):
     fig, ax = plt.subplots(figsize=(10, 9))
     pcm = ax.pcolormesh(mx, my, heights, cmap="terrain", shading="auto")
     boundary_merc.boundary.plot(ax=ax, color="black", linewidth=0.8, alpha=0.7)
-    ctx.add_basemap(ax, crs="EPSG:3857")
+    ax.set_facecolor("white")
 
     ax.set_title("Elevation map – Canton of Zürich")
     ax.set_xlabel("Web Mercator X")
