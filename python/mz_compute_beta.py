@@ -390,6 +390,13 @@ def with_height_switzerland():
 #     mask = start_points.within(swiss_boundary.unary_union) & end_points.within(swiss_boundary.unary_union)
 #     return df[mask].copy()
 
+def print_mode_share(wege, mode):
+    bike_trips = wege[wege["mode"] == mode]
+    total_weight = wege["person_weight"].sum()
+    bike_weight = bike_trips["person_weight"].sum()
+    bike_share = bike_weight / total_weight
+    print(f"{mode} mode share in Zürich microcensus data: {bike_share:.4f}")
+
 def main():
 
     wege = with_height_zurich()
@@ -402,19 +409,18 @@ def main():
     # beta = compute_beta(wege)
     # print(f"The computed beta is {beta}")
 
-    # mode share of bike trips in zürich data:
-    bike_trips = wege[wege["mode"] == "bike"]
-    total_weight = wege["person_weight"].sum()
-    bike_weight = bike_trips["person_weight"].sum()
-    bike_share = bike_weight / total_weight
-    print(f"Bike mode share in Zürich microcensus data: {bike_share:.4f}")
+    # mode share of pt trips in zürich data:
+    print_mode_share(wege, "pt")
+    print_mode_share(wege, "bike")
+    print_mode_share(wege, "walk")
+    print_mode_share(wege, "car")
+    print_mode_share(wege, "car_passenger")
 
-    wege_swiss = with_height_switzerland()
-    bike_trips_swiss = wege_swiss[wege_swiss["mode"] == "bike"]
-    total_weight_swiss = wege_swiss["person_weight"].sum()
-    bike_weight_swiss = bike_trips_swiss["person_weight"].sum()
-    bike_share_swiss = bike_weight_swiss / total_weight_swiss
-    print(f"Bike mode share in Switzerland microcensus data: {bike_share_swiss:.4f}")
+    # mode share of bike trips in zürich data:
+    
+
+
+
 
 
 
