@@ -390,6 +390,13 @@ def with_height_switzerland():
 #     mask = start_points.within(swiss_boundary.unary_union) & end_points.within(swiss_boundary.unary_union)
 #     return df[mask].copy()
 
+def print_mode_share(wege, mode):
+    bike_trips = wege[wege["mode"] == mode]
+    total_weight = wege["person_weight"].sum()
+    bike_weight = bike_trips["person_weight"].sum()
+    bike_share = bike_weight / total_weight
+    print(f"{mode} mode share in Zürich microcensus data: {bike_share:.4f}")
+
 def main():
 
     wege = with_height_zurich()
@@ -397,10 +404,24 @@ def main():
     # plot_age_distribution(wege)
     # plot_map(wege)
 
-    plot_slope_shares(wege)
+    # plot_slope_shares(wege)
 
-    beta = compute_beta(wege)
-    print(f"The computed beta is {beta}")
+    # beta = compute_beta(wege)
+    # print(f"The computed beta is {beta}")
+
+    # mode share of pt trips in zürich data:
+    print_mode_share(wege, "pt")
+    print_mode_share(wege, "bike")
+    print_mode_share(wege, "walk")
+    print_mode_share(wege, "car")
+    print_mode_share(wege, "car_passenger")
+
+    # mode share of bike trips in zürich data:
+    
+
+
+
+
 
 
 
