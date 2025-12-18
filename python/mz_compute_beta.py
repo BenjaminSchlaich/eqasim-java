@@ -8,7 +8,7 @@ end points fall within the canton. Writes the results to:
 - data/microcensus/wege_zurich.csv
 """
 
-import pathlib
+import config as cfg
 
 import geopandas as gpd
 import pandas as pd
@@ -26,24 +26,24 @@ import add_heights
 import add_heights_big
 
 
-ROOT_DIR = pathlib.Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT_DIR / "data"
-BOUNDARY_PATH = DATA_DIR / "Boundary" / "Zurich.shp"
-SWISS_BOUNDARY_PATH = DATA_DIR / "Boundary" / "Switzerland.shp"
-ETAPPEN_PATH = DATA_DIR / "microcensus" / "etappen.csv"
-ETAPPEN_OUT = DATA_DIR / "microcensus" / "etappen_zurich.csv"
-WEGE_PATH = DATA_DIR / "microcensus" / "wege.csv"
-WEGE_OUT = DATA_DIR / "microcensus" / "wege_zurich.csv"
-MZ_PATH = DATA_DIR
-ENCODING = "latin1"
+# ROOT_DIR = pathlib.Path(__file__).resolve().parents[1]
+# DATA_DIR = ROOT_DIR / "data"
+# BOUNDARY_PATH = DATA_DIR / "Boundary" / "Zurich.shp"
+# SWISS_BOUNDARY_PATH = DATA_DIR / "Boundary" / "Switzerland.shp"
+# ETAPPEN_PATH = DATA_DIR / "microcensus" / "etappen.csv"
+# ETAPPEN_OUT = DATA_DIR / "microcensus" / "etappen_zurich.csv"
+# WEGE_PATH = DATA_DIR / "microcensus" / "wege.csv"
+# WEGE_OUT = DATA_DIR / "microcensus" / "wege_zurich.csv"
+# MZ_PATH = DATA_DIR
+# ENCODING = "latin1"
 
 # should the trips be filtered using load_filtered_zurich() again or just reloaded from the stored .csv?
 RECOMPUTE_FILTER = False
 
-boundary = gpd.read_file(BOUNDARY_PATH).to_crs("EPSG:4326").geometry
+boundary = gpd.read_file(cfg.BOUNDARY_PATH).to_crs("EPSG:4326").geometry
 canton_geom = boundary.union_all()  # merge into a single polygon for spatial tests
 
-swiss_boundary = gpd.read_file(SWISS_BOUNDARY_PATH).to_crs("EPSG:4326")
+swiss_boundary = gpd.read_file(cfg.SWISS_BOUNDARY_PATH).to_crs("EPSG:4326")
 
 # filter out for only trips that start&end within zürich
 def filter_location(df):
@@ -149,12 +149,12 @@ def load_filtered_zurich():
     if(RECOMPUTE_FILTER):
         print("refiltering the microzensus wege...")
 
-        pop = mz.main(MZ_PATH)                              # load the population
+        pop = mz.main(cfg.MZ_PATH)                              # load the population
 
         print(f"filtering age")
         pop = pop[pop["age"] >= 6]                          # filter out individuals younger than 6
 
-        wege, filterout_ids = tr.get_trips(MZ_PATH)         # load the wege
+        wege, filterout_ids = tr.get_trips(cfg.MZ_PATH)         # load the wege
 
         print(f"filtering location (only zürich)")
         wege = filter_location(wege)                        # filter for only wege with start&end inside zürich
@@ -167,13 +167,13 @@ def load_filtered_zurich():
         print(f"The remaining number of wege is {wege}")
 
         print(f"saving filtered wege to csv")
-        output_path = MZ_PATH / "microcensus" / "filtered_zurich.csv"
+        output_path = cfg.MZ_PATH / "microcensus" / "filtered_zurich.csv"
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        wege.to_csv(output_path, index=False, encoding=ENCODING)
+        wege.to_csv(output_path, index=False, encoding=cfg.ENCODING)
         
     else:
         print("loading filtered microzensus wege")
-        wege = pd.read_csv(MZ_PATH / "microcensus" / "filtered_zurich.csv", encoding=ENCODING)
+        wege = pd.read_csv(cfg.MZ_PATH / "microcensus" / "filtered_zurich.csv", encoding=cfg.ENCODING)
 
     return wege
 
@@ -187,12 +187,12 @@ def with_height_zurich():
         df = add_heights.process_df(df)
 
         print("saving wege with altitude to csv")
-        output_path = MZ_PATH / "microcensus" / "heights_zurich.csv"
+        output_path = cfg.MZ_PATH / "microcensus" / "heights_zurich.csv"
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        df.to_csv(output_path, index=False, encoding=ENCODING)
+        df.to_csv(output_path, index=False, encoding=cfg.ENCODING)
         
     else:
-        df = pd.read_csv(MZ_PATH / "microcensus" / "heights_zurich.csv", encoding=ENCODING)
+        df = pd.read_csv(cfg.MZ_PATH / "microcensus" / "heights_zurich.csv", encoding=cfg.ENCODING)
 
     return df
 
@@ -326,12 +326,12 @@ def load_filtered_switzerland():
     if(RECOMPUTE_FILTER):
         print("refiltering the microzensus wege...")
 
-        pop = mz.main(MZ_PATH)                              # load the population
+        pop = mz.main(cfg.MZ_PATH)                              # load the population
 
         print(f"filtering age")
         pop = pop[pop["age"] >= 6]                          # filter out individuals younger than 6
 
-        wege, filterout_ids = tr.get_trips(MZ_PATH)         # load the wege
+        wege, filterout_ids = tr.get_trips(cfg.MZ_PATH)         # load the wege
 
         print(f"filtering milos' stuff")
         pop = pop[~pop["person_id"].isin(filterout_ids)]    # filter out individuals with stupid trip stats according to Milos
@@ -341,13 +341,13 @@ def load_filtered_switzerland():
         print(f"The remaining number of wege is {wege}")
 
         print(f"saving filtered wege to csv")
-        output_path = MZ_PATH / "microcensus" / "filtered_switzerland.csv"
+        output_path = cfg.MZ_PATH / "microcensus" / "filtered_switzerland.csv"
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        wege.to_csv(output_path, index=False, encoding=ENCODING)
+        wege.to_csv(output_path, index=False, encoding=cfg.ENCODING)
         
     else:
         print("loading filtered microzensus wege")
-        wege = pd.read_csv(MZ_PATH / "microcensus" / "filtered_switzerland.csv", encoding=ENCODING)
+        wege = pd.read_csv(cfg.MZ_PATH / "microcensus" / "filtered_switzerland.csv", encoding=cfg.ENCODING)
 
     return wege
 
@@ -361,34 +361,14 @@ def with_height_switzerland():
         df = add_heights_big.process_df(df)
 
         print("saving wege with altitude to csv")
-        output_path = MZ_PATH / "microcensus" / "heights_switzerland.csv"
+        output_path = cfg.MZ_PATH / "microcensus" / "heights_switzerland.csv"
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        df.to_csv(output_path, index=False, encoding=ENCODING)
+        df.to_csv(output_path, index=False, encoding=cfg.ENCODING)
         
     else:
-        df = pd.read_csv(MZ_PATH / "microcensus" / "heights_switzerland.csv", encoding=ENCODING)
+        df = pd.read_csv(cfg.MZ_PATH / "microcensus" / "heights_switzerland.csv", encoding=cfg.ENCODING)
 
     return df
-
-# Returns the dataframe from with_height_switzerland(), filtered for trips only with start and end in Switzerland
-# def filtered_switzerland():
-
-#     df = with_height_switzerland()
-
-#     lon_start = df["S_X"]
-#     lat_start = df["S_Y"]
-#     lon_end = df["Z_X"]
-#     lat_end = df["Z_Y"]
-
-#     start_points = gpd.GeoSeries(
-#         [Point(xy) for xy in zip(lon_start, lat_start)], crs="EPSG:4326"
-#     )
-#     end_points = gpd.GeoSeries(
-#         [Point(xy) for xy in zip(lon_end, lat_end)], crs="EPSG:4326"
-#     )
-
-#     mask = start_points.within(swiss_boundary.unary_union) & end_points.within(swiss_boundary.unary_union)
-#     return df[mask].copy()
 
 def print_mode_share(wege, mode):
     bike_trips = wege[wege["mode"] == mode]
@@ -399,7 +379,11 @@ def print_mode_share(wege, mode):
 
 def main():
 
-    wege = with_height_zurich()
+    # wege = with_height_zurich()
+
+    # wege = with_height_switzerland()
+
+    # plot_map(wege)
 
     # plot_age_distribution(wege)
     # plot_map(wege)
@@ -410,11 +394,11 @@ def main():
     # print(f"The computed beta is {beta}")
 
     # mode share of pt trips in zürich data:
-    print_mode_share(wege, "pt")
-    print_mode_share(wege, "bike")
-    print_mode_share(wege, "walk")
-    print_mode_share(wege, "car")
-    print_mode_share(wege, "car_passenger")
+    # print_mode_share(wege, "pt")
+    # print_mode_share(wege, "bike")
+    # print_mode_share(wege, "walk")
+    # print_mode_share(wege, "car")
+    # print_mode_share(wege, "car_passenger")
 
     # mode share of bike trips in zürich data:
     
