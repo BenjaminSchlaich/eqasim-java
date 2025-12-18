@@ -17,7 +17,7 @@ transformer = Transformer.from_crs("EPSG:2056", "EPSG:4326", always_xy=True)
 transformer_wgs_to_lv95 = Transformer.from_crs("EPSG:4326", "EPSG:2056", always_xy=True)
 HEIGHTS_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "heights")
 
-RECOMPUTE_ALTITUDE = True
+RECOMPUTE_ALTITUDE = False
 
 # convert from swiss to global coordinates
 def lv95_to_wgs84(x, y):

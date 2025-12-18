@@ -381,9 +381,9 @@ def main():
 
     # wege = with_height_zurich()
 
-    # wege = with_height_switzerland()
+    wege = with_height_switzerland()
 
-    # plot_map(wege)
+    plot_map(wege)
 
     # plot_age_distribution(wege)
     # plot_map(wege)
