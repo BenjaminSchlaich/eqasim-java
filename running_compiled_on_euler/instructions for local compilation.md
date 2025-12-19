@@ -1,6 +1,6 @@
 Make sure that locally, the inner pom file has this line:
 ```
-<mainClass>org.eqasim.switzerland.zurich.RunSimulation</mainClass>
+<mainClass>org.eqasim.switzerland.ch_cmdp.RunSimulation</mainClass>
 ```
 Which specifies the main class to be used when running the jar. You can of course change this to any other main class you want to run.
 
