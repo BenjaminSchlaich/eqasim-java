@@ -111,7 +111,7 @@ public class NetworkConfigurator {
             
         }
 
-        logger.info("Added %i bikes instead of %i, because we're skipping if bikeAvailability=FOR_SOME", bikeCounter, oldBikeCounter);
+        logger.info("Added " + bikeCounter + " bikes instead of " + oldBikeCounter + ", because we're skipping if bikeAvailability=FOR_SOME");
 
         // new MatsimVehicleWriter(vehicles).writeFile(outputVehiclesFile);
         // new PopulationWriter(scenario.getPopulation()).write(outputPopFile);
