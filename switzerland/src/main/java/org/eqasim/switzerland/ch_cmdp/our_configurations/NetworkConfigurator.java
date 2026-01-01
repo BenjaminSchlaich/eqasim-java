@@ -68,12 +68,24 @@ public class NetworkConfigurator {
         } else {
             bikeType = vehicles.getVehicleTypes().get(bikeType.getId());
         }
+
+        int bikeCounter = 0;
+        int oldBikeCounter = 0;
         
-        // Here we add a bike vehicle for each person
+        // Here we add a bike vehicle for each person that has a bike available at least FOR_SOME
         for (Person person : scenario.getPopulation().getPersons().values()) {
             if (person.getId().toString().contains("freight")){
                 continue;
             }
+
+            oldBikeCounter++;
+
+            // do not give a bicycle to people who never have one available
+            if(person.getAttributes().getAttribute("bikeAvailability").equals("FOR_NONE"))
+                continue;
+            else
+                bikeCounter++;
+
             Id<Vehicle> vehicle_id = Id.createVehicleId(person.getId().toString()+ ":" + vehicleMode);
             
             Vehicle bikeVehicle = VehicleUtils.createVehicle(vehicle_id, bikeType);
@@ -98,6 +110,8 @@ public class NetworkConfigurator {
             person.getAttributes().putAttribute("vehicles", personVehicles);
             
         }
+
+        logger.info("Added " + bikeCounter + " bikes instead of " + oldBikeCounter + ", because we're skipping if bikeAvailability=FOR_SOME");
 
         // new MatsimVehicleWriter(vehicles).writeFile(outputVehiclesFile);
         // new PopulationWriter(scenario.getPopulation()).write(outputPopFile);
