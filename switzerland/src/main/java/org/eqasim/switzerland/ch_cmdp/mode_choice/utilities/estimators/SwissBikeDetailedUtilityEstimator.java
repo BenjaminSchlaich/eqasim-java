@@ -66,7 +66,8 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
         // Regression line: share = -1.0974 * slope + 0.1461
         result += parameters.bike.betaSlope_u * variables.slope + parameters.bike.alphaSlope_u;
 
-		logger.info("travelTime_min = " + variables.travelTime_min + ", slope = " + variables.slope + ", using betaTravelTime_u_min = " + parameters.bike.betaTravelTime_u_min + ", betaSlope_u_perGrad = " + parameters.bike.betaSlope_u + ",	travel utility = " + result);
+        logger.info("Estimating slope utility: slope = " + variables.slope + ", result = " + result);
+        logger.info("Slope utility parameters: betaSlope_u = " + parameters.bike.betaSlope_u + ", alphaSlope_u = " + parameters.bike.alphaSlope_u);
 
 		return result;
     }
@@ -132,7 +133,9 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
         utility += estimateConstantUtility();
         utility += estimateTravelTimeUtility(bikeVariables);
         // XX here, we add a penalty for slope
-        utility += estimateSlopeUtility(bikeVariables);
+        if (!OurGlobalParameters.REMOVE_ELEVATION) {
+            utility += estimateSlopeUtility(bikeVariables);
+        }
 
         utility += estimateAgeUtility(personVariables);
         utility += estimateSexUtility(personVariables);

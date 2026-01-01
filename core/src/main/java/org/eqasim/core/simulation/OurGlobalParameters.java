@@ -6,4 +6,6 @@ public abstract class OurGlobalParameters {
     public static double CAR_BIAS = 0.0;
     public static double PT_BIAS = 0.0;
     public static int index_to_get_bike = 0;
+
+    public static boolean REMOVE_ELEVATION = false;
 }

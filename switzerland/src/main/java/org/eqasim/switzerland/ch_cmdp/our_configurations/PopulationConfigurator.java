@@ -89,5 +89,73 @@ public class PopulationConfigurator {
         logger.info("People with no bikes: {}", peopleNoBikes);
         logger.info("Mysterious people: {}", mysteriousPeople);
     }
+
+
+
+
+
+    public void redistributeBikes(Population population) {
+        // First find out how many people there are in total, and how many have bikes, and how many have sometimes and how many have none
+        List<Person> persons = new ArrayList<>(population.getPersons().values());
+
+        int peopleWithBikes = 0;
+        int peopleSomeBikes = 0;
+        int peopleNoBikes = 0;
+        int mysteriousPeople = 0;
+
+        for (Person person : persons) {
+
+            Attributes attributes = person.getAttributes();
+            
+            Object bikeAvailabilityObj = attributes.getAttribute("bikeAvailability");
+
+            // check for null
+            if (bikeAvailabilityObj == null) {
+                logger.warn("Person {} has no bikeAvailability attribute", person.getId());
+                continue;
+            }
+            // compare to sting "FOR_ALL"
+            if (bikeAvailabilityObj.equals("FOR_ALL")) {
+                peopleWithBikes++;
+                continue;
+            } else if (bikeAvailabilityObj.equals("FOR_SOME")) {
+                peopleSomeBikes++;
+                continue;
+            } else if (bikeAvailabilityObj.equals("FOR_NONE")) {
+                peopleNoBikes++;
+                continue;
+            } else {
+                mysteriousPeople++;
+                logger.warn("Person {} has a mysterious bikeAvailability attribute: {}", person.getId(), bikeAvailabilityObj);
+                continue;
+            }
+
+        }
+
+        // print stats
+        logger.info("People with bikes: {}", peopleWithBikes);
+        logger.info("People with some bikes: {}", peopleSomeBikes);
+        logger.info("People with no bikes: {}", peopleNoBikes);
+        logger.info("Mysterious people: {}", mysteriousPeople);
+
+        // Now, we redistribute bikes randomly. We do this, by first shuffling the list of persons, and then assigning bikes to the first N persons, where N is the number of people who had bikes before.
+        java.util.Collections.shuffle(persons);
+
+        for (int i = 0; i < persons.size(); i++) {
+            Person person = persons.get(i);
+            Attributes attributes = person.getAttributes();
+            if (i < peopleWithBikes) {
+                attributes.putAttribute("bikeAvailability", "FOR_ALL");
+            } else if (i < peopleWithBikes + peopleSomeBikes) {
+                attributes.putAttribute("bikeAvailability", "FOR_SOME");
+            } else {
+                attributes.putAttribute("bikeAvailability", "FOR_NONE");
+            }
+        }
+
+        logger.info("Redistributed bikes among the population.");
+    }
+
+
 }
 

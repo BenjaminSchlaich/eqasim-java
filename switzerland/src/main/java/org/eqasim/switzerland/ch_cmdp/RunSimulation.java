@@ -4,6 +4,7 @@ import ch.sbb.matsim.config.SwissRailRaptorConfigGroup;
 import ch.sbb.matsim.mobsim.qsim.SBBTransitModule;
 import ch.sbb.matsim.mobsim.qsim.pt.SBBTransitEngineQSimModule;
 
+import org.apache.commons.math3.genetics.Population;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eqasim.core.components.fast_calibration.AlphaCalibrator;
@@ -37,7 +38,7 @@ public class RunSimulation {
 				.requireOptions("config-path") //
 				.allowPrefixes("mode-parameter", "cost-parameter", "preventwaitingtoentertraffic", "samplingRateForPT") //
 				// XX these are our prefixes:
-				.allowPrefixes("add-bike-vehicles", "bike-bias", "car-bias", "pt-bias", "population-wealth-factor", "network-speed-factor", "population-bike-chance", "early-exit") //
+				.allowPrefixes("add-bike-vehicles", "bike-bias", "car-bias", "pt-bias", "population-wealth-factor", "network-speed-factor", "population-bike-chance", "early-exit", "remove-elevation", "redistribute-bikes") //
 				.build();
 
 		SwitzerlandConfigurator configurator = new SwitzerlandConfigurator(cmd);
@@ -73,6 +74,16 @@ public class RunSimulation {
 			logger.info("Added bike vehicles to the scenario.");
 		}
 
+		if (cmd.hasOption("remove-elevation")) {
+			OurGlobalParameters.REMOVE_ELEVATION = true;
+			logger.info("Removing elevation data from the scenario.");
+		}
+
+		if (cmd.hasOption("redistribute-bikes")) {
+			PopulationConfigurator populationConfigurator = new PopulationConfigurator();
+			populationConfigurator.redistributeBikes(scenario.getPopulation());
+			logger.info("Redistributing bikes in the scenario.");
+		}
 		
 		// XX TODO: make these be used
 
