@@ -66,10 +66,14 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
         // The line regression for the slope gives us the following:
         // Regression line: share = -1.0974 * slope + 0.1461
 
-        result += parameters.bike.alphaSlope_u;
+        // The alpa slope is not needed, since it will be eaten up by the calibration
+        // result += parameters.bike.alphaSlope_u;
 
         if (!OurGlobalParameters.REMOVE_ELEVATION) {
-            result += parameters.bike.betaSlope_u * variables.slope;
+            // Take the relu of the slope
+            if (variables.slope > 0) {
+                result += parameters.bike.betaSlope_u * variables.slope;
+            }
         }
 
         logger.info("Estimating slope utility: slope = " + variables.slope + ", result = " + result);
@@ -130,6 +134,11 @@ public class SwissBikeDetailedUtilityEstimator extends BikeUtilityEstimator {
 
     @Override
     public double estimateUtility(Person person, DiscreteModeChoiceTrip trip, List<? extends PlanElement> elements) {
+        // log estimating utility and 4.49243634582002 and parameters.bike.alpha_u (constant utility) and -0.3963 initially hardcoded uitlity
+        logger.info("parameters.bike.alpha_u: " + parameters.bike.alpha_u);
+        logger.info("Hardcoded initial utility: 4.49243634582002");
+        logger.info("Utility from estimated_dmc_parameters.yml: " + "-0.3963");
+
         SwissPersonVariables personVariables = personPredictor.predictVariables(person, trip, elements);
         BikeVariables bikeVariables = bikePredictor.predictVariables(person, trip, elements);
 

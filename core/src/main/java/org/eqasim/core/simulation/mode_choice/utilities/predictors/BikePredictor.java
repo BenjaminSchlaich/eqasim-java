@@ -113,9 +113,9 @@ public class BikePredictor extends CachedVariablePredictor<BikeVariables> {
 		// logger.info("Destination height: " + destinationHeight);
 		double distance_in_m = PredictorUtils.calculateEuclideanDistance_km(trip) * 1000.0;
 		
-		slope = (destinationHeight - originHeight) / distance_in_m;
+		slope = (destinationHeight - originHeight) / distance_in_m * 100.0; // slope in percentage
 		// log the slope calculation process
-		logger.info("Calculated slope: (destHeight " + destinationHeight + " - origHeight " + originHeight + ") / euclideanDistance_m " + distance_in_m + " = " + slope);
+		logger.info("Calculated slope (as percentage): (destHeight " + destinationHeight + " - origHeight " + originHeight + ") / euclideanDistance_m " + distance_in_m + " = " + slope);
 
 		// Check if nan:
 		if (!Double.isFinite(slope)) {
