@@ -89,8 +89,9 @@ public class NetworkConfigurator {
             else
                 bikeCounter++;
 
-            Id<Vehicle> vehicle_id = Id.createVehicleId(person.getId().toString()+ ":" + vehicleMode);
-            
+            // Id<Vehicle> vehicle_id = Id.createVehicleId(person.getId().toString()+ ":" + vehicleMode);
+            Id<Vehicle> vehicle_id = Id.createVehicleId(person.getId());
+
             Vehicle bikeVehicle = VehicleUtils.createVehicle(vehicle_id, bikeType);
 
             //add some attributes as added for other modes..e.g.

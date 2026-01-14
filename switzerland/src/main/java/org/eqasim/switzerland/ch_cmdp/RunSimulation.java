@@ -11,6 +11,7 @@ import org.eqasim.core.components.fast_calibration.AlphaCalibrator;
 import org.eqasim.core.simulation.OurGlobalParameters;
 import org.eqasim.switzerland.ch.PTLinkVolumesModule;
 import org.eqasim.switzerland.ch.PTPassengerCountsModule;
+import org.eqasim.switzerland.ch_cmdp.our_configurations.BikeNetworkRoutingModule;
 import org.eqasim.switzerland.ch_cmdp.our_configurations.NetworkConfigurator;
 import org.eqasim.switzerland.ch_cmdp.our_configurations.PopulationConfigurator;
 import org.matsim.api.core.v01.Scenario;
@@ -84,6 +85,7 @@ public class RunSimulation {
 			networkConfigurator.addBikeVehicles(scenario);
 
 			OurGlobalParameters.index_to_get_bike = 2;
+			config.routing().getNetworkModes().add("bike");
 			logger.info("Added bike vehicles to the scenario.");
 		}
 
@@ -138,16 +140,13 @@ public class RunSimulation {
 		}
 
 
-		
-
-
-
 
 
 		Controler controller = new Controler(scenario);
 		configurator.configureController(controller);
 		controller.addOverridingModule(new PTPassengerCountsModule());
 		controller.addOverridingModule(new PTLinkVolumesModule());
+
 
 		// To use the deterministic pt simulation (Part 1 of 2):
 		controller.addOverridingModule(new SBBTransitModule());
