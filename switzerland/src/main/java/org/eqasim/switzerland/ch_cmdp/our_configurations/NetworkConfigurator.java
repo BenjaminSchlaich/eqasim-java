@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.eqasim.core.simulation.OurGlobalParameters;
 import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.network.Link;
@@ -58,14 +59,16 @@ public class NetworkConfigurator {
 
         // We define a bike vehicle type
         VehicleType bikeType = VehicleUtils.createVehicleType(Id.create(vehicleMode, VehicleType.class));
-        bikeType.setMaximumVelocity(16.67); // can define yours based on your scenario
+        bikeType.setMaximumVelocity(OurGlobalParameters.BIKE_MAX_VELOCITY_MS); // can define yours based on your scenario
         bikeType.setPcuEquivalents(0.25); // can define yours
         bikeType.getCapacity().setSeats(1);
         vehicles.addVehicleType(bikeType);
 
         if (!vehicles.getVehicleTypes().containsKey(bikeType.getId())) {
+            logger.info("Adding bike vehicle type to the scenario vehicles.");
             vehicles.addVehicleType(bikeType);
         } else {
+            logger.info("Bike vehicle type already exists in the scenario vehicles.");
             bikeType = vehicles.getVehicleTypes().get(bikeType.getId());
         }
 
@@ -81,7 +84,7 @@ public class NetworkConfigurator {
             oldBikeCounter++;
 
             // do not give a bicycle to people who never have one available
-            if(person.getAttributes().getAttribute("bikeAvailability").equals("FOR_NONE"))
+            if (person.getAttributes().getAttribute("bikeAvailability").equals("FOR_NONE"))
                 continue;
             else
                 bikeCounter++;
@@ -111,7 +114,7 @@ public class NetworkConfigurator {
             
         }
 
-        logger.info("Added " + bikeCounter + " bikes instead of " + oldBikeCounter + ", because we're skipping if bikeAvailability=FOR_SOME");
+        logger.info("Added " + bikeCounter + " bikes instead of " + oldBikeCounter + ", because we're skipping if bikeAvailability=FOR_NONE.");
 
         // new MatsimVehicleWriter(vehicles).writeFile(outputVehiclesFile);
         // new PopulationWriter(scenario.getPopulation()).write(outputPopFile);
