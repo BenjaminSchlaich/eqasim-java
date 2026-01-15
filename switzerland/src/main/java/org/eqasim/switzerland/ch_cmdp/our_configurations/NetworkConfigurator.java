@@ -84,10 +84,11 @@ public class NetworkConfigurator {
             oldBikeCounter++;
 
             // do not give a bicycle to people who never have one available
-            if (person.getAttributes().getAttribute("bikeAvailability").equals("FOR_NONE"))
-                continue;
-            else
-                bikeCounter++;
+            // XX TODO: right now the code may only run if EVERYONE gets a bike
+            // if (person.getAttributes().getAttribute("bikeAvailability").equals("FOR_NONE"))
+            //     continue;
+
+            bikeCounter++;
 
             // Id<Vehicle> vehicle_id = Id.createVehicleId(person.getId().toString()+ ":" + vehicleMode);
             Id<Vehicle> vehicle_id = Id.createVehicleId(person.getId());

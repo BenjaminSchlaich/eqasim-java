@@ -11,19 +11,27 @@ import org.eqasim.core.components.fast_calibration.AlphaCalibrator;
 import org.eqasim.core.simulation.OurGlobalParameters;
 import org.eqasim.switzerland.ch.PTLinkVolumesModule;
 import org.eqasim.switzerland.ch.PTPassengerCountsModule;
-import org.eqasim.switzerland.ch_cmdp.our_configurations.BikeNetworkRoutingModule;
 import org.eqasim.switzerland.ch_cmdp.our_configurations.NetworkConfigurator;
 import org.eqasim.switzerland.ch_cmdp.our_configurations.PopulationConfigurator;
+import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.Scenario;
+import org.matsim.api.core.v01.network.Link;
 import org.matsim.core.config.CommandLine;
 import org.matsim.core.config.CommandLine.ConfigurationException;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.config.groups.QSimConfigGroup;
 import org.matsim.core.controler.Controler;
+import org.matsim.core.network.NetworkUtils;
+import org.matsim.core.router.TripRouterFactoryBuilderWithDefaults;
 import org.matsim.core.scenario.ScenarioUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
 public class RunSimulation {
@@ -79,13 +87,34 @@ public class RunSimulation {
 		}
 
 
-
 		if (cmd.hasOption("add-bike-vehicles")) {
 			NetworkConfigurator networkConfigurator = new NetworkConfigurator();
 			networkConfigurator.addBikeVehicles(scenario);
 
+
+			// iterate over the whole network and add bike to the link
+			int linksWithCar = 0;
+			int totalLinks = 0;
+			List<Link> links = new ArrayList<>(scenario.getNetwork().getLinks().values());
+			for (Link link : links) {
+				totalLinks++;
+				if (link.getAllowedModes().contains("car")) {
+					linksWithCar++;
+					Set<String> allowedModes = new HashSet<>();
+					allowedModes.addAll(link.getAllowedModes());
+					allowedModes.add("bike");
+	
+					link.setAllowedModes(allowedModes);
+				}
+			}
+
+			// Get the set of modes from the network before cleaning
+			// Set<String> modesBeforeCleaning = NetworkUtils.getModes(scenario.getNetwork());
+			// NetworkUtils.cleanNetwork(scenario.getNetwork(), modesBeforeCleaning);
+
+			logger.info("Links with car previously: " + linksWithCar + " out of " + totalLinks);
+
 			OurGlobalParameters.index_to_get_bike = 2;
-			config.routing().getNetworkModes().add("bike");
 			logger.info("Added bike vehicles to the scenario.");
 		}
 
