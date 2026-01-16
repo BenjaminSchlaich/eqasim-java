@@ -28,20 +28,18 @@ public class NetworkConfigurator {
 	private final static Logger logger = LogManager.getLogger(NetworkConfigurator.class);
 
 
-    public void applySpeedFactor(Network network, double speedFactor) {
+    public void turn50to30(Network network) {
         List<Link> links = new ArrayList<>(network.getLinks().values());
         for (Link link : links) {
             double freespeed = link.getFreespeed();
-            link.setFreespeed(freespeed * speedFactor);
+            // if freespeed is close to 13.888888888888 m/s (50 km/h), set to 8.33333333333 m/s (30 km/h)
+            if (Math.abs(freespeed - 13.888888888888) < 0.1) {
+                link.setFreespeed(8.33333333333);
+            }
         }
-        logger.info("Applied speed factor of {} to network", speedFactor);
+        logger.info("Set link speeds that were close to 50 km/h to 30 km/h.");
     }
 
-    public void applySpeedFactor(String configPath, String outputPath, double speedFactor) {
-        Network network = NetworkUtils.readNetwork(configPath);
-        applySpeedFactor(network, speedFactor);
-        NetworkUtils.writeNetwork(network, outputPath);
-    }
 
 
 

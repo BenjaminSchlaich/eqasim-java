@@ -3,7 +3,7 @@
 #SBATCH --ntasks=1                      #Requesting 1 node (is always 1)
 #SBATCH --cpus-per-task=8               #Requesting 8 CPU
 #SBATCH --mem-per-cpu=16G                #Requesting 3 Gb memory per core, 24 Gb in total 
-#SBATCH --time=6:00:00                  #Requesting 6 hours run time
+#SBATCH --time=30:00:00                  #Requesting 30 hours run time
 #SBATCH --mail-user=lfrieberger@ethz.ch     # or your preferred email address  
 #SBATCH --mail-type=END,FAIL               # or BEGIN,ALL, etc.
 
@@ -30,28 +30,35 @@ cd scenarios/Zurich_10pct
 
 # mv simulation_output simulation_output_pt_hate
 
-java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --early-exit
-mv simulation_output simulation_output_default
+# java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --add-bike-vehicles
+# mv simulation_output simulation_output_default
 
-java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --bike-bias 1000 --early-exit
-mv simulation_output simulation_output_bike_bias
-
-java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --car-bias -1000 --early-exit
-mv simulation_output simulation_output_car_bias
-
-java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --pt-bias -1000 --early-exit
-mv simulation_output simulation_output_pt_bias
-
-java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --population-wealth-factor 0.01 --early-exit
-mv simulation_output simulation_output_low_wealth
-
-java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --network-speed-factor 0.1 --early-exit
-mv simulation_output simulation_output_low_network_speed
-
-java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --population-bike-chance 1.0 --early-exit
-mv simulation_output simulation_output_high_bike_chance
+# java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --add-bike-vehicles --remove-elevation
+# mv simulation_output simulation_output_no_elevation
 
 
+java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --add-bike-vehicles --bike-max-velocity 15
+mv simulation_output simulation_output_bike_max_velocity_15
+
+
+# java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --add-bike-vehicles --redistribute-bikes
+# mv simulation_output simulation_output_redistribute_bikes
+
+
+# java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --add-bike-vehicles --bike-bias 1000
+# mv simulation_output simulation_output_bike_bias_calib
+
+# java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --add-bike-vehicles --car-bias -1000
+# mv simulation_output simulation_output_car_bias_calib
+
+# java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --add-bike-vehicles --pt-bias -1000
+# mv simulation_output simulation_output_pt_bias_calib
+
+# java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --add-bike-vehicles --network-speed-factor 0.1
+# mv simulation_output simulation_output_low_network_speed_calib
+
+# java -jar switzerland-2.0.0.jar --config-path zurich_10pct_config.xml --add-bike-vehicles --population-bike-chance 1.0
+# mv simulation_output simulation_output_high_bike_chance_calib
 
 
 
