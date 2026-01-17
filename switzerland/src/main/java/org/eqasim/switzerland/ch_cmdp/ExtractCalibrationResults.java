@@ -21,19 +21,20 @@ public class ExtractCalibrationResults {
             List<String> lines = java.nio.file.Files.readAllLines(path);
             for (String line : lines) {
                 if (line.startsWith("ZÃ¼rich,")) {
-                    String[] values = line.split(",");
-                    alpha_car = Double.parseDouble(values[1]);
-                    alpha_walk = Double.parseDouble(values[2]);
+                    String[] values = line.split(",");            
+
+                    alpha_pt = Double.parseDouble(values[1]);
+                    alpha_car_passenger = Double.parseDouble(values[2]);
                     alpha_bike = Double.parseDouble(values[3]);
-                    alpha_car_passenger = Double.parseDouble(values[4]);
-                    alpha_pt = Double.parseDouble(values[5]);
+                    alpha_walk = Double.parseDouble(values[4]);
+                    alpha_car = Double.parseDouble(values[5]);
 
                     System.out.println("Calibration results for ZÃ¼rich:");
-                    System.out.println("Alpha Car: " + alpha_car);
-                    System.out.println("Alpha Walk: " + alpha_walk);
-                    System.out.println("Alpha Bike: " + alpha_bike);
-                    System.out.println("Alpha Car Passenger: " + alpha_car_passenger);
                     System.out.println("Alpha PT: " + alpha_pt);
+                    System.out.println("Alpha Car Passenger: " + alpha_car_passenger);
+                    System.out.println("Alpha Bike: " + alpha_bike);
+                    System.out.println("Alpha Walk: " + alpha_walk);
+                    System.out.println("Alpha Car: " + alpha_car);
                 }
             }
         } catch (java.io.IOException e) {
