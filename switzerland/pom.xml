@@ -40,10 +40,10 @@
 											implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
 										<transformer
 											implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-											<!-- <mainClass>org.eqasim.switzerland.ch_cmdp.RunSimulation</mainClass> -->
+											<mainClass>org.eqasim.switzerland.ch_cmdp.RunSimulation</mainClass>
 											<!-- <mainClass>org.eqasim.switzerland.ch_cmdp.util.AddZCoordsToNetwork</mainClass> -->
 											<!-- Compile ExtractCalibrationResults -->
-											<mainClass>org.eqasim.switzerland.ch_cmdp.ExtractCalibrationResults</mainClass>
+											<!-- <mainClass>org.eqasim.switzerland.ch_cmdp.ExtractCalibrationResults</mainClass> -->
 											<manifestEntries>
 												<Implementation-Vendor>Eqasim</Implementation-Vendor>
 												<Implementation-Version>
