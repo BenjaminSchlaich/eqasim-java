@@ -7,6 +7,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.eqasim.switzerland.ch_cmdp.our_configurations.NetworkConfigurator;
 import org.matsim.api.core.v01.TransportMode;
 import org.matsim.api.core.v01.population.Person;
 import org.matsim.contribs.discrete_mode_choice.model.DiscreteModeChoiceTrip;
@@ -14,8 +17,11 @@ import org.matsim.contribs.discrete_mode_choice.model.mode_availability.ModeAvai
 import org.matsim.core.population.PersonUtils;
 
 public class SwissModeAvailability implements ModeAvailability {
+		private final static Logger logger = LogManager.getLogger(SwissModeAvailability.class);
+
 	@Override
 	public Collection<String> getAvailableModes(Person person, List<DiscreteModeChoiceTrip> trips) {
+		logger.info("Checking the mode availability of person: " + person.getId());
 		Boolean isFreight = (Boolean) person.getAttributes().getAttribute("isFreight");
 
 		if (isFreight != null && isFreight) {
@@ -47,6 +53,7 @@ public class SwissModeAvailability implements ModeAvailability {
 		boolean bikeAvailability = true;
 
 		if (person.getAttributes().getAttribute("bikeAvailability").equals("FOR_NONE")) {
+			logger.info("Bike availability is FOR_NONE for person: " + person.getId());
 			bikeAvailability = false;
 		}
 

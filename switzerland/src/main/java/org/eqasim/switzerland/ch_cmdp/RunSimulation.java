@@ -47,7 +47,7 @@ public class RunSimulation {
 				.requireOptions("config-path") //
 				.allowPrefixes("mode-parameter", "cost-parameter", "preventwaitingtoentertraffic", "samplingRateForPT") //
 				// XX these are our prefixes:
-				.allowPrefixes("add-bike-vehicles", "bike-bias", "car-bias", "pt-bias", "population-wealth-factor", "network-speed-factor", "population-bike-chance", "early-exit", "remove-elevation", "redistribute-bikes", "bike-max-velocity") //
+				.allowPrefixes("add-bike-vehicles", "bike-bias", "car-bias", "pt-bias", "population-wealth-factor", "slow-traffic", "population-bike-chance", "early-exit", "remove-elevation", "redistribute-bikes", "bike-max-velocity", "car-penalty-per-km") //
 				.build();
 
 		SwitzerlandConfigurator configurator = new SwitzerlandConfigurator(cmd);
@@ -148,11 +148,9 @@ public class RunSimulation {
 			logger.info("Setting population wealth factor to " + wealthFactor);
 		}
 
-		if (cmd.hasOption("network-speed-factor")) {
-			double speedFactor = Double.parseDouble(cmd.getOption("network-speed-factor").get());
+		if (cmd.hasOption("slow-traffic")) {
 			NetworkConfigurator networkConfigurator = new NetworkConfigurator();
-			networkConfigurator.applySpeedFactor(scenario.getNetwork(), speedFactor);
-			logger.info("Setting network speed factor to " + speedFactor);
+			networkConfigurator.turn50to30(scenario.getNetwork());
 		}
 
 		if (cmd.hasOption("population-bike-chance")) {
@@ -160,6 +158,11 @@ public class RunSimulation {
 			PopulationConfigurator populationConfigurator = new PopulationConfigurator();
 			populationConfigurator.giveBikes(scenario.getPopulation(), bikeChance);
 			logger.info("Setting population bike chance to " + bikeChance);
+		}
+
+		if (cmd.hasOption("car-penalty-per-km")) {
+			OurGlobalParameters.CAR_ADDITIONAL_COST_PER_KM = Double.parseDouble(cmd.getOption("car-penalty-per-km").get());
+			logger.info("Setting car additional cost per km to " + OurGlobalParameters.CAR_ADDITIONAL_COST_PER_KM + " CHF/km");
 		}
 
 
