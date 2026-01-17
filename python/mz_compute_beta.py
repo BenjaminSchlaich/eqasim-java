@@ -396,7 +396,19 @@ def main():
     # plot_age_distribution(wege)
     # plot_map(wege)
 
-    plot_slope_shares(wege)
+    # print the average slope of all trips
+    slope = (wege["Z_Z"] - wege["S_Z"]) / (wege["crowfly_distance"])
+
+    # filter for only trips with positive slopes
+    slope = slope[slope > 0]
+    
+    # filter for only bike trips
+    slope = slope[wege["crowfly_distance"] <= 10000]  # only consider trips up to 10 km
+
+    avg_slope = (slope * wege["person_weight"]).sum() / wege["person_weight"].sum()
+    print(f"The average slope of short trips is {avg_slope}")
+
+    # plot_slope_shares(wege)
 
     # beta = compute_beta(wege)
     # print(f"The computed beta is {beta}")
