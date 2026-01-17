@@ -267,9 +267,10 @@ def plot_slope_shares(wege):
 
     stepsize = 0.005
 
-    thresholds = np.arange(0.0, 0.30, stepsize)
+    thresholds = np.arange(0.0, 0.20, stepsize)
     shares = []
     trip_counts = []
+    n_counts = 0
 
     for t in thresholds:
         mask = (slope >= t) & (slope <= t + stepsize)
@@ -287,6 +288,7 @@ def plot_slope_shares(wege):
         share = bike_w / total_w if total_w > 0 else np.nan
         shares.append(share)
         trip_counts.append(total_w)
+        n_counts += stat_len
 
     # Plotting the slopes
     fig, ax1 = plt.subplots(figsize=(8, 5))
@@ -294,6 +296,8 @@ def plot_slope_shares(wege):
     ax1.set_xlabel("Minimum Average slope")
     ax1.set_ylabel("Bike mode share", color="tab:blue")
     ax1.tick_params(axis="y", labelcolor="tab:blue")
+    # set axis interval to 0.0-1.0
+    ax1.set_ylim(0.0, 0.3)
 
     # plotting person-weights to see how representative each bin is
     ax2 = ax1.twinx()
@@ -308,6 +312,7 @@ def plot_slope_shares(wege):
         coef = np.polyfit(bin_centers[valid_mask], np.array(shares)[valid_mask], 1)
         reg_line = ax1.plot(thresholds, np.polyval(coef, thresholds), color="tab:green", linestyle="--", label="Regression")
         print(f"Regression line: share = {coef[0]:.4f} * slope + {coef[1]:.4f}")
+        print(f"Total number of trips considered in bins: {n_counts}")
     else:
         reg_line = []
 
@@ -379,16 +384,19 @@ def print_mode_share(wege, mode):
 
 def main():
 
-    # wege = with_height_zurich()
+    wege = with_height_zurich()
 
-    wege = with_height_switzerland()
+    # wege = with_height_switzerland()
 
-    plot_map(wege)
+    # plot_map(wege)
+
+    # total_weight = wege["person_weight"].sum()
+    # print(f"Total person-weighted trips in filtered Zürich data: {total_weight}")
 
     # plot_age_distribution(wege)
     # plot_map(wege)
 
-    # plot_slope_shares(wege)
+    plot_slope_shares(wege)
 
     # beta = compute_beta(wege)
     # print(f"The computed beta is {beta}")

@@ -31,6 +31,6 @@ public class SwissCarCostModel extends AbstractCostModel {
 		logger.info("The additional car cost per km is: " + OurGlobalParameters.CAR_ADDITIONAL_COST_PER_KM);
 		logger.info("The distance in km is: " + getInVehicleDistance_km(elements));
 
-		return parameters.carCost_CHF_km * getInVehicleDistance_km(elements);
+		return (parameters.carCost_CHF_km + OurGlobalParameters.CAR_ADDITIONAL_COST_PER_KM) * getInVehicleDistance_km(elements);
 	}
 }
